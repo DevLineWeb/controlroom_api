@@ -10,35 +10,33 @@
     <title>Control Room</title>
 </head>
 <body>
-    <header>
+    <header class="header--menu--navbar">
         <main>
-            <section class="header--menu--navbar">
-                    <div class="header--col--1">
-                        <img src="./img/Control tech logo.png" alt="" class="menu--logo">
-                        <img src="./img/Control tech ico.png" alt="" class="menu--ico">
-                        <a href="">Room's</a>
-                        <a href="">Dashboard</a>
-                        <a href="">Log</a>
-                    </div>
-                    <div class="header--col--2">
-                        <a href="" class="menu--item"><i class="fa-solid fa-user"></i></a>
-                        <a href="" class="menu--item"><i class="fa-solid fa-envelope"></i></a>
-                        <a href="" class="menu--item"><i class="fa-solid fa-star"></i></a>
-                        <a href="" class="menu--item"><i class="fa-solid fa-gear"></i></a>
-                        <a href="#" id="menu--toggle"><i class="fa-solid fa-bars"></i></a>
-                    </div>
-                    <div class="header--mobile">
-                        <a href="" class="menu--item--mobile"> <i class="fa-solid fa-user"></i> Conta</a>
-                        <a href="" class="menu--item--mobile"> <i class="fa-solid fa-envelope"></i> Notificações</a>
-                        <a href="" class="menu--item--mobile"> <i class="fa-solid fa-star"></i> Favoritos</a>
-                        <a href="" class="menu--item--mobile"> <i class="fa-solid fa-gear"></i> Configurações</a>
-                    </div>
-            </section>
+            <div class="header--col--1">
+                <img src="./img/Control tech logo.png" alt="" class="menu--logo">
+                <img src="./img/Control tech ico.png" alt="" class="menu--ico">
+                <a href="">Room's</a>
+                <a href="">Dashboard</a>
+                <a href="">Log</a>
+            </div>
+            <div class="header--col--2">
+                <a href="" class="menu--item"><i class="fa-solid fa-user"></i></a>
+                <a href="" class="menu--item"><i class="fa-solid fa-envelope"></i></a>
+                <a href="" class="menu--item"><i class="fa-solid fa-star"></i></a>
+                <a href="" class="menu--item"><i class="fa-solid fa-gear"></i></a>
+                <a href="#" id="menu--toggle"><i class="fa-solid fa-bars"></i></a>
+            </div>
+            <div class="header--mobile">
+                <a href="" class="menu--item--mobile"> <i class="fa-solid fa-user"></i> Conta</a>
+                <a href="" class="menu--item--mobile"> <i class="fa-solid fa-envelope"></i> Notificações</a>
+                <a href="" class="menu--item--mobile"> <i class="fa-solid fa-star"></i> Favoritos</a>
+                <a href="" class="menu--item--mobile"> <i class="fa-solid fa-gear"></i> Configurações</a>
+            </div>
         </main>
     </header>
-    <section id="header--background">
+    <!-- <section id="header--background">
 
-    </section>
+    </section> -->
     <section class="sec--project--content">
         <main>
             <legend class="content--title--default">Room List</legend>
@@ -97,15 +95,17 @@
             <div class="box--line">
                 <div class="box--col">
                     <label for="natureza">Natureza: </label>
-                    <select name="natureza" id="">
-                        <option value="" selected>Acadêmica</option>
+                    <select name="natureza" id="" required>
+                        <option value="" selected>Natureza</option>
+                        <option value="">Acadêmica</option>
                         <option value="">Administrativa</option>
                     </select>
                 </div>
                 <div class="box--col">
                     <label for="localidade">Local: </label>
-                    <select name="localidade" id="">
-                        <option value="" selected>Bloco A</option>
+                    <select name="localidade" id="" required>
+                        <option value="" selected>Localidade</option>
+                        <option value="">Bloco A</option>
                         <option value="">Bloco B</option>
                         <option value="">Bloco C</option>
                         <option value="">Bloco H</option>
@@ -115,11 +115,12 @@
                 </div>
                 <div class="box--col">
                     <label for="nomesala">Sala: </label>
-                    <input type="text" name="nomesala" id="" placeholder="Sala">
+                    <input type="text" name="nomesala" id="" placeholder="Sala" required>
                 </div>
                 <div class="box--col">
                     <label for="modelo">Modelo de máquina: </label>
-                    <select name="modelo" id="">
+                    <select name="modelo" id="" required>
+                        <option value="" selected>Modelo</option>
                         <option value="">Optiplex 380</option>
                         <option value="">Optiplex 390</option>
                         <option value="">Optiplex 3010</option>
@@ -151,7 +152,7 @@
                 </div>
                 <div class="box--col">
                     <label for="monitor">Monitor: </label>
-                    <input type="checkbox" name="monitor" id="monitor">
+                    <input class="checkbox" type="checkbox" name="monitor" id="monitor">
                 </div>
             </div>
             <div class="box--line">
@@ -220,12 +221,24 @@
                 
             </div>
             <div class="box--end">
-                <button id="button--cancel" class="button--default">Cancelar</button>
+                <button type="button" id="button--cancel" class="button--default">Cancelar</button>
                 <button type="submit" class="button--default">Cadastrar</button>
             </div>
         </form>
     </section>
-    <footer></footer>
+    <footer>
+        <section>
+            <div>
+                <button class="button--default"><i class="fa-brands fa-youtube"></i></button>
+                <button class="button--default"><i class="fa-brands fa-instagram"></i></button>
+                <button class="button--default"><i class="fa-brands fa-github"></i></button>
+                <button class="button--default"><i class="fa-brands fa-discord"></i></button>
+            </div>
+            <div>
+                <h5>@ Copyright All rights reserved.</h5>
+            </div>
+        </section>
+    </footer>
 </body>
 <script type="text/javascript" src="./js/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="./js/jquery-migrate-1.2.1.min.js"></script>

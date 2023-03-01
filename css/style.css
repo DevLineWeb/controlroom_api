@@ -6,7 +6,7 @@
     margin: 0 auto;
 }
 body {
-    /* background-color: #1c1b1f; */
+    background-color: #1c1b1f;
     overflow: hidden;
 }
 li {
@@ -36,20 +36,27 @@ html{
 .slick-arrow {
     display: none !important;
 }
-.header--menu--navbar {
-    position: fixed;
-    top: 0;
-    display: inline-flex;
-    width: 100%;
-    z-index: 1;
-    
+header {
+    background-color: #000;
+    font-size: 1.4rem;
 }
-.header--col--1 {
+header main {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+}
+.header--menu--navbar {
+    width: 100vw;
+}
+.header--menu--navbar div a {
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+}
+.header--col--1 {
+    width: 70%;
+    display: flex;
+    align-items: center;
     height: 50px; 
-    font-size: 1.4rem;
     margin-left: 0;
 }
 .header--col--1 a:hover{
@@ -57,17 +64,12 @@ html{
     background-color: #b8f8f35d;
     transition: all 0.1s;
 }
-.header--menu--navbar div a {
-    padding: 10px;
-    border-radius: 5px;
-    color: white;
-}
 .header--col--2 {
     display: flex;
     align-items: center;
+    justify-content: center;
     height: 50px; 
-    font-size: 1.4rem;
-    justify-content: end;
+    width: 20%;
 }
 .header--col--2 a:hover{
     color: #00ffea;
@@ -230,17 +232,19 @@ td, th {
     height: 100%;
     background-color: #1c1b1f8e;
     z-index: 10;
-    display: none;
+    transform: translateY(-2000px);
+    transition: all 0.2s;
 }
 #modal--add--room.show {
-    display: block;
+    transform: translateY(0);
+    transition: all 0.2s;
 }
 .modal--box {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #1c1b1f;
+    background-color: #111013;
     width: 900px;
 }
 #add--room--box {
@@ -253,8 +257,8 @@ td, th {
     border: 1px solid #b8f8f35d;
 }
 #add--room--box legend {
-    color: #00ffea;
-    background: #b8f8f35d;
+    color: #fff;
+    background: #1c1b1f;
     font-size: 1.8rem;
     border-radius: 5px;
     border: 1px solid #b8f8f35d;
@@ -269,7 +273,7 @@ td, th {
     width: 100%;
     margin-top: 2rem;
     border-radius: 5px;
-    border: 1px solid #b8f8f35d;
+    border: 1px solid #b8f8f3;
 }
 .box--col {
     text-align: left;
@@ -280,6 +284,22 @@ td, th {
 .box--end button {
     margin: 20px;
     width: 100px;
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    background-color: #000;
+    width: 100%;
+    display: flex;
+    border-top: 1px solid #fff;
+    color: white;
+}
+footer div {
+    display: flex;
+}
+footer div button{
+    margin: 10px;
+    font-size: 1rem;
 }
 /* ======================================================================== */
 @media (max-width:768px) {
