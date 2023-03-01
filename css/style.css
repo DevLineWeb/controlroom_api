@@ -230,7 +230,10 @@ td, th {
     height: 100%;
     background-color: #1c1b1f8e;
     z-index: 10;
-    /* display: none; */
+    display: none;
+}
+#modal--add--room.show {
+    display: block;
 }
 .modal--box {
     position: fixed;

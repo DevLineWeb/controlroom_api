@@ -23,4 +23,10 @@
     $('.sec--room--table').toggleClass('change');
   })
 
-  
+
+  $('#table--button--add--room').click(function () {
+    $('#modal--add--room').toggleClass('show');
+  })
+  $('#button--cancel').click(function () {
+    $('#modal--add--room').removeClass('show');
+  })
