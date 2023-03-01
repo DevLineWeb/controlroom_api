@@ -5,7 +5,7 @@
 //     slidesToScroll: 1,
 //     autoplay: false,
 //     autoplaySpeed: 1500
-//   });
+//   }); 
   $('#menu--toggle').click(function () {
     $('.header--mobile').toggleClass("show")
   }
@@ -22,3 +22,5 @@
     $('.sec--room--grid').toggleClass('change');
     $('.sec--room--table').toggleClass('change');
   })
+
+  
