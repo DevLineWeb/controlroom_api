@@ -1,0 +1,311 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+* {
+    font-family: 'Poppins';
+    margin: 0 auto;
+}
+body {
+    /* background-color: #1c1b1f; */
+    overflow: hidden;
+}
+li {
+    list-style: none;
+}
+ul {
+    padding: 0;
+}
+a {
+    color: #1c1b1f;
+    text-decoration: none;
+}
+main{
+    max-width: 80vw;
+    width: 100%;
+}
+html{
+    font-size: 62.5%;
+    --primaryGradient: linear-gradient(93.12deg, #ae833f 50%, #daa44f 100%, #fff 50%);
+}
+/*============================================= NAVBAR=================================================== */
+#header--slider {
+    position: absolute;
+    max-width: 100vw;
+    /* display: none; */
+}
+.slick-arrow {
+    display: none !important;
+}
+.header--menu--navbar {
+    position: fixed;
+    top: 0;
+    display: inline-flex;
+    width: 100%;
+    z-index: 1;
+    
+}
+.header--col--1 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 50px; 
+    font-size: 1.4rem;
+    margin-left: 0;
+}
+.header--col--1 a:hover{
+    color: #00ffea;
+    background-color: #b8f8f35d;
+    transition: all 0.1s;
+}
+.header--menu--navbar div a {
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+}
+.header--col--2 {
+    display: flex;
+    align-items: center;
+    height: 50px; 
+    font-size: 1.4rem;
+    justify-content: end;
+}
+.header--col--2 a:hover{
+    color: #00ffea;
+    background-color: #b8f8f35d;
+    transition: all 0.1s;
+}
+.menu--logo {
+    max-width: 130px;
+    margin-left: 10px;
+    margin: 0px 10px;
+    cursor: pointer;
+}
+.menu--ico {
+    display: none;
+    max-width: 50px;
+    margin: 0px 10px;
+    cursor: pointer;
+}
+#menu--toggle {
+    display: none;
+}
+.header--mobile {
+    position: absolute;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+    grid-gap: 10px;
+    font-size: 1.2rem;
+    transform: translateY(-2200px);
+    opacity: 0;
+    pointer-events: none;
+    top: 55px;
+}
+
+.header--mobile.show {
+    transition: all 0.3s;
+    transform: translateY(0px);
+    opacity: 1;
+    pointer-events:all;
+}
+.header--mobile a {
+    border: 1px solid #f7f7f7;
+    border-radius: 3px;
+    width: 140px;
+
+}
+.header--mobile a:hover {
+    border: 1px solid #b8f8f3;
+    color: #00ffea;
+    transition: all 0.3s;
+}
+.sec--project--content {
+    transform: translateY(151px);
+    background-color: #1c1b1fec;
+    height: 600px;
+}
+.content--title--default {
+    display: flex;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: white;
+    padding: 10px;
+    text-transform: uppercase;
+
+}
+.table--filterlist {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-left: 10px;
+    position: relative;
+}
+.filter--button {
+    position: absolute;
+    right: 10px;
+    display: flex;
+    flex-direction: row;
+}
+.filter--button button {
+    transition: all 0.1s;
+    width: 35px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+}
+.filter--button button span {
+    display: none;
+}
+.filter--button button:hover {
+    width: 80px;
+    transition: all 0.2s;
+}
+.filter--button button:hover span {
+    display: inline-block;
+    word-wrap: none;
+    transition: all 1s;
+}
+.sec--room--table {
+    width: 100%;
+    color: white;
+    border-collapse: separate;
+    border-spacing: 1rem;
+}
+.sec--room--table.change {
+    display: none;
+}
+tr {
+    display: flex;
+    border-radius: 3px;
+    border: 1px solid #f7f7f7;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.table--header {
+    border: none;
+    border-bottom: 1px solid #f7f7f7;
+    border-radius: 0px;
+}
+.table--header:hover {
+    background-color: transparent;
+    color: white;
+    cursor:crosshair;
+}
+tr:hover {
+    color: #00ffea;
+    background-color: #b8f8f35d;
+    transition: all 0.1s;
+}
+td, th {
+    padding: 10px;
+    display: flex;
+    width: 12%;
+    text-align: center;
+    font-size: 1.4rem;
+    align-items: center;
+    justify-content: center;
+}
+.sec--room--grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(110px,1fr));
+    grid-gap: 20px;
+    display: none;
+    padding: 10px;
+}
+.sec--room--grid.change {
+    display: grid;
+}
+.sec--room--grid button {
+    width: 100px;
+    line-height: 40px;
+}
+/* modal para formulário de adição de sala */
+#modal--add--room {
+    top: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #1c1b1f8e;
+    z-index: 10;
+}
+.modal--box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    width: 900px;
+}
+#add--room--box {
+    color: black;
+    font-size: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ffffff;
+}
+#add--room--box legend {
+    color: #1c1b1f;
+    background: #fff;
+    font-size: 1.8rem;
+    border-radius: 5px;
+    border: 1px solid #1c1b1f;
+    padding: 10px;
+    margin-top: -30px;
+}
+#add--room--box input, select {
+    width: 90%;
+}
+.box--line {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 2rem;
+    border-radius: 5px;
+    border: 1px solid #1c1b1f33;
+}
+.box--col {
+    text-align: left;
+    width: 25%;
+    display: inline-table;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start; */
+    padding: 10px;
+}
+/* ======================================================================== */
+@media (max-width:768px) {
+    main {
+        max-width: 100vw !important;
+    }
+}
+
+@media (max-width:576px) {
+    #menu--toggle {
+        display: block;
+    }
+    .menu--item {
+        display: none;
+    }
+    .header--mobile {
+        
+    opacity: 0;
+    pointer-events: none;
+    }
+    .menu--logo {
+        display: none;
+    }
+    .menu--ico {
+        display: block;
+    }
+}
+@media (max-width:300px) {
+    .header--mobile a {
+        width: 85%;
+    }
+}

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/a0544da68a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/el.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Control Room</title>
+</head>
+<body>
+    <header>
+        <main>
+            <section class="header--menu--navbar">
+                    <div class="header--col--1">
+                        <img src="./img/Control tech logo.png" alt="" class="menu--logo">
+                        <img src="./img/Control tech ico.png" alt="" class="menu--ico">
+                        <a href="">Room's</a>
+                        <a href="">Dashboard</a>
+                        <a href="">Log</a>
+                    </div>
+                    <div class="header--col--2">
+                        <a href="" class="menu--item"><i class="fa-solid fa-user"></i></a>
+                        <a href="" class="menu--item"><i class="fa-solid fa-envelope"></i></a>
+                        <a href="" class="menu--item"><i class="fa-solid fa-star"></i></a>
+                        <a href="" class="menu--item"><i class="fa-solid fa-gear"></i></a>
+                        <a href="#" id="menu--toggle"><i class="fa-solid fa-bars"></i></a>
+                    </div>
+                    <div class="header--mobile">
+                        <a href="" class="menu--item--mobile"> <i class="fa-solid fa-user"></i> Conta</a>
+                        <a href="" class="menu--item--mobile"> <i class="fa-solid fa-envelope"></i> Notificações</a>
+                        <a href="" class="menu--item--mobile"> <i class="fa-solid fa-star"></i> Favoritos</a>
+                        <a href="" class="menu--item--mobile"> <i class="fa-solid fa-gear"></i> Configurações</a>
+                    </div>
+            </section>
+        </main>
+    </header>
+    <section id="header--background">
+
+    </section>
+    <section class="sec--project--content">
+        <main>
+            <legend class="content--title--default">Room List</legend>
+            <div class="table--filterlist">
+                <input class="input--text--default" type="text" name="" id="" placeholder="Pesquisar">
+                <div class="filter--button">
+
+                    <button class="button--default" id="table--button--add--room"><span> Add </span><i class="fa-solid fa-plus"></i></button>
+                    <button class="button--default" id="table--button--filter--list"><span> List </span><i class="fa-solid fa-list"></i></button>
+                    <button class="button--default" id="table--button--filter--grid"><span> Grid </span><i class="fa-solid fa-grip"></i></button>
+                    <button class="button--default"><span> Filtro </span><i class="fa-solid fa-filter"></i></button>
+
+                </div>
+            </div>
+            <table class="sec--room--table" id="sec--room--table">
+                <tr class="table--header">
+                    <th>Natureza</th>
+                    <th>Local</th>
+                    <th>Sala</th>
+                    <th>Máquina</th>
+                    <th>Patrimônio</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <td>Acadêmica</td>
+                    <td>Bloco A</td>
+                    <td>A103</td>
+                    <td>OPT380</td>
+                    <td>FSG-013273</td>
+                    <th><button class="button--default"><i class="fa-solid fa-gear"></i></button></th>
+                </tr>
+                <tr>
+                    <td>Acadêmica</td>
+                    <td>Bloco A</td>
+                    <td>A105</td>
+                    <td>OPT3010</td>
+                    <td>FSG-021444</td>
+                    <th><button class="button--default"><i class="fa-solid fa-gear"></i></button></th>
+                </tr>
+            </table>
+            <section class="sec--room--grid">
+                <button class="button--default">A103</button>
+                <button class="button--default">A105</button>
+                <button class="button--default">A107</button>
+                <button class="button--default">A108</button>
+                <button class="button--default">A110</button>
+                <button class="button--default">A111</button>
+                <button class="button--default">A114</button>
+                <button class="button--default">A117</button>
+            </section>
+        </main>
+    </section>
+    <section id="modal--add--room">
+        <form id="add--room--box" class="modal--box">
+            <legend>Room Information</legend>
+            <div class="box--line">
+                <div class="box--col">
+                    <label for="natureza">Natureza: </label>
+                    <select name="natureza" id="">
+                        <option value="" selected>Acadêmica</option>
+                        <option value="">Administrativa</option>
+                    </select>
+                </div>
+                <div class="box--col">
+                    <label for="localidade">Local: </label>
+                    <select name="localidade" id="">
+                        <option value="" selected>Bloco A</option>
+                        <option value="">Bloco B</option>
+                        <option value="">Bloco C</option>
+                        <option value="">Bloco H</option>
+                        <option value="">Veterinária</option>
+                        <option value="">CIS</option>
+                    </select>
+                </div>
+                <div class="box--col">
+                    <label for="nomesala">Sala: </label>
+                    <input type="text" name="nomesala" id="" placeholder="Sala">
+                </div>
+                <div class="box--col">
+                    <label for="modelo">Modelo de máquina: </label>
+                    <select name="modelo" id="">
+                        <option value="">Optiplex 380</option>
+                        <option value="">Optiplex 390</option>
+                        <option value="">Optiplex 3010</option>
+                        <option value="">Optiplex 7010</option>
+                        <option value="">Optiplex 3040</option>
+                        <option value="">Optiplex 3060</option>
+                        <option value="">Optiplex 3070</option>
+                        <option value="">Optiplex 3080</option>
+                        <option value="">Optiplex 5090</option>
+                        <option value="">Vostro 3470</option>
+                    </select>
+                </div>
+            </div>
+            <div class="box--line">
+                <div class="box--col">
+                    <label for="patrimonio">Patrimônio: </label>
+                    <input type="text" name="patrimonio" id="" placeholder="Patrimônio">
+                </div>
+                <div class="box--col">
+                    <label for="serie">N°. Série</label>
+                    <input type="text" name="serie" id="" placeholder="N°. Série">
+                </div>
+                <div class="box--col">
+                    <label for="rede">Rede: </label>
+                    <select name="rede" id="">
+                        <option value="">Cabeada</option>
+                        <option value="">Wi-fi</option>
+                    </select>
+                </div>
+                <div class="box--col">
+                    <label for="monitor">Monitor: </label>
+                    <input type="checkbox" name="monitor" id="monitor">
+                </div>
+            </div>
+            <div class="box--line">
+                <div class="box--col">
+                    <label for="gpu">GPU: </label>
+                    <input type="text" name="gpu" id="" placeholder="GPU">
+                </div>
+                <div class="box--col">
+                    <label for="disco">Disco: </label>
+                    <select name="disco" id="">
+                        <option value="">80GB HD</option>
+                        <option value="">120GB HD</option>
+                        <option value="">250GB HD</option>
+                        <option value="">500GB HD</option>
+                        <option value="">1TB HD</option>
+                        <option value="">80GB SSD</option>
+                        <option value="">120GB SSD</option>
+                        <option value="">250GB SSD</option>
+                        <option value="">500GB SSD</option>
+                        <option value="">1TB SSD</option>
+                    </select>
+                </div>
+                <div class="box--col">
+                    <label for="cpu">CPU: </label>
+                    <select name="cpu" id="">
+                        <option value="">Pentium</option>
+                        <option value="">Core 2 Duo</option>
+                        <option value="">Intel core i3</option>
+                        <option value="">Intel core i5</option>
+                        <option value="">Intel core i7</option>
+                        <option value="">Intel core i9</option>
+                    </select>
+                </div>
+                <div class="box--col">
+                    <label for="ram">RAM: </label>
+                    <input type="number" name="ram" id="" placeholder="RAM">
+                </div>
+            </div>
+            <input type="submit" value="Cadastrar">
+        </form>
+    </section>
+    <footer></footer>
+</body>
+<script type="text/javascript" src="./js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="./js/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="./js/slick.min.js"></script>
+<script src="./js/script.js"></script>
+<script src="./js/three.r134.min.js"></script>
+<script src="./js/vanta.globe.min.js"></script>
+<script>
+VANTA.GLOBE({
+  el: "#header--background",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 900.00,
+  minWidth: 900.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  color: 0x00ffea,
+  size: 0.60,
+  backgroundColor: 0x000000,
+  showLines: false
+})
+</script>
+</html>
