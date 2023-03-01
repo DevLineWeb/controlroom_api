@@ -10,6 +10,7 @@
     <title>Control Room</title>
 </head>
 <body>
+    <div id="request--waiting--gif"></div>
     <header class="header--menu--navbar">
         <main>
             <div class="header--col--1">
@@ -222,7 +223,7 @@
             </div>
             <div class="box--end">
                 <button type="button" id="button--cancel" class="button--default">Cancelar</button>
-                <button type="submit" class="button--default">Cadastrar</button>
+                <button type="submit" class="button--default" onclick="addRoom()">Cadastrar</button>
             </div>
         </form>
     </section>
@@ -246,7 +247,7 @@
 <script src="./js/script.js"></script>
 <script src="./js/three.r134.min.js"></script>
 <script src="./js/vanta.globe.min.js"></script>
-<script>
+<!-- <script>
 VANTA.GLOBE({
   el: "#header--background",
   mouseControls: true,
@@ -261,5 +262,5 @@ VANTA.GLOBE({
   backgroundColor: 0x000000,
   showLines: false
 })
-</script>
+</script> -->
 </html>

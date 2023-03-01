@@ -30,3 +30,42 @@
   $('#button--cancel').click(function () {
     $('#modal--add--room').removeClass('show');
   })
+
+
+  function addRoom() {
+    $.ajax
+            ({
+                //Configurações
+                type: 'POST',//Método que está sendo utilizado.
+                dataType: 'html',//É o tipo de dado que a página vai retornar.
+                url: '../php/cadastro.php',//Indica a página que está sendo solicitada.
+                //função que vai ser executada assim que a requisição for enviada
+                beforeSend: function () {
+                    $("#request--waiting--gif").html("<img src='./img/48x48.gif'>");
+                },
+                //Dados para envio
+                data: {
+                    // natureza: clientName,
+                    // local: clientContact,
+                    // sala: reqDate,
+                    // modelo: reqId,
+                    // patrimonio: reqTurn,
+                    // numSerie: reqTurn,
+                    // rede: reqTurn,
+                    // monitor: reqTurn,
+                    // gpu: reqTurn,
+                    // disco: reqTurn,
+                    // cpu: reqTurn,
+                    // ram: reqTurn,
+                    // cadeado: reqTurn,
+                    // caboAco: reqTurn,
+                    // desempenho: reqTurn,
+                    // dataVer: reqTurn
+                },
+                //função que será executada quando a solicitação for finalizada.
+                success: function (msg)
+                {
+                   $("#request--waiting").html(msg);
+                }
+            });
+}
