@@ -33,23 +33,23 @@
 
 
   function addRoom() {
-    const natureza = document.getElementById('natureza');
-    const local = document.getElementById('localidade');
-    const sala = document.getElementById('nomesala');
-    const modelo = document.getElementById('modelo');
-    const patrimonio = document.getElementById('patrimonio');
-    const numSerie = document.getElementById('serie');
-    const rede = document.getElementById('rede');
-    const monitor = document.getElementById('monitor');
-    const gpu = document.getElementById('gpu');
-    const disco = document.getElementById('disco');
-    const cpu = document.getElementById('cpu');
-    const ram = document.getElementById('ram');
-    const cadeado = document.getElementById('cadeado');
-    const caboAco = document.getElementById('cabo');
-    const desempenho = document.getElementById('desempenho');
-    const dataVer = document.getElementById('data');
-    const obs = document.getElementById('obs');
+    // const natureza = document.getElementById('natureza');
+    // const local = document.getElementById('localidade');
+    // const sala = document.getElementById('nomesala');
+    // const modelo = document.getElementById('modelo');
+    // const patrimonio = document.getElementById('patrimonio');
+    // const numSerie = document.getElementById('serie');
+    // const rede = document.getElementById('rede');
+    // const monitor = document.getElementById('monitor');
+    // const gpu = document.getElementById('gpu');
+    // const disco = document.getElementById('disco');
+    // const cpu = document.getElementById('cpu');
+    // const ram = document.getElementById('ram');
+    // const cadeado = document.getElementById('cadeado');
+    // const caboAco = document.getElementById('cabo');
+    // const desempenho = document.getElementById('desempenho');
+    // const dataVer = document.getElementById('data');
+    // const obs = document.getElementById('obs');
 
     $.ajax
             ({
@@ -64,11 +64,11 @@
                 //Dados para envio
                 data: {
                     natureza: natureza,
-                    local: local,
-                    sala: sala,
+                    localidade: localidade,
+                    sala: nomesala,
                     modelo: modelo,
                     patrimonio: patrimonio,
-                    numSerie: numSerie,
+                    numSerie: serie,
                     rede: rede,
                     monitor: monitor,
                     gpu: gpu,
@@ -76,9 +76,8 @@
                     cpu: cpu,
                     ram: ram,
                     cadeado: cadeado,
-                    caboAco: caboAco,
+                    caboAco: cabo,
                     desempenho: desempenho,
-                    dataVer: dataVer,
                     obs: obs
                 },
                 //função que será executada quando a solicitação for finalizada.
