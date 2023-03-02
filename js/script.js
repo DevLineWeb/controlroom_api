@@ -33,23 +33,22 @@
 
 
   function addRoom() {
-    // const natureza = document.getElementById('natureza');
-    // const local = document.getElementById('localidade');
-    // const sala = document.getElementById('nomesala');
-    // const modelo = document.getElementById('modelo');
-    // const patrimonio = document.getElementById('patrimonio');
-    // const numSerie = document.getElementById('serie');
-    // const rede = document.getElementById('rede');
-    // const monitor = document.getElementById('monitor');
-    // const gpu = document.getElementById('gpu');
-    // const disco = document.getElementById('disco');
-    // const cpu = document.getElementById('cpu');
-    // const ram = document.getElementById('ram');
-    // const cadeado = document.getElementById('cadeado');
-    // const caboAco = document.getElementById('cabo');
-    // const desempenho = document.getElementById('desempenho');
-    // const dataVer = document.getElementById('data');
-    // const obs = document.getElementById('obs');
+    const natureza = document.getElementById('natureza').value;
+    const localidade = document.getElementById('localidade').value;
+    const nomesala = document.getElementById('nomesala').value;
+    const modelo = document.getElementById('modelo').value;
+    const patrimonio = document.getElementById('patrimonio').value;
+    const serie = document.getElementById('serie').value;
+    const rede = document.getElementById('rede').value;
+    const monitor = document.getElementById('monitor').value;
+    const gpu = document.getElementById('gpu').value;
+    const disco = document.getElementById('disco').value;
+    const cpu = document.getElementById('cpu').value;
+    const ram = document.getElementById('ram').value;
+    const cadeado = document.getElementById('cadeado').value;
+    const cabo = document.getElementById('cabo').value;
+    const desempenho = document.getElementById('desempenho').value;
+    const obs = document.getElementById('obs').value;
 
     $.ajax
             ({
