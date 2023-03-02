@@ -11,6 +11,7 @@
 </head>
 <body>
     <div id="request--waiting--gif"></div>
+    <div id="request--waiting"></div>
     <header class="header--menu--navbar">
         <main>
             <div class="header--col--1">
@@ -96,7 +97,7 @@
             <div class="box--line">
                 <div class="box--col">
                     <label for="natureza">Natureza: </label>
-                    <select name="natureza" id="" required>
+                    <select name="natureza" id="natureza" required>
                         <option value="" selected>Natureza</option>
                         <option value="">Acadêmica</option>
                         <option value="">Administrativa</option>
@@ -104,7 +105,7 @@
                 </div>
                 <div class="box--col">
                     <label for="localidade">Local: </label>
-                    <select name="localidade" id="" required>
+                    <select name="localidade" id="localidade" required>
                         <option value="" selected>Localidade</option>
                         <option value="">Bloco A</option>
                         <option value="">Bloco B</option>
@@ -116,11 +117,11 @@
                 </div>
                 <div class="box--col">
                     <label for="nomesala">Sala: </label>
-                    <input type="text" name="nomesala" id="" placeholder="Sala" required>
+                    <input type="text" name="nomesala" id="nomesala" placeholder="Sala" required>
                 </div>
                 <div class="box--col">
                     <label for="modelo">Modelo de máquina: </label>
-                    <select name="modelo" id="" required>
+                    <select name="modelo" id="modelo" required>
                         <option value="" selected>Modelo</option>
                         <option value="">Optiplex 380</option>
                         <option value="">Optiplex 390</option>
@@ -138,15 +139,15 @@
             <div class="box--line">
                 <div class="box--col">
                     <label for="patrimonio">Patrimônio: </label>
-                    <input type="text" name="patrimonio" id="" placeholder="Patrimônio">
+                    <input type="text" name="patrimonio" id="patrimonio" placeholder="Patrimônio">
                 </div>
                 <div class="box--col">
                     <label for="serie">N°. Série</label>
-                    <input type="text" name="serie" id="" placeholder="N°. Série">
+                    <input type="text" name="serie" id="serie" placeholder="N°. Série">
                 </div>
                 <div class="box--col">
                     <label for="rede">Rede: </label>
-                    <select name="rede" id="">
+                    <select name="rede" id="rede">
                         <option value="">Cabeada</option>
                         <option value="">Wi-fi</option>
                     </select>
@@ -159,11 +160,11 @@
             <div class="box--line">
                 <div class="box--col">
                     <label for="gpu">GPU: </label>
-                    <input type="text" name="gpu" id="" placeholder="GPU">
+                    <input type="text" name="gpu" id="gpu" placeholder="GPU">
                 </div>
                 <div class="box--col">
                     <label for="disco">Disco: </label>
-                    <select name="disco" id="">
+                    <select name="disco" id="disco">
                         <option value="">80GB HD</option>
                         <option value="">120GB HD</option>
                         <option value="">250GB HD</option>
@@ -178,7 +179,7 @@
                 </div>
                 <div class="box--col">
                     <label for="cpu">CPU: </label>
-                    <select name="cpu" id="">
+                    <select name="cpu" id="cpu">
                         <option value="">Pentium</option>
                         <option value="">Core 2 Duo</option>
                         <option value="">Intel core i3</option>
@@ -189,7 +190,7 @@
                 </div>
                 <div class="box--col">
                     <label for="ram">RAM: </label>
-                    <input type="number" name="ram" id="" placeholder="RAM">
+                    <input type="number" name="ram" id="ram" placeholder="RAM">
                 </div>
             </div>
             <div class="box--line">
@@ -210,16 +211,9 @@
                     </select>
                 </div>
                 <div class="box--col">
-                    <label for="data">Data da Verificação: </label>
-                    <input type="date" name="" id="data">
+                    <label for="obs">Observações: </label>
+                    <input type="text" name="" id="obs">
                 </div>
-            </div>
-            <div class="box--line">
-                <div class="box--col">
-                    <label for="obs">Observações</label>
-                    <input type="text" class="input--large" name="" id="obs">
-                </div>
-                
             </div>
             <div class="box--end">
                 <button type="button" id="button--cancel" class="button--default">Cancelar</button>

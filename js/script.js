@@ -33,34 +33,53 @@
 
 
   function addRoom() {
+    const natureza = document.getElementById('natureza');
+    const local = document.getElementById('localidade');
+    const sala = document.getElementById('nomesala');
+    const modelo = document.getElementById('modelo');
+    const patrimonio = document.getElementById('patrimonio');
+    const numSerie = document.getElementById('serie');
+    const rede = document.getElementById('rede');
+    const monitor = document.getElementById('monitor');
+    const gpu = document.getElementById('gpu');
+    const disco = document.getElementById('disco');
+    const cpu = document.getElementById('cpu');
+    const ram = document.getElementById('ram');
+    const cadeado = document.getElementById('cadeado');
+    const caboAco = document.getElementById('cabo');
+    const desempenho = document.getElementById('desempenho');
+    const dataVer = document.getElementById('data');
+    const obs = document.getElementById('obs');
+
     $.ajax
             ({
                 //Configurações
                 type: 'POST',//Método que está sendo utilizado.
                 dataType: 'html',//É o tipo de dado que a página vai retornar.
-                url: '../php/cadastro.php',//Indica a página que está sendo solicitada.
+                url: './php/cadastro.php',//Indica a página que está sendo solicitada.
                 //função que vai ser executada assim que a requisição for enviada
                 beforeSend: function () {
                     $("#request--waiting--gif").html("<img src='./img/48x48.gif'>");
                 },
                 //Dados para envio
                 data: {
-                    // natureza: clientName,
-                    // local: clientContact,
-                    // sala: reqDate,
-                    // modelo: reqId,
-                    // patrimonio: reqTurn,
-                    // numSerie: reqTurn,
-                    // rede: reqTurn,
-                    // monitor: reqTurn,
-                    // gpu: reqTurn,
-                    // disco: reqTurn,
-                    // cpu: reqTurn,
-                    // ram: reqTurn,
-                    // cadeado: reqTurn,
-                    // caboAco: reqTurn,
-                    // desempenho: reqTurn,
-                    // dataVer: reqTurn
+                    natureza: natureza,
+                    local: local,
+                    sala: sala,
+                    modelo: modelo,
+                    patrimonio: patrimonio,
+                    numSerie: numSerie,
+                    rede: rede,
+                    monitor: monitor,
+                    gpu: gpu,
+                    disco: disco,
+                    cpu: cpu,
+                    ram: ram,
+                    cadeado: cadeado,
+                    caboAco: caboAco,
+                    desempenho: desempenho,
+                    dataVer: dataVer,
+                    obs: obs
                 },
                 //função que será executada quando a solicitação for finalizada.
                 success: function (msg)
