@@ -2,7 +2,7 @@
 include_once('./conect.php');
 
 $natureza = $_POST['natureza'];
-$local = $_POST['local'];
+$local = $_POST['localidade'];
 $sala = $_POST['sala'];
 $modelo = $_POST['modelo'];
 $patrimonio = $_POST['patrimonio'];
@@ -19,7 +19,7 @@ $desempenho = $_POST['desempenho'];
 $obs = $_POST['obs'];
 $data_envio = date('Y-m-d');
 
-$insertRoom = "INSERT INTO rooms(
+$insertRoom = mysqli_query($conect,"INSERT INTO rooms(
     natureza, 
     localidade, 
     sala, 
@@ -34,8 +34,9 @@ $insertRoom = "INSERT INTO rooms(
     disco, 
     cadeado, 
     caboaco, 
-    desempenho, 
-    dataver,) 
+    desempenho,
+    obs, 
+    dataver) 
         VALUES(
         '$natureza',
         '$local',
@@ -53,9 +54,9 @@ $insertRoom = "INSERT INTO rooms(
         '$caboAco', 
         '$desempenho', 
         '$obs', 
-        '$data_envio')";
+        '$data_envio')");
 
-$update = $conect->query($insertRoom);
+// $update = $conect->query($insertRoom);
 
 if($insertRoom) {
     echo "<legend>Aviso!</legend>
