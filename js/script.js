@@ -13,14 +13,14 @@
   $('#table--button--filter--list').click(function () {
     $('#table--button--filter--list').toggleClass('selected');
     $('#table--button--filter--grid').removeClass('selected');
-    $('.sec--room--grid').removeClass('change');
-    $('.sec--room--table').removeClass('change');
+    $('.table--grid').removeClass('change');
+    $('.table--room').removeClass('change');
   })
   $('#table--button--filter--grid').click(function () {
     $('#table--button--filter--grid').toggleClass('selected');
     $('#table--button--filter--list').removeClass('selected');
-    $('.sec--room--grid').toggleClass('change');
-    $('.sec--room--table').toggleClass('change');
+    $('.table--grid').toggleClass('change');
+    $('.table--room').toggleClass('change');
   })
 
 

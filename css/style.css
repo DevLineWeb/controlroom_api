@@ -33,24 +33,13 @@ html{
 
 /* =============================================VAR====================================================== */
 
-#header--slider {
-    position: absolute;
-    max-width: 100vw;
-    /* display: none; */
-}
-.slick-arrow {
-    display: none !important;
-}
 header {
     background-color: #000;
     font-size: 1.4rem;
 }
-header main {
+.header--widht{
     display: flex;
     align-items: center;
-}
-.header--menu--navbar {
-    width: 100vw;
 }
 .header--menu--navbar div a {
     padding: 10px;
@@ -136,7 +125,7 @@ header main {
     background-color: #1c1b1fec;
     height: 600px;
 }
-.content--title--default {
+.sec--project--content legend{
     display: flex;
     justify-content: center;
     font-size: 1.8rem;
@@ -145,6 +134,7 @@ header main {
     text-transform: uppercase;
 
 }
+/*================================================================== FILTROS DE PESQUISA DA LISTA ================================================================== */
 .table--filterlist {
     width: 100px;
     display: flex;
@@ -179,13 +169,13 @@ header main {
     word-wrap: none;
     transition: all 1s;
 }
-.sec--room--table {
+.table--room {
     width: 100%;
     color: white;
     border-collapse: separate;
     border-spacing: 1rem;
 }
-.sec--room--table.change {
+.table--room.change {
     display: none;
 }
 tr {
@@ -219,17 +209,17 @@ td, th {
     align-items: center;
     justify-content: center;
 }
-.sec--room--grid {
+.table--grid {
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(110px,1fr));
     grid-gap: 20px;
     display: none;
     padding: 10px;
 }
-.sec--room--grid.change {
+.table--grid.change {
     display: grid;
 }
-.sec--room--grid button {
+.table--grid button {
     width: 100px;
     line-height: 40px;
 }
