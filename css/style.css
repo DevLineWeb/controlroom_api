@@ -141,6 +141,9 @@ header {
     flex-direction: row;
     margin-left: 10px;
 }
+.table--filterlist input[type="text"] {
+    width: 400px
+}
 .filter--button {
     position: absolute;
     right: 10px;
@@ -263,9 +266,6 @@ td, th {
     border-radius: 5px;
     color: white;
 }
-#add--room--box input, select {
-    width: 90%;
-}
 .box--line {
     min-height: 80px;
     display: flex;
@@ -289,6 +289,19 @@ td, th {
     width: 100px;
     background: var(--primaryGradient);
 }
+
+.box--line.box--line--textarea {
+    display: flex ;
+    flex-direction: column ;
+    align-items: flex-start;
+    width: 100%;
+    border: none;
+    padding: 0;
+}
+.box--line.box--line--textarea label {
+    text-align: left;
+}
+/* ===============================FOOTER================================ */
 footer {
     position: fixed;
     bottom: 0;
@@ -323,7 +336,7 @@ footer div button{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #fff;
+    background-color: transparent;
     width: 200px;
     height: 100px;
 }
@@ -332,6 +345,9 @@ footer div button{
     align-items: center;
     justify-content: center;
     height: 100%;
+}
+#request--waiting--gif img {
+    max-width: 70px;
 }
 /* ======================================================================== */
 @media (max-width:768px) {

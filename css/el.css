@@ -1,23 +1,15 @@
 
-input,textarea {
+
+/* PREDEFINIÇÕES DE INPUT */
+input {
     /* line-height: 30px; */
     padding: 6px;
+    width: 92%;
 }
 textarea {
     width: 98%;
     height: 100%;
     resize: none;
-}
-.box--line.box--line--textarea {
-    display: flex ;
-    flex-direction: column ;
-    align-items: flex-start;
-    width: 100%;
-    border: none;
-    padding: 0;
-}
-.box--line.box--line--textarea label {
-    text-align: left;
 }
 input[type='text'],input[type='number'],textarea {
     outline: none;
@@ -29,18 +21,23 @@ input[type='text'],input[type='number'],textarea {
 /* input::placeholder{
     padding: 5px;
 } */
+/* PREDEFINIÇÕES DE SELECT */
 select {
     height: 35px !important;
     outline: none;
     border-radius: 3px;
     color: #fff;
+    width: 100%;
     background-color: transparent;
-    border: 1px solid #c0c0c0 !important;
+    border: 1px solid #c0c0c08c !important;
 }
 select option {
     background-color: rgba(255, 255, 255, 0);
     color: #1c1b1f60;
 }
+
+
+/* PREDEFINIÇÕES DE BOTÃO */
 .button--default {
     background-color: transparent;
     color: #fff;
@@ -56,14 +53,6 @@ select option {
     border: 1px solid #b8f8f3;
     transition: all 0.2s;
 }
-.input--text--default {
-    background-color: transparent;
-    border: none;
-    border-bottom: 1px solid #e2e2e2;
-    line-height: 30px;
-    outline: none;
-    color: white;
-}
 button.selected {
     background-color: #ea00ff;
     color: #00ffea;
@@ -71,6 +60,8 @@ button.selected {
     border: 1px solid #b8f8f3;
 }
 
+
+/* ESTILIZAÇÃO LABEL ~ CHECKBOX */
 input[type=checkbox] {
     display: none;
 }
@@ -78,7 +69,7 @@ input[type=checkbox] {
 .label--for--ico {
     color: #797979;
     border: 1px solid #797979;
-    padding: 10px 0px;
+    padding: 15px 0px;
     font-size: 3.2rem;
     text-align: center;
     cursor: pointer;
