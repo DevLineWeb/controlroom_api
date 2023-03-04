@@ -6,7 +6,7 @@
     margin: 0 auto;
 }
 body {
-    background-color: #fff;
+    background-color: #1c1b1f;
     overflow: hidden;
 }
 li {
@@ -47,14 +47,14 @@ header {
     color: white;
 }
 .header--col--1 {
-    width: 70%;
+    width: 50%;
     display: flex;
     align-items: center;
     height: 50px; 
     margin-left: 0;
 }
 .header--col--1 a {
-    width: 30%;
+    width: 20%;
 }
 .header--col--1 a:hover{
     color: #00ffea;
@@ -267,6 +267,7 @@ td, th {
     width: 90%;
 }
 .box--line {
+    min-height: 80px;
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -278,6 +279,7 @@ td, th {
     width: 25%;
     display: inline-table;
     padding: 10px;
+    position: relative;
 }
 .box--obs {
     width: 100%;
@@ -302,6 +304,34 @@ footer div {
 footer div button{
     margin: 10px;
     font-size: 1rem;
+}
+/* =============================== MODAL LOAD AJAX ============================== */
+.ajax--load {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: #1c1b1fa1;
+    z-index: 20;
+    display: none;
+}
+.ajax--load.show {
+    display: block;
+}
+.ajax--load--box {
+    border-radius: 5px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    width: 200px;
+    height: 100px;
+}
+#request--waiting--gif {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 /* ======================================================================== */
 @media (max-width:768px) {

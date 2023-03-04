@@ -58,6 +58,7 @@
                 url: './php/cadastro.php',//Indica a página que está sendo solicitada.
                 //função que vai ser executada assim que a requisição for enviada
                 beforeSend: function () {
+                    $('.ajax--load').toggleClass('show');
                     $("#request--waiting--gif").html("<img src='./img/48x48.gif'>");
                 },
                 //Dados para envio
@@ -82,7 +83,7 @@
                 //função que será executada quando a solicitação for finalizada.
                 success: function (msg)
                 {
-                   $("#request--waiting").html(msg);
+                   $("#request--feedback").html(msg);
                 }
             });
 }

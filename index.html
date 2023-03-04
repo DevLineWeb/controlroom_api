@@ -10,8 +10,16 @@
     <title>Control Room</title>
 </head>
 <body>
-    <div id="request--waiting--gif"></div>
-    <div id="request--waiting"></div>
+    <section class="ajax--load">
+        <div class="ajax--load--box">
+            <div id="request--waiting--gif">
+    
+            </div>
+            <div id="request--feedback">
+    
+            </div>
+        </div>
+    </section>
     <header class="header--menu--navbar">
         <main class="header--widht">
             <div class="header--col--1">
@@ -150,8 +158,12 @@
                     </select>
                 </div>
                 <div class="box--col">
-                    <label for="monitor">Monitor: </label>
-                    <input class="checkbox" type="checkbox" name="monitor" id="monitor">
+                    <label for="desempenho">Desempenho: </label>
+                    <select name="" id="desempenho">
+                        <option value="Bom">Bom Desempenho</option>
+                        <option value="Acetável">Acetável Desempenho</option>
+                        <option value="Aviso">Aviso de Manutenção</option>
+                    </select>
                 </div>
             </div>
             <div class="box--line">
@@ -191,26 +203,22 @@
                 </div>
             </div>
             <div class="box--line">
-                <div class="box--col">
-                    <label for="cadeado">Cadeado: </label>
+                <div class="">
                     <input type="checkbox" name="" id="cadeado">
+                    <label for="cadeado" class="label--for--ico"><i class="fa-solid fa-lock"></i></label>
                 </div>
-                <div class="box--col">
-                    <label for="cabo">Cabo de Aço: </label>
+                <div class="">
                     <input type="checkbox" name="" id="cabo">
+                    <label for="cabo" class="label--for--ico"><i class="fa-solid fa-link"></i></label>
                 </div>
-                <div class="box--col">
-                    <label for="desempenho">Desempenho: </label>
-                    <select name="" id="desempenho">
-                        <option value="Bom">Bom Desempenho</option>
-                        <option value="Acetável">Acetável Desempenho</option>
-                        <option value="Aviso">Aviso de Manutenção</option>
-                    </select>
+                <div class="">
+                    <input class="checkbox" type="checkbox" name="monitor" id="monitor">
+                    <label for="monitor" class="label--for--ico"><i class="fa-solid fa-desktop"></i></label>
                 </div>
-                <div class="box--col">
-                    <label for="obs">Observações: </label>
-                    <input type="text" name="" id="obs">
-                </div>
+            </div>
+            <div class="box--line box--line--textarea">
+                <label for="obs">Observações: </label>
+                <textarea name="" id=""></textarea>
             </div>
             <div class="box--end">
                 <button type="button" id="button--cancel" class="button--default">Cancelar</button>

@@ -61,7 +61,7 @@ $insertRoom = mysqli_query($conect,"INSERT INTO rooms(
 if($insertRoom) {
     echo "<legend>Aviso!</legend>
     <div class='request--waiting--info'>
-    <p>Dados Atualizados!</p>
+    <p>Sala Cadastrada com Sucesso!</p>
     <button class='button--download request--waiting--button' onclick='closeSpan()'> OK </button>
     </div>";
 }
