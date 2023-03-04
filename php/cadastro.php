@@ -46,10 +46,10 @@ $insertRoom = mysqli_query($conect,"INSERT INTO rooms(
         '$numSerie', 
         '$rede', 
         '$monitor', 
-        '$gpu', 
-        '$ram', 
-        '$disco', 
         '$cpu', 
+        '$ram', 
+        '$gpu', 
+        '$disco', 
         '$cadeado', 
         '$caboAco', 
         '$desempenho', 
@@ -60,16 +60,16 @@ $insertRoom = mysqli_query($conect,"INSERT INTO rooms(
 
 if($insertRoom) {
     echo "<legend>Aviso!</legend>
-    <div class='request--waiting--info'>
+    <div class='request--feedback--info'>
     <p>Sala Cadastrada com Sucesso!</p>
-    <button class='button--download request--waiting--button' onclick='closeSpan()'> OK </button>
+    <button class='button--download request--feedback--button' onclick='closeSpan()'> OK </button>
     </div>";
 }
 else {
     echo "<legend>Aviso!</legend>
-    <div class='request--waiting--info'>
+    <div class='request--feedback--info'>
     <p>Falha ao realizar o update!</p>
-    <button class='button--download request--waiting--button'> OK </button>
+    <button class='button--download request--feedback--button'> OK </button>
     </div>";
 }
 

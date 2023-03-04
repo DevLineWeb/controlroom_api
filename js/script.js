@@ -40,14 +40,14 @@
     const patrimonio = document.getElementById('patrimonio').value;
     const serie = document.getElementById('serie').value;
     const rede = document.getElementById('rede').value;
-    const monitor = document.getElementById('monitor').value;
+    const desempenho = document.getElementById('desempenho').value;
     const gpu = document.getElementById('gpu').value;
     const disco = document.getElementById('disco').value;
     const cpu = document.getElementById('cpu').value;
     const ram = document.getElementById('ram').value;
-    const cadeado = document.getElementById('cadeado').value;
-    const cabo = document.getElementById('cabo').value;
-    const desempenho = document.getElementById('desempenho').value;
+    const cadeado = document.getElementById('cadeado').checked;
+    const cabo = document.getElementById('cabo').checked;
+    const monitor = document.getElementById('monitor').checked;
     const obs = document.getElementById('obs').value;
 
     $.ajax
@@ -59,7 +59,7 @@
                 //função que vai ser executada assim que a requisição for enviada
                 beforeSend: function () {
                   $('.ajax--load').toggleClass('show');
-                    $("#request--waiting--gif").html("<img src='./img/Rolling-0.7s-204px.gif'>");
+                  $("#request--waiting--gif").html("<img src='./img/Rolling-0.7s-204px.gif'>");
                 },
                 //Dados para envio
                 data: {

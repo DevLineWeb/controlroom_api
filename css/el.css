@@ -63,7 +63,9 @@ button.selected {
 
 /* ESTILIZAÇÃO LABEL ~ CHECKBOX */
 input[type=checkbox] {
-    display: none;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
 }
 
 .label--for--ico {
