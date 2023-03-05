@@ -1,3 +1,23 @@
+$(document).ready(function() {
+  $.ajax
+    ({
+        //Configurações
+        type: 'POST',
+        dataType: 'html',
+        url: './php/listagem.php',
+        data: "method=item--list",
+        beforeSend: function () {
+          
+        },
+        success: function (data)
+        {
+            $('#table--room--itens').html(data);
+        }
+    });
+})
+
+
+
 // $('#header--slider').slick({
 //     dots: false,
 //     infinite: true,
