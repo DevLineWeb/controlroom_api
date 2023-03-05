@@ -226,7 +226,7 @@ td, th {
     width: 100px;
     line-height: 40px;
 }
-/* modal para formulário de adição de sala */
+/* =====================modal para formulário de adição de sala =========================*/
 #modal--add--room {
     top: 0;
     position: fixed;
@@ -301,6 +301,18 @@ td, th {
 .box--line.box--line--textarea label {
     text-align: left;
 }
+/*  */
+.table--item--more {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%);
+    position: absolute;
+}
+.table--item--more.down {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(0);
+}
 /* ===============================FOOTER================================ */
 footer {
     position: fixed;
@@ -340,13 +352,13 @@ footer div button{
     width: 200px;
     height: 100px;
 }
-#request--waiting--gif {
+#ajax--request--feedback {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
 }
-#request--waiting--gif img {
+#ajax--request--feedback img {
     max-width: 70px;
 }
 /* ======================================================================== */

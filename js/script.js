@@ -1,7 +1,6 @@
 $(document).ready(function() {
   $.ajax
     ({
-        //Configurações
         type: 'POST',
         dataType: 'html',
         url: './php/listagem.php',
@@ -16,16 +15,6 @@ $(document).ready(function() {
     });
 })
 
-
-
-// $('#header--slider').slick({
-//     dots: false,
-//     infinite: true,
-//     slidesToShow: 1,
-//     slidesToScroll: 1,
-//     autoplay: false,
-//     autoplaySpeed: 1500
-//   }); 
   $('#menu--toggle').click(function () {
     $('.header--mobile').toggleClass("show")
   }
@@ -79,7 +68,7 @@ $(document).ready(function() {
                 //função que vai ser executada assim que a requisição for enviada
                 beforeSend: function () {
                   $('.ajax--load').toggleClass('show');
-                  $("#request--waiting--gif").html("<img src='./img/Rolling-0.7s-204px.gif'>");
+                  $("#ajax--request--feedback").html("<img src='./img/Rolling-0.7s-204px.gif'>");
                 },
                 //Dados para envio
                 data: {
@@ -103,7 +92,11 @@ $(document).ready(function() {
                 //função que será executada quando a solicitação for finalizada.
                 success: function (msg)
                 {
-                   $("#request--feedback").html(msg);
+                   $("#ajax--request--feedback").html(msg);
                 }
             });
+}
+
+function closeSpan() {
+  $(".ajax--load").removeClass('show')
 }

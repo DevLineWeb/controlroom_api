@@ -54,7 +54,22 @@ switch ($method) {
                                 <td>".$room_nomenclatura[$i]."</td>
                                 <td>".$room_modelo[$i]."</td>
                                 <td>FSG-".$room_patrimonio[$i]."</td>
-                                <th><button class='button--default'><i class='fa-solid fa-gear'></i></button></th>
+                                <th>
+                                    <button class='table--room--config--button button--default'>
+                                        <i class='fa-solid fa-gear'></i>
+                                    </button>
+                                    <button class='table--room--toggle--button button--default'>
+                                        <i class='fa-solid fa-bars'></i>
+                                    </button>
+                                </th>
+                            </tr>
+                            <tr class='table--item--more'>
+                                <th>N/S: ".$room_serie[$i]."</th>
+                                <th>Rede: ".$room_rede[$i]."</th>
+                                <th>CPU: ".$room_cpu[$i]."</th>
+                                <th>GPU: ".$room_gpu[$i]."</th>
+                                <th>Disco: ".$room_disco[$i]."</th>
+                                <th>RAM: ".$room_ram[$i]."</th>
                             </tr>
                             ";
 
