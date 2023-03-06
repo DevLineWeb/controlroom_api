@@ -60,7 +60,6 @@ button.selected {
     border: 1px solid #b8f8f3;
 }
 
-
 /* ESTILIZAÇÃO LABEL ~ CHECKBOX */
 input[type=checkbox] {
     opacity: 0;
