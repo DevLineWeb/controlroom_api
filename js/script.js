@@ -19,6 +19,10 @@ $(document).ready(function() {
     $('.header--mobile').toggleClass("show")
   }
   )
+  $('.search--ico').click(function () {
+    $('.table--search').toggleClass("active")
+  }
+  )
   $('#table--button--filter--list').click(function () {
     $('#table--button--filter--list').toggleClass('selected');
     $('#table--button--filter--grid').removeClass('selected');

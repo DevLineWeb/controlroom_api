@@ -45,7 +45,10 @@
         <main>
             <legend>Room List</legend>
             <div class="table--filterlist">
-                <input class="input--text--default" type="text" name="" id="" placeholder="Pesquisar">
+                <div class="table--search">
+                    <div class="search--ico"><i class="fa-solid fa-magnifying-glass"></i></div>
+                    <div class="search--input"><input type="text" placeholder="Pesquisar" name="" id="table--search--input"></div>
+                </div>
                 <div class="filter--button">
 
                     <button class="button--default" id="table--button--add--room"><span> Add </span><i class="fa-solid fa-plus"></i></button>
@@ -70,14 +73,14 @@
                 </tbody>
             </table>
             <section class="table--grid">
-                <button class="button--default">A103</button>
-                <button class="button--default">A105</button>
-                <button class="button--default">A107</button>
-                <button class="button--default">A108</button>
-                <button class="button--default">A110</button>
-                <button class="button--default">A111</button>
-                <button class="button--default">A114</button>
-                <button class="button--default">A117</button>
+                <button class="button--default"><i class="fa-solid fa-book-open"></i> A103</button>
+                <button class="button--default"><i class="fa-solid fa-book-open"></i> </i>A105</button>
+                <button class="button--default"><i class="fa-solid fa-book-open"></i> </i>A107</button>
+                <button class="button--default"><i class="fa-solid fa-book-open"></i> </i>A108</button>
+                <button class="button--default"><i class="fa-solid fa-book-open"></i> </i>A110</button>
+                <button class="button--default"><i class="fa-solid fa-book-open"></i> </i>A111</button>
+                <button class="button--default"><i class="fa-solid fa-book-open"></i> </i>A114</button>
+                <button class="button--default"><i class="fa-solid fa-book-open"></i> </i>A117</button>
             </section>
         </main>
     </section>
@@ -187,7 +190,7 @@
                     <input type="number" name="ram" id="ram" placeholder="RAM">
                 </div>
             </div>
-            <div class="box--line">
+            <div class="box--line checkbox--area">
                 <div class="">
                     <input type="checkbox" name="" id="cadeado">
                     <label for="cadeado" class="label--for--ico"><i class="fa-solid fa-lock"></i></label>
@@ -211,6 +214,10 @@
             </div>
         </form>
     </section>
+    <div class="mobile--buttons">
+        <button class="button--default" id="table--button--add--room"><i class="fa-solid fa-plus"></i> Add Room</button>
+        <button class="button--default"><i class="fa-solid fa-filter"></i> Filter</button>
+    </div>
     <footer>
         <section>
             <div>
