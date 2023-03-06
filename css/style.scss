@@ -1,0 +1,547 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+* {
+    font-family: 'Poppins';
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: #1c1b1f;
+    overflow: hidden;
+}
+li {
+    list-style: none;
+}
+ul {
+    padding: 0;
+}
+a {
+    color: #1c1b1f;
+    text-decoration: none;
+}
+main{
+    max-width: 80vw;
+    width: 100%;
+    position: relative;
+}
+html{
+    font-size: 62.5%;
+    --primaryGradient: linear-gradient(93.12deg, #ea00ff 50%, #00b7ff 100%, #000 50%);
+}
+// ======================================================= MIXIN ===============================================================//
+@mixin centralizeElement {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+@mixin pointerElement {
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #c0c0c0;
+    border-radius: 5px;
+    line-height: 30px;
+    padding: 0 10px;
+    cursor: pointer;
+}
+@mixin hoverElementPoint {
+    color: #00ffea;
+    background-color: #b8f8f35d;
+    border: 1px solid #b8f8f3;
+    transition: all 0.2s;
+}
+@mixin selectedElementPoint {
+    background-color: #ea00ff;
+    color: #00ffea;
+    background-color: #b8f8f35d;
+    border: 1px solid #b8f8f3;
+}
+@mixin inputElement {
+    outline: none;
+    border: 1px solid #c0c0c08c !important;
+    background-color: transparent;
+    color: #fff;
+    border-radius: 3px;
+    width: 100%;
+    height: 30px;
+    padding: 0px 5px;
+}
+@mixin hiddenCheckbox {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+}
+@mixin labelBigIco {
+    color: #797979;
+    border: 1px solid #797979;
+    padding: 15px 0px;
+    font-size: 3.2rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.2s;
+}
+input[type='text'],input[type='number'],textarea {
+    @include inputElement();
+}
+.button--default {
+    @include pointerElement();
+}
+.button--default:hover {
+    @include hoverElementPoint();
+}
+button.selected {
+    @include selectedElementPoint();
+}
+select {
+    @include inputElement();
+}
+select option {
+    background-color: rgba(255, 255, 255, 0);
+    color: #1c1b1f60;
+}
+/* ESTILIZAÇÃO LABEL ~ CHECKBOX */
+input[type=checkbox] {
+    @include hiddenCheckbox();
+}
+
+input[type=checkbox]:checked ~ label {
+    color: #00ffea;
+    border: 1px solid #00ffea;
+    transition: all 0.2s;
+}
+
+/*============================================= NAVBAR=================================================== */
+
+
+header {
+    background-color: #000;
+    font-size: 1.4rem;
+}
+.header--widht{
+    display: flex;
+    align-items: center;
+}
+.header--menu--navbar div a {
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+}
+.header--col--1 {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    height: 50px; 
+    margin-left: 0;
+}
+.header--col--1 a {
+    width: 20%;
+    min-width: 80px;
+}
+.header--col--1 a:hover{
+    color: #00ffea;
+    background-color: #b8f8f35d;
+    transition: all 0.1s;
+}
+.header--col--2 {
+    position: absolute;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px; 
+    width: 170px;
+}
+.header--col--2 a:hover{
+    color: #00ffea;
+    background-color: #b8f8f35d;
+    transition: all 0.1s;
+}
+.menu--logo {
+    max-width: 130px;
+    margin-left: 10px;
+    margin: 0px 10px;
+    cursor: pointer;
+}
+.menu--ico {
+    display: none;
+    max-width: 50px;
+    margin: 0px 10px;
+    cursor: pointer;
+}
+#menu--toggle {
+    display: none;
+    position: absolute;
+    right: 10px;
+}
+.header--mobile {
+    position: absolute;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+    grid-gap: 10px;
+    font-size: 1.2rem;
+    transform: translateY(-2200px);
+    opacity: 0;
+    pointer-events: none;
+    top: 50px;
+    background-color: #000;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.header--mobile.show {
+    transition: all 0.3s;
+    transform: translateY(0px);
+    opacity: 1;
+    pointer-events:all;
+}
+.header--mobile a {
+    border: 1px solid #f7f7f7;
+    border-radius: 3px;
+    width: 140px;
+
+}
+.header--mobile a:hover {
+    border: 1px solid #b8f8f3;
+    color: #00ffea;
+    transition: all 0.3s;
+}
+.sec--project--content {
+    transform: translateY(50px);
+    background-color: #1c1b1fec;
+    height: 600px;
+}
+.sec--project--content legend{
+    display: flex;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: white;
+    padding: 10px;
+    text-transform: uppercase;
+
+}
+/*================================================================== FILTROS DE PESQUISA DA LISTA ================================================================== */
+.table--filterlist {
+    margin-left: 10px;
+    height: 35px;
+}
+.table--search {
+    position: relative;
+    width: 37px;
+    float: left;
+    transition: all 0.3s;
+    border: 1px solid #c0c0c0;
+    border-radius: 50px;
+    height: 35px;
+    overflow: hidden;
+}
+.table--search.active {
+    width: 50%;
+    transition: all 0.3s;
+    border: 1px solid #00ffea;
+}
+.table--search.active .search--ico {
+    color: #00ffea;
+}
+.search--ico {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 1.6rem;
+    background-color: transparent;
+    color: #fff;
+    padding: 0 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+#table--search--input {
+    margin-left: 40px;
+    border: none !important;
+    font-size: 1.6rem;
+}
+.filter--button {
+    position: absolute;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+}
+.filter--button button {
+    transition: all 0.1s;
+    width: 35px;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+}
+.filter--button button span {
+    display: none;
+}
+.filter--button button:hover {
+    width: 80px;
+    transition: all 0.2s;
+}
+.filter--button button:hover span {
+    display: inline-block;
+    word-wrap: none;
+    transition: all 1s;
+}
+.table--room {
+    width: 100%;
+    color: white;
+    border-collapse: separate;
+    border-spacing: 1rem;
+}
+.table--room.change {
+    display: none;
+}
+tr {
+    display: flex;
+    border-radius: 3px;
+    border: 1px solid #f7f7f7;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.table--header {
+    border: none;
+    border-bottom: 1px solid #f7f7f7;
+    border-radius: 0px;
+}
+.table--header:hover {
+    background-color: transparent;
+    color: white;
+    cursor:crosshair;
+}
+tr:hover {
+    color: #00ffea;
+    background-color: #b8f8f35d;
+    transition: all 0.1s;
+}
+td, th {
+    padding: 10px;
+    display: flex;
+    width: 12%;
+    text-align: center;
+    font-size: 1.4rem;
+    align-items: center;
+    justify-content: center;
+}
+.table--grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(100px,1fr));
+    grid-gap: 20px;
+    display: none;
+    padding: 10px;
+    width: 95%;
+}
+.table--grid.change {
+    display: grid;
+}
+.table--grid button {
+    width: 100px;
+    line-height: 40px;
+}
+/* =====================modal para formulário de adição de sala =========================*/
+#modal--add--room {
+    top: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff8e;
+    z-index: 10;
+    transform: translateY(-2000px);
+    transition: all 0.2s;
+}
+#modal--add--room.show {
+    transform: translateY(0);
+    transition: all 0.2s;
+}
+.modal--box {
+    position: fixed;
+    @include centralizeElement();
+    background: #1c1b1f;
+    width: 900px;
+}
+#add--room--box {
+    color: #fff;
+    font-size: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    background-color: #1c1b1f;
+}
+#add--room--box legend {
+    font-size: 1.8rem;
+    padding: 10px;
+    font-size: 2rem;
+    border-radius: 5px;
+    color: white;
+}
+.box--line {
+    min-height: 80px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    grid-gap: 0px;
+    width: 100%;
+    margin-top: 2rem;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.label--for--ico {
+    @include labelBigIco();
+}
+.label--for--ico i {
+    width: 80px;
+    line-height: 60px;
+}
+.box--col {
+    text-align: left;
+    width: 200px;
+    display: inline-table;
+    padding: 10px;
+    position: relative;
+}
+.box--obs {
+    width: 100%;
+}
+.box--end button {
+    margin: 20px;
+    width: 100px;
+    background: var(--primaryGradient);
+}
+
+.box--line.box--line--textarea {
+    display: flex ;
+    flex-direction: column ;
+    align-items: flex-start;
+    width: 100%;
+    border: none;
+    padding: 0;
+}
+.box--line.box--line--textarea label {
+    text-align: left;
+}
+.box--line.checkbox--area {
+    display: flex;
+}
+.mobile--buttons {
+    position: absolute;
+    bottom: 80px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+/* ===============================FOOTER================================ */
+footer {
+    position: fixed;
+    bottom: 0;
+    background-color: #000;
+    width: 100%;
+    display: flex;
+    border-top: 1px solid #fff;
+    color: white;
+}
+footer div {
+    display: flex;
+}
+footer div button{
+    margin: 10px;
+    font-size: 1rem;
+}
+/* =============================== MODAL LOAD AJAX ============================== */
+.ajax--load {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: #1c1b1fa1;
+    z-index: 20;
+    display: none;
+}
+.ajax--load.show {
+    display: block;
+}
+.ajax--load--box {
+    border-radius: 5px;
+    position: fixed;
+    @include centralizeElement();
+    background-color: transparent;
+    width: 200px;
+    height: 100px;
+}
+#ajax--request--feedback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+#ajax--request--feedback img {
+    max-width: 70px;
+}
+
+
+
+
+/* ==================================== MEDIA QUERIES ==================================== */
+@media (max-width:992px) {
+    #add--room--box {
+        width: 100%;
+        max-width: 960px;
+    }
+}
+
+@media (max-width:768px) {
+    main {
+        max-width: 100vw !important;
+    }
+}
+
+@media (max-width:576px) {
+    #menu--toggle {
+        display: block;
+    }
+    .menu--item {
+        display: none;
+    }
+    .header--mobile {
+    opacity: 0;
+    pointer-events: none;
+    }
+    .menu--logo {
+        display: none;
+    }
+    .menu--ico {
+        display: block;
+    }
+    .table--search {
+        width: 99%;
+    }
+    .table--search.active {
+        width: 99%;
+    }
+    .filter--button {
+        display: none;
+    }
+    .table--grid {display: grid;}
+    .table--room {
+        display: none;
+    }
+    .modal--box {
+        top: 0;
+        left: 0;
+        transform: translate(0);
+    }
+}
+@media (max-width:300px) {
+    .header--mobile a {
+        width: 85%;
+    }
+}
