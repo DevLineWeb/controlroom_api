@@ -41,7 +41,7 @@ function roomList() {
 
   document.addEventListener('click', (e) => {
     const isDropdownBtn = e.target.classList.contains('table--button--add--room')
-    if (!isDropdownBtn && e.target.closest('.modal--box') != null) return;
+    if (!isDropdownBtn && e.target.closest('#add--room--box') != null) return;
   
     if (isDropdownBtn) {
   
