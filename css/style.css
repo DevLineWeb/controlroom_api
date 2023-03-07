@@ -37,7 +37,14 @@ html {
   font-size: 62.5%;
   --primaryGradient: linear-gradient(93.12deg, #ea00ff 50%, #00b7ff 100%, #000 50%);
 }
-
+@keyframes scale-in-center {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 input[type=text], input[type=number], textarea {
   outline: none;
   border: 1px solid rgba(192, 192, 192, 0.5490196078) !important;
@@ -115,7 +122,7 @@ header {
 }
 
 .header--col--1 {
-  width: 50%;
+  width: 60%;
   display: flex;
   align-items: center;
   height: 50px;
@@ -123,7 +130,6 @@ header {
 }
 
 .header--col--1 a {
-  width: 40%;
   min-width: 100px;
 }
 
@@ -202,21 +208,6 @@ header {
   border: 1px solid #b8f8f3;
   color: #00ffea;
   transition: all 0.3s;
-}
-
-.sec--project--content {
-  transform: translateY(50px);
-  background-color: rgba(28, 27, 31, 0.9254901961);
-  height: 600px;
-}
-
-.sec--project--content legend {
-  display: flex;
-  justify-content: center;
-  font-size: 1.8rem;
-  color: white;
-  padding: 10px;
-  text-transform: uppercase;
 }
 
 /*================================================================== FILTROS DE PESQUISA DA LISTA ================================================================== */
@@ -300,6 +291,20 @@ header {
   transition: all 1s;
 }
 
+.sec--project--room--list {
+  height: 1800px;
+  position: relative;
+}
+
+.sec--project--room--list legend {
+  display: flex;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: white;
+  padding: 10px;
+  text-transform: uppercase;
+}
+
 .table--room {
   width: 100%;
   color: white;
@@ -365,33 +370,33 @@ td, th {
   line-height: 40px;
 }
 
-/* =====================modal para formulário de adição de sala =========================*/
+/* ================================================== MODAL ADD ROOM ====================================================*/
 #modal--add--room {
   top: 0;
   position: fixed;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.5568627451);
-  z-index: 10;
-  transform: translateY(-2000px);
-  transition: all 0.2s;
+  background-color: transparent;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
 }
 
 #modal--add--room.show {
-  transform: translateY(0);
+  display: flex;
   transition: all 0.2s;
 }
 
-.modal--box {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+#add--room--box {
   background: #1c1b1f;
   width: 900px;
-}
-
-#add--room--box {
+  position: fixed;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  animation: scale-in-center 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   color: #fff;
   font-size: 1.4rem;
   display: flex;
@@ -404,27 +409,25 @@ td, th {
 
 #add--room--box legend {
   font-size: 1.8rem;
-  padding: 10px;
   font-size: 2rem;
   border-radius: 5px;
   color: white;
 }
 
 .box--line {
-  min-height: 80px;
+  min-height: 60px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-gap: 0px;
   width: 100%;
   margin-top: 2rem;
-  border-bottom: 1px solid #e2e2e2;
 }
 
 .label--for--ico {
   color: #797979;
   border: 1px solid #797979;
-  padding: 15px 0px;
-  font-size: 3.2rem;
+  padding: 12px 0px;
+  font-size: 3rem;
   text-align: center;
   cursor: pointer;
   border-radius: 5px;
@@ -432,8 +435,7 @@ td, th {
 }
 
 .label--for--ico i {
-  width: 80px;
-  line-height: 60px;
+  width: 70px;
 }
 
 .box--col {
@@ -448,7 +450,7 @@ td, th {
   width: 100%;
 }
 
-.box--end button {
+.add--room--footer button {
   margin: 20px;
   width: 100px;
   background: var(--primaryGradient);
@@ -480,6 +482,36 @@ td, th {
   justify-content: center;
 }
 
+/* ================================================== MODAL FILTROS ====================================================*/
+#modal--filter--room {
+  top: 0;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+#modal--filter--room.show {
+  display: flex;
+  transition: all 0.2s;
+}
+
+#filter--select--box {
+  position: fixed;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  animation: scale-in-center 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: flex;
+  width: 200px;
+  background-color: #fff;
+}
+
 /* ===============================FOOTER================================ */
 footer {
   position: fixed;
@@ -502,24 +534,30 @@ footer div button {
 
 /* =============================== MODAL LOAD AJAX ============================== */
 .ajax--load {
+  top: 0;
   position: fixed;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(28, 27, 31, 0.631372549);
-  z-index: 20;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: 1000;
   display: none;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
 }
 
 .ajax--load.show {
-  display: block;
+  display: flex;
+  transition: all 0.2s;
 }
 
 .ajax--load--box {
-  border-radius: 5px;
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  animation: scale-in-center 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: flex;
   background-color: transparent;
   width: 200px;
   height: 100px;
@@ -534,6 +572,13 @@ footer div button {
 
 #ajax--request--feedback img {
   max-width: 70px;
+}
+
+.request--feedback--info {
+  background-color: #f7f7f7;
+  border-radius: 5px;
+  width: 200px;
+  color: #000;
 }
 
 /* ==================================== MEDIA QUERIES ==================================== */

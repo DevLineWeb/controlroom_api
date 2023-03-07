@@ -30,6 +30,26 @@ html{
     font-size: 62.5%;
     --primaryGradient: linear-gradient(93.12deg, #ea00ff 50%, #00b7ff 100%, #000 50%);
 }
+@-webkit-keyframes scale-in-center {
+    0% {
+      -webkit-transform: scale(0);
+      transform: scale(0);
+    }
+    100% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+  }
+  @keyframes scale-in-center {
+    0% {
+      -webkit-transform: scale(0);
+      transform: scale(0);
+    }
+    100% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+  }
 // ======================================================= MIXIN ===============================================================//
 @mixin centralizeElement {
     top: 50%;
@@ -75,12 +95,36 @@ html{
 @mixin labelBigIco {
     color: #797979;
     border: 1px solid #797979;
-    padding: 15px 0px;
-    font-size: 3.2rem;
+    padding: 12px 0px;
+    font-size: 3rem;
     text-align: center;
     cursor: pointer;
     border-radius: 5px;
     transition: all 0.2s;
+}
+@mixin modalOverlay {   
+    top: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+}
+@mixin modalOverlayShow {
+    display: flex;
+    transition: all 0.2s;
+}
+@mixin modal {
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    -webkit-animation: scale-in-center 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation: scale-in-center 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 input[type='text'],input[type='number'],textarea {
     @include inputElement();
@@ -114,7 +158,6 @@ input[type=checkbox]:checked ~ label {
 
 /*============================================= NAVBAR=================================================== */
 
-
 header {
     background-color: #000;
     font-size: 1.4rem;
@@ -125,14 +168,13 @@ header {
     color: white;
 }
 .header--col--1 {
-    width: 50%;
+    width: 60%;
     display: flex;
     align-items: center;
     height: 50px; 
     margin-left: 0;
 }
 .header--col--1 a {
-    width: 40%;
     min-width: 100px;
 }
 .header--col--1 a:hover{
@@ -171,6 +213,7 @@ header {
     position: absolute;
     right: 10px;
 }
+// ==================================MOBILE MENU ===========================================//
 .header--mobile {
     position: absolute;
     width: 100vw;
@@ -203,20 +246,6 @@ header {
     border: 1px solid #b8f8f3;
     color: #00ffea;
     transition: all 0.3s;
-}
-.sec--project--content {
-    transform: translateY(50px);
-    background-color: #1c1b1fec;
-    height: 600px;
-}
-.sec--project--content legend{
-    display: flex;
-    justify-content: center;
-    font-size: 1.8rem;
-    color: white;
-    padding: 10px;
-    text-transform: uppercase;
-
 }
 /*================================================================== FILTROS DE PESQUISA DA LISTA ================================================================== */
 .room--list--filters {
@@ -288,6 +317,20 @@ header {
     word-wrap: none;
     transition: all 1s;
 }
+
+// =================================================================SESSÃO DE LISTAGEM===================================================//
+.sec--project--room--list {
+    height: 1800px;
+    position: relative;
+}
+.sec--project--room--list legend {
+    display: flex;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: white;
+    padding: 10px;
+    text-transform: uppercase;
+}
 .table--room {
     width: 100%;
     color: white;
@@ -343,28 +386,17 @@ td, th {
     width: 100px;
     line-height: 40px;
 }
-/* =====================modal para formulário de adição de sala =========================*/
+/* ================================================== MODAL ADD ROOM ====================================================*/
 #modal--add--room {
-    top: 0;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background-color: #ffffff8e;
-    z-index: 10;
-    transform: translateY(-2000px);
-    transition: all 0.2s;
+    @include modalOverlay();
 }
 #modal--add--room.show {
-    transform: translateY(0);
-    transition: all 0.2s;
-}
-.modal--box {
-    position: fixed;
-    @include centralizeElement();
-    background: #1c1b1f;
-    width: 900px;
+    @include modalOverlayShow();
 }
 #add--room--box {
+    background: #1c1b1f;
+    width: 900px;
+    @include modal();
     color: #fff;
     font-size: 1.4rem;
     display: flex;
@@ -376,27 +408,24 @@ td, th {
 }
 #add--room--box legend {
     font-size: 1.8rem;
-    padding: 10px;
     font-size: 2rem;
     border-radius: 5px;
     color: white;
 }
 .box--line {
-    min-height: 80px;
+    min-height: 60px;
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
     grid-gap: 0px;
     width: 100%;
     margin-top: 2rem;
-    border-bottom: 1px solid #e2e2e2;
 }
 
 .label--for--ico {
     @include labelBigIco();
 }
 .label--for--ico i {
-    width: 80px;
-    line-height: 60px;
+    width: 70px;
 }
 .box--col {
     text-align: left;
@@ -408,7 +437,7 @@ td, th {
 .box--obs {
     width: 100%;
 }
-.box--end button {
+.add--room--footer button {
     margin: 20px;
     width: 100px;
     background: var(--primaryGradient);
@@ -436,6 +465,19 @@ td, th {
     align-items: center;
     justify-content: center;
 }
+/* ================================================== MODAL FILTROS ====================================================*/
+#modal--filter--room {
+    @include modalOverlay();
+}
+#modal--filter--room.show {
+    @include modalOverlayShow();
+}
+#filter--select--box {
+    @include modal();
+    display: flex;
+    width: 200px;
+    background-color: #fff;
+}
 /* ===============================FOOTER================================ */
 footer {
     position: fixed;
@@ -455,20 +497,14 @@ footer div button{
 }
 /* =============================== MODAL LOAD AJAX ============================== */
 .ajax--load {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    background-color: #1c1b1fa1;
-    z-index: 20;
-    display: none;
+    @include modalOverlay();
 }
 .ajax--load.show {
-    display: block;
+    @include modalOverlayShow();
 }
 .ajax--load--box {
-    border-radius: 5px;
-    position: fixed;
-    @include centralizeElement();
+    @include modal();
+    display: flex;
     background-color: transparent;
     width: 200px;
     height: 100px;
@@ -482,7 +518,12 @@ footer div button{
 #ajax--request--feedback img {
     max-width: 70px;
 }
-
+.request--feedback--info {
+    background-color: #f7f7f7;
+    border-radius: 5px;
+    width: 200px;
+    color: #000;
+}
 
 
 

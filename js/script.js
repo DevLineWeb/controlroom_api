@@ -39,14 +39,36 @@ function roomList() {
   })
 
 
-  $('#table--button--add--room').click(function () {
-    $('#modal--add--room').toggleClass('show');
-  })
-  $('#button--cancel').click(function () {
-    $('#modal--add--room').removeClass('show');
-  })
+  document.addEventListener('click', (e) => {
+    const isDropdownBtn = e.target.classList.contains('table--button--add--room')
+    if (!isDropdownBtn && e.target.closest('.modal--box') != null) return;
+  
+    if (isDropdownBtn) {
+  
+      $('#modal--add--room').toggleClass("show")
+  
+    }
+    else {
 
+      $('#modal--add--room').removeClass("show")
 
+    }
+  })
+  document.addEventListener('click', (e) => {
+    const isDropdownBtn = e.target.classList.contains('table--button--filter')
+    if (!isDropdownBtn && e.target.closest('#filter--select--box') != null) return;
+  
+    if (isDropdownBtn) {
+  
+      $('#modal--filter--room').toggleClass("show")
+  
+    }
+    else {
+
+      $('#modal--filter--room').removeClass("show")
+
+    }
+  })
   function addRoom() {
     const natureza = document.getElementById('natureza').value;
     const localidade = document.getElementById('localidade').value;
@@ -73,6 +95,7 @@ function roomList() {
                 url: './php/cadastro.php',//Indica a página que está sendo solicitada.
                 //função que vai ser executada assim que a requisição for enviada
                 beforeSend: function () {
+                  $('#modal--add--room').removeClass("show");
                   $('.ajax--load').toggleClass('show');
                   $("#ajax--request--feedback").html("<img src='./img/Rolling-0.7s-204px.gif'>");
                 },
@@ -102,8 +125,4 @@ function roomList() {
                    roomList();
                 }
             });
-}
-
-function closeSpan() {
-  $(".ajax--load").removeClass('show')
 }

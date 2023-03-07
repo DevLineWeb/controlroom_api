@@ -59,18 +59,26 @@ $insertRoom = mysqli_query($conect,"INSERT INTO rooms(
 // $update = $conect->query($insertRoom);
 
 if($insertRoom) {
-    echo "<legend>Aviso!</legend>
+    echo "
     <div class='request--feedback--info'>
-    <p>Sala Cadastrada com Sucesso!</p>
-    <button class='button--download request--feedback--button' onclick='closeSpan()'> OK </button>
-    </div>";
+        <legend>Aviso!</legend>
+        <div>
+        <h5>Sala Cadastrada com Sucesso!</h5>
+        <button class='button--download request--feedback--button' onclick='closeSpan()'> OK </button>
+        </div>
+    </div>
+    ";
 }
 else {
-    echo "<legend>Aviso!</legend>
+    echo "
     <div class='request--feedback--info'>
-    <p>Falha ao realizar o update!</p>
-    <button class='button--download request--feedback--button'> OK </button>
-    </div>";
+        <legend>Aviso!</legend>
+        <div>
+        <h5>Sala Cadastrada com Sucesso!</h5>
+        <button class='button--download request--feedback--button' onclick='closeSpan()'> OK </button>
+        </div>
+    </div>
+    ";
 }
 
 // natureza: cr_natureza,

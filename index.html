@@ -43,12 +43,10 @@
                         <div class="search--input"><input type="text" placeholder="Pesquisar" name="" id="table--search--input"></div>
                     </div>
                     <div class="room--list--options">
-    
-                        <button class="button--default" id="table--button--add--room"><span> Add </span><i class="fa-solid fa-plus"></i></button>
+                        <button class="button--default table--button--add--room" id="table--button--add--room"><span class="table--button--add--room"> Add </span><i class="fa-solid fa-plus"></i></button>
                         <button class="button--default" id="table--button--filter--list"><span> List </span><i class="fa-solid fa-list"></i></button>
                         <button class="button--default" id="table--button--filter--grid"><span> Grid </span><i class="fa-solid fa-grip"></i></button>
-                        <button class="button--default"><span> Filtro </span><i class="fa-solid fa-filter"></i></button>
-    
+                        <button class="button--default table--button--filter"><span> Filtro </span><i class="fa-solid fa-filter"></i></button>
                     </div>
                 </div>
                 <table class="table--room" id="table--room">
@@ -80,15 +78,17 @@
         <section class="sec--project--mobile--options">
                 <!--  -->
                 <div class="mobile--buttons">
-                    <button class="button--default" id="table--button--add--room"><i class="fa-solid fa-plus"></i> Add Room</button>
+                    <button class="button--default table--button--add--room"><i class="fa-solid fa-plus"></i> Add Room</button>
                     <button class="button--default"><i class="fa-solid fa-filter"></i> Filter</button>
                 </div>
         </section>
     </section>
     <section class="sec--project--modals">
         <section id="modal--add--room">
-            <form id="add--room--box" class="modal--box">
-                <legend>Room Information</legend>
+            <form id="add--room--box">
+                <div class="modal--legend">
+                    <legend>Room Information</legend>
+                </div>
                 <div class="box--line">
                     <div class="box--col">
                         <label for="natureza">Natureza: </label>
@@ -143,6 +143,7 @@
                     <div class="box--col">
                         <label for="rede">Rede: </label>
                         <select name="rede" id="rede">
+                            <option value="">Rede</option>
                             <option value="LAN">LAN</option>
                             <option value="Wireless">Wireless</option>
                         </select>
@@ -150,6 +151,7 @@
                     <div class="box--col">
                         <label for="desempenho">Desempenho: </label>
                         <select name="" id="desempenho">
+                            <option value="">Desempenho</option>
                             <option value="Bom">Bom Desempenho</option>
                             <option value="Acetável">Acetável Desempenho</option>
                             <option value="Aviso">Aviso de Manutenção</option>
@@ -164,6 +166,7 @@
                     <div class="box--col">
                         <label for="disco">Disco: </label>
                         <select name="disco" id="disco">
+                            <option value="">Disco</option>
                             <option value="80GB HD">80GB HD</option>
                             <option value="120GB HD">120GB HD</option>
                             <option value="250GB HD">250GB HD</option>
@@ -179,6 +182,7 @@
                     <div class="box--col">
                         <label for="cpu">CPU: </label>
                         <select name="cpu" id="cpu">
+                            <option value="">Processador</option>
                             <option value="Pentium">Pentium</option>
                             <option value="Core 2 Duo">Core 2 Duo</option>
                             <option value="Intel core i3">Intel core i3</option>
@@ -210,11 +214,23 @@
                     <label for="obs">Observações: </label>
                     <textarea name="" id="obs"></textarea>
                 </div>
-                <div class="box--end">
-                    <button type="button" id="button--cancel" class="button--default">Cancelar</button>
+                <div class="add--room--footer">
                     <button type="button" class="button--default" onclick="addRoom()">Cadastrar</button>
                 </div>
             </form>
+        </section>
+        <section id="modal--filter--room">
+            <section id="filter--select--box">
+                <div class="modal--legend">
+                    <legend>Filters</legend>
+                </div>
+                <div class="modal--content">
+                    <button class="button--default"></button><button class="button--default"></button><button class="button--default"></button><button class="button--default"></button>
+                </div>
+                <div class="modal--footer">
+                    <button>Pesquisar</button>
+                </div>
+            </section>
         </section>
         <section class="ajax--load">
             <div class="ajax--load--box">
