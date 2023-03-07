@@ -119,10 +119,6 @@ header {
     background-color: #000;
     font-size: 1.4rem;
 }
-.header--widht{
-    display: flex;
-    align-items: center;
-}
 .header--menu--navbar div a {
     padding: 10px;
     border-radius: 5px;
@@ -136,8 +132,8 @@ header {
     margin-left: 0;
 }
 .header--col--1 a {
-    width: 20%;
-    min-width: 80px;
+    width: 40%;
+    min-width: 100px;
 }
 .header--col--1 a:hover{
     color: #00ffea;
@@ -147,11 +143,11 @@ header {
 .header--col--2 {
     position: absolute;
     right: 0;
+    top: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 50px; 
-    width: 170px;
 }
 .header--col--2 a:hover{
     color: #00ffea;
@@ -223,11 +219,11 @@ header {
 
 }
 /*================================================================== FILTROS DE PESQUISA DA LISTA ================================================================== */
-.table--filterlist {
+.room--list--filters {
     margin-left: 10px;
     height: 35px;
 }
-.table--search {
+.room--list--search {
     position: relative;
     width: 37px;
     float: left;
@@ -237,12 +233,12 @@ header {
     height: 35px;
     overflow: hidden;
 }
-.table--search.active {
+.room--list--search.active {
     width: 50%;
     transition: all 0.3s;
     border: 1px solid #00ffea;
 }
-.table--search.active .search--ico {
+.room--list--search.active .search--ico {
     color: #00ffea;
 }
 .search--ico {
@@ -264,13 +260,13 @@ header {
     border: none !important;
     font-size: 1.6rem;
 }
-.filter--button {
+.room--list--options {
     position: absolute;
     right: 0;
     display: flex;
     flex-direction: row;
 }
-.filter--button button {
+.room--list--options button {
     transition: all 0.1s;
     width: 35px;
     margin-left: 10px;
@@ -280,14 +276,14 @@ header {
     justify-content: center;
     height: 35px;
 }
-.filter--button button span {
+.room--list--options button span {
     display: none;
 }
-.filter--button button:hover {
+.room--list--options button:hover {
     width: 80px;
     transition: all 0.2s;
 }
-.filter--button button:hover span {
+.room--list--options button:hover span {
     display: inline-block;
     word-wrap: none;
     transition: all 1s;
@@ -521,16 +517,15 @@ footer div button{
     .menu--ico {
         display: block;
     }
-    .table--search {
+    .room--list--search, .room--list--search.active {
         width: 99%;
     }
-    .table--search.active {
-        width: 99%;
-    }
-    .filter--button {
+    .room--list--options {
         display: none;
     }
-    .table--grid {display: grid;}
+    .table--grid {
+        display: grid;
+    }
     .table--room {
         display: none;
     }
@@ -538,6 +533,14 @@ footer div button{
         top: 0;
         left: 0;
         transform: translate(0);
+    }
+}
+@media (max-width:452px) {
+    .box--col {
+        width: 150px;
+    }
+    .box--line {
+        grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
     }
 }
 @media (max-width:300px) {

@@ -1,4 +1,6 @@
-$(document).ready(function() {
+$(document).ready(roomList());
+
+function roomList() {
   $.ajax
     ({
         type: 'POST',
@@ -13,14 +15,14 @@ $(document).ready(function() {
             $('#table--room--itens').html(data);
         }
     });
-})
+}
 
   $('#menu--toggle').click(function () {
     $('.header--mobile').toggleClass("show")
   }
   )
   $('.search--ico').click(function () {
-    $('.table--search').toggleClass("active")
+    $('.room--list--search').toggleClass("active")
   }
   )
   $('#table--button--filter--list').click(function () {
@@ -97,6 +99,7 @@ $(document).ready(function() {
                 success: function (msg)
                 {
                    $("#ajax--request--feedback").html(msg);
+                   roomList();
                 }
             });
 }
