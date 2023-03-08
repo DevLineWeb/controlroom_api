@@ -1,3 +1,33 @@
+
+const clickedButton = document.getElementsByClassName('table--room--toggle--button');
+
+window.onload = getLineIndex();
+function getLineIndex(){
+    for(x=0;x<clickedButton.length;x++){
+        // arranjo os listeners com os index das linhas
+        (function(index){
+        clickedButton[x].addEventListener("click", function(){
+            infoShow(index);
+        });
+        })(x);
+    }
+}
+function infoShow(element){ // element é o index da linha clicada
+    console.log(element); // mostrar index da linha como exemplo
+
+    // $('.table--item--more').removeClass('show')
+    $('.table--item--more'+'.'+element).toggleClass('show')
+
+// removo os listeners
+    for(x=0;x<clickedButton.length;x++){
+        objclone = clickedButton[x].cloneNode(true);
+        clickedButton[x].parentNode.replaceChild(objclone, clickedButton[x]);
+    }
+getLineIndex();
+}
+
+
+
 $(document).ready(roomList());
 
 function roomList() {
@@ -126,3 +156,4 @@ function roomList() {
                 }
             });
 }
+

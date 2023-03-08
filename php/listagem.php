@@ -48,7 +48,7 @@ switch ($method) {
                             $room_dataver[$i] = $reg['room_dataver'];
 
                             echo "
-                            <tr>
+                            <tr class='table--item'>
                                 <td>".$room_natureza[$i]."</td>
                                 <td>".$room_localidade[$i]."</td>
                                 <td>".$room_nomenclatura[$i]."</td>
@@ -58,12 +58,12 @@ switch ($method) {
                                     <button class='table--room--config--button button--default'>
                                         <i class='fa-solid fa-gear'></i>
                                     </button>
-                                    <button class='table--room--toggle--button button--default'>
+                                    <button class='table--room--toggle--button button--default' onclick='getLineIndex();'>
                                         <i class='fa-solid fa-bars'></i>
                                     </button>
                                 </th>
                             </tr>
-                            <tr class='table--item--more'>
+                            <tr class='table--item--more"." ".$i."'>
                                 <th>N/S: ".$room_serie[$i]."</th>
                                 <th>Rede: ".$room_rede[$i]."</th>
                                 <th>CPU: ".$room_cpu[$i]."</th>
