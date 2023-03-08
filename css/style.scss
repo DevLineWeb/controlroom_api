@@ -320,7 +320,7 @@ header {
 
 // =================================================================SESSÃO DE LISTAGEM===================================================//
 .sec--project--room--list {
-    height: 1800px;
+    height: 80vh;
     position: relative;
 }
 .sec--project--room--list legend {
@@ -335,7 +335,7 @@ header {
     width: 100%;
     color: white;
     border-collapse: separate;
-    border-spacing: 1rem;
+    border-spacing: 0px;
 }
 .table--room.change {
     display: none;
@@ -348,24 +348,19 @@ tr {
     border-radius: 3px;
     border: 1px solid #f7f7f7;
     margin-top: 10px;
-    cursor: pointer;
 }
 .table--header {
     border: none;
     border-bottom: 1px solid #f7f7f7;
     border-radius: 0px;
+    font-size: 1.4rem;
 }
 .table--header:hover {
     background-color: transparent;
     color: white;
     cursor:crosshair;
 }
-tr:hover {
-    color: #00ffea;
-    background-color: #b8f8f35d;
-    transition: all 0.1s;
-}
-td, th {
+#table--room--itens td {
     padding: 10px;
     display: flex;
     width: 12%;
@@ -375,19 +370,32 @@ td, th {
     justify-content: center;
 }
 .table--item--more {
+    position: absolute;
     opacity: 0;
     pointer-events: none;
-    margin-top: -50px;
-    transition: all 0.2s;
+    margin-top: -80px;
     border-top: none;
     background-color: #1c1b1f;
+    text-align: left;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16%, 1fr));
 }
 .table--item--more.show {
+    position: relative;
     margin-top: -2px;
     opacity: 1;
     pointer-events: all;
     transition: all 0.2s;
 }
+.table--item--more:hover {
+    background-color: #1c1b1f;
+    color: white;
+}
+.table--item--more th {
+    padding: 10px;
+    text-align: left;
+}
+// =================================================TABLE GRID VER ==================================================//
 .table--grid {
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(100px,1fr));
@@ -403,6 +411,18 @@ td, th {
     width: 100px;
     line-height: 40px;
 }
+// ================================================== PAGE CONTROLS ==================================================//
+.pages--controls {
+    font-size: 1.6rem;
+    width: 20%;
+    height: 50px;
+    color: #fff;
+    display: flex
+}
+.pages--button, .pages--numbers {
+    cursor: pointer;
+}
+
 /* ================================================== MODAL ADD ROOM ====================================================*/
 #modal--add--room {
     @include modalOverlay();

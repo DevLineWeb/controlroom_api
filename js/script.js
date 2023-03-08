@@ -16,7 +16,8 @@ function infoShow(element){ // element é o index da linha clicada
     console.log(element); // mostrar index da linha como exemplo
 
     // $('.table--item--more').removeClass('show')
-    $('.table--item--more'+'.'+element).toggleClass('show')
+    $('.table--item--more').removeClass('show');
+    $('.table--item--more'+'.'+element).toggleClass('show');
 
 // removo os listeners
     for(x=0;x<clickedButton.length;x++){
@@ -156,4 +157,3 @@ function roomList() {
                 }
             });
 }
-

@@ -54,14 +54,14 @@ switch ($method) {
                                 <td>".$room_nomenclatura[$i]."</td>
                                 <td>".$room_modelo[$i]."</td>
                                 <td>FSG-".$room_patrimonio[$i]."</td>
-                                <th>
+                                <td class='table--item--action'>
                                     <button class='table--room--config--button button--default'>
                                         <i class='fa-solid fa-gear'></i>
                                     </button>
                                     <button class='table--room--toggle--button button--default' onclick='getLineIndex();'>
-                                        <i class='fa-solid fa-bars'></i>
+                                        <i class='fa-solid fa-caret-down'></i>
                                     </button>
-                                </th>
+                                </td>
                             </tr>
                             <tr class='table--item--more"." ".$i."'>
                                 <th>N/S: ".$room_serie[$i]."</th>
@@ -69,7 +69,11 @@ switch ($method) {
                                 <th>CPU: ".$room_cpu[$i]."</th>
                                 <th>GPU: ".$room_gpu[$i]."</th>
                                 <th>Disco: ".$room_disco[$i]."</th>
-                                <th>RAM: ".$room_ram[$i]."</th>
+                                <th>Cadeado: ".$room_cadeado[$i]."</th>
+                                <th>Cabo de Aço: ".$room_cabo[$i]."</th>
+                                <th>Desempenho: ".$room_desempenho[$i]."</th>
+                                <th>Observações: ".$room_obser[$i]."</th>
+                                <th>Data: ".$room_dataver[$i]."</th>
                             </tr>
                             ";
 
