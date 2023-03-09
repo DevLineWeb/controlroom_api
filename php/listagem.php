@@ -48,7 +48,7 @@ switch ($method) {
                             $room_dataver[$i] = $reg['room_dataver'];
 
                             echo "
-                            <tr class='table--item'>
+                            <tr class='table--item"." ".$i."'>
                                 <td>".$room_natureza[$i]."</td>
                                 <td>".$room_localidade[$i]."</td>
                                 <td>".$room_nomenclatura[$i]."</td>

@@ -8,7 +8,6 @@
     box-sizing: border-box;
 }
 body {
-    background-color: #1c1b1f;
     overflow: hidden;
 }
 li {
@@ -29,6 +28,20 @@ main{
 html{
     font-size: 62.5%;
     --primaryGradient: linear-gradient(93.12deg, #ea00ff 50%, #00b7ff 100%, #000 50%);
+}
+#sec--project--background {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+}
+#sec--project--background img {
+    object-fit:cover;
+    height: 100vh;
+}
+.slick-arrow {
+    display: none !important;
 }
 @-webkit-keyframes scale-in-center {
     0% {
@@ -72,9 +85,12 @@ html{
     transition: all 0.2s;
 }
 @mixin selectedElementPoint {
-    background-color: #ea00ff;
     color: #00ffea;
     background-color: #b8f8f35d;
+    border: 1px solid #b8f8f3;
+}
+@mixin activeElementPoint {
+    background: var(--primaryGradient);
     border: 1px solid #b8f8f3;
 }
 @mixin inputElement {
@@ -159,7 +175,7 @@ input[type=checkbox]:checked ~ label {
 /*============================================= NAVBAR=================================================== */
 
 header {
-    background-color: #000;
+    background-color: transparent;
     font-size: 1.4rem;
 }
 .header--menu--navbar div a {
@@ -178,9 +194,8 @@ header {
     min-width: 100px;
 }
 .header--col--1 a:hover{
-    color: #00ffea;
-    background-color: #b8f8f35d;
-    transition: all 0.1s;
+    @include hoverElementPoint();
+    border: none;
 }
 .header--col--2 {
     position: absolute;
@@ -192,9 +207,8 @@ header {
     height: 50px; 
 }
 .header--col--2 a:hover{
-    color: #00ffea;
-    background-color: #b8f8f35d;
-    transition: all 0.1s;
+    @include hoverElementPoint();
+    border: none;
 }
 .menu--logo {
     max-width: 130px;
@@ -248,6 +262,11 @@ header {
     transition: all 0.3s;
 }
 /*================================================================== FILTROS DE PESQUISA DA LISTA ================================================================== */
+.sec--project--content {
+    background-color: #1c1b1f9c;
+    transform: translateY(10%);
+}
+
 .room--list--filters {
     margin-left: 10px;
     height: 35px;
@@ -320,7 +339,6 @@ header {
 
 // =================================================================SESSÃO DE LISTAGEM===================================================//
 .sec--project--room--list {
-    height: 80vh;
     position: relative;
 }
 .sec--project--room--list legend {
@@ -342,6 +360,9 @@ header {
 }
 #table--room--itens {
     position: relative;
+}
+.table--item.append {
+    border-bottom: none;
 }
 tr {
     display: flex;
@@ -375,7 +396,7 @@ tr {
     pointer-events: none;
     margin-top: -80px;
     border-top: none;
-    background-color: #1c1b1f;
+    background-color: transparent;
     text-align: left;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(16%, 1fr));
@@ -387,11 +408,8 @@ tr {
     pointer-events: all;
     transition: all 0.2s;
 }
-.table--item--more:hover {
-    background-color: #1c1b1f;
-    color: white;
-}
 .table--item--more th {
+    color: #fff;
     padding: 10px;
     text-align: left;
 }
@@ -417,12 +435,19 @@ tr {
     width: 20%;
     height: 50px;
     color: #fff;
-    display: flex
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .pages--button, .pages--numbers {
-    cursor: pointer;
+    @include pointerElement();
 }
-
+.pages--button:hover, .pages--numbers:hover {
+    @include hoverElementPoint();
+}
+.pages--numbers.active {
+    @include activeElementPoint();
+}
 /* ================================================== MODAL ADD ROOM ====================================================*/
 #modal--add--room {
     @include modalOverlay();
@@ -496,7 +521,8 @@ tr {
 }
 .mobile--buttons {
     position: absolute;
-    bottom: 80px;
+    z-index: 10;
+    bottom: -50px;
     display: flex;
     width: 100%;
     align-items: center;

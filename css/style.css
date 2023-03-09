@@ -10,7 +10,6 @@
 }
 
 body {
-  background-color: #1c1b1f;
   overflow: hidden;
 }
 
@@ -36,6 +35,24 @@ main {
 html {
   font-size: 62.5%;
   --primaryGradient: linear-gradient(93.12deg, #ea00ff 50%, #00b7ff 100%, #000 50%);
+}
+
+#sec--project--background {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+#sec--project--background img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100vh;
+}
+
+.slick-arrow {
+  display: none !important;
 }
 @keyframes scale-in-center {
   0% {
@@ -74,7 +91,6 @@ input[type=text], input[type=number], textarea {
 }
 
 button.selected {
-  background-color: #ea00ff;
   color: #00ffea;
   background-color: rgba(184, 248, 243, 0.3647058824);
   border: 1px solid #b8f8f3;
@@ -111,7 +127,7 @@ input[type=checkbox]:checked ~ label {
 
 /*============================================= NAVBAR=================================================== */
 header {
-  background-color: #000;
+  background-color: transparent;
   font-size: 1.4rem;
 }
 
@@ -136,7 +152,9 @@ header {
 .header--col--1 a:hover {
   color: #00ffea;
   background-color: rgba(184, 248, 243, 0.3647058824);
-  transition: all 0.1s;
+  border: 1px solid #b8f8f3;
+  transition: all 0.2s;
+  border: none;
 }
 
 .header--col--2 {
@@ -152,7 +170,9 @@ header {
 .header--col--2 a:hover {
   color: #00ffea;
   background-color: rgba(184, 248, 243, 0.3647058824);
-  transition: all 0.1s;
+  border: 1px solid #b8f8f3;
+  transition: all 0.2s;
+  border: none;
 }
 
 .menu--logo {
@@ -211,6 +231,11 @@ header {
 }
 
 /*================================================================== FILTROS DE PESQUISA DA LISTA ================================================================== */
+.sec--project--content {
+  background-color: rgba(28, 27, 31, 0.6117647059);
+  transform: translateY(10%);
+}
+
 .room--list--filters {
   margin-left: 10px;
   height: 35px;
@@ -292,7 +317,6 @@ header {
 }
 
 .sec--project--room--list {
-  height: 80vh;
   position: relative;
 }
 
@@ -318,6 +342,10 @@ header {
 
 #table--room--itens {
   position: relative;
+}
+
+.table--item.append {
+  border-bottom: none;
 }
 
 tr {
@@ -356,7 +384,7 @@ tr {
   pointer-events: none;
   margin-top: -80px;
   border-top: none;
-  background-color: #1c1b1f;
+  background-color: transparent;
   text-align: left;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(16%, 1fr));
@@ -370,12 +398,8 @@ tr {
   transition: all 0.2s;
 }
 
-.table--item--more:hover {
-  background-color: #1c1b1f;
-  color: white;
-}
-
 .table--item--more th {
+  color: #fff;
   padding: 10px;
   text-align: left;
 }
@@ -404,10 +428,30 @@ tr {
   height: 50px;
   color: #fff;
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .pages--button, .pages--numbers {
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #c0c0c0;
+  border-radius: 5px;
+  line-height: 30px;
+  padding: 0 10px;
   cursor: pointer;
+}
+
+.pages--button:hover, .pages--numbers:hover {
+  color: #00ffea;
+  background-color: rgba(184, 248, 243, 0.3647058824);
+  border: 1px solid #b8f8f3;
+  transition: all 0.2s;
+}
+
+.pages--numbers.active {
+  background: var(--primaryGradient);
+  border: 1px solid #b8f8f3;
 }
 
 /* ================================================== MODAL ADD ROOM ====================================================*/
@@ -515,7 +559,8 @@ tr {
 
 .mobile--buttons {
   position: absolute;
-  bottom: 80px;
+  z-index: 10;
+  bottom: -50px;
   display: flex;
   width: 100%;
   align-items: center;
