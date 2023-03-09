@@ -27,7 +27,7 @@ main{
 }
 html{
     font-size: 62.5%;
-    --primaryGradient: linear-gradient(93.12deg, #ea00ff 50%, #00b7ff 100%, #000 50%);
+    --primaryGradient: linear-gradient(93.12deg, #8400ff 50%, #4c00ff 100%, #000 50%);
 }
 #sec--project--background {
     position: absolute;
@@ -83,6 +83,21 @@ html{
     background-color: #b8f8f35d;
     border: 1px solid #b8f8f3;
     transition: all 0.2s;
+}
+@mixin hoverLinkPoint {
+    color: #00ffea;
+    border-bottom: 1px solid #b8f8f3;
+    transition: all 0.2s;
+}
+@mixin submitButton {
+    background: var(--primaryGradient);
+    padding: 10px;
+    width: 200px;
+    font-size: 1.8rem;
+    border: 1px solid white;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
 }
 @mixin selectedElementPoint {
     color: #00ffea;
@@ -180,7 +195,6 @@ header {
 }
 .header--menu--navbar div a {
     padding: 10px;
-    border-radius: 5px;
     color: white;
 }
 .header--col--1 {
@@ -192,10 +206,12 @@ header {
 }
 .header--col--1 a {
     min-width: 100px;
+    border: 1px solid transparent;
+    text-align: center;
 }
 .header--col--1 a:hover{
-    @include hoverElementPoint();
-    border: none;
+    @include hoverLinkPoint();
+    border-radius: 0px;
 }
 .header--col--2 {
     position: absolute;
@@ -209,6 +225,7 @@ header {
 .header--col--2 a:hover{
     @include hoverElementPoint();
     border: none;
+    border-radius: 5px;
 }
 .menu--logo {
     max-width: 130px;
@@ -518,6 +535,15 @@ tr {
 }
 .box--line.checkbox--area {
     display: flex;
+}
+.add--room--footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.add--room--footer button {
+    @include submitButton();
 }
 .mobile--buttons {
     position: absolute;
