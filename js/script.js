@@ -1,14 +1,3 @@
-$('#sec--project--background').slick({
-  dots: false,
-  infinite: true,
-  fade: true,
-  autoplay: true,
-  speed: 1200,
-  slidesToShow: 1,
-  adaptiveHeight: true
-});
-
-
 
 
 const clickedButton = document.getElementsByClassName('table--room--toggle--button');

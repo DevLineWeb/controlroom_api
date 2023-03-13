@@ -27,22 +27,52 @@ main{
 }
 html{
     font-size: 62.5%;
-    --primaryGradient: linear-gradient(93.12deg, #8400ff 50%, #4c00ff 100%, #000 50%);
+    --primaryGradient: linear-gradient(95deg, #3da2b1 20%, #30126a 100%, #000 50%);
 }
-#sec--project--background {
-    position: absolute;
+@keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  #sec--project--background {
     z-index: -1;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-}
-#sec--project--background img {
-    object-fit:cover;
-    height: 100vh;
-}
-.slick-arrow {
-    display: none !important;
-}
+    background-color: #1c1b1f;
+    position: absolute;
+    inset: 0;
+    display: flex;
+    place-content: center;
+    align-items: center;
+  }
+  .gradient {
+    --size: 250px;
+    --speed: 50s;
+    --easing: cubic-bezier(0.8, 0.2, 0.2, 0.8);
+  
+    width: var(--size);
+    height: var(--size);
+    filter: blur(calc(var(--size) / 5));
+    background-image: linear-gradient(hsl(158, 82, 57, 85%), hsl(252, 82, 57));
+    animation: rotate var(--speed) var(--easing) alternate infinite;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  }
+  
+// #sec--project--background {
+//     position: absolute;
+//     z-index: -1;
+//     top: 0;
+//     width: 100vw;
+//     height: 100vh;
+// }
+// #sec--project--background img {
+//     object-fit:cover;
+//     height: 100vh;
+// }
+// .slick-arrow {
+//     display: none !important;
+// }
 @-webkit-keyframes scale-in-center {
     0% {
       -webkit-transform: scale(0);
@@ -159,6 +189,7 @@ html{
 }
 input[type='text'],input[type='number'],textarea {
     @include inputElement();
+    color: #000
 }
 .button--default {
     @include pointerElement();
@@ -171,6 +202,7 @@ button.selected {
 }
 select {
     @include inputElement();
+    color: #1c1b1f;
 }
 select option {
     background-color: rgba(255, 255, 255, 0);
@@ -468,28 +500,29 @@ tr {
 /* ================================================== MODAL ADD ROOM ====================================================*/
 #modal--add--room {
     @include modalOverlay();
+    background-color: #00000070
 }
 #modal--add--room.show {
     @include modalOverlayShow();
 }
 #add--room--box {
-    background: #1c1b1f;
+    border: 1px solid #000;
+    background-color: #fff;
     width: 900px;
     @include modal();
-    color: #fff;
+    color: #000;
     font-size: 1.4rem;
     display: flex;
     flex-direction: column;
     padding: 10px;
     border-radius: 5px;
-    border: 1px solid #fff;
-    background-color: #1c1b1f;
+    box-shadow: 0 1px 5px 0 #e2e2e2;
 }
 #add--room--box legend {
     font-size: 1.8rem;
     font-size: 2rem;
-    border-radius: 5px;
-    color: white;
+    color: black;
+    text-transform: uppercase;
 }
 .box--line {
     min-height: 60px;
@@ -564,8 +597,14 @@ tr {
 #filter--select--box {
     @include modal();
     display: flex;
+    flex-direction: column;
     width: 200px;
     background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 1px 5px 0 #30126a;
+}
+#filter--select--box legend {
+    font-size: 1.8rem;
 }
 /* ===============================FOOTER================================ */
 footer {
@@ -628,6 +667,9 @@ footer div button{
     main {
         max-width: 100vw !important;
     }
+    .gradient {
+        --size: 500px;
+      }
 }
 
 @media (max-width:576px) {
