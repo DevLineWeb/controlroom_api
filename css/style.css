@@ -248,7 +248,7 @@ header {
 /*================================================================== FILTROS DE PESQUISA DA LISTA ================================================================== */
 .sec--project--content {
   background-color: rgba(28, 27, 31, 0.6117647059);
-  transform: translateY(10%);
+  transform: translateY(0);
 }
 
 .room--list--filters {
@@ -401,8 +401,6 @@ tr {
   border-top: none;
   background-color: transparent;
   text-align: left;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16%, 1fr));
 }
 
 .table--item--more.show {
@@ -416,7 +414,18 @@ tr {
 .table--item--more th {
   color: #fff;
   padding: 10px;
-  text-align: left;
+  font-weight: normal;
+  font-size: 1.4rem;
+}
+
+.table--item--more th div {
+  padding: 10px;
+  border: 1px solid #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  border-radius: 5px;
 }
 
 .table--grid {

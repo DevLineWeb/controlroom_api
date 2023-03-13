@@ -64,16 +64,51 @@ switch ($method) {
                                 </td>
                             </tr>
                             <tr class='table--item--more"." ".$i."'>
-                                <th>N/S: ".$room_serie[$i]."</th>
-                                <th>Rede: ".$room_rede[$i]."</th>
-                                <th>CPU: ".$room_cpu[$i]."</th>
-                                <th>GPU: ".$room_gpu[$i]."</th>
-                                <th>Disco: ".$room_disco[$i]."</th>
-                                <th>Cadeado: ".$room_cadeado[$i]."</th>
-                                <th>Cabo de Aço: ".$room_cabo[$i]."</th>
-                                <th>Desempenho: ".$room_desempenho[$i]."</th>
-                                <th>Observações: ".$room_obser[$i]."</th>
-                                <th>Data: ".$room_dataver[$i]."</th>
+                                <th>
+                                    <div>
+                                        N/S: ".$room_serie[$i]."
+                                    </div>
+                                    <div>
+                                        Rede: ".$room_rede[$i]."
+                                    </div>
+                                </th>
+                                <th>
+                                    <div>
+                                        CPU: ".$room_cpu[$i]."
+                                    </div>
+                                    <div>
+                                        GPU: ".$room_gpu[$i]."
+                                    </div>
+                                </th>
+                                <th>
+                                    <div>
+                                        Disco: ".$room_disco[$i]."
+                                    </div>
+                                    <div>
+                                        Cadeado: ".$room_cadeado[$i]."
+                                    </div>
+                                </th>
+                                <th>
+                                    <div>
+                                        Cabo de Aço: ".$room_cabo[$i]."
+                                    </div>
+                                    <div>
+                                        Desempenho: ".$room_desempenho[$i]."
+                                    </div>
+                                </th>
+                                <th>
+                                    <div>
+                                        Observações: ".$room_obser[$i]."
+                                    </div>
+                                    <div>
+                                        Data: ".$room_dataver[$i]."
+                                    </div>
+                                </th>
+                                <th>
+                                    <div>
+                                        <button class='button--default'><i class='fa-sharp fa-solid fa-xmark'></i></button>
+                                    </div>    
+                                </th>
                             </tr>
                             ";
 
