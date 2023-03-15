@@ -38,67 +38,54 @@
         <div class="gradient"></div>
     </section>
     <section class="sec--project--content">
-        <section class="sec--project--room--list">
-            <main>
-                <legend>Room List</legend>
-                <div class="room--list--filters">
-                    <div class="room--list--search">
-                        <div class="search--ico"><i class="fa-solid fa-magnifying-glass"></i></div>
-                        <div class="search--input"><input type="text" placeholder="Pesquisar" name="" id="table--search--input"></div>
-                    </div>
-                    <div class="room--list--options">
-                        <button class="button--default table--button--add--room" id="table--button--add--room"><span class="table--button--add--room"> Add </span><i class="fa-solid fa-plus"></i></button>
-                        <button class="button--default" id="table--button--filter--list"><span> List </span><i class="fa-solid fa-list"></i></button>
-                        <button class="button--default" id="table--button--filter--grid"><span> Grid </span><i class="fa-solid fa-grip"></i></button>
-                        <button class="button--default table--button--filter"><span> Filtro </span><i class="fa-solid fa-filter"></i></button>
-                    </div>
+        <main>
+            <legend>Room List</legend>
+            <section class="room--list--filters">
+                <div class="room--list--search">
+                    <div class="search--ico"><i class="fa-solid fa-magnifying-glass"></i></div>
+                    <div class="search--input"><input type="text" placeholder="Pesquisar" onkeyup="search()" id="table--search--input"></div>
                 </div>
-                <table class="table--room" id="table--room">
-                    <thead>
-                        <tr class="table--header">
-                            <th>Natureza</th>
-                            <th>Local</th>
-                            <th>Sala</th>
-                            <th>Máquina</th>
-                            <th>Patrimônio</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="table--room--itens">
-                    </tbody>
-                </table>
-                <section class="table--grid">
-                    <button class="button--default"><i class="fa-solid fa-book-open"></i> A103</button>
-                    <button class="button--default"><i class="fa-solid fa-book-open"></i> </i>A105</button>
-                    <button class="button--default"><i class="fa-solid fa-book-open"></i> </i>A107</button>
-                    <button class="button--default"><i class="fa-solid fa-book-open"></i> </i>A108</button>
-                    <button class="button--default"><i class="fa-solid fa-book-open"></i> </i>A110</button>
-                    <button class="button--default"><i class="fa-solid fa-book-open"></i> </i>A111</button>
-                    <button class="button--default"><i class="fa-solid fa-book-open"></i> </i>A114</button>
-                    <button class="button--default"><i class="fa-solid fa-book-open"></i> </i>A117</button>
-                </section>
-            </main>
-        </section>
-        <section class="sec--project--mobile--options">
-                <!--  -->
-                <div class="mobile--buttons">
-                    <button class="button--default table--button--add--room"><i class="fa-solid fa-plus"></i> Add Room</button>
-                    <button class="button--default"><i class="fa-solid fa-filter"></i> Filter</button>
+                <div class="room--list--options">
+                    <button class="button--default table--button--add--room" id="table--button--add--room"><span class="table--button--add--room"> Add </span><i class="fa-solid fa-plus"></i></button>
+                    <button class="button--default" id="table--button--filter--list"><span> List </span><i class="fa-solid fa-list"></i></button>
+                    <button class="button--default" id="table--button--filter--grid"><span> Grid </span><i class="fa-solid fa-grip"></i></button>
+                    <button class="button--default table--button--filter"><span> Filtro </span><i class="fa-solid fa-filter"></i></button>
                 </div>
-        </section>
-        <section class="sec--project--pages" id="sec--project--pages">
-            <main>
-                <div class="pages--controls">
-                    <div class="pages--button first" id="pages--button--first"><<</div>
-                    <div class="pages--button prev" id="pages--button--prev"><</div>
-                    <div class="pages--numbers active">
-                        <div>1</div>
+            </section>
+            <section class="sec--project--room--list">
+                    <table class="table--room" id="table--room">
+                        <thead>
+                            <tr class="table--header">
+                                <th>Natureza</th>
+                                <th>Local</th>
+                                <th>Sala</th>
+                                <th>Máquina</th>
+                                <th>Patrimônio</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table--room--itens">
+                        </tbody>
+                    </table>
+                    <section class="table--grid">
+                        <button class="button--default"><i class="fa-solid fa-book-open"></i> A103</button>
+                        <button class="button--default"><i class="fa-solid fa-book-open"></i> </i>A105</button>
+                        <button class="button--default"><i class="fa-solid fa-book-open"></i> </i>A107</button>
+                        <button class="button--default"><i class="fa-solid fa-book-open"></i> </i>A108</button>
+                        <button class="button--default"><i class="fa-solid fa-book-open"></i> </i>A110</button>
+                        <button class="button--default"><i class="fa-solid fa-book-open"></i> </i>A111</button>
+                        <button class="button--default"><i class="fa-solid fa-book-open"></i> </i>A114</button>
+                        <button class="button--default"><i class="fa-solid fa-book-open"></i> </i>A117</button>
+                    </section>
+            </section>
+            <section class="sec--project--mobile--options">
+                    <!--  -->
+                    <div class="mobile--buttons">
+                        <button class="button--default table--button--add--room"><i class="fa-solid fa-plus"></i> Add Room</button>
+                        <button class="button--default"><i class="fa-solid fa-filter"></i> Filter</button>
                     </div>
-                    <div class="pages--button next" id="pages--button--next">></div>
-                    <div class="pages--button last" id="pages--button--last">>></div>
-                </div>
-            </main>
-        </section>
+            </section>
+        </main>
     </section>
     <section class="sec--project--modals">
         <section id="modal--add--room">
@@ -272,6 +259,153 @@
                 </div>
             </section>
         </section>
+        <section id="modal--edit--room">
+            <form class="edit--room--box">
+                <div class="modal--legend">
+                    <legend>Edit Room</legend>
+                </div>
+                <div class="box--line">
+                    <div class="box--col">
+                        <label for="room--id">ID</label>
+                        <input type="text" name="" id="room--id" disabled>
+                    </div>
+                    <div class="box--col">
+                        <label for="room--date--edit">Last Mod</label>
+                        <input type="date" name="" id="room--date--edit" disabled>
+                    </div>
+                    <div class="box--col">
+                        <label for="nomesala">Sala: </label>
+                        <input type="text" name="nomesala" id="nomesala" placeholder="Sala" required>
+                    </div>
+                    <div class="box--col">
+                        <label for="localidade">Local: </label>
+                        <select name="localidade" id="localidade" required>
+                            <option value="" selected>Localidade</option>
+                            <option value="Bloco A">Bloco A</option>
+                            <option value="Bloco B">Bloco B</option>
+                            <option value="Bloco C">Bloco C</option>
+                            <option value="Bloco H">Bloco H</option>
+                            <option value="Veterinária">Veterinária</option>
+                            <option value="CIS">CIS</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="box--line">
+                    <div class="box--col">
+                        <label for="natureza">Natureza: </label>
+                        <select name="natureza" id="natureza" required>
+                            <option value="" selected>Natureza</option>
+                            <option value="Academic">Acadêmica</option>
+                            <option value="Administrative">Administrativa</option>
+                        </select>
+                    </div>
+                    <div class="box--col">
+                        <label for="modelo">Máquina: </label>
+                        <select name="modelo" id="modelo" required>
+                            <option value="" selected>Modelo</option>
+                            <option value="Optiplex 380">Optiplex 380</option>
+                            <option value="Optiplex 390">Optiplex 390</option>
+                            <option value="Optiplex 3010">Optiplex 3010</option>
+                            <option value="Optiplex 7010">Optiplex 7010</option>
+                            <option value="Optiplex 3040">Optiplex 3040</option>
+                            <option value="Optiplex 3060">Optiplex 3060</option>
+                            <option value="Optiplex 3070">Optiplex 3070</option>
+                            <option value="Optiplex 3080">Optiplex 3080</option>
+                            <option value="Optiplex 5090">Optiplex 5090</option>
+                            <option value="Vostro 347">Vostro 3470</option>
+                        </select>
+                    </div>
+                    <div class="box--col">
+                        <label for="patrimonio">Patrimônio: </label>
+                        <input type="text" name="patrimonio" id="patrimonio" placeholder="Patrimônio">
+                    </div>
+                    <div class="box--col">
+                        <label for="serie">N°. Série</label>
+                        <input type="text" name="serie" id="serie" placeholder="N°. Série">
+                    </div>
+                </div>
+                <div class="box--line">
+                    <div class="box--col">
+                        <label for="gpu">GPU: </label>
+                        <input type="text" name="gpu" id="gpu" placeholder="GPU">
+                    </div>
+                    <div class="box--col">
+                        <label for="disco">Disco: </label>
+                        <select name="disco" id="disco">
+                            <option value="">Disco</option>
+                            <option value="80GB HD">80GB HD</option>
+                            <option value="120GB HD">120GB HD</option>
+                            <option value="250GB HD">250GB HD</option>
+                            <option value="500GB HD">500GB HD</option>
+                            <option value="1TB HD">1TB HD</option>
+                            <option value="80GB SSD">80GB SSD</option>
+                            <option value="120GB SSD">120GB SSD</option>
+                            <option value="250GB SSD">250GB SSD</option>
+                            <option value="500GB SSD">500GB SSD</option>
+                            <option value="1TB SSD">1TB SSD</option>
+                        </select>
+                    </div>
+                    <div class="box--col">
+                        <label for="cpu">CPU: </label>
+                        <select name="cpu" id="cpu">
+                            <option value="">Processador</option>
+                            <option value="Pentium">Pentium</option>
+                            <option value="Core 2 Duo">Core 2 Duo</option>
+                            <option value="Intel core i3">Intel core i3</option>
+                            <option value="Intel core i5">Intel core i5</option>
+                            <option value="Intel core i7">Intel core i7</option>
+                            <option value="Intel core i9">Intel core i9</option>
+                        </select>
+                    </div>
+                    <div class="box--col">
+                        <label for="ram">RAM: </label>
+                        <input type="number" name="ram" id="ram" placeholder="RAM">
+                    </div>
+                </div>
+                <div class="box--line">
+                    <div class="box--col">
+                        <label for="rede">Rede: </label>
+                        <select name="rede" id="rede">
+                            <option value="">Rede</option>
+                            <option value="LAN">LAN</option>
+                            <option value="Wireless">Wireless</option>
+                        </select>
+                    </div>
+                    <div class="box--col">
+                        <label for="desempenho">Desempenho: </label>
+                        <select name="" id="desempenho">
+                            <option value="">Desempenho</option>
+                            <option value="Bom">Bom Desempenho</option>
+                            <option value="Acetável">Acetável Desempenho</option>
+                            <option value="Aviso">Aviso de Manutenção</option>
+                        </select>
+                    </div>
+                    <div class="box--col checkbox--area">
+                        <div>
+                            <input type="checkbox" name="" id="status--cadeado">
+                            <label for="status--cadeado"><i class="fa-solid fa-lock"></i></label>
+                        </div>
+                        
+                        <div>
+                            <input type="checkbox" name="" id="status--cabo">
+                            <label for="status--cabo"><i class="fa-solid fa-shield"></i></label>
+                        </div>
+                        
+                        <div>
+                            <input type="checkbox" name="" id="status--monitor">
+                            <label for="status--monitor"><i class="fa-sharp fa-solid fa-desktop"></i></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="box--line box--line--textarea">
+                    <label for="obs">Observações: </label>
+                    <textarea name="" id="obs"></textarea>
+                </div>
+                <div class="add--room--footer">
+                    <button type="button" onclick="editRoom()">Atualizar</button>
+                </div>
+            </form>
+        </section>
         <section class="ajax--load">
             <div class="ajax--load--box">
                 <div id="ajax--request--feedback">
@@ -312,7 +446,7 @@
       scaleMobile: 1.00,
       color: 0x00ffea,
       color2: 0x00ffea,
-      backgroundColor: 0x1c1b1f,
+      backgroundColor: 0x1c1b1f, 
       size: 1.20,
       spacing: 8.00,
       showLines: false

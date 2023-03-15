@@ -21,6 +21,7 @@ function infoShow(element){ // element é o index da linha clicada
     $('.table--item--more'+'.'+element).toggleClass('show');
     $('.table--item').removeClass('append');
     $('.table--item'+'.'+element).toggleClass('append');
+    $('.arrow--down'+'.'+element).toggleClass('down');
 
 // removo os listeners
     for(x=0;x<clickedButton.length;x++){
@@ -29,6 +30,7 @@ function infoShow(element){ // element é o index da linha clicada
     }
 getLineIndex();
 }
+
 
 
 
@@ -51,59 +53,76 @@ function roomList() {
     });
 }
 
-  $('#menu--toggle').click(function () {
-    $('.header--mobile').toggleClass("show")
+
+$('#menu--toggle').click(function () {
+  $('.header--mobile').toggleClass("show")
+}
+)
+$('.search--ico').click(function () {
+  $('.room--list--search').toggleClass("active")
+}
+)
+$('#table--button--filter--list').click(function () {
+  $('#table--button--filter--list').toggleClass('selected');
+  $('#table--button--filter--grid').removeClass('selected');
+  $('.table--grid').removeClass('change');
+  $('.table--room').removeClass('change');
+})
+$('#table--button--filter--grid').click(function () {
+  $('#table--button--filter--grid').toggleClass('selected');
+  $('#table--button--filter--list').removeClass('selected');
+  $('.table--grid').toggleClass('change');
+  $('.table--room').toggleClass('change');
+})
+
+
+document.addEventListener('click', (e) => {
+  const isDropdownBtn = e.target.classList.contains('table--button--add--room')
+  if (!isDropdownBtn && e.target.closest('#add--room--box') != null) return;
+
+  if (isDropdownBtn) {
+
+    $('#modal--add--room').toggleClass("show")
+
   }
-  )
-  $('.search--ico').click(function () {
-    $('.room--list--search').toggleClass("active")
+  else {
+
+    $('#modal--add--room').removeClass("show")
+
   }
-  )
-  $('#table--button--filter--list').click(function () {
-    $('#table--button--filter--list').toggleClass('selected');
-    $('#table--button--filter--grid').removeClass('selected');
-    $('.table--grid').removeClass('change');
-    $('.table--room').removeClass('change');
-  })
-  $('#table--button--filter--grid').click(function () {
-    $('#table--button--filter--grid').toggleClass('selected');
-    $('#table--button--filter--list').removeClass('selected');
-    $('.table--grid').toggleClass('change');
-    $('.table--room').toggleClass('change');
-  })
+})
+document.addEventListener('click', (e) => {
+  const isDropdownBtn = e.target.classList.contains('table--button--filter')
+  if (!isDropdownBtn && e.target.closest('#filter--select--box') != null) return;
 
+  if (isDropdownBtn) {
 
-  document.addEventListener('click', (e) => {
-    const isDropdownBtn = e.target.classList.contains('table--button--add--room')
-    if (!isDropdownBtn && e.target.closest('#add--room--box') != null) return;
-  
-    if (isDropdownBtn) {
-  
-      $('#modal--add--room').toggleClass("show")
-  
-    }
-    else {
+    $('#modal--filter--room').toggleClass("show")
 
-      $('#modal--add--room').removeClass("show")
+  }
+  else {
 
-    }
-  })
-  document.addEventListener('click', (e) => {
-    const isDropdownBtn = e.target.classList.contains('table--button--filter')
-    if (!isDropdownBtn && e.target.closest('#filter--select--box') != null) return;
-  
-    if (isDropdownBtn) {
-  
-      $('#modal--filter--room').toggleClass("show")
-  
-    }
-    else {
+    $('#modal--filter--room').removeClass("show")
 
-      $('#modal--filter--room').removeClass("show")
+  }
+})
+document.addEventListener('click', (e) => {
+  const isDropdownBtn = e.target.classList.contains('table--room--config--button')
+  if (!isDropdownBtn && e.target.closest('.edit--room--box') != null) return;
 
-    }
-  })
-  function addRoom() {
+  if (isDropdownBtn) {
+
+    $('#modal--edit--room').toggleClass("show")
+
+  }
+  else {
+
+    $('#modal--edit--room').removeClass("show")
+
+  }
+})
+
+function addRoom() {
     const natureza = document.getElementById('natureza').value;
     const localidade = document.getElementById('localidade').value;
     const nomesala = document.getElementById('nomesala').value;
@@ -159,4 +178,28 @@ function roomList() {
                    roomList();
                 }
             });
+}
+
+
+function search() {
+  const searchbox = document.getAnimations('table--search--input').value;
+  const storeitems = document.getElementById('table--room--itens');
+  const product = document.querySelector('.table--item');
+  const pname = storeitems.getElementsByClassName('item--name');
+
+  for (let i = 0; i < pname.length; i++) {
+    const match = product[i].getElementsByClassName('item--name')[0];
+
+    if (match) {
+      let textvalue = match.textContent || match.innerHTML;
+
+      if (textvalue.toUpperCase().indexOf(searchbox) > -1) {
+        product[i].style.display = "";
+      }
+      else {
+        product[i].style.display = "none";
+      }
+    }
+    
+  }
 }

@@ -56,7 +56,7 @@ html {
 }
 
 .gradient {
-  --size: 250px;
+  --size: 550px;
   --speed: 50s;
   --easing: cubic-bezier(0.8, 0.2, 0.2, 0.8);
   width: var(--size);
@@ -251,9 +251,19 @@ header {
   transform: translateY(0);
 }
 
+.sec--project--content legend {
+  display: flex;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: white;
+  padding: 10px;
+  text-transform: uppercase;
+}
+
 .room--list--filters {
   margin-left: 10px;
   height: 35px;
+  margin-bottom: 10px;
 }
 
 .room--list--search {
@@ -270,11 +280,6 @@ header {
 .room--list--search.active {
   width: 50%;
   transition: all 0.3s;
-  border: 1px solid #00ffea;
-}
-
-.room--list--search.active .search--ico {
-  color: #00ffea;
 }
 
 .search--ico {
@@ -296,6 +301,7 @@ header {
   margin-left: 40px;
   border: none !important;
   font-size: 1.6rem;
+  color: #fff;
 }
 
 .room--list--options {
@@ -331,17 +337,18 @@ header {
   transition: all 1s;
 }
 
-.sec--project--room--list {
-  position: relative;
+.sec--project--content {
+  transform: translateY(10vh);
 }
 
-.sec--project--room--list legend {
-  display: flex;
-  justify-content: center;
-  font-size: 1.8rem;
-  color: white;
-  padding: 10px;
-  text-transform: uppercase;
+.sec--project--room--list {
+  position: relative;
+  overflow-y: scroll !important;
+  height: 520px !important;
+}
+
+.sec--project--room--list::-webkit-scrollbar {
+  display: none;
 }
 
 .table--room {
@@ -353,10 +360,6 @@ header {
 
 .table--room.change {
   display: none;
-}
-
-#table--room--itens {
-  position: relative;
 }
 
 .table--item.append {
@@ -383,6 +386,10 @@ tr {
   cursor: crosshair;
 }
 
+#table--room--itens {
+  position: relative;
+}
+
 #table--room--itens td {
   padding: 10px;
   display: flex;
@@ -405,7 +412,7 @@ tr {
 
 .table--item--more.show {
   position: relative;
-  margin-top: -2px;
+  margin-top: -10px;
   opacity: 1;
   pointer-events: all;
   transition: all 0.2s;
@@ -415,17 +422,18 @@ tr {
   color: #fff;
   padding: 10px;
   font-weight: normal;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 
 .table--item--more th div {
-  padding: 10px;
-  border: 1px solid #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 10px;
+  width: auto;
+}
+
+.table--item--more th div p {
+  border: 1px solid #e2e2e2;
   border-radius: 5px;
+  padding: 5px;
+  width: 100px;
 }
 
 .table--grid {
@@ -500,8 +508,9 @@ tr {
 
 #add--room--box {
   border: 1px solid #000;
-  background-color: #fff;
+  background-color: transparent;
   width: 900px;
+  z-index: 1001;
   position: fixed;
   display: none;
   flex-direction: column;
@@ -514,6 +523,7 @@ tr {
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0 1px 5px 0 #e2e2e2;
+  background-color: #fff;
 }
 
 #add--room--box legend {
@@ -530,11 +540,12 @@ tr {
   grid-gap: 0px;
   width: 100%;
   margin-top: 2rem;
+  border: 1px solid #e2e2e2;
 }
 
 .label--for--ico {
   color: #797979;
-  border: 1px solid #797979;
+  border: 1px solid #e2e2e2;
   padding: 12px 0px;
   font-size: 3rem;
   text-align: center;
@@ -580,6 +591,7 @@ tr {
 
 .box--line.checkbox--area {
   display: flex;
+  border: none;
 }
 
 .add--room--footer {
@@ -630,6 +642,7 @@ tr {
 }
 
 #filter--select--box {
+  z-index: 1001;
   position: fixed;
   display: none;
   flex-direction: column;
@@ -645,6 +658,60 @@ tr {
 
 #filter--select--box legend {
   font-size: 1.8rem;
+}
+
+/* ================================================== MODAL EDIT ROOM ====================================================*/
+#modal--edit--room {
+  top: 0;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+#modal--edit--room.show {
+  display: flex;
+  transition: all 0.2s;
+}
+
+.edit--room--box {
+  background-color: transparent;
+  width: 900px;
+  z-index: 1001;
+  position: fixed;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  animation: scale-in-center 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  color: #000;
+  font-size: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 1px 5px 0 #30126a;
+  background-color: #fff;
+}
+
+.box--col.checkbox--area {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.box--col.checkbox--area label {
+  color: #797979;
+  font-size: 1.8rem;
+  border: 1px solid #e2e2e2;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
 }
 
 /* ===============================FOOTER================================ */
@@ -687,6 +754,7 @@ footer div button {
 }
 
 .ajax--load--box {
+  z-index: 1001;
   position: fixed;
   display: none;
   flex-direction: column;

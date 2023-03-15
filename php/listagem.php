@@ -51,7 +51,7 @@ switch ($method) {
                             <tr class='table--item"." ".$i."'>
                                 <td>".$room_natureza[$i]."</td>
                                 <td>".$room_localidade[$i]."</td>
-                                <td>".$room_nomenclatura[$i]."</td>
+                                <td class='item--name'>".$room_nomenclatura[$i]."</td>
                                 <td>".$room_modelo[$i]."</td>
                                 <td>FSG-".$room_patrimonio[$i]."</td>
                                 <td class='table--item--action'>
@@ -59,55 +59,69 @@ switch ($method) {
                                         <i class='fa-solid fa-gear'></i>
                                     </button>
                                     <button class='table--room--toggle--button button--default' onclick='getLineIndex();'>
-                                        <i class='fa-solid fa-caret-down'></i>
+                                        <i class='fa-solid fa-caret-down arrow--down"." ".$i."'></i>
                                     </button>
                                 </td>
                             </tr>
                             <tr class='table--item--more"." ".$i."'>
                                 <th>
                                     <div>
-                                        N/S: ".$room_serie[$i]."
+                                        <label>N/S: </label>
+                                        <p>".$room_serie[$i]."</p>
                                     </div>
                                     <div>
-                                        Rede: ".$room_rede[$i]."
-                                    </div>
-                                </th>
-                                <th>
-                                    <div>
-                                        CPU: ".$room_cpu[$i]."
-                                    </div>
-                                    <div>
-                                        GPU: ".$room_gpu[$i]."
+                                        <label>Rede: </label>
+                                        <p>".$room_rede[$i]."</p>
                                     </div>
                                 </th>
                                 <th>
                                     <div>
-                                        Disco: ".$room_disco[$i]."
+                                        <label>CPU: </label>
+                                        <p>".$room_cpu[$i]."</p>
                                     </div>
                                     <div>
-                                        Cadeado: ".$room_cadeado[$i]."
-                                    </div>
-                                </th>
-                                <th>
-                                    <div>
-                                        Cabo de Aço: ".$room_cabo[$i]."
-                                    </div>
-                                    <div>
-                                        Desempenho: ".$room_desempenho[$i]."
+                                        <label>GPU: </label>
+                                        <p>".$room_gpu[$i]."</p>
                                     </div>
                                 </th>
                                 <th>
                                     <div>
-                                        Observações: ".$room_obser[$i]."
+                                        <label>RAM: </label>
+                                        <p>".$room_ram[$i]."</p>
                                     </div>
                                     <div>
-                                        Data: ".$room_dataver[$i]."
+                                        <label>Disco: </label>
+                                        <p>".$room_disco[$i]."</p>
+                                    </div>
+                                <th>
+                                    <div>
+                                        <label>Monitor: </label>
+                                        <p>".$room_monitor[$i]."</p>
+                                    </div>
+                                    <div>
+                                        <label>Cadeado: </label>
+                                        <p>".$room_cadeado[$i]."</p>
                                     </div>
                                 </th>
                                 <th>
                                     <div>
-                                        <button class='button--default'><i class='fa-sharp fa-solid fa-xmark'></i></button>
-                                    </div>    
+                                        <label>Cabo de Aço: </label>
+                                        <p>".$room_cabo[$i]."</p>
+                                    </div>
+                                    <div>
+                                        <label>Data: </label>
+                                        <p>".$room_dataver[$i]."</p>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div>
+                                        <label>Desempenho: </label>
+                                        <p>".$room_desempenho[$i]."</p>
+                                    </div>
+                                    <div>
+                                        <label> Observações: </label>
+                                        <p>".$room_obser[$i]."</p>
+                                    </div>
                                 </th>
                             </tr>
                             ";
