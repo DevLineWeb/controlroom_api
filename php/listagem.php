@@ -49,11 +49,11 @@ switch ($method) {
 
                             echo "
                             <tr class='table--item"." ".$i."'>
-                                <td>".$room_natureza[$i]."</td>
-                                <td>".$room_localidade[$i]."</td>
-                                <td class='item--name'>".$room_nomenclatura[$i]."</td>
-                                <td>".$room_modelo[$i]."</td>
-                                <td>FSG-".$room_patrimonio[$i]."</td>
+                                <td class='item--info'>".$room_natureza[$i]."</td>
+                                <td class='item--info'>".$room_localidade[$i]."</td>
+                                <td class='item--info'>".$room_nomenclatura[$i]."</td>
+                                <td class='item--info'>".$room_modelo[$i]."</td>
+                                <td class='item--info'>FSG-".$room_patrimonio[$i]."</td>
                                 <td class='table--item--action'>
                                     <button class='table--room--config--button button--default'>
                                         <i class='fa-solid fa-gear'></i>

@@ -182,13 +182,13 @@ function addRoom() {
 
 
 function search() {
-  const searchbox = document.getAnimations('table--search--input').value;
+  const searchbox = document.getElementById('table--search--input').value.toUpperCase();
   const storeitems = document.getElementById('table--room--itens');
-  const product = document.querySelector('.table--item');
-  const pname = storeitems.getElementsByClassName('item--name');
+  const product = document.querySelectorAll('.table--item');
+  const pname = storeitems.getElementsByClassName('item--info');
 
   for (let i = 0; i < pname.length; i++) {
-    const match = product[i].getElementsByClassName('item--name')[0];
+    const match = product[i].getElementsByClassName('item--info')[0];
 
     if (match) {
       let textvalue = match.textContent || match.innerHTML;
