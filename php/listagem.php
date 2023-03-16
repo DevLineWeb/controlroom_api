@@ -63,7 +63,7 @@ switch ($method) {
                                     </button>
                                 </td>
                             </tr>
-                            <tr class='table--item--more"." ".$i."'>
+                            <tr class='table--item table--item--more"." ".$i."'>
                                 <th>
                                     <div>
                                         <label>N/S: </label>

@@ -181,14 +181,17 @@ function addRoom() {
 }
 
 
+
+// FILTRAGEM DOS DADOS DA TABELA
 function search() {
   const searchbox = document.getElementById('table--search--input').value.toUpperCase();
-  const storeitems = document.getElementById('table--room--itens');
+  // const storeitems = document.getElementById('table--room--itens');
   const product = document.querySelectorAll('.table--item');
-  const pname = storeitems.getElementsByClassName('item--info');
+  // const pname = storeitems.getElementsByTagName('td');
 
-  for (let i = 0; i < pname.length; i++) {
-    const match = product[i].getElementsByClassName('item--info')[0];
+  for (let i = 0; i < product.length; i++) {
+    const match = product[i]
+    // .getElementsByTagName('td')[0];
 
     if (match) {
       let textvalue = match.textContent || match.innerHTML;
@@ -200,6 +203,5 @@ function search() {
         product[i].style.display = "none";
       }
     }
-    
   }
 }
