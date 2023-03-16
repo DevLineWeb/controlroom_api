@@ -49,17 +49,19 @@ switch ($method) {
 
                             echo "
                             <tr class='table--item"." ".$i."'>
+                                <input class='list--item--id"." ".$i."' type='hidden' value='".$id[$i]."'>
                                 <td class='item--info'>".$room_natureza[$i]."</td>
                                 <td class='item--info'>".$room_localidade[$i]."</td>
                                 <td class='item--info'>".$room_nomenclatura[$i]."</td>
                                 <td class='item--info'>".$room_modelo[$i]."</td>
                                 <td class='item--info'>FSG-".$room_patrimonio[$i]."</td>
+                                <td class='item--info'>".$room_serie[$i]."</td>
                                 <td class='table--item--action'>
                                     <button class='table--room--config--button button--default'>
                                         <i class='fa-solid fa-gear'></i>
                                     </button>
                                     <button class='table--room--toggle--button button--default' onclick='getLineIndex();'>
-                                        <i class='fa-solid fa-caret-down arrow--down"." ".$i."'></i>
+                                    <i class='fa-solid fa-ellipsis-vertical'></i>
                                     </button>
                                 </td>
                             </tr>

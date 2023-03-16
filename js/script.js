@@ -1,39 +1,8 @@
 
 
-const clickedButton = document.getElementsByClassName('table--room--toggle--button');
-
-window.onload = getLineIndex();
-function getLineIndex(){
-    for(x=0;x<clickedButton.length;x++){
-        // arranjo os listeners com os index das linhas
-        (function(index){
-        clickedButton[x].addEventListener("click", function(){
-            infoShow(index);
-        });
-        })(x);
-    }
-}
-function infoShow(element){ // element é o index da linha clicada
-    console.log(element); // mostrar index da linha como exemplo
-
-    // $('.table--item--more').removeClass('show')
-    $('.table--item--more').removeClass('show');
-    $('.table--item--more'+'.'+element).toggleClass('show');
-    $('.table--item').removeClass('append');
-    $('.table--item'+'.'+element).toggleClass('append');
-    $('.arrow--down'+'.'+element).toggleClass('down');
-
-// removo os listeners
-    for(x=0;x<clickedButton.length;x++){
-        objclone = clickedButton[x].cloneNode(true);
-        clickedButton[x].parentNode.replaceChild(objclone, clickedButton[x]);
-    }
-getLineIndex();
-}
 
 
-
-
+// LISTAGEM DE SALAS COM AJAX
 $(document).ready(roomList());
 
 function roomList() {
@@ -49,11 +18,40 @@ function roomList() {
         success: function (data)
         {
             $('#table--room--itens').html(data);
+            getLineIndex();
         }
     });
 }
 
+// EVENTO OPEN AO CLICAR EM UM ITEM DA LISTA
+const clickedButton = document.getElementsByClassName('table--room--toggle--button');
 
+function getLineIndex(){
+    for(x=0;x<clickedButton.length;x++){
+        // arranjo os listeners com os index das linhas
+        (function(index){
+        clickedButton[x].addEventListener("click", function(){
+            infoShow(index);
+        });
+        })(x);
+    }
+}
+function infoShow(element){ // element é o index da linha clicada
+    console.log(element); // mostrar index da linha como exemplo
+
+    // $('.table--item--more').removeClass('show')
+    $('.table--item--more'+'.'+element).toggleClass('show');
+    $('.table--item'+'.'+element).toggleClass('append');
+
+// removo os listeners
+    for(x=0;x<clickedButton.length;x++){
+        objclone = clickedButton[x].cloneNode(true);
+        clickedButton[x].parentNode.replaceChild(objclone, clickedButton[x]);
+    }
+getLineIndex();
+}
+
+// ANIMAÇÕES DE INTERAÇÃO COM JQUERY
 $('#menu--toggle').click(function () {
   $('.header--mobile').toggleClass("show")
 }
@@ -75,7 +73,7 @@ $('#table--button--filter--grid').click(function () {
   $('.table--room').toggleClass('change');
 })
 
-
+// MODALS BUTTONS
 document.addEventListener('click', (e) => {
   const isDropdownBtn = e.target.classList.contains('table--button--add--room')
   if (!isDropdownBtn && e.target.closest('#add--room--box') != null) return;
@@ -122,6 +120,8 @@ document.addEventListener('click', (e) => {
   }
 })
 
+
+// ADIÇÃO DE SALA NO BD COM AJAX
 function addRoom() {
     const natureza = document.getElementById('natureza').value;
     const localidade = document.getElementById('localidade').value;
