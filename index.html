@@ -92,7 +92,272 @@
         <section id="modal--add--room">
             <form id="add--room--box">
                 <div class="modal--legend">
-                    <legend>Room Information</legend>
+                    <legend><i class="fa-solid fa-lines-leaning"></i> ° Room Information</legend>
+                    <div class="modal--close"><i class="fa-regular fa-circle-xmark"></i></div>
+                </div>
+                <div class="box--line">
+                    <div class="box--col">
+                        <label for="">ID</label>
+                        <input type="text" name="" id="edit--show--id" disabled placeholder="Auto Incremented!">
+                    </div>
+                    <div class="box--col">
+                        <label for="room--date--edit">Last Mod</label>
+                        <input type="date" name="" id="room--date--edit" disabled>
+                    </div>
+                    <div class="box--col">
+                        <label for="nomesala">Sala: </label>
+                        <input type="text" name="nomesala" id="nomesala" placeholder="Sala" required>
+                    </div>
+                    <div class="box--col">
+                        <label for="localidade">Local: </label>
+                        <select name="localidade" id="localidade" required>
+                            <option value="" selected>Localidade</option>
+                            <option value="Bloco A">Bloco A</option>
+                            <option value="Bloco B">Bloco B</option>
+                            <option value="Bloco C">Bloco C</option>
+                            <option value="Bloco H">Bloco H</option>
+                            <option value="Veterinária">Veterinária</option>
+                            <option value="CIS">CIS</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="box--line">
+                    <div class="box--col">
+                        <label for="natureza">Natureza: </label>
+                        <select name="natureza" id="natureza" required>
+                            <option value="" selected>Natureza</option>
+                            <option value="Academic">Acadêmica</option>
+                            <option value="Administrative">Administrativa</option>
+                        </select>
+                    </div>
+                    <div class="box--col">
+                        <label for="modelo">Máquina: </label>
+                        <select name="modelo" id="modelo" required>
+                            <option value="" selected>Modelo</option>
+                            <option value="Optiplex 380">Optiplex 380</option>
+                            <option value="Optiplex 390">Optiplex 390</option>
+                            <option value="Optiplex 3010">Optiplex 3010</option>
+                            <option value="Optiplex 7010">Optiplex 7010</option>
+                            <option value="Optiplex 3040">Optiplex 3040</option>
+                            <option value="Optiplex 3060">Optiplex 3060</option>
+                            <option value="Optiplex 3070">Optiplex 3070</option>
+                            <option value="Optiplex 3080">Optiplex 3080</option>
+                            <option value="Optiplex 5090">Optiplex 5090</option>
+                            <option value="Vostro 347">Vostro 3470</option>
+                        </select>
+                    </div>
+                    <div class="box--col">
+                        <label for="patrimonio">Patrimônio: </label>
+                        <input type="text" name="patrimonio" id="patrimonio" placeholder="Patrimônio">
+                    </div>
+                    <div class="box--col">
+                        <label for="serie">N°. Série</label>
+                        <input type="text" name="serie" id="serie" placeholder="N°. Série">
+                    </div>
+                </div>
+                <div class="box--line">
+                    <div class="box--col">
+                        <label for="gpu">GPU: </label>
+                        <input type="text" name="gpu" id="gpu" placeholder="GPU">
+                    </div>
+                    <div class="box--col">
+                        <label for="disco">Disco: </label>
+                        <select name="disco" id="disco">
+                            <option value="">Disco</option>
+                            <option value="80GB HD">80GB HD</option>
+                            <option value="120GB HD">120GB HD</option>
+                            <option value="250GB HD">250GB HD</option>
+                            <option value="500GB HD">500GB HD</option>
+                            <option value="1TB HD">1TB HD</option>
+                            <option value="80GB SSD">80GB SSD</option>
+                            <option value="120GB SSD">120GB SSD</option>
+                            <option value="250GB SSD">250GB SSD</option>
+                            <option value="500GB SSD">500GB SSD</option>
+                            <option value="1TB SSD">1TB SSD</option>
+                        </select>
+                    </div>
+                    <div class="box--col">
+                        <label for="cpu">CPU: </label>
+                        <select name="cpu" id="cpu">
+                            <option value="">Processador</option>
+                            <option value="Pentium">Pentium</option>
+                            <option value="Core 2 Duo">Core 2 Duo</option>
+                            <option value="Intel core i3">Intel core i3</option>
+                            <option value="Intel core i5">Intel core i5</option>
+                            <option value="Intel core i7">Intel core i7</option>
+                            <option value="Intel core i9">Intel core i9</option>
+                        </select>
+                    </div>
+                    <div class="box--col">
+                        <label for="ram">RAM: </label>
+                        <input type="number" name="ram" id="ram" placeholder="RAM">
+                    </div>
+                </div>
+                <div class="box--line">
+                    
+                    <div class="box--col checkbox--area">
+                        <div>
+                            <input type="radio" name="status--rede" id="rede--wireless" value="Wireless">
+                            <label for="rede--wireless"><h3><i class="fa-solid fa-wifi"></i></h3></label>
+                        </div>
+                        <div>
+                            <input type="radio" name="status--rede" id="rede--lan" value="LAN">
+                            <label for="rede--lan"><h3><i class="fa-solid fa-globe"></i></h3></label>
+                        </div>
+                        <!--  -->
+                    </div>
+                    <div class="box--col">
+                        <label for="desempenho">Desempenho: </label>
+                        <select name="" id="desempenho">
+                            <option value="">Desempenho</option>
+                            <option value="Bom">Bom Desempenho</option>
+                            <option value="Acetável">Acetável Desempenho</option>
+                            <option value="Aviso">Aviso de Manutenção</option>
+                        </select>
+                    </div>
+                    <div class="box--col checkbox--area">
+                        <div>
+                            <input type="checkbox" name="" id="cadeado">
+                            <label for="cadeado"><i class="fa-solid fa-lock"></i></label>
+                        </div>
+                        
+                        <div>
+                            <input type="checkbox" name="" id="cabo">
+                            <label for="cabo"><i class="fa-solid fa-shield"></i></label>
+                        </div>
+                        
+                        <div>
+                            <input type="checkbox" name="" id="monitor">
+                            <label for="monitor"><i class="fa-sharp fa-solid fa-desktop"></i></label>
+                        </div>
+                    </div>
+                    <div class="box--col">
+                        <div>
+                            <label for="obs">Observações: </label>
+                            <input name="" id="obs" type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="box--line">
+                    <button type="button" class="button--cancel">Cancelar</button>
+                    <!-- <p>Lembre-se de preencher todos os campos!</p> -->
+                    <button type="button" class="button--submit" onclick="addRoom()">Cadastrar <i class="fa-solid fa-plus"></i></button>
+                </div>
+            </form>
+        </section>
+        <section id="modal--filter--room">
+            <form action="" id="filter--select--box">
+                <div class="modal--legend">
+                    <legend>Filters</legend>
+                </div>
+                <!--  -->
+                <div class="box--line">
+                    <div class="box--col checkbox--area">
+                        <div>
+                            <input type="radio" name="status--natureza" id="nat--acad">
+                            <label for="nat--acad"><h3>ACAD</h3></label>
+                        </div>
+                        <div>
+                            <input type="radio" name="status--natureza" id="nat--adm">
+                            <label for="nat--adm"><h3>ADM</h3></label>
+                        </div>
+                        <!--  -->
+                    </div>
+                    <div class="box--col checkbox--area">
+                        <div>
+                            <input type="checkbox" name="" id="status--cadeado">
+                            <label for="status--cadeado"><i class="fa-solid fa-lock"></i></label>
+                        </div>
+                        
+                        <div>
+                            <input type="checkbox" name="" id="status--cabo">
+                            <label for="status--cabo"><i class="fa-solid fa-shield"></i></label>
+                        </div>
+                        
+                        <div>
+                            <input type="checkbox" name="" id="status--monitor">
+                            <label for="status--monitor"><i class="fa-sharp fa-solid fa-desktop"></i></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="box--line">
+                    <div class="box--col checkbox--area">
+                        <div>
+                            <input type="radio" name="status--gpu" id="gpu--amd">
+                            <label for="gpu--amd"><h3>AMD</h3></label>
+                        </div>
+                        <div>
+                            <input type="radio" name="status--gpu" id="gpu--intel">
+                            <label for="gpu--intel"><h3>Intel</h3></label>
+                        </div>
+                    </div>
+                    <div class="box--col checkbox--area">
+                        <div>
+                            <input type="radio" name="status--rede" id="rede--lan" value="LAN">
+                            <label for="rede--lan"><h3><i class="fa-solid fa-wifi"></i></h3></label>
+                        </div>
+                        <div>
+                            <input type="radio" name="status--rede" id="rede--wireless" value="Wireless">
+                            <label for="rede--wireless"><h3><i class="fa-solid fa-globe"></i></h3></label>
+                        </div>
+                        <!--  -->
+                    </div>
+                </div>
+                <div class="box--line">
+                    <div class="box--col">
+                        <label for="cpu">CPU: </label>
+                        <select name="cpu" id="cpu">
+                            <option value="">Processador</option>
+                            <option value="Pentium">Pentium</option>
+                            <option value="Core 2 Duo">Core 2 Duo</option>
+                            <option value="Intel core i3">Intel core i3</option>
+                            <option value="Intel core i5">Intel core i5</option>
+                            <option value="Intel core i7">Intel core i7</option>
+                            <option value="Intel core i9">Intel core i9</option>
+                        </select>
+                    </div>
+                    <div class="box--col">
+                        <label for="ram">RAM: </label>
+                        <input type="number" name="ram" id="ram" placeholder="RAM">
+                    </div>
+                </div>
+                <div class="box--line">
+                    <div class="box--col">
+                        <label for="desempenho">Desempenho: </label>
+                        <select name="" id="desempenho">
+                            <option value="">Desempenho</option>
+                            <option value="Bom">Bom Desempenho</option>
+                            <option value="Acetável">Acetável Desempenho</option>
+                            <option value="Aviso">Aviso de Manutenção</option>
+                        </select>
+                    </div>
+                    <div class="box--col">
+                        <label for="disco">Disco: </label>
+                        <select name="disco" id="disco">
+                            <option value="">Disco</option>
+                            <option value="80GB HD">80GB HD</option>
+                            <option value="120GB HD">120GB HD</option>
+                            <option value="250GB HD">250GB HD</option>
+                            <option value="500GB HD">500GB HD</option>
+                            <option value="1TB HD">1TB HD</option>
+                            <option value="80GB SSD">80GB SSD</option>
+                            <option value="120GB SSD">120GB SSD</option>
+                            <option value="250GB SSD">250GB SSD</option>
+                            <option value="500GB SSD">500GB SSD</option>
+                            <option value="1TB SSD">1TB SSD</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="box--line modal--footer">
+                    <button class="button--cancel">Clean</button>
+                    <button class="button--submit">Apply</button>
+                </div>
+            </form>
+        </section>
+        <section id="modal--edit--room">
+            <form class="edit--room--box">
+                <div class="modal--legend">
+                    <legend>Edit Room</legend>
                 </div>
                 <div class="box--line">
                     <div class="box--col">
@@ -233,198 +498,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="add--room--footer">
-                    <button type="button" class="button--cancel">Cancelar</button>
-                    <!-- <p>Lembre-se de preencher todos os campos!</p> -->
-                    <button type="button" class="button--submit" onclick="addRoom()">Cadastrar <i class="fa-solid fa-plus"></i></button>
-                </div>
-            </form>
-        </section>
-        <section id="modal--filter--room">
-            <section id="filter--select--box">
-                <div class="modal--legend">
-                    <legend>Filters</legend>
-                </div>
-                <div class="modal--content">
-                    <form action="">
-                        <!--  -->
-                        <div>
-                            <input type="radio" name="natur" id="academic">
-                            <label for="academic">Acadêmico</label>
-                        </div>
-                        <div>
-                            <input type="radio" name="natur" id="administrative">
-                            <label for="administrative">Administrativo</label>
-                        </div>
-                        <!--  -->
-                        <div>
-                            <input type="checkbox" name="" id="tem--cadeado">
-                            <label for="tem--cadeado">Cadeado</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" name="" id="tem--cabo">
-                            <label for="tem--cabo">Cabo de Aço</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" name="" id="tem--monitor">
-                            <label for="tem--monitor">Monitor</label>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal--footer">
-                    <button>Pesquisar</button>
-                </div>
-            </section>
-        </section>
-        <section id="modal--edit--room">
-            <form class="edit--room--box">
-                <div class="modal--legend">
-                    <legend>Edit Room</legend>
-                </div>
-                <div class="box--line">
-                    <div class="box--col">
-                        <label for="">ID</label>
-                        <input type="text" name="" id="edit--show--id" disabled>
-                    </div>
-                    <div class="box--col">
-                        <label for="room--date--edit">Last Mod</label>
-                        <input type="date" name="" id="room--date--edit" disabled>
-                    </div>
-                    <div class="box--col">
-                        <label for="nomesala">Sala: </label>
-                        <input type="text" name="nomesala" id="nomesala" placeholder="Sala" required>
-                    </div>
-                    <div class="box--col">
-                        <label for="localidade">Local: </label>
-                        <select name="localidade" id="localidade" required>
-                            <option value="" selected>Localidade</option>
-                            <option value="Bloco A">Bloco A</option>
-                            <option value="Bloco B">Bloco B</option>
-                            <option value="Bloco C">Bloco C</option>
-                            <option value="Bloco H">Bloco H</option>
-                            <option value="Veterinária">Veterinária</option>
-                            <option value="CIS">CIS</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="box--line">
-                    <div class="box--col">
-                        <label for="natureza">Natureza: </label>
-                        <select name="natureza" id="natureza" required>
-                            <option value="" selected>Natureza</option>
-                            <option value="Academic">Acadêmica</option>
-                            <option value="Administrative">Administrativa</option>
-                        </select>
-                    </div>
-                    <div class="box--col">
-                        <label for="modelo">Máquina: </label>
-                        <select name="modelo" id="modelo" required>
-                            <option value="" selected>Modelo</option>
-                            <option value="Optiplex 380">Optiplex 380</option>
-                            <option value="Optiplex 390">Optiplex 390</option>
-                            <option value="Optiplex 3010">Optiplex 3010</option>
-                            <option value="Optiplex 7010">Optiplex 7010</option>
-                            <option value="Optiplex 3040">Optiplex 3040</option>
-                            <option value="Optiplex 3060">Optiplex 3060</option>
-                            <option value="Optiplex 3070">Optiplex 3070</option>
-                            <option value="Optiplex 3080">Optiplex 3080</option>
-                            <option value="Optiplex 5090">Optiplex 5090</option>
-                            <option value="Vostro 347">Vostro 3470</option>
-                        </select>
-                    </div>
-                    <div class="box--col">
-                        <label for="patrimonio">Patrimônio: </label>
-                        <input type="text" name="patrimonio" id="patrimonio" placeholder="Patrimônio">
-                    </div>
-                    <div class="box--col">
-                        <label for="serie">N°. Série</label>
-                        <input type="text" name="serie" id="serie" placeholder="N°. Série">
-                    </div>
-                </div>
-                <div class="box--line">
-                    <div class="box--col">
-                        <label for="gpu">GPU: </label>
-                        <input type="text" name="gpu" id="gpu" placeholder="GPU">
-                    </div>
-                    <div class="box--col">
-                        <label for="disco">Disco: </label>
-                        <select name="disco" id="disco">
-                            <option value="">Disco</option>
-                            <option value="80GB HD">80GB HD</option>
-                            <option value="120GB HD">120GB HD</option>
-                            <option value="250GB HD">250GB HD</option>
-                            <option value="500GB HD">500GB HD</option>
-                            <option value="1TB HD">1TB HD</option>
-                            <option value="80GB SSD">80GB SSD</option>
-                            <option value="120GB SSD">120GB SSD</option>
-                            <option value="250GB SSD">250GB SSD</option>
-                            <option value="500GB SSD">500GB SSD</option>
-                            <option value="1TB SSD">1TB SSD</option>
-                        </select>
-                    </div>
-                    <div class="box--col">
-                        <label for="cpu">CPU: </label>
-                        <select name="cpu" id="cpu">
-                            <option value="">Processador</option>
-                            <option value="Pentium">Pentium</option>
-                            <option value="Core 2 Duo">Core 2 Duo</option>
-                            <option value="Intel core i3">Intel core i3</option>
-                            <option value="Intel core i5">Intel core i5</option>
-                            <option value="Intel core i7">Intel core i7</option>
-                            <option value="Intel core i9">Intel core i9</option>
-                        </select>
-                    </div>
-                    <div class="box--col">
-                        <label for="ram">RAM: </label>
-                        <input type="number" name="ram" id="ram" placeholder="RAM">
-                    </div>
-                </div>
-                <div class="box--line">
-                    <div class="box--col">
-                        <label for="rede">Rede: </label>
-                        <select name="rede" id="rede">
-                            <option value="">Rede</option>
-                            <option value="LAN">LAN</option>
-                            <option value="Wireless">Wireless</option>
-                        </select>
-                    </div>
-                    <div class="box--col">
-                        <label for="desempenho">Desempenho: </label>
-                        <select name="" id="desempenho">
-                            <option value="">Desempenho</option>
-                            <option value="Bom">Bom Desempenho</option>
-                            <option value="Acetável">Acetável Desempenho</option>
-                            <option value="Aviso">Aviso de Manutenção</option>
-                        </select>
-                    </div>
-                    <div class="box--col checkbox--area">
-                        <div>
-                            <input type="checkbox" name="" id="status--cadeado">
-                            <label for="status--cadeado"><i class="fa-solid fa-lock"></i></label>
-                        </div>
-                        
-                        <div>
-                            <input type="checkbox" name="" id="status--cabo">
-                            <label for="status--cabo"><i class="fa-solid fa-shield"></i></label>
-                        </div>
-                        
-                        <div>
-                            <input type="checkbox" name="" id="status--monitor">
-                            <label for="status--monitor"><i class="fa-sharp fa-solid fa-desktop"></i></label>
-                        </div>
-                    </div>
-                    <div class="box--col">
-                        <div>
-                            <label for="obs">Observações: </label>
-                            <input name="" id="obs" type="text">
-                        </div>
-                    </div>
-                </div>
-                <div class="box--line box--line--textarea">
-                    <label for="obs">Observações: </label>
-                    <textarea name="" id="obs"></textarea>
-                </div>
-                <div class="add--room--footer">
+                <div class="box--line add--room--footer">
                     <button type="button" onclick="editRoom()">Atualizar</button>
                 </div>
             </form>
@@ -455,24 +529,4 @@
 <script type="text/javascript" src="./js/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="./js/slick.min.js"></script>
 <script src="./js/script.js"></script>
-<!-- <script type="text/javascript" src="./js/three.r134.min.js"></script>
-<script type="text/javascript" src="./js/vanta.dots.min.js"></script>
-<script>
-    VANTA.DOTS({
-      el: "#sec--project--background",
-      mouseControls: true,
-      touchControls: true,
-      gyroControls: false,
-      minHeight: 200.00,
-      minWidth: 200.00,
-      scale: 1.00,
-      scaleMobile: 1.00,
-      color: 0x00ffea,
-      color2: 0x00ffea,
-      backgroundColor: 0x1c1b1f, 
-      size: 1.20,
-      spacing: 8.00,
-      showLines: false
-    })
-    </script> -->
 </html>

@@ -29,6 +29,12 @@ html{
     font-size: 62.5%;
     --primaryGradient: linear-gradient(95deg, #3da2b1 20%, #30126a 100%, #000 50%);
 }
+$base--color: #00FFEA;
+$dark--color: #000000;
+$complementary--color: #00211E;
+$optional--color: #211F14;
+$white--color: #DFE5E5;
+
 @keyframes rotate {
     0% {
       transform: rotate(0deg);
@@ -39,7 +45,7 @@ html{
   }
   #sec--project--background {
     z-index: -1;
-    background-color: #1c1b1f;
+    background-color: $dark--color;
     position: absolute;
     inset: 0;
     display: flex;
@@ -54,7 +60,7 @@ html{
     width: var(--size);
     height: var(--size);
     filter: blur(calc(var(--size) / 5));
-    background-image: linear-gradient(hsla(180, 100%, 50%, 0.85), hsl(268, 100%, 31%));
+    background-image: linear-gradient($base--color, $optional--color);
     animation: rotate var(--speed) var(--easing) alternate infinite;
     border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
   }
@@ -101,8 +107,8 @@ html{
 }
 @mixin pointerElement {
     background-color: transparent;
-    color: #fff;
-    border: 1px solid #c0c0c0;
+    color: $white--color;
+    border: 1px solid $white--color;
     border-radius: 5px;
     line-height: 30px;
     padding: 0 10px;
@@ -110,7 +116,7 @@ html{
 }
 @mixin submitPointer {
     background-color: #00211E;
-    color: #fff;
+    color: $white--color;
     border: 1px solid #c0c0c0;
     border-radius: 5px;
     line-height: 30px;
@@ -119,7 +125,7 @@ html{
 }
 @mixin cancelPointer {
     background-color: #000000;
-    color: #fff;
+    color: $white--color;
     border: 1px solid #c0c0c0;
     border-radius: 5px;
     line-height: 30px;
@@ -148,9 +154,9 @@ html{
 }
 @mixin inputElement {
     outline: none;
-    border: 1px solid #c0c0c08c !important;
-    background-color: #fff;
-    color: #fff;
+    border: 1px solid $optional--color !important;
+    background-color: $white--color;
+    color: $white--color;
     border-radius: 3px;
     width: 100%;
     height: 30px;
@@ -228,7 +234,7 @@ select option {
     color: #1c1b1f60;
 }
 /* ESTILIZAÇÃO LABEL ~ CHECKBOX */
-input[type=checkbox] {
+input[type=checkbox], input[type=radio] {
     @include hiddenCheckbox();
 }
 
@@ -236,6 +242,19 @@ input[type=checkbox]:checked ~ label {
     color: #00211E;
     border: 1px solid #00211E;
     transition: all 0.2s;
+}
+label h3 {
+    color: #797979;
+    border: 1px solid transparent;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+input[type=radio]:checked ~ label h3 {
+    border: 1px solid #00211E;
+    color: #00211E;
+    transition: all 0.3s;
 }
 
 /*============================================= NAVBAR=================================================== */
@@ -371,7 +390,7 @@ header {
     left: 0;
     font-size: 1.6rem;
     background-color: transparent;
-    color: #fff;
+    color: $white--color;
     padding: 0 10px;
     cursor: pointer;
     display: flex;
@@ -383,7 +402,8 @@ header {
     margin-left: 40px;
     border: none !important;
     font-size: 1.6rem;
-    color: #fff;
+    color: $white--color;
+    background-color: transparent;
 }
 .room--list--options {
     position: absolute;
@@ -485,7 +505,7 @@ tr {
     transition: all 0.2s;
 }
 .table--item--more th {
-    color: #fff;
+    color: $white--color;
     padding: 10px;
     font-weight: normal;
     font-size: 1.2rem;
@@ -531,15 +551,32 @@ tr {
     font-size: 1.4rem;
     display: flex;
     flex-direction: column;
-    padding: 10px;
     border-radius: 5px;
     background-color: #DFE5E5
 }
+.modal--legend {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    background-color: #00211E;
+    width: 100%;
+    color: $white--color;
+}
 #add--room--box legend {
+    text-align: left;
     font-size: 1.8rem;
+    padding: 0.5rem;
     font-size: 2rem;
-    color: black;
-    text-transform: uppercase;
+    background-color: transparent;
+    border-radius: 5px;
+}
+.modal--close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    font-size: 2rem;
+    cursor: pointer;
 }
 .box--line {
     min-height: 60px;
@@ -547,7 +584,7 @@ tr {
     grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
     grid-gap: 0px;
     width: 100%;
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 .box--col {
@@ -557,12 +594,8 @@ tr {
     padding: 10px;
     position: relative;
 }
-.add--room--footer {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    height: 70px;
+.box--line button{
+    width: 95%;
 }
 .label--for--ico {
     @include labelBigIco();
@@ -591,13 +624,10 @@ tr {
     @include modal();
     display: flex;
     flex-direction: column;
-    width: 200px;
-    background-color: #fff;
+    width: 400px;
+    background-color: #DFE5E5;
     border-radius: 5px;
-    box-shadow: 0 1px 5px 0 #30126a;
-}
-#filter--select--box legend {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
 }
 /* ================================================== MODAL EDIT ROOM ====================================================*/
 #modal--edit--room {
@@ -607,7 +637,6 @@ tr {
     @include modalOverlayShow();
 }
 .edit--room--box {
-    background-color: transparent;
     width: 900px;
     @include modal();
     color: #000;
@@ -616,8 +645,11 @@ tr {
     flex-direction: column;
     padding: 10px;
     border-radius: 5px;
-    box-shadow: 0 1px 5px 0 #30126a;
-    background-color: #fff
+    background-color: #DFE5E5
+}
+.edit--room--box button {
+    @include submitPointer();
+    width: 100%;
 }
 .box--col.checkbox--area {
     display: flex;
@@ -642,7 +674,7 @@ footer {
     background-color: #000;
     width: 100%;
     display: flex;
-    border-top: 1px solid #fff;
+    border-top: 1px solid $white--color;
     color: white;
 }
 footer div {
@@ -689,6 +721,12 @@ footer div button{
     #add--room--box {
         width: 100%;
         max-width: 960px;
+    }
+    .edit--room--box {
+        width: 100%;
+    }
+    #filter--select--box {
+        width: 100%;
     }
 }
 

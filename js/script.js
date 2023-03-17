@@ -119,7 +119,9 @@ document.addEventListener('click', (e) => {
 
   }
 })
-
+$('.fa-circle-xmark').click(function() {
+  $('#modal--add--room').removeClass("show")
+})
 
 // ADIÇÃO DE SALA NO BD COM AJAX
 function addRoom() {
@@ -129,7 +131,7 @@ function addRoom() {
     const modelo = document.getElementById('modelo').value;
     const patrimonio = document.getElementById('patrimonio').value;
     const serie = document.getElementById('serie').value;
-    const rede = document.getElementById('rede').value;
+    const rede = document.querySelector('input[name="status--rede"]:checked').value;
     const desempenho = document.getElementById('desempenho').value;
     const gpu = document.getElementById('gpu').value;
     const disco = document.getElementById('disco').value;
