@@ -62,7 +62,7 @@ html {
   width: var(--size);
   height: var(--size);
   filter: blur(calc(var(--size) / 5));
-  background-image: linear-gradient(hsla(158, 82%, 57%, 0.85), hsl(252, 82%, 57%));
+  background-image: linear-gradient(hsla(180, 100%, 50%, 0.85), hsl(268, 100%, 31%));
   animation: rotate var(--speed) var(--easing) alternate infinite;
   border-radius: 30% 70% 70% 30%/30% 30% 70% 70%;
 }
@@ -74,10 +74,10 @@ html {
     transform: scale(1);
   }
 }
-input[type=text], input[type=number], textarea {
+input[type=text], input[type=number], textarea, input[type=date] {
   outline: none;
   border: 1px solid rgba(192, 192, 192, 0.5490196078) !important;
-  background-color: transparent;
+  background-color: #fff;
   color: #fff;
   border-radius: 3px;
   width: 100%;
@@ -96,6 +96,30 @@ input[type=text], input[type=number], textarea {
   cursor: pointer;
 }
 
+.button--submit {
+  background-color: #00211E;
+  color: #fff;
+  border: 1px solid #c0c0c0;
+  border-radius: 5px;
+  line-height: 30px;
+  padding: 0 10px;
+  cursor: pointer;
+  height: 35px;
+  width: 50%;
+}
+
+.button--cancel {
+  background-color: #000000;
+  color: #fff;
+  border: 1px solid #c0c0c0;
+  border-radius: 5px;
+  line-height: 30px;
+  padding: 0 10px;
+  cursor: pointer;
+  width: 50%;
+  height: 35px;
+}
+
 .button--default:hover {
   color: #00ffea;
   background-color: rgba(184, 248, 243, 0.3647058824);
@@ -112,13 +136,13 @@ button.selected {
 select {
   outline: none;
   border: 1px solid rgba(192, 192, 192, 0.5490196078) !important;
-  background-color: transparent;
+  background-color: #fff;
   color: #fff;
   border-radius: 3px;
   width: 100%;
   height: 30px;
   padding: 0px 5px;
-  color: #1c1b1f;
+  color: #000;
 }
 
 select option {
@@ -134,8 +158,8 @@ input[type=checkbox] {
 }
 
 input[type=checkbox]:checked ~ label {
-  color: #00ffea;
-  border: 1px solid #00ffea;
+  color: #00211E;
+  border: 1px solid #00211E;
   transition: all 0.2s;
 }
 
@@ -454,38 +478,6 @@ tr {
   line-height: 40px;
 }
 
-.pages--controls {
-  font-size: 1.6rem;
-  width: 20%;
-  height: 50px;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.pages--button, .pages--numbers {
-  background-color: transparent;
-  color: #fff;
-  border: 1px solid #c0c0c0;
-  border-radius: 5px;
-  line-height: 30px;
-  padding: 0 10px;
-  cursor: pointer;
-}
-
-.pages--button:hover, .pages--numbers:hover {
-  color: #00ffea;
-  background-color: rgba(184, 248, 243, 0.3647058824);
-  border: 1px solid #b8f8f3;
-  transition: all 0.2s;
-}
-
-.pages--numbers.active {
-  background: var(--primaryGradient);
-  border: 1px solid #b8f8f3;
-}
-
 /* ================================================== MODAL ADD ROOM ====================================================*/
 #modal--add--room {
   top: 0;
@@ -507,8 +499,6 @@ tr {
 }
 
 #add--room--box {
-  border: 1px solid #000;
-  background-color: transparent;
   width: 900px;
   z-index: 1001;
   position: fixed;
@@ -522,8 +512,7 @@ tr {
   flex-direction: column;
   padding: 10px;
   border-radius: 5px;
-  box-shadow: 0 1px 5px 0 #e2e2e2;
-  background-color: #fff;
+  background-color: #DFE5E5;
 }
 
 #add--room--box legend {
@@ -540,7 +529,22 @@ tr {
   grid-gap: 0px;
   width: 100%;
   margin-top: 2rem;
-  border: 1px solid #e2e2e2;
+}
+
+.box--col {
+  text-align: left;
+  width: 200px;
+  display: inline-table;
+  padding: 10px;
+  position: relative;
+}
+
+.add--room--footer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
 }
 
 .label--for--ico {
@@ -554,62 +558,9 @@ tr {
   transition: all 0.2s;
 }
 
-.label--for--ico i {
-  width: 70px;
-}
-
-.box--col {
-  text-align: left;
-  width: 200px;
-  display: inline-table;
-  padding: 10px;
-  position: relative;
-}
-
-.box--obs {
-  width: 100%;
-}
-
-.add--room--footer button {
-  margin: 20px;
-  width: 100px;
-  background: var(--primaryGradient);
-}
-
-.box--line.box--line--textarea {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  border: none;
-  padding: 0;
-}
-
-.box--line.box--line--textarea label {
-  text-align: left;
-}
-
 .box--line.checkbox--area {
   display: flex;
   border: none;
-}
-
-.add--room--footer {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.add--room--footer button {
-  background: var(--primaryGradient);
-  padding: 10px;
-  width: 200px;
-  font-size: 1.8rem;
-  border: 1px solid white;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
 .mobile--buttons {

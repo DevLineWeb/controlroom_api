@@ -54,7 +54,7 @@ html{
     width: var(--size);
     height: var(--size);
     filter: blur(calc(var(--size) / 5));
-    background-image: linear-gradient(hsl(158, 82, 57, 85%), hsl(252, 82, 57));
+    background-image: linear-gradient(hsla(180, 100%, 50%, 0.85), hsl(268, 100%, 31%));
     animation: rotate var(--speed) var(--easing) alternate infinite;
     border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
   }
@@ -108,6 +108,24 @@ html{
     padding: 0 10px;
     cursor: pointer;
 }
+@mixin submitPointer {
+    background-color: #00211E;
+    color: #fff;
+    border: 1px solid #c0c0c0;
+    border-radius: 5px;
+    line-height: 30px;
+    padding: 0 10px;
+    cursor: pointer;
+}
+@mixin cancelPointer {
+    background-color: #000000;
+    color: #fff;
+    border: 1px solid #c0c0c0;
+    border-radius: 5px;
+    line-height: 30px;
+    padding: 0 10px;
+    cursor: pointer;
+}
 @mixin hoverElementPoint {
     color: #00ffea;
     background-color: #b8f8f35d;
@@ -118,16 +136,6 @@ html{
     color: #00ffea;
     border-bottom: 1px solid #b8f8f3;
     transition: all 0.2s;
-}
-@mixin submitButton {
-    background: var(--primaryGradient);
-    padding: 10px;
-    width: 200px;
-    font-size: 1.8rem;
-    border: 1px solid white;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
 }
 @mixin selectedElementPoint {
     color: #00ffea;
@@ -141,7 +149,7 @@ html{
 @mixin inputElement {
     outline: none;
     border: 1px solid #c0c0c08c !important;
-    background-color: transparent;
+    background-color: #fff;
     color: #fff;
     border-radius: 3px;
     width: 100%;
@@ -188,12 +196,22 @@ html{
     -webkit-animation: scale-in-center 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     animation: scale-in-center 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-input[type='text'],input[type='number'],textarea {
+input[type='text'],input[type='number'],textarea, input[type='date'] {
     @include inputElement();
     color: #000
 }
 .button--default {
     @include pointerElement();
+}
+.button--submit {
+    @include submitPointer();
+    height: 35px;
+    width: 50%;
+}
+.button--cancel {
+    @include cancelPointer();
+    width: 50%;
+    height: 35px;
 }
 .button--default:hover {
     @include hoverElementPoint();
@@ -203,7 +221,7 @@ button.selected {
 }
 select {
     @include inputElement();
-    color: #1c1b1f;
+    color: #000;
 }
 select option {
     background-color: rgba(255, 255, 255, 0);
@@ -215,8 +233,8 @@ input[type=checkbox] {
 }
 
 input[type=checkbox]:checked ~ label {
-    color: #00ffea;
-    border: 1px solid #00ffea;
+    color: #00211E;
+    border: 1px solid #00211E;
     transition: all 0.2s;
 }
 
@@ -497,25 +515,7 @@ tr {
     width: 100px;
     line-height: 40px;
 }
-// ================================================== PAGE CONTROLS ==================================================//
-.pages--controls {
-    font-size: 1.6rem;
-    width: 20%;
-    height: 50px;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.pages--button, .pages--numbers {
-    @include pointerElement();
-}
-.pages--button:hover, .pages--numbers:hover {
-    @include hoverElementPoint();
-}
-.pages--numbers.active {
-    @include activeElementPoint();
-}
+
 /* ================================================== MODAL ADD ROOM ====================================================*/
 #modal--add--room {
     @include modalOverlay();
@@ -525,8 +525,6 @@ tr {
     @include modalOverlayShow();
 }
 #add--room--box {
-    border: 1px solid #000;
-    background-color: transparent;
     width: 900px;
     @include modal();
     color: #000;
@@ -535,8 +533,7 @@ tr {
     flex-direction: column;
     padding: 10px;
     border-radius: 5px;
-    box-shadow: 0 1px 5px 0 #e2e2e2;
-    background-color: #fff
+    background-color: #DFE5E5
 }
 #add--room--box legend {
     font-size: 1.8rem;
@@ -551,15 +548,8 @@ tr {
     grid-gap: 0px;
     width: 100%;
     margin-top: 2rem;
-    border: 1px solid #e2e2e2;
 }
 
-.label--for--ico {
-    @include labelBigIco();
-}
-.label--for--ico i {
-    width: 70px;
-}
 .box--col {
     text-align: left;
     width: 200px;
@@ -567,38 +557,19 @@ tr {
     padding: 10px;
     position: relative;
 }
-.box--obs {
+.add--room--footer {
+    display: flex;
     width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
 }
-.add--room--footer button {
-    margin: 20px;
-    width: 100px;
-    background: var(--primaryGradient);
-}
-
-.box--line.box--line--textarea {
-    display: flex ;
-    flex-direction: column ;
-    align-items: flex-start;
-    width: 100%;
-    border: none;
-    padding: 0;
-}
-.box--line.box--line--textarea label {
-    text-align: left;
+.label--for--ico {
+    @include labelBigIco();
 }
 .box--line.checkbox--area {
     display: flex;
     border: none;
-}
-.add--room--footer {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.add--room--footer button {
-    @include submitButton();
 }
 .mobile--buttons {
     position: absolute;

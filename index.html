@@ -96,12 +96,16 @@
                 </div>
                 <div class="box--line">
                     <div class="box--col">
-                        <label for="natureza">Natureza: </label>
-                        <select name="natureza" id="natureza" required>
-                            <option value="" selected>Natureza</option>
-                            <option value="Academic">Acadêmica</option>
-                            <option value="Administrative">Administrativa</option>
-                        </select>
+                        <label for="">ID</label>
+                        <input type="text" name="" id="edit--show--id" disabled placeholder="Auto Incremented!">
+                    </div>
+                    <div class="box--col">
+                        <label for="room--date--edit">Last Mod</label>
+                        <input type="date" name="" id="room--date--edit" disabled>
+                    </div>
+                    <div class="box--col">
+                        <label for="nomesala">Sala: </label>
+                        <input type="text" name="nomesala" id="nomesala" placeholder="Sala" required>
                     </div>
                     <div class="box--col">
                         <label for="localidade">Local: </label>
@@ -115,9 +119,15 @@
                             <option value="CIS">CIS</option>
                         </select>
                     </div>
+                </div>
+                <div class="box--line">
                     <div class="box--col">
-                        <label for="nomesala">Sala: </label>
-                        <input type="text" name="nomesala" id="nomesala" placeholder="Sala" required>
+                        <label for="natureza">Natureza: </label>
+                        <select name="natureza" id="natureza" required>
+                            <option value="" selected>Natureza</option>
+                            <option value="Academic">Acadêmica</option>
+                            <option value="Administrative">Administrativa</option>
+                        </select>
                     </div>
                     <div class="box--col">
                         <label for="modelo">Máquina: </label>
@@ -135,8 +145,6 @@
                             <option value="Vostro 347">Vostro 3470</option>
                         </select>
                     </div>
-                </div>
-                <div class="box--line">
                     <div class="box--col">
                         <label for="patrimonio">Patrimônio: </label>
                         <input type="text" name="patrimonio" id="patrimonio" placeholder="Patrimônio">
@@ -144,23 +152,6 @@
                     <div class="box--col">
                         <label for="serie">N°. Série</label>
                         <input type="text" name="serie" id="serie" placeholder="N°. Série">
-                    </div>
-                    <div class="box--col">
-                        <label for="rede">Rede: </label>
-                        <select name="rede" id="rede">
-                            <option value="">Rede</option>
-                            <option value="LAN">LAN</option>
-                            <option value="Wireless">Wireless</option>
-                        </select>
-                    </div>
-                    <div class="box--col">
-                        <label for="desempenho">Desempenho: </label>
-                        <select name="" id="desempenho">
-                            <option value="">Desempenho</option>
-                            <option value="Bom">Bom Desempenho</option>
-                            <option value="Acetável">Acetável Desempenho</option>
-                            <option value="Aviso">Aviso de Manutenção</option>
-                        </select>
                     </div>
                 </div>
                 <div class="box--line">
@@ -201,26 +192,51 @@
                         <input type="number" name="ram" id="ram" placeholder="RAM">
                     </div>
                 </div>
-                <div class="box--line checkbox--area">
-                    <div class="">
-                        <input type="checkbox" name="" id="cadeado">
-                        <label for="cadeado" class="label--for--ico"><i class="fa-solid fa-lock"></i></label>
+                <div class="box--line">
+                    <div class="box--col">
+                        <label for="rede">Rede: </label>
+                        <select name="rede" id="rede">
+                            <option value="">Rede</option>
+                            <option value="LAN">LAN</option>
+                            <option value="Wireless">Wireless</option>
+                        </select>
                     </div>
-                    <div class="">
-                        <input type="checkbox" name="" id="cabo">
-                        <label for="cabo" class="label--for--ico"><i class="fa-solid fa-link"></i></label>
+                    <div class="box--col">
+                        <label for="desempenho">Desempenho: </label>
+                        <select name="" id="desempenho">
+                            <option value="">Desempenho</option>
+                            <option value="Bom">Bom Desempenho</option>
+                            <option value="Acetável">Acetável Desempenho</option>
+                            <option value="Aviso">Aviso de Manutenção</option>
+                        </select>
                     </div>
-                    <div class="">
-                        <input type="checkbox" name="" id="monitor">
-                        <label for="monitor" class="label--for--ico"><i class="fa-solid fa-desktop"></i></label>
+                    <div class="box--col checkbox--area">
+                        <div>
+                            <input type="checkbox" name="" id="cadeado">
+                            <label for="cadeado"><i class="fa-solid fa-lock"></i></label>
+                        </div>
+                        
+                        <div>
+                            <input type="checkbox" name="" id="cabo">
+                            <label for="cabo"><i class="fa-solid fa-shield"></i></label>
+                        </div>
+                        
+                        <div>
+                            <input type="checkbox" name="" id="monitor">
+                            <label for="monitor"><i class="fa-sharp fa-solid fa-desktop"></i></label>
+                        </div>
                     </div>
-                </div>
-                <div class="box--line box--line--textarea">
-                    <label for="obs">Observações: </label>
-                    <textarea name="" id="obs"></textarea>
+                    <div class="box--col">
+                        <div>
+                            <label for="obs">Observações: </label>
+                            <input name="" id="obs" type="text">
+                        </div>
+                    </div>
                 </div>
                 <div class="add--room--footer">
-                    <button type="button" onclick="addRoom()">Cadastrar</button>
+                    <button type="button" class="button--cancel">Cancelar</button>
+                    <!-- <p>Lembre-se de preencher todos os campos!</p> -->
+                    <button type="button" class="button--submit" onclick="addRoom()">Cadastrar <i class="fa-solid fa-plus"></i></button>
                 </div>
             </form>
         </section>
@@ -395,6 +411,12 @@
                         <div>
                             <input type="checkbox" name="" id="status--monitor">
                             <label for="status--monitor"><i class="fa-sharp fa-solid fa-desktop"></i></label>
+                        </div>
+                    </div>
+                    <div class="box--col">
+                        <div>
+                            <label for="obs">Observações: </label>
+                            <input name="" id="obs" type="text">
                         </div>
                     </div>
                 </div>
