@@ -34,9 +34,9 @@
             </div>
         </main>
     </header>
-    <section id="sec--project--background">
+    <!-- <section id="sec--project--background">
         <div class="gradient"></div>
-    </section>
+    </section> -->
     <section class="sec--project--content">
         <main>
             <legend>Room List</legend>
@@ -158,7 +158,11 @@
                 <div class="box--line">
                     <div class="box--col">
                         <label for="gpu">GPU: </label>
-                        <input type="text" name="gpu" id="gpu" placeholder="GPU">
+                        <select name="gpu" id="gpu">
+                            <option value="Integrada">Integrada</option>
+                            <option value="AMD">AMD</option>
+                            <option value="Intel">Intel</option>
+                        </select>
                     </div>
                     <div class="box--col">
                         <label for="disco">Disco: </label>
@@ -294,12 +298,12 @@
                     </div>
                     <div class="box--col checkbox--area">
                         <div>
-                            <input type="radio" name="status--rede" id="rede--lan" value="LAN">
-                            <label for="rede--lan"><h3><i class="fa-solid fa-wifi"></i></h3></label>
+                            <input type="radio" name="filter--rede" id="filter--rede--lan" value="LAN">
+                            <label for="filter--rede--lan"><h3><i class="fa-solid fa-wifi"></i></h3></label>
                         </div>
                         <div>
-                            <input type="radio" name="status--rede" id="rede--wireless" value="Wireless">
-                            <label for="rede--wireless"><h3><i class="fa-solid fa-globe"></i></h3></label>
+                            <input type="radio" name="filter--rede" id="filter--rede--wireless" value="Wireless">
+                            <label for="filter--rede--wireless"><h3><i class="fa-solid fa-globe"></i></h3></label>
                         </div>
                         <!--  -->
                     </div>
@@ -424,7 +428,11 @@
                 <div class="box--line">
                     <div class="box--col">
                         <label for="gpu">GPU: </label>
-                        <input type="text" name="gpu" id="edit--show--gpu" placeholder="GPU">
+                        <select name="gpu" id="edit--show--gpu">
+                            <option value="Integrada">Integrada</option>
+                            <option value="AMD">AMD</option>
+                            <option value="Intel">Intel</option>
+                        </select>
                     </div>
                     <div class="box--col">
                         <label for="disco">Disco: </label>

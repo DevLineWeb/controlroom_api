@@ -113,11 +113,6 @@ document.addEventListener('click', (e) => {
     $('#modal--edit--room').toggleClass("show")
 
   }
-  else {
-
-    $('#modal--edit--room').removeClass("show")
-
-  }
 })
 
 // ADIÇÃO DE SALA NO BD COM AJAX
@@ -214,6 +209,7 @@ function closeModal() {
   $('.table--item--more').removeClass('show');
   $('.table--item').removeClass('append');
   $('.table--room--info--button').removeClass('drop');
+  $('.ajax--load').removeClass('show');
 }
 
 const configButton = document.getElementsByClassName('table--room--config--button');

@@ -61,10 +61,12 @@ $insertRoom = mysqli_query($conect,"INSERT INTO rooms(
 if($insertRoom) {
     echo "
     <div class='request--feedback--info'>
-        <legend>Aviso!</legend>
-        <div>
-        <h5>Sala Cadastrada com Sucesso!</h5>
-        <button class='button--download request--feedback--button' onclick='closeSpan()'> OK </button>
+        <div class='modal--legend'>
+            <legend>Aviso!</legend>
+        </div
+        <div class='box--line'>
+            <P>Sala Cadastrada com Sucesso!</P>
+            <button class='button--submit request--feedback--button' onclick='closeModal()'> OK </button>
         </div>
     </div>
     ";
@@ -72,10 +74,12 @@ if($insertRoom) {
 else {
     echo "
     <div class='request--feedback--info'>
-        <legend>Aviso!</legend>
-        <div>
-        <h5>Sala Cadastrada com Sucesso!</h5>
-        <button class='button--download request--feedback--button' onclick='closeSpan()'> OK </button>
+        <div class='modal--legend'>
+            <legend>Aviso!</legend>
+        </div
+        <div class='box--line'>
+            <P>Sala Cadastrada com Sucesso!</P>
+            <button class='button--submit request--feedback--button' onclick='closeModal()'> OK </button>
         </div>
     </div>
     ";
