@@ -49,7 +49,6 @@ switch ($method) {
 
                             echo "
                             <tr class='table--item"." ".$i."'>
-                                <input class='list--item--id"." ".$i."' type='hidden' value='".$id[$i]."'>
                                 <td class='item--info'>".$room_natureza[$i]."</td>
                                 <td class='item--info'>".$room_localidade[$i]."</td>
                                 <td class='item--info'>".$room_nomenclatura[$i]."</td>
@@ -57,21 +56,37 @@ switch ($method) {
                                 <td class='item--info'>FSG-".$room_patrimonio[$i]."</td>
                                 <td class='item--info'>".$room_serie[$i]."</td>
                                 <td class='table--item--action'>
-                                    <button class='table--room--config--button button--default'>
+                                    <button class='table--room--config--button button--default' 
+                                    data-id='".$id[$i]."' 
+                                    data-01='".$room_natureza[$i]."'
+                                    data-02='".$room_localidade[$i]."'
+                                    data-03='".$room_nomenclatura[$i]."'
+                                    data-04='".$room_modelo[$i]."'
+                                    data-05='".$room_patrimonio[$i]."'
+                                    data-06='".$room_serie[$i]."'
+                                    data-07='".$room_rede[$i]."'
+                                    data-08='".$room_cpu[$i]."'
+                                    data-09='".$room_gpu[$i]."'
+                                    data-10='".$room_ram[$i]."'
+                                    data-11='".$room_disco[$i]."'
+                                    data-12='".$room_monitor[$i]."'
+                                    data-13='".$room_cadeado[$i]."'
+                                    data-14='".$room_cabo[$i]."'
+                                    data-15='".$room_dataver[$i]."'
+                                    data-16='".$room_desempenho[$i]."'
+                                    data-17='".$room_obser[$i]."'
+                                    >
                                         <i class='fa-solid fa-gear'></i>
-                                    </button>
-                                    <button class='table--room--toggle--button button--default' onclick='getLineIndex();'>
-                                    <i class='fa-solid fa-ellipsis-vertical'></i>
                                     </button>
                                 </td>
                             </tr>
-                            <tr class='table--item table--item--more"." ".$i."'>
+                            <tr class='table--item--more"." ".$i."'>
                                 <th>
                                     <div>
-                                        <label>N/S: </label>
-                                        <p>".$room_serie[$i]."</p>
-                                    </div>
                                     <div>
+                                        <label>Desempenho: </label>
+                                        <p>".$room_desempenho[$i]."</p>
+                                    </div>
                                         <label>Rede: </label>
                                         <p>".$room_rede[$i]."</p>
                                     </div>
@@ -116,10 +131,6 @@ switch ($method) {
                                     </div>
                                 </th>
                                 <th>
-                                    <div>
-                                        <label>Desempenho: </label>
-                                        <p>".$room_desempenho[$i]."</p>
-                                    </div>
                                     <div>
                                         <label> Observações: </label>
                                         <p>".$room_obser[$i]."</p>

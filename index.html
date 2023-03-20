@@ -93,7 +93,7 @@
             <form id="add--room--box">
                 <div class="modal--legend">
                     <legend><i class="fa-solid fa-lines-leaning"></i> ° Room Information</legend>
-                    <div class="modal--close"><i class="fa-regular fa-circle-xmark"></i></div>
+                    <div class="modal--close" onclick="closeModal()"><i class="fa-regular fa-circle-xmark"></i></div>
                 </div>
                 <div class="box--line">
                     <div class="box--col">
@@ -239,7 +239,7 @@
                     </div>
                 </div>
                 <div class="box--line">
-                    <button type="button" class="button--cancel">Cancelar</button>
+                    <button type="button" class="button--cancel" onclick="closeModal()">Cancelar</button>
                     <!-- <p>Lembre-se de preencher todos os campos!</p> -->
                     <button type="button" class="button--submit" onclick="addRoom()">Cadastrar <i class="fa-solid fa-plus"></i></button>
                 </div>
@@ -249,6 +249,7 @@
             <form action="" id="filter--select--box">
                 <div class="modal--legend">
                     <legend>Filters</legend>
+                    <div class="modal--close" onclick="closeModal()"><i class="fa-regular fa-circle-xmark"></i></div>
                 </div>
                 <!--  -->
                 <div class="box--line">
@@ -357,24 +358,25 @@
         <section id="modal--edit--room">
             <form class="edit--room--box">
                 <div class="modal--legend">
-                    <legend>Edit Room</legend>
+                    <div class="modal--close" onclick="closeModal()"><i class="fa-regular fa-circle-xmark"></i></div>
+                    <legend>Edit Room <h6 id="show--id--legend"></h6></legend>
                 </div>
                 <div class="box--line">
                     <div class="box--col">
-                        <label for="">ID</label>
-                        <input type="text" name="" id="edit--show--id" disabled placeholder="Auto Incremented!">
+                        <label for="edit--show--id">ID</label>
+                        <input type="text" id="edit--show--id" placeholder="Auto Incremented!" disabled>
                     </div>
                     <div class="box--col">
                         <label for="room--date--edit">Last Mod</label>
-                        <input type="date" name="" id="room--date--edit" disabled>
+                        <input type="date" name="" id="edit--show--data" disabled>
                     </div>
                     <div class="box--col">
                         <label for="nomesala">Sala: </label>
-                        <input type="text" name="nomesala" id="nomesala" placeholder="Sala" required>
+                        <input type="text" name="nomesala" id="edit--show--sala" placeholder="Sala" required>
                     </div>
                     <div class="box--col">
                         <label for="localidade">Local: </label>
-                        <select name="localidade" id="localidade" required>
+                        <select name="localidade" id="edit--show--localidade" required>
                             <option value="" selected>Localidade</option>
                             <option value="Bloco A">Bloco A</option>
                             <option value="Bloco B">Bloco B</option>
@@ -388,7 +390,7 @@
                 <div class="box--line">
                     <div class="box--col">
                         <label for="natureza">Natureza: </label>
-                        <select name="natureza" id="natureza" required>
+                        <select name="natureza" id="edit--show--natureza" required>
                             <option value="" selected>Natureza</option>
                             <option value="Academic">Acadêmica</option>
                             <option value="Administrative">Administrativa</option>
@@ -396,7 +398,7 @@
                     </div>
                     <div class="box--col">
                         <label for="modelo">Máquina: </label>
-                        <select name="modelo" id="modelo" required>
+                        <select name="modelo" id="edit--show--modelo" required>
                             <option value="" selected>Modelo</option>
                             <option value="Optiplex 380">Optiplex 380</option>
                             <option value="Optiplex 390">Optiplex 390</option>
@@ -412,21 +414,21 @@
                     </div>
                     <div class="box--col">
                         <label for="patrimonio">Patrimônio: </label>
-                        <input type="text" name="patrimonio" id="patrimonio" placeholder="Patrimônio">
+                        <input type="text" name="patrimonio" id="edit--show--patrimonio" placeholder="Patrimônio">
                     </div>
                     <div class="box--col">
                         <label for="serie">N°. Série</label>
-                        <input type="text" name="serie" id="serie" placeholder="N°. Série">
+                        <input type="text" name="serie" id="edit--show--serie" placeholder="N°. Série">
                     </div>
                 </div>
                 <div class="box--line">
                     <div class="box--col">
                         <label for="gpu">GPU: </label>
-                        <input type="text" name="gpu" id="gpu" placeholder="GPU">
+                        <input type="text" name="gpu" id="edit--show--gpu" placeholder="GPU">
                     </div>
                     <div class="box--col">
                         <label for="disco">Disco: </label>
-                        <select name="disco" id="disco">
+                        <select name="disco" id="edit--show--disco">
                             <option value="">Disco</option>
                             <option value="80GB HD">80GB HD</option>
                             <option value="120GB HD">120GB HD</option>
@@ -442,7 +444,7 @@
                     </div>
                     <div class="box--col">
                         <label for="cpu">CPU: </label>
-                        <select name="cpu" id="cpu">
+                        <select name="cpu" id="edit--show--cpu">
                             <option value="">Processador</option>
                             <option value="Pentium">Pentium</option>
                             <option value="Core 2 Duo">Core 2 Duo</option>
@@ -454,21 +456,21 @@
                     </div>
                     <div class="box--col">
                         <label for="ram">RAM: </label>
-                        <input type="number" name="ram" id="ram" placeholder="RAM">
+                        <input type="number" name="ram" id="edit--show--ram" placeholder="RAM">
                     </div>
                 </div>
                 <div class="box--line">
                     <div class="box--col">
-                        <label for="rede">Rede: </label>
-                        <select name="rede" id="rede">
+                        <label for="edit--show--rede">Rede: </label>
+                        <select name="rede" id="edit--show--rede">
                             <option value="">Rede</option>
                             <option value="LAN">LAN</option>
                             <option value="Wireless">Wireless</option>
                         </select>
                     </div>
                     <div class="box--col">
-                        <label for="desempenho">Desempenho: </label>
-                        <select name="" id="desempenho">
+                        <label for="edit--show--desempenho">Desempenho: </label>
+                        <select name="" id="edit--show--desempenho">
                             <option value="">Desempenho</option>
                             <option value="Bom">Bom Desempenho</option>
                             <option value="Acetável">Acetável Desempenho</option>
@@ -477,29 +479,29 @@
                     </div>
                     <div class="box--col checkbox--area">
                         <div>
-                            <input type="checkbox" name="" id="cadeado">
-                            <label for="cadeado"><i class="fa-solid fa-lock"></i></label>
+                            <input type="checkbox" name="" id="edit--show--cadeado">
+                            <label for="edit--show--cadeado"><i class="fa-solid fa-lock"></i></label>
                         </div>
                         
                         <div>
-                            <input type="checkbox" name="" id="cabo">
-                            <label for="cabo"><i class="fa-solid fa-shield"></i></label>
+                            <input type="checkbox" name="" id="edit--show--cabo">
+                            <label for="edit--show--cabo"><i class="fa-solid fa-shield"></i></label>
                         </div>
                         
                         <div>
-                            <input type="checkbox" name="" id="monitor">
-                            <label for="monitor"><i class="fa-sharp fa-solid fa-desktop"></i></label>
+                            <input type="checkbox" name="" id="edit--show--monitor">
+                            <label for="edit--show--monitor"><i class="fa-sharp fa-solid fa-desktop"></i></label>
                         </div>
                     </div>
                     <div class="box--col">
                         <div>
-                            <label for="obs">Observações: </label>
-                            <input name="" id="obs" type="text">
+                            <label for="edit--show--obs">Observações: </label>
+                            <input name="" id="edit--show--obs" type="text">
                         </div>
                     </div>
                 </div>
                 <div class="box--line add--room--footer">
-                    <button type="button" onclick="editRoom()">Atualizar</button>
+                    <button type="button" class="button--submit" onclick="editRoom()">Atualizar</button>
                 </div>
             </form>
         </section>

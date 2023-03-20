@@ -499,7 +499,7 @@ tr {
   position: fixed;
   width: 100%;
   height: 100%;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.4588235294);
   z-index: 1000;
   display: none;
   align-items: center;
@@ -609,7 +609,7 @@ tr {
   position: fixed;
   width: 100%;
   height: 100%;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.4588235294);
   z-index: 1000;
   display: none;
   align-items: center;
@@ -643,7 +643,7 @@ tr {
   position: fixed;
   width: 100%;
   height: 100%;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.4588235294);
   z-index: 1000;
   display: none;
   align-items: center;
@@ -668,7 +668,6 @@ tr {
   font-size: 1.4rem;
   display: flex;
   flex-direction: column;
-  padding: 10px;
   border-radius: 5px;
   background-color: #FFFFFF;
 }
@@ -681,7 +680,6 @@ tr {
   line-height: 30px;
   padding: 0 10px;
   cursor: pointer;
-  width: 100%;
 }
 
 .box--col.checkbox--area {
@@ -726,7 +724,7 @@ footer div button {
   position: fixed;
   width: 100%;
   height: 100%;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.4588235294);
   z-index: 1000;
   display: none;
   align-items: center;

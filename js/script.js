@@ -24,19 +24,20 @@ function roomList() {
 }
 
 // EVENTO OPEN AO CLICAR EM UM ITEM DA LISTA
-const clickedButton = document.getElementsByClassName('table--room--toggle--button');
+const clickedItem = document.getElementsByClassName('table--item');
 
 function getLineIndex(){
-    for(x=0;x<clickedButton.length;x++){
+    for(x=0;x<clickedItem.length;x++){
         // arranjo os listeners com os index das linhas
         (function(index){
-        clickedButton[x].addEventListener("click", function(){
+        clickedItem[x].addEventListener("click", function(){
             infoShow(index);
         });
         })(x);
     }
 }
 function infoShow(element){ // element é o index da linha clicada
+    getEditInfos(element);
     console.log(element); // mostrar index da linha como exemplo
 
     // $('.table--item--more').removeClass('show')
@@ -44,9 +45,9 @@ function infoShow(element){ // element é o index da linha clicada
     $('.table--item'+'.'+element).toggleClass('append');
 
 // removo os listeners
-    for(x=0;x<clickedButton.length;x++){
-        objclone = clickedButton[x].cloneNode(true);
-        clickedButton[x].parentNode.replaceChild(objclone, clickedButton[x]);
+    for(x=0;x<clickedItem.length;x++){
+        objclone = clickedItem[x].cloneNode(true);
+        clickedItem[x].parentNode.replaceChild(objclone, clickedItem[x]);
     }
 getLineIndex();
 }
@@ -118,9 +119,6 @@ document.addEventListener('click', (e) => {
     $('#modal--edit--room').removeClass("show")
 
   }
-})
-$('.fa-circle-xmark').click(function() {
-  $('#modal--add--room').removeClass("show")
 })
 
 // ADIÇÃO DE SALA NO BD COM AJAX
@@ -207,3 +205,63 @@ function search() {
     }
   }
 }
+
+
+
+function closeModal() {
+  $('#modal--add--room').removeClass("show")
+  $('#modal--edit--room').removeClass("show")
+  $('#modal--filter--room').removeClass("show")
+}
+
+const configButton = document.getElementsByClassName('table--room--config--button');
+function getEditInfos (lineIndex) {
+  const id = configButton[lineIndex].getAttribute('data-id');
+  const natureza = configButton[lineIndex].getAttribute('data-01');
+  const localidade = configButton[lineIndex].getAttribute('data-02');
+  const nomenclatura = configButton[lineIndex].getAttribute('data-03');
+  const modelo = configButton[lineIndex].getAttribute('data-04');
+  const patrimonio = configButton[lineIndex].getAttribute('data-05');
+  const serie = configButton[lineIndex].getAttribute('data-06');
+  const rede = configButton[lineIndex].getAttribute('data-07');
+  const cpu = configButton[lineIndex].getAttribute('data-08');
+  const gpu = configButton[lineIndex].getAttribute('data-09');
+  const ram = configButton[lineIndex].getAttribute('data-10');
+  const disco = configButton[lineIndex].getAttribute('data-11');
+  const monitor = configButton[lineIndex].getAttribute('data-12');
+  const cadeado = configButton[lineIndex].getAttribute('data-13');
+  const cabo = configButton[lineIndex].getAttribute('data-14');
+  const dataver = configButton[lineIndex].getAttribute('data-15');
+  const desempenho = configButton[lineIndex].getAttribute('data-16');
+  const obser = configButton[lineIndex].getAttribute('data-17');
+
+  $('#edit--show--id').val(id);
+  $('#edit--show--sala').val(nomenclatura);
+  $('#edit--show--data').val(dataver);
+  $('#edit--show--localidade').val(localidade);
+  $('#edit--show--natureza').val(natureza);
+  $('#edit--show--modelo').val(modelo);
+  $('#edit--show--patrimonio').val(patrimonio);
+  $('#edit--show--serie').val(serie);
+  $('#edit--show--gpu').val(gpu);
+  $('#edit--show--disco').val(disco);
+  $('#edit--show--cpu').val(cpu);
+  $('#edit--show--ram').val(ram);
+  $('#edit--show--rede').val(rede);
+  $('#edit--show--desempenho').val(desempenho);
+  $('#edit--show--monitor').val(monitor);
+  $('#edit--show--cabo').val(cabo);
+  $('#edit--show--cadeado').val(cadeado);
+  $('#edit--show--monitor').val(monitor);
+  $('#edit--show--obser').val(obser);
+
+  if(cadeado=='true') {
+    $('#edit--show--cadeado').prop('checked', true);;
+  }
+  if(monitor=='true') {
+    $('#edit--show--monitor').prop('checked', true);;
+  }
+  if(cabo=='true') {
+    $('#edit--show--cabo').prop('checked', true);;
+  }
+} 
