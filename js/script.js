@@ -38,11 +38,10 @@ function getLineIndex(){
 }
 function infoShow(element){ // element é o index da linha clicada
     getEditInfos(element);
-    console.log(element); // mostrar index da linha como exemplo
 
-    // $('.table--item--more').removeClass('show')
     $('.table--item--more'+'.'+element).toggleClass('show');
     $('.table--item'+'.'+element).toggleClass('append');
+    $('.table--room--info--button'+'.'+element).toggleClass('drop');
 
 // removo os listeners
     for(x=0;x<clickedItem.length;x++){
@@ -212,9 +211,13 @@ function closeModal() {
   $('#modal--add--room').removeClass("show")
   $('#modal--edit--room').removeClass("show")
   $('#modal--filter--room').removeClass("show")
+  $('.table--item--more').removeClass('show');
+  $('.table--item').removeClass('append');
+  $('.table--room--info--button').removeClass('drop');
 }
 
 const configButton = document.getElementsByClassName('table--room--config--button');
+$(configButton).on('click' , closeModal())
 function getEditInfos (lineIndex) {
   const id = configButton[lineIndex].getAttribute('data-id');
   const natureza = configButton[lineIndex].getAttribute('data-01');
@@ -256,12 +259,83 @@ function getEditInfos (lineIndex) {
   $('#edit--show--obser').val(obser);
 
   if(cadeado=='true') {
-    $('#edit--show--cadeado').prop('checked', true);;
+    $('#edit--show--cadeado').prop('checked', true);
+  }
+  else {
+    $('#edit--show--cadeado').prop('checked', false);
   }
   if(monitor=='true') {
-    $('#edit--show--monitor').prop('checked', true);;
+    $('#edit--show--monitor').prop('checked', true);
+  }
+  else {
+    $('#edit--show--monitor').prop('checked', false);
   }
   if(cabo=='true') {
-    $('#edit--show--cabo').prop('checked', true);;
+    $('#edit--show--cabo').prop('checked', true);
+  }
+  else {
+    $('#edit--show--cabo').prop('checked', false);
   }
 } 
+
+
+function editRoom() {
+  id = document.getElementById('edit--show--id').value;
+  nomesala = document.getElementById('edit--show--sala').value;
+  localidade = document.getElementById('edit--show--localidade').value;
+  natureza = document.getElementById('edit--show--natureza').value;
+  modelo = document.getElementById('edit--show--modelo').value;
+  patrimonio = document.getElementById('edit--show--patrimonio').value;
+  serie = document.getElementById('edit--show--serie').value;
+  gpu = document.getElementById('edit--show--gpu').value;
+  disco = document.getElementById('edit--show--disco').value;
+  cpu = document.getElementById('edit--show--cpu').value;
+  ram = document.getElementById('edit--show--ram').value;
+  rede = document.getElementById('edit--show--rede').value;
+  desempenho = document.getElementById('edit--show--desempenho').value;
+  monitor = document.getElementById('edit--show--monitor').checked;
+  cabo = document.getElementById('edit--show--cabo').checked;
+  cadeado = document.getElementById('edit--show--cadeado').checked;
+  obs = document.getElementById('edit--show--obser').value;
+
+  console.log(cadeado)
+  $.ajax
+          ({
+              //Configurações
+              type: 'POST',//Método que está sendo utilizado.
+              dataType: 'html',//É o tipo de dado que a página vai retornar.
+              url: './php/editar.php',//Indica a página que está sendo solicitada.
+              //função que vai ser executada assim que a requisição for enviada
+              beforeSend: function () {
+                $('#modal--add--room').removeClass("show");
+                $('.ajax--load').toggleClass('show');
+                $("#ajax--request--feedback").html("<img src='./img/Rolling-0.7s-204px.gif'>");
+              },
+              //Dados para envio
+              data: {
+                  id: id,
+                  natureza: natureza,
+                  localidade: localidade,
+                  sala: nomesala,
+                  modelo: modelo,
+                  patrimonio: patrimonio,
+                  numSerie: serie,
+                  rede: rede,
+                  monitor: monitor,
+                  gpu: gpu,
+                  disco: disco,
+                  cpu: cpu,
+                  ram: ram,
+                  cadeado: cadeado,
+                  caboAco: cabo,
+                  desempenho: desempenho,
+                  obs: obs
+              },
+              //função que será executada quando a solicitação for finalizada.
+              success: function (msg)
+              {
+                 $("#ajax--request--feedback").html(msg);
+                 roomList();
+              }
+          });
+}

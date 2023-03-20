@@ -98,11 +98,11 @@
                 <div class="box--line">
                     <div class="box--col">
                         <label for="">ID</label>
-                        <input type="text" name="" id="edit--show--id" disabled placeholder="Auto Incremented!">
+                        <input type="text" name="" disabled placeholder="Auto Incremented!">
                     </div>
                     <div class="box--col">
                         <label for="room--date--edit">Last Mod</label>
-                        <input type="date" name="" id="room--date--edit" disabled>
+                        <input type="date" name="" disabled>
                     </div>
                     <div class="box--col">
                         <label for="nomesala">Sala: </label>
@@ -359,7 +359,7 @@
             <form class="edit--room--box">
                 <div class="modal--legend">
                     <div class="modal--close" onclick="closeModal()"><i class="fa-regular fa-circle-xmark"></i></div>
-                    <legend>Edit Room <h6 id="show--id--legend"></h6></legend>
+                    <legend>Edit Room</legend>
                 </div>
                 <div class="box--line">
                     <div class="box--col">
@@ -495,12 +495,13 @@
                     </div>
                     <div class="box--col">
                         <div>
-                            <label for="edit--show--obs">Observações: </label>
-                            <input name="" id="edit--show--obs" type="text">
+                            <label for="edit--show--obser">Observações: </label>
+                            <input name="" id="edit--show--obser" type="text">
                         </div>
                     </div>
                 </div>
                 <div class="box--line add--room--footer">
+                    <button type="button" class="button--cancel">Delete</button>
                     <button type="button" class="button--submit" onclick="editRoom()">Atualizar</button>
                 </div>
             </form>

@@ -78,6 +78,9 @@ switch ($method) {
                                     >
                                         <i class='fa-solid fa-gear'></i>
                                     </button>
+                                    <button class='table--room--info--button ".$i."' onclick=''>
+                                        <i class='fa-solid fa-caret-up'></i>
+                                    </button>
                                 </td>
                             </tr>
                             <tr class='table--item--more"." ".$i."'>

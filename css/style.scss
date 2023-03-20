@@ -28,6 +28,9 @@ main{
 html{
     font-size: 62.5%;
 }
+i {
+    z-index: -1;
+}
 $base--color: #B4BEC9;
 $dark--color: #002333;
 $complementary--color: #159A9C;
@@ -514,6 +517,25 @@ tr {
     padding: 5px;
     width: 100px;
 }
+.table--room--config--button {
+    z-index: 1000;
+}
+.table--room--info--button {
+    border: none;
+    background-color: transparent;
+    font-size: 1.4rem;
+    color: $white--color;
+    position: absolute;
+    right: 10px;
+    padding: 10px;
+    cursor: pointer;
+    transform: rotate(-90deg);
+    transition: all .4s;
+}
+.table--room--info--button.drop {
+    transform: rotate(-180deg);
+    transition: all .4s;
+}
 // =================================================TABLE GRID VER ==================================================//
 .table--grid {
     display: grid;
@@ -640,9 +662,6 @@ tr {
     flex-direction: column;
     border-radius: 5px;
     background-color: $white--color
-}
-.edit--room--box button {
-    @include submitPointer();
 }
 .box--col.checkbox--area {
     display: flex;

@@ -36,6 +36,10 @@ html {
   font-size: 62.5%;
 }
 
+i {
+  z-index: -1;
+}
+
 @keyframes rotate {
   0% {
     transform: rotate(0deg);
@@ -475,6 +479,28 @@ tr {
   width: 100px;
 }
 
+.table--room--config--button {
+  z-index: 1000;
+}
+
+.table--room--info--button {
+  border: none;
+  background-color: transparent;
+  font-size: 1.4rem;
+  color: #FFFFFF;
+  position: absolute;
+  right: 10px;
+  padding: 10px;
+  cursor: pointer;
+  transform: rotate(-90deg);
+  transition: all 0.4s;
+}
+
+.table--room--info--button.drop {
+  transform: rotate(-180deg);
+  transition: all 0.4s;
+}
+
 .table--grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -670,16 +696,6 @@ tr {
   flex-direction: column;
   border-radius: 5px;
   background-color: #FFFFFF;
-}
-
-.edit--room--box button {
-  background-color: #159A9C;
-  color: #FFFFFF;
-  border: 1px solid #FFFFFF;
-  border-radius: 5px;
-  line-height: 30px;
-  padding: 0 10px;
-  cursor: pointer;
 }
 
 .box--col.checkbox--area {
