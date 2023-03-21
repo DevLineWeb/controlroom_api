@@ -16,7 +16,7 @@ $white--color: #FFFFFF;
 
 body {
     overflow: hidden;
-    background-image: url(../img/slider/6.jpg);
+    background-image: url(../img/slider/7.jpg);
     min-height: 100vh;
     background-size: cover;
 }
@@ -125,15 +125,16 @@ i {
     pointer-events: none;
     position: absolute;
 }
-@mixin labelBigIco {
+@mixin labelForInputCheckRadio {
     color: $complementary--color;
     border: 1px solid $white--color;
     padding: 12px 0px;
-    font-size: 3rem;
+    font-size: 1.8rem;
     text-align: center;
     cursor: pointer;
     border-radius: 5px;
     transition: all 0.2s;
+    width: 50px !important;
 }
 @mixin modalOverlay {   
     top: 0;
@@ -205,17 +206,72 @@ input[type=checkbox]:checked ~ label {
 label h3 {
     color: $optional--color;
     border: 1px solid transparent;
-    padding: 5px;
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s;
 }
 input[type=radio]:checked ~ label h3 {
+    color: $dark--color;
     border: 1px solid $complementary--color;
-    color: $complementary--color;
-    transition: all 0.3s;
+    transition: all 0.2s;
+}
+// ============================================MODAL SETTINGS===================================================//
+
+.modal--legend {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    background-color: $complementary--color;
+    width: 100%;
+    color: $white--color;
+    font-size: 1.8rem;
+    padding: 0.5rem;
+    font-size: 2rem;
+    border-radius: 5px;
+}
+.modal--close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    font-size: 2rem;
+    cursor: pointer;
 }
 
+.box--line {
+    min-height: 60px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    grid-gap: 0px;
+    width: 100%;
+    margin-top: 1rem;
+}
+.box--col {
+    text-align: left;
+    width: 200px;
+    display: inline-table;
+    padding: 10px;
+    position: relative;
+}
+.box--line button{
+    width: 95%;
+}
+.box--line.checkbox--area {
+    display: flex;
+    border: none;
+}
+.box--col.checkbox--area {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.box--col.checkbox--area label {
+    @include labelForInputCheckRadio();
+}
+.box--col.checkbox--area i {
+    width: 50px;
+}
 /*============================================= NAVBAR=================================================== */
 
 header {
@@ -390,14 +446,14 @@ header {
 
 // =================================================================SESSÃO DE LISTAGEM===================================================//
 .sec--project--content {
-    background-color: #000000d7;
-    margin-top: 50px;
+    background-color: #00000075;
+    margin-top: 10px;
     border-bottom: 1px solid $white--color;
 }
 .sec--project--room--list {
     position: relative;
     overflow-y: scroll !important;
-    height: 560px !important;
+    height: 70vh;
 }
 .sec--project--room--list::-webkit-scrollbar {
     display: none;
@@ -445,13 +501,13 @@ tr {
     background-color: transparent;
 }
 .table--item--more {
+    width: 100%;
+    display: inline-table;
     position: absolute;
     opacity: 0;
     pointer-events: none;
     margin-top: -80px;
     border-top: none;
-    background-color: transparent;
-    text-align: left;
 }
 .table--item--more.show {
     position: relative;
@@ -462,7 +518,7 @@ tr {
 }
 .table--item--more th {
     color: $white--color;
-    padding: 10px;
+    padding: 5px;
     font-weight: normal;
     font-size: 1.2rem;
 }
@@ -470,10 +526,11 @@ tr {
     width: auto;
 }
 .table--item--more th div p {
-    border: 1px solid $white--color;
+    border: 1px solid $optional--color;
     border-radius: 5px;
     padding: 5px;
     width: 100px;
+    min-height: 30px;
 }
 .table--room--config--button {
     z-index: 1000;
@@ -529,52 +586,6 @@ tr {
     border-radius: 5px;
     background-color: $white--color
 }
-.modal--legend {
-    display: flex;
-    align-items: center;
-    height: 50px;
-    background-color: $complementary--color;
-    width: 100%;
-    color: $white--color;
-    font-size: 1.8rem;
-    padding: 0.5rem;
-    font-size: 2rem;
-    border-radius: 5px;
-}
-.modal--close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 10px;
-    font-size: 2rem;
-    cursor: pointer;
-}
-
-.box--line {
-    min-height: 60px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
-    grid-gap: 0px;
-    width: 100%;
-    margin-top: 1rem;
-}
-.box--col {
-    text-align: left;
-    width: 200px;
-    display: inline-table;
-    padding: 10px;
-    position: relative;
-}
-.box--line button{
-    width: 95%;
-}
-.label--for--ico {
-    @include labelBigIco();
-}
-.box--line.checkbox--area {
-    display: flex;
-    border: none;
-}
 .mobile--buttons {
     display: none;
     position: absolute;
@@ -616,20 +627,6 @@ tr {
     flex-direction: column;
     border-radius: 5px;
     background-color: $white--color
-}
-.box--col.checkbox--area {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-.box--col.checkbox--area label {
-    color: $optional--color;
-    font-size: 1.8rem;
-    border: 1px solid $white--color;
-    border-radius: 5px;
-    padding: 10px;
-    cursor: pointer;
 }
 
 
@@ -684,6 +681,9 @@ footer div button{
     }
     #filter--select--box {
         width: 100%;
+    }
+    .table--col--1, .table--col--4 {
+        display: none !important;
     }
 }
 

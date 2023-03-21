@@ -21,10 +21,26 @@ function roomList() {
             getLineIndex();
         }
     });
+    $.ajax
+    ({
+        type: 'POST',
+        dataType: 'html',
+        url: './php/listagem.php',
+        data: "method=item--grid",
+        beforeSend: function () {
+          
+        },
+        success: function (data)
+        {
+            $('#table--grid').html(data);
+            getGridIndex();
+        }
+    });
 }
 
 // EVENTO OPEN AO CLICAR EM UM ITEM DA LISTA
 const clickedItem = document.getElementsByClassName('table--item');
+const clickedItemGrid = document.getElementsByClassName('grid--edit--button');
 
 function getLineIndex(){
     for(x=0;x<clickedItem.length;x++){
@@ -50,7 +66,26 @@ function infoShow(element){ // element é o index da linha clicada
     }
 getLineIndex();
 }
-
+function getGridIndex(){
+  for(x=0;x<clickedItemGrid.length;x++){
+      // arranjo os listeners com os index das linhas
+      (function(index){
+        clickedItemGrid[x].addEventListener("click", function(){
+          gridShow(index);
+      });
+      })(x);
+  }
+}
+function gridShow(element){ // element é o index da linha clicada
+    getEditInfos(element);
+    console.log(element);
+// removo os listeners
+    for(x=0;x<clickedItemGrid.length;x++){
+        objclone = clickedItemGrid[x].cloneNode(true);
+        clickedItemGrid[x].parentNode.replaceChild(objclone, clickedItemGrid[x]);
+    }
+    getGridIndex();
+}
 // ANIMAÇÕES DE INTERAÇÃO COM JQUERY
 $('#menu--toggle').click(function () {
   $('.header--mobile').toggleClass("show")
