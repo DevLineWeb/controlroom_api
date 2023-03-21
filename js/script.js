@@ -390,3 +390,30 @@ function editRoom() {
               }
           });
 }
+
+function deleteRoom() {
+  id = document.getElementById('edit--show--id').value;
+  $.ajax
+  ({
+      //Configurações
+      type: 'POST',//Método que está sendo utilizado.
+      dataType: 'html',//É o tipo de dado que a página vai retornar.
+      url: './php/deletar.php',//Indica a página que está sendo solicitada.
+      //função que vai ser executada assim que a requisição for enviada
+      beforeSend: function () {
+        $('#modal--add--room').removeClass("show");
+        $('.ajax--load').toggleClass('show');
+        $("#ajax--request--feedback").html("<img src='./img/Rolling-0.7s-204px.gif'>");
+      },
+      //Dados para envio
+      data: {
+          id: id
+      },
+      //função que será executada quando a solicitação for finalizada.
+      success: function (msg)
+      {
+         $("#ajax--request--feedback").html(msg);
+         roomList();
+      }
+  });
+}
