@@ -76,6 +76,7 @@ switch ($method) {
                                     data-15='".$room_dataver[$i]."'
                                     data-16='".$room_desempenho[$i]."'
                                     data-17='".$room_obser[$i]."'
+                                    onclick='openModalEdit();'
                                     >
                                         <i class='fa-solid fa-gear'></i>
                                     </button>
@@ -86,6 +87,11 @@ switch ($method) {
                             </tr>
                             <tr class='table--item--more"." ".$i."'>
                                 <th class='table--col--1'>
+                                    <button class='button--cancel'>
+                                        <i class='fa-solid fa-exclamation'></i>
+                                    </button>
+                                </th>
+                                <th>
                                     <div>
                                         <label>ID: </label>
                                         <p>".$id[$i]."</p>
@@ -119,15 +125,26 @@ switch ($method) {
                                         <label>Rede: </label>
                                         <p>".$room_rede[$i]."</p>
                                     </div>
-                                </th>
-                                <th>
                                     <div>
-                                        <label>Cabo de Aço: </label>
-                                        <p>".$room_cabo[$i]."</p>
-                                    </div>
-                                    <div>
-                                        <label>Desempenho: </label>
-                                        <p>".$room_desempenho[$i]."</p>
+                                        <div class='box--col checkbox--area'>
+                                            <div>
+                                                <input type='checkbox' id='more--cadeado' class='more--cadeado ".$i."' data-status='".$room_cadeado[$i]."' disabled>
+                                                <label for='more--cadeado'><i class='fa-solid fa-lock'></i></label>
+                                            </div>
+                                            
+                                            <div>
+                                                <input type='checkbox' id='more--cabo' class='more--cabo ".$i."' value='' disabled>
+                                                <label for='more--cabo'><i class='fa-solid fa-shield'></i></label>
+                                            </div>
+                                            
+                                            <div>
+                                                <input type='checkbox' id='more--monitor'  class='more--monitor ".$i."' value='' disabled>
+                                                <label for='more--monitor'><i class='fa-sharp fa-solid fa-desktop'></i></label>
+                                            </div>
+                                        </div>
+                                        <input type='hidden' value='".$room_cadeado[$i]."'>
+                                        <input type='hidden' value='".$room_cabo[$i]."'>
+                                        <input type='hidden' value='".$room_monitor[$i]."'>
                                     </div>
                                 </th>
                                 <th>
@@ -136,18 +153,17 @@ switch ($method) {
                                         <p>".$room_obser[$i]."</p>
                                     </div>
                                     <div>
-                                        <label>Cadeado: </label>
-                                        <p>".$room_cadeado[$i]."</p>
+                                        <label>Desempenho: </label>
+                                        <p>".$room_desempenho[$i]."</p>
                                     </div>
                                 </th>
                                 <th>
                                     <div>
-                                        <label>Cabo de Aço: </label>
-                                        <p>".$room_cabo[$i]."</p>
+                                        <label></label>
+                                        <button class='button--cancel'><i class='fa-solid fa-trash-can'></i></button>
                                     </div>
                                     <div>
-                                        <label>Monitor: </label>
-                                        <p>".$room_monitor[$i]."</p>
+                                        <button class='button--submit'><i class='fa-solid fa-star'></i></button>
                                     </div>
                                 </th>
                             </tr>
@@ -228,6 +244,7 @@ switch ($methodGrid) {
                                     data-15='".$room_dataver[$i]."'
                                     data-16='".$room_desempenho[$i]."'
                                     data-17='".$room_obser[$i]."'
+                                    onclick='openModalEdit();'
                                     >
                                 <i class='fa-solid fa-book-open'></i> ".$room_nomenclatura[$i]."</button>
                             ";

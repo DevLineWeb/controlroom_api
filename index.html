@@ -44,6 +44,7 @@
                 <div class="room--list--search">
                     <div class="search--ico"><i class="fa-solid fa-magnifying-glass"></i></div>
                     <div class="search--input"><input type="text" placeholder="Pesquisar" onkeyup="search()" id="table--search--input"></div>
+                    <div class="search--submit" onclick="searchGrid()"><i class="fa-solid fa-play"></i></div>
                 </div>
                 <div class="room--list--options">
                     <button class="button--default table--button--add--room" id="table--button--add--room"><span class="table--button--add--room"> Add </span><i class="fa-solid fa-plus"></i></button>
@@ -502,8 +503,8 @@
                     </div>
                 </div>
                 <div class="box--line add--room--footer">
-                    <button type="button" class="button--cancel">Delete</button>
-                    <button type="button" class="button--submit" onclick="editRoom()">Atualizar</button>
+                    <button type="button" class="button--cancel">Delete <i class="fa-solid fa-trash-can"></i></button>
+                    <button type="button" class="button--submit" onclick="editRoom()">Atualizar <i class="fa-solid fa-wrench"></i></button>
                 </div>
             </form>
         </section>

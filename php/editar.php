@@ -46,10 +46,10 @@ if($updateRoom) {
     echo "
     <div class='request--feedback--info'>
         <div class='modal--legend'>
-            <legend>Aviso!</legend>
+            <legend>Warning!</legend>
         </div
         <div class='box--line'>
-            <P>Sala Cadastrada com Sucesso!</P>
+            <P>Updated!</P>
             <button class='button--submit request--feedback--button' onclick='closeModal()'> OK </button>
         </div>
     </div>

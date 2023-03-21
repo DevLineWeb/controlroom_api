@@ -56,8 +56,8 @@ function infoShow(element){ // element é o index da linha clicada
     getEditInfos(element);
 
     $('.table--item--more'+'.'+element).toggleClass('show');
-    $('.table--item'+'.'+element).toggleClass('append');
     $('.table--room--info--button'+'.'+element).toggleClass('drop');
+  
 
 // removo os listeners
     for(x=0;x<clickedItem.length;x++){
@@ -106,6 +106,7 @@ $('#table--button--filter--grid').click(function () {
   $('#table--button--filter--list').removeClass('selected');
   $('.table--grid').toggleClass('change');
   $('.table--room').toggleClass('change');
+  $('.search--submit').style.display = 'flex';
 })
 
 // MODALS BUTTONS
@@ -139,17 +140,13 @@ document.addEventListener('click', (e) => {
 
   }
 })
-document.addEventListener('click', (e) => {
-  const isDropdownBtn = e.target.classList.contains('table--room--config--button')
-  if (!isDropdownBtn && e.target.closest('.edit--room--box') != null) return;
 
-  if (isDropdownBtn) {
 
-    $('#modal--edit--room').toggleClass("show")
 
-  }
-})
+function openModalEdit() {
+  $('#modal--edit--room').toggleClass("show")
 
+}
 // ADIÇÃO DE SALA NO BD COM AJAX
 function addRoom() {
     const natureza = document.getElementById('natureza').value;
@@ -235,7 +232,28 @@ function search() {
   }
 }
 
+function searchGrid() {
+  const searchbox = document.getElementById('table--search--input').value.toUpperCase();
+  // const storeitems = document.getElementById('table--room--itens');
+  const product = document.querySelectorAll('.grid--edit--button');
+  // const pname = storeitems.getElementsByTagName('td');
 
+  for (let i = 0; i < product.length; i++) {
+    const match = product[i]
+    // .getElementsByTagName('td')[0];
+
+    if (match) {
+      let textvalue = match.textContent || match.innerHTML;
+
+      if (textvalue.toUpperCase().indexOf(searchbox) > -1) {
+        product[i].style.display = "";
+      }
+      else {
+        product[i].style.display = "none";
+      }
+    }
+  }
+}
 
 function closeModal() {
   $('#modal--add--room').removeClass("show")
@@ -291,18 +309,21 @@ function getEditInfos (lineIndex) {
 
   if(cadeado=='true') {
     $('#edit--show--cadeado').prop('checked', true);
+    $('.more--cadeado.'+lineIndex).prop('checked', true);
   }
   else {
     $('#edit--show--cadeado').prop('checked', false);
   }
   if(monitor=='true') {
     $('#edit--show--monitor').prop('checked', true);
+    $('.more--monitor.'+lineIndex).prop('checked', true);
   }
   else {
     $('#edit--show--monitor').prop('checked', false);
   }
   if(cabo=='true') {
     $('#edit--show--cabo').prop('checked', true);
+    $('.more--cabo.'+lineIndex).prop('checked', true);
   }
   else {
     $('#edit--show--cabo').prop('checked', false);
@@ -329,7 +350,6 @@ function editRoom() {
   cadeado = document.getElementById('edit--show--cadeado').checked;
   obs = document.getElementById('edit--show--obser').value;
 
-  console.log(cadeado)
   $.ajax
           ({
               //Configurações

@@ -40,7 +40,7 @@ html {
 }
 
 i {
-  z-index: 0;
+  z-index: -1;
 }
 @keyframes scale-in-center {
   0% {
@@ -85,10 +85,18 @@ input[type=text], input[type=number], textarea, input[type=date] {
   width: 50%;
 }
 
-.button--cancel {
+.button--submit:hover, .button--cancel:hover {
   background-color: #002333;
-  color: #FFFFFF;
   border: 1px solid #FFFFFF;
+  color: #FFFFFF;
+  transition: all 0.2s;
+}
+
+.button--cancel {
+  background-color: #B4BEC9;
+  border: 1px solid #FFFFFF;
+  color: #002333;
+  transition: all 0.2s;
   border-radius: 5px;
   line-height: 30px;
   padding: 0 10px;
@@ -98,10 +106,14 @@ input[type=text], input[type=number], textarea, input[type=date] {
 }
 
 .button--default:hover {
-  color: #159A9C;
-  background-color: #FFFFFF;
-  border: 1px solid #B4BEC9;
+  color: #FFFFFF;
+  background-color: rgba(21, 154, 156, 0.2392156863);
+  border: 1px solid #159A9C;
   transition: all 0.2s;
+}
+
+button {
+  z-index: 10;
 }
 
 button.selected {
@@ -158,7 +170,7 @@ input[type=radio]:checked ~ label h3 {
   display: flex;
   align-items: center;
   height: 50px;
-  background-color: #159A9C;
+  background-color: #002333;
   width: 100%;
   color: #FFFFFF;
   font-size: 1.8rem;
@@ -212,13 +224,13 @@ input[type=radio]:checked ~ label h3 {
 .box--col.checkbox--area label {
   color: #159A9C;
   border: 1px solid #FFFFFF;
-  padding: 12px 0px;
+  padding: 5px 0px;
   font-size: 1.8rem;
   text-align: center;
   cursor: pointer;
   border-radius: 5px;
   transition: all 0.2s;
-  width: 50px !important;
+  width: 40px !important;
 }
 
 .box--col.checkbox--area i {
@@ -268,9 +280,9 @@ header {
 }
 
 .header--col--2 a:hover {
-  color: #159A9C;
-  background-color: #FFFFFF;
-  border: 1px solid #B4BEC9;
+  color: #FFFFFF;
+  background-color: rgba(21, 154, 156, 0.2392156863);
+  border: 1px solid #159A9C;
   transition: all 0.2s;
   border: none;
   border-radius: 5px;
@@ -368,6 +380,10 @@ header {
   color: #002333;
 }
 
+.room--list--search.active .search--submit {
+  color: #002333;
+}
+
 .search--ico {
   position: absolute;
   top: 0;
@@ -378,6 +394,21 @@ header {
   padding: 0 10px;
   cursor: pointer;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.search--submit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 1.6rem;
+  background-color: transparent;
+  color: #FFFFFF;
+  padding: 0 10px;
+  cursor: pointer;
+  display: none;
   align-items: center;
   justify-content: center;
   height: 100%;
@@ -450,10 +481,6 @@ header {
   display: none;
 }
 
-.table--item.append {
-  border-bottom: none;
-}
-
 tr {
   display: flex;
   border-radius: 3px;
@@ -469,10 +496,6 @@ tr {
   background-color: transparent;
   color: white;
   cursor: crosshair;
-}
-
-#table--room--itens {
-  position: relative;
 }
 
 #table--room--itens td {
@@ -493,37 +516,43 @@ tr {
   width: 100%;
   display: inline-table;
   position: absolute;
+  bottom: 0;
   opacity: 0;
   pointer-events: none;
-  margin-top: -80px;
+  margin-top: 300px;
   border-top: none;
+  background-color: #FFFFFF;
+  z-index: 1;
+  border-top: 5px solid #B4BEC9;
+  border-bottom: 5px solid #B4BEC9;
 }
 
 .table--item--more.show {
   position: relative;
-  margin-top: -10px;
-  opacity: 1;
+  margin-top: 0px;
+  opacity: 0.9;
   pointer-events: all;
   transition: all 0.2s;
 }
 
 .table--item--more th {
-  color: #FFFFFF;
+  color: #002333;
   padding: 5px;
   font-weight: normal;
   font-size: 1.2rem;
-}
-
-.table--item--more th div {
-  width: auto;
+  width: 13%;
 }
 
 .table--item--more th div p {
   border: 1px solid #DEEFE7;
   border-radius: 5px;
   padding: 5px;
-  width: 100px;
+  width: 100%;
   min-height: 30px;
+}
+
+.table--item--more th div button {
+  margin-top: 10px;
 }
 
 .table--room--config--button {
@@ -786,6 +815,10 @@ footer div button {
   }
   .room--list--search, .room--list--search.active {
     width: 99%;
+    color: #FFFFFF;
+  }
+  .search--submit {
+    display: flex;
   }
   .room--list--options {
     display: none;
