@@ -38,10 +38,6 @@ main {
 html {
   font-size: 62.5%;
 }
-
-i {
-  z-index: -1;
-}
 @keyframes scale-in-center {
   0% {
     transform: scale(0);
@@ -510,6 +506,7 @@ tr {
 
 .table--item {
   background-color: transparent;
+  cursor: pointer;
 }
 
 .table--item--more {
@@ -523,13 +520,13 @@ tr {
   border-top: none;
   background-color: #FFFFFF;
   z-index: 1;
-  border-top: 5px solid #B4BEC9;
+  border-top: 5px solid #002333;
   border-bottom: 5px solid #B4BEC9;
 }
 
 .table--item--more.show {
   position: relative;
-  margin-top: 0px;
+  margin-top: -3px;
   opacity: 0.9;
   pointer-events: all;
   transition: all 0.2s;

@@ -253,41 +253,41 @@
                 <div class="box--line">
                     <div class="box--col checkbox--area">
                         <div>
-                            <input type="radio" name="status--natureza" id="nat--acad">
-                            <label for="nat--acad"><h3>ACAD</h3></label>
+                            <input type="radio" name="filter--natureza" id="filter--acad" value="Academic">
+                            <label for="filter--acad"><h3>ACAD</h3></label>
                         </div>
                         <div>
-                            <input type="radio" name="status--natureza" id="nat--adm">
-                            <label for="nat--adm"><h3>ADM</h3></label>
+                            <input type="radio" name="filter--natureza" id="filter--adm" value="Administrative">
+                            <label for="filter--adm"><h3>ADM</h3></label>
                         </div>
                         <!--  -->
                     </div>
                     <div class="box--col checkbox--area">
                         <div>
-                            <input type="checkbox" name="" id="status--cadeado">
-                            <label for="status--cadeado"><i class="fa-solid fa-lock"></i></label>
+                            <input type="checkbox" name="" id="filter--cadeado">
+                            <label for="filter--cadeado"><i class="fa-solid fa-lock"></i></label>
                         </div>
                         
                         <div>
-                            <input type="checkbox" name="" id="status--cabo">
-                            <label for="status--cabo"><i class="fa-solid fa-shield"></i></label>
+                            <input type="checkbox" name="" id="filter--cabo">
+                            <label for="filter--cabo"><i class="fa-solid fa-shield"></i></label>
                         </div>
                         
                         <div>
-                            <input type="checkbox" name="" id="status--monitor">
-                            <label for="status--monitor"><i class="fa-sharp fa-solid fa-desktop"></i></label>
+                            <input type="checkbox" name="" id="filter--monitor">
+                            <label for="filter--monitor"><i class="fa-sharp fa-solid fa-desktop"></i></label>
                         </div>
                     </div>
                 </div>
                 <div class="box--line">
                     <div class="box--col checkbox--area">
                         <div>
-                            <input type="radio" name="status--gpu" id="gpu--amd">
-                            <label for="gpu--amd"><h3>AMD</h3></label>
+                            <input type="radio" name="filter--gpu" id="filter--gpu--amd" value="AMD">
+                            <label for="filter--gpu--amd"><h3>AMD</h3></label>
                         </div>
                         <div>
-                            <input type="radio" name="status--gpu" id="gpu--intel">
-                            <label for="gpu--intel"><h3>Intel</h3></label>
+                            <input type="radio" name="filter--gpu" id="filter--gpu--intel" value="Intel">
+                            <label for="filter--gpu--intel"><h3>Intel</h3></label>
                         </div>
                     </div>
                     <div class="box--col checkbox--area">
@@ -304,8 +304,8 @@
                 </div>
                 <div class="box--line">
                     <div class="box--col">
-                        <label for="cpu">CPU: </label>
-                        <select name="cpu" id="cpu">
+                        <label for="filter--cpu">CPU: </label>
+                        <select name="filter--cpu" id="filter--cpu">
                             <option value="">Processador</option>
                             <option value="Pentium">Pentium</option>
                             <option value="Core 2 Duo">Core 2 Duo</option>
@@ -316,14 +316,14 @@
                         </select>
                     </div>
                     <div class="box--col">
-                        <label for="ram">RAM: </label>
-                        <input type="number" name="ram" id="ram" placeholder="RAM">
+                        <label for="filter--ram">RAM: </label>
+                        <input type="number" name="filter--ram" id="filter--ram" placeholder="RAM">
                     </div>
                 </div>
                 <div class="box--line">
                     <div class="box--col">
-                        <label for="desempenho">Desempenho: </label>
-                        <select name="" id="desempenho">
+                        <label for="filter--desempenho">Desempenho: </label>
+                        <select name="filter--desempenho" id="filter--desempenho">
                             <option value="">Desempenho</option>
                             <option value="Bom">Bom Desempenho</option>
                             <option value="Acetável">Acetável Desempenho</option>
@@ -331,8 +331,8 @@
                         </select>
                     </div>
                     <div class="box--col">
-                        <label for="disco">Disco: </label>
-                        <select name="disco" id="disco">
+                        <label for="filter--disco">Disco: </label>
+                        <select name="filter--disco" id="filter--disco">
                             <option value="">Disco</option>
                             <option value="80GB HD">80GB HD</option>
                             <option value="120GB HD">120GB HD</option>
@@ -349,7 +349,7 @@
                 </div>
                 <div class="box--line modal--footer">
                     <button class="button--cancel">Clean</button>
-                    <button class="button--submit">Apply</button>
+                    <button class="button--submit" onclick="filterRoom();">Apply</button>
                 </div>
             </form>
         </section>
