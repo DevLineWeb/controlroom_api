@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/a0544da68a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <section class="sec--acess--content">
+        <section class="login--box">
+            <div class="modal--legend">
+                <legend>Acesso</legend>
+            </div>
+            <form action="" class="login--form" name="f1">
+                <div class="box--line">
+                    <div class="box--col">
+                        <label for="login--mail">E-mail:</label>
+                        <input type="text" name="email" id="login--mail" onkeyup="validMail(f1.email)" maxlength="60" size="65">
+                        <i class="fa-solid fa-envelope login--ico"></i>
+                    </div>
+                    <div class="box--col">
+                        <label for="login--password">Senha:</label>
+                        <input type="password" name="" id="login--password">
+                        <i class="fa-solid fa-lock login--ico password"></i>
+                    </div>
+                </div>
+                <div class="box--line">
+                    <button class="button--cancel">Cadastrar</button>
+                    <button class="button--submit" type="submit" onclick="autenticate();">Entrar</button>
+                </div>
+            </form>
+        </section>
+        <section class="ajax--load">
+            <div class="ajax--load--box">
+                <div class="ajax--request--feedback">
+        
+                </div>
+            </div>
+        </section>
+    </section>
+    <footer>
+        <section>
+            <div>
+                <button class="button--default"><i class="fa-brands fa-youtube"></i></button>
+                <button class="button--default"><i class="fa-brands fa-instagram"></i></button>
+                <button class="button--default"><i class="fa-brands fa-github"></i></button>
+                <button class="button--default"><i class="fa-brands fa-discord"></i></button>
+            </div>
+            <div>
+                <h5>© Copyright All rights reserved.</h5>
+            </div>
+        </section>
+    </footer>
+    <script src="./js/jquery-1.11.0.min.js"></script>
+    <script src="./js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+</html>

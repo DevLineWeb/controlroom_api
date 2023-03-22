@@ -46,7 +46,7 @@ html {
     transform: scale(1);
   }
 }
-input[type=text], input[type=number], textarea, input[type=date] {
+input[type=text], input[type=number], textarea, input[type=date], input[type=password] {
   outline: none;
   border: 1px solid #DEEFE7 !important;
   background-color: #FFFFFF;
@@ -160,6 +160,26 @@ input[type=radio]:checked ~ label h3 {
   color: #002333;
   border: 1px solid #159A9C;
   transition: all 0.2s;
+}
+
+input.verified {
+  color: #000;
+  border: 1px solid #159A9C !important;
+  transition: all 0.3s;
+}
+
+input.error {
+  color: #ff0000;
+  border: 1px solid #ff0000 !important;
+  transition: all 0.3s;
+}
+
+input.verified ~ .login--ico {
+  color: #159A9C;
+}
+
+input.error ~ .login--ico {
+  color: #ff0000;
 }
 
 .modal--legend {
@@ -844,4 +864,36 @@ footer div button {
   .header--mobile a {
     width: 85%;
   }
+}
+.login--box {
+  z-index: 1001;
+  position: fixed;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  animation: scale-in-center 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: flex;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 5px;
+  box-shadow: 0 1px 5px 0 #B4BEC9;
+  font-size: 1.4rem;
+  border-radius: 5px;
+  background-color: #002333;
+}
+
+.login--form {
+  width: 400px;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  border: 1px solid #B4BEC9;
+}
+
+.login--form .login--ico {
+  position: absolute;
+  right: 10px;
+  padding: 5px;
+  font-size: 1.8rem;
+  color: #B4BEC9;
 }/*# sourceMappingURL=style.css.map */

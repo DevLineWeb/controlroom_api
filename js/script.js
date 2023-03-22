@@ -465,3 +465,59 @@ function filterRoom() {
               }
           });
 }
+
+
+function validMail(field) {
+  usuario = field.value.substring(0, field.value.indexOf("@"));
+  dominio = field.value.substring(field.value.indexOf("@")+ 1, field.value.length);
+  
+  if ((usuario.length >=1) &&
+      (dominio.length >=3) &&
+      (usuario.search("@")==-1) &&
+      (dominio.search("@")==-1) &&
+      (usuario.search(" ")==-1) &&
+      (dominio.search(" ")==-1) &&
+      (dominio.search(".")!=-1) &&
+      (dominio.indexOf(".") >=1)&&
+      (dominio.lastIndexOf(".") < dominio.length - 1)) {
+  $('#login--mail').removeClass('error');
+  $('#login--mail').toggleClass('verified');
+  }
+  else{
+  $('#login--mail').removeClass('verified');
+  $('#login--mail').toggleClass('error');
+  }
+}
+
+function autenticate() {
+  mail = document.getElementById('login--mail').value;
+  password = document.getElementById('login--password').value;
+
+  $.ajax
+          ({
+              //Configurações
+              type: 'POST',//Método que está sendo utilizado.
+              dataType: 'html',//É o tipo de dado que a página vai retornar.
+              url: './php/login.php',//Indica a página que está sendo solicitada.
+              //função que vai ser executada assim que a requisição for enviada
+              beforeSend: function () {
+                $('.ajax--load').toggleClass('show');
+                $(".ajax--request--feedback").html("<img src='./img/Rolling-0.7s-204px.gif'>");
+              },
+              //Dados para envio
+              data: {
+                mail: mail,
+                password: password
+              },
+              //função que será executada quando a solicitação for finalizada.
+              success: function (msg)
+              {
+                if(msg=='valid') {
+                  location.href = './index.html'
+                }
+                if(msg=='invalid') {
+                  location.href = './acess.html'
+                }
+              }
+          });
+}

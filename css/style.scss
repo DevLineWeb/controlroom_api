@@ -160,7 +160,7 @@ html{
     -webkit-animation: scale-in-center 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     animation: scale-in-center 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-input[type='text'],input[type='number'],textarea, input[type='date'] {
+input[type='text'],input[type='number'],textarea, input[type='date'], input[type='password'] {
     @include inputElement();
     color: #000
 }
@@ -223,6 +223,30 @@ input[type=radio]:checked ~ label h3 {
     border: 1px solid $complementary--color;
     transition: all 0.2s;
 }
+input.verified {
+    color: #000;
+    border: 1px solid $complementary--color !important;
+    transition: all 0.3s;
+}
+input.error {
+    color: #ff0000;
+    border: 1px solid #ff0000 !important;
+    transition: all 0.3s;
+}
+input.verified ~ .login--ico {
+    color: $complementary--color;
+}
+input.error ~ .login--ico {
+    color: #ff0000;
+}
+// input:focus {
+//     color: #000;
+//     border: 1px solid $complementary--color !important;
+//     transition: all 0.3s;
+// }
+// input:focus ~ .login--ico {
+//     color: $complementary--color;
+// }
 // ============================================MODAL SETTINGS===================================================//
 
 .modal--legend {
@@ -780,4 +804,33 @@ footer div button{
     .header--mobile a {
         width: 85%;
     }
+}
+// .sec--acess--content {
+//     @include modalOverlayShow();
+// }
+.login--box {
+    @include modal();
+    display: flex;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 5px;
+    box-shadow: 0 1px 5px 0 $base--color;
+    font-size: 1.4rem;
+    border-radius: 5px;
+    background-color: $dark--color;
+}
+.login--form {
+    width: 400px;
+    background-color: $white--color;
+    border-radius: 5px;
+    border: 1px solid $base--color;
+}
+
+.login--form .login--ico {
+    position: absolute;
+    right: 10px;
+    padding: 5px;
+    font-size: 1.8rem;
+    color: $base--color;
 }
