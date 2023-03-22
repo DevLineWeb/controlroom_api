@@ -5,7 +5,7 @@ include_once('./conect.php');
 session_start();
 
 if (empty($_POST['mail']) || empty($_POST['password'])) { //SE NÃO FOR INFORMADO USUÁRIO E SENHA
-    header(('Location: index.php')); //VOLTA PRA PÁGINA INICIAL
+    header(('Location: ../index.html')); //VOLTA PRA PÁGINA INICIAL
     exit();
 }
 
