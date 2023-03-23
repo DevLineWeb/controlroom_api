@@ -12,7 +12,12 @@ include_once('./conect.php');
                 <legend>Warning!</legend>
             </div
             <div class='box--line'>
-                <P>Session Start!".$_SESSION['mail']."</P>
+                <div class='box--col'>
+                    <label>Session Start!</label>
+                    <P>Bem vindo! ".$_SESSION['mail']."</P>
+                </div>
+            </div>
+            <div class='box--line'>
                 <button class='button--submit request--feedback--button' onclick='closeModal()'> OK </button>
             </div>
         </div>

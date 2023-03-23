@@ -10,7 +10,11 @@ session_destroy();
             <legend>Warning!</legend>
         </div
         <div class='box--line'>
-            <P>Logout!</P>
+            <div class='box--col'>
+                <P>Logout!</P>
+            </div>
+        </div>
+        <div class='box--line'>
             <button class='button--submit request--feedback--button' onclick='closeModal()'> OK </button>
         </div>
     </div>

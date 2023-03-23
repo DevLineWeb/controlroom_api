@@ -15,12 +15,13 @@
             <div class="header--col--1">
                 <img src="./img/Control tech logo.png" alt="" class="menu--logo">
                 <img src="./img/Control tech ico.png" alt="" class="menu--ico">
-                <a href="">Room's</a>
-                <a href="">Dashboard</a>
-                <a href="">Log</a>
+                <a href="#">Room's</a>
+                <a href="#">Dashboard</a>
+                <a href="#">Log</a>
+                <a href="#">Users</a>
             </div>
             <div class="header--col--2">
-                <a href="#" class="menu--item"><i class="fa-solid fa-user"></i></a>
+                <a href="#" class="menu--item" onclick="getUserInfo();"><i class="fa-solid fa-user"></i></a>
                 <a href="#" class="menu--item"><i class="fa-solid fa-envelope"></i></a>
                 <a href="#" class="menu--item"><i class="fa-solid fa-star"></i></a>
                 <a href="#" class="menu--item"><i class="fa-solid fa-gear"></i></a>
@@ -508,6 +509,25 @@
                     <button type="button" class="button--submit" onclick="editRoom()">Atualizar <i class="fa-solid fa-wrench"></i></button>
                 </div>
             </form>
+        </section>
+        <section id="modal--user">
+            <section class="user--info--box">
+                <div class="modal--legend">
+                    <div class="modal--close" onclick="closeModal()"><i class="fa-regular fa-circle-xmark"></i></div>
+                    <legend>User Info</legend>
+                </div>
+                <div class="box--line">
+                    <div class="box--col">
+                        <img src="./img/Control tech logo 2.png" alt="">
+                    </div>
+                    <div class="box--col" id="user--session--info">
+                    </div>
+                </div>
+                <div class="box--line">
+                    <button class="button--cancel" onclick="closeModal()">Cancel</button>
+                    <button class="button--submit">Edit</button>
+                </div>
+            </section>
         </section>
         <section class="ajax--load">
             <div class="ajax--load--box">

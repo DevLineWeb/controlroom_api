@@ -12,10 +12,14 @@ if($deleteRoom) {
     echo "
     <div class='request--feedback--info'>
         <div class='modal--legend'>
-            <legend>Warning!</legend>
+            <legend>Aviso!</legend>
         </div
         <div class='box--line'>
-            <P>Deleted!</P>
+            <div class='box--col'>
+                <P>Deleted!</P>
+            </div>
+        </div>
+        <div class='box--line'>
             <button class='button--submit request--feedback--button' onclick='closeModal()'> OK </button>
         </div>
     </div>
@@ -28,7 +32,11 @@ else {
             <legend>Aviso!</legend>
         </div
         <div class='box--line'>
-            <P>Sala Cadastrada com Sucesso!</P>
+            <div class='box--col'>
+                <P>Error on delete!</P>
+            </div>
+        </div>
+        <div class='box--line'>
             <button class='button--submit request--feedback--button' onclick='closeModal()'> OK </button>
         </div>
     </div>

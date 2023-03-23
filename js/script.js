@@ -15,6 +15,7 @@ function sessionValidate() {
               success: function (msg)
               {
                 $("#ajax--request--feedback").html(msg);
+                $("#user--session--name").html(msg);
                 if(msg=='invalid') {
                   location.href = './acess.html';
                 }
@@ -283,6 +284,7 @@ function closeModal() {
   $('.table--item').removeClass('append');
   $('.table--room--info--button').removeClass('drop');
   $('.ajax--load').removeClass('show');
+  $('#modal--user').removeClass('show');
 }
 
 const configButton = document.getElementsByClassName('table--room--config--button');
@@ -563,4 +565,24 @@ function logout() {
           });
 }
 
-
+function getUserInfo (){
+  $.ajax
+          ({
+              //Configurações
+              type: 'POST',//Método que está sendo utilizado.
+              dataType: 'html',//É o tipo de dado que a página vai retornar.
+              url: './php/user.php',//Indica a página que está sendo solicitada.
+              //função que vai ser executada assim que a requisição for enviada
+              beforeSend: function () {
+                $('.ajax--load').toggleClass('show');
+                $(".ajax--request--feedback").html("<img src='./img/Rolling-0.7s-204px.gif'>");
+              },
+              //função que será executada quando a solicitação for finalizada.
+              success: function (msg)
+              {
+                $('#modal--user').toggleClass('show');
+                $("#user--session--info").html(msg);
+                sessionValidate();
+              }
+          });
+}

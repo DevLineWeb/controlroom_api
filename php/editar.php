@@ -46,10 +46,14 @@ if($updateRoom) {
     echo "
     <div class='request--feedback--info'>
         <div class='modal--legend'>
-            <legend>Warning!</legend>
+            <legend>Aviso!</legend>
         </div
         <div class='box--line'>
-            <P>Updated!</P>
+            <div class='box--col'>
+                <P>Updated!</P>
+            </div>
+        </div>
+        <div class='box--line'>
             <button class='button--submit request--feedback--button' onclick='closeModal()'> OK </button>
         </div>
     </div>
@@ -62,7 +66,11 @@ else {
             <legend>Aviso!</legend>
         </div
         <div class='box--line'>
-            <P>Sala Cadastrada com Sucesso!</P>
+            <div class='box--col'>
+                <P>Error on update!</P>
+            </div>
+        </div>
+        <div class='box--line'>
             <button class='button--submit request--feedback--button' onclick='closeModal()'> OK </button>
         </div>
     </div>

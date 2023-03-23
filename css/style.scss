@@ -717,10 +717,42 @@ footer div button{
     background-color: $white--color;
     width: 350px;
 }
+.request--feedback--info, #ajax--request--feedback {
+    width: 100%;
+}
 #ajax--request--feedback img {
     max-width: 70px;
 }
+// ==================================== ACESS PAGE =====================================//
+.login--box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 5px;
+    box-shadow: 0 1px 5px 0 $base--color;
+    font-size: 1.4rem;
+    border-radius: 5px;
+    background-color: $dark--color;
+    width: 400px;
+}
+.login--form {
+    width: 100%;
+    background-color: $white--color;
+    border-radius: 5px;
+    border: 1px solid $base--color;
+}
 
+.login--form .login--ico {
+    position: absolute;
+    right: 10px;
+    padding: 5px;
+    font-size: 1.8rem;
+    color: $base--color;
+}
+.login--form .box--col {
+    width: 100%;
+}
 
 
 /* ==================================== MEDIA QUERIES ==================================== */
@@ -799,6 +831,9 @@ footer div button{
     .box--line {
         grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
     }
+    .login--box {
+        width: 100%;
+    }
 }
 @media (max-width:300px) {
     .header--mobile a {
@@ -808,29 +843,20 @@ footer div button{
 // .sec--acess--content {
 //     @include modalOverlayShow();
 // }
-.login--box {
-    @include modal();
-    display: flex;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    padding: 5px;
-    box-shadow: 0 1px 5px 0 $base--color;
-    font-size: 1.4rem;
-    border-radius: 5px;
-    background-color: $dark--color;
-}
-.login--form {
-    width: 400px;
-    background-color: $white--color;
-    border-radius: 5px;
-    border: 1px solid $base--color;
-}
 
-.login--form .login--ico {
-    position: absolute;
-    right: 10px;
-    padding: 5px;
-    font-size: 1.8rem;
-    color: $base--color;
+#modal--user {
+    @include modalOverlay();
+}
+#modal--user.show {
+    @include modalOverlayShow();
+}
+.user--info--box {
+    width: 500px;
+    @include modal();
+    color: $dark--color;
+    font-size: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    background-color: $white--color
 }

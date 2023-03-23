@@ -65,7 +65,11 @@ if($insertRoom) {
             <legend>Aviso!</legend>
         </div
         <div class='box--line'>
-            <P>Sala Cadastrada com Sucesso!</P>
+            <div class='box--col'>
+                <P>Cadastro realizado!</P>
+            </div>
+        </div>
+        <div class='box--line'>
             <button class='button--submit request--feedback--button' onclick='closeModal()'> OK </button>
         </div>
     </div>
@@ -78,7 +82,11 @@ else {
             <legend>Aviso!</legend>
         </div
         <div class='box--line'>
-            <P>Sala Cadastrada com Sucesso!</P>
+            <div class='box--col'>
+                <P>Erro ao cadastrar!</P>
+            </div>      
+        </div>
+        <div class'box--line'>
             <button class='button--submit request--feedback--button' onclick='closeModal()'> OK </button>
         </div>
     </div>
