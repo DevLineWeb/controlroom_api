@@ -536,7 +536,7 @@ tr {
   bottom: 0;
   opacity: 0;
   pointer-events: none;
-  margin-top: 300px;
+  margin-top: -22rem;
   border-top: none;
   background-color: #FFFFFF;
   z-index: 1;
@@ -545,11 +545,10 @@ tr {
 }
 
 .table--item--more.show {
-  position: relative;
-  margin-top: -3px;
+  margin-top: -0.3rem;
   opacity: 0.9;
   pointer-events: all;
-  transition: all 0.2s;
+  position: relative;
 }
 
 .table--item--more th {
@@ -635,10 +634,10 @@ tr {
 #add--room--box {
   width: 900px;
   z-index: 1001;
-  position: fixed;
   display: none;
   flex-direction: column;
   overflow: hidden;
+  position: relative;
   animation: scale-in-center 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   color: #002333;
   font-size: 1.4rem;
@@ -679,10 +678,10 @@ tr {
 
 #filter--select--box {
   z-index: 1001;
-  position: fixed;
   display: none;
   flex-direction: column;
   overflow: hidden;
+  position: relative;
   animation: scale-in-center 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   display: flex;
   flex-direction: column;
@@ -714,10 +713,44 @@ tr {
 .edit--room--box {
   width: 900px;
   z-index: 1001;
-  position: fixed;
   display: none;
   flex-direction: column;
   overflow: hidden;
+  position: relative;
+  animation: scale-in-center 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  color: #002333;
+  font-size: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  background-color: #FFFFFF;
+}
+
+#modal--user {
+  top: 0;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4588235294);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+#modal--user.show {
+  display: flex;
+  transition: all 0.2s;
+}
+
+.user--info--box {
+  width: 500px;
+  z-index: 1001;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
   animation: scale-in-center 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   color: #002333;
   font-size: 1.4rem;
@@ -766,12 +799,12 @@ footer div button {
   transition: all 0.2s;
 }
 
-.ajax--load--box {
+.request--feedback--info {
   z-index: 1001;
-  position: fixed;
   display: none;
   flex-direction: column;
   overflow: hidden;
+  position: relative;
   animation: scale-in-center 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   color: #002333;
   font-size: 1.4rem;
@@ -782,11 +815,7 @@ footer div button {
   width: 350px;
 }
 
-.request--feedback--info, #ajax--request--feedback {
-  width: 100%;
-}
-
-#ajax--request--feedback img {
+.ajax--request--feedback img {
   max-width: 70px;
 }
 
@@ -887,6 +916,9 @@ footer div button {
     left: 0;
     transform: translate(0);
   }
+  .user--info--box {
+    width: 100%;
+  }
 }
 @media (max-width: 452px) {
   .box--col {
@@ -903,37 +935,4 @@ footer div button {
   .header--mobile a {
     width: 85%;
   }
-}
-#modal--user {
-  top: 0;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4588235294);
-  z-index: 1000;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  overflow-y: auto;
-}
-
-#modal--user.show {
-  display: flex;
-  transition: all 0.2s;
-}
-
-.user--info--box {
-  width: 500px;
-  z-index: 1001;
-  position: fixed;
-  display: none;
-  flex-direction: column;
-  overflow: hidden;
-  animation: scale-in-center 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  color: #002333;
-  font-size: 1.4rem;
-  display: flex;
-  flex-direction: column;
-  border-radius: 5px;
-  background-color: #FFFFFF;
 }/*# sourceMappingURL=style.css.map */

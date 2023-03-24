@@ -10,7 +10,7 @@ include_once('./conect.php');
         <div class='request--feedback--info'>
             <div class='modal--legend'>
                 <legend>Warning!</legend>
-            </div
+            </div>
             <div class='box--line'>
                 <div class='box--col'>
                     <label>Session Start!</label>

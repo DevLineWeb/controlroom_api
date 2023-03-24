@@ -14,7 +14,7 @@ function sessionValidate() {
               //função que será executada quando a solicitação for finalizada.
               success: function (msg)
               {
-                $("#ajax--request--feedback").html(msg);
+                $(".ajax--request--feedback").html(msg);
                 $("#user--session--name").html(msg);
                 if(msg=='invalid') {
                   location.href = './acess.html';
@@ -197,7 +197,7 @@ function addRoom() {
                 beforeSend: function () {
                   $('#modal--add--room').removeClass("show");
                   $('.ajax--load').toggleClass('show');
-                  $("#ajax--request--feedback").html("<img src='./img/Rolling-0.7s-204px.gif'>");
+                  $(".ajax--request--feedback").html("<img src='./img/Rolling-0.7s-204px.gif'>");
                 },
                 //Dados para envio
                 data: {
@@ -221,7 +221,7 @@ function addRoom() {
                 //função que será executada quando a solicitação for finalizada.
                 success: function (msg)
                 {
-                   $("#ajax--request--feedback").html(msg);
+                   $(".ajax--request--feedback").html(msg);
                    roomList();
                 }
             });
@@ -382,7 +382,7 @@ function editRoom() {
               beforeSend: function () {
                 $('#modal--add--room').removeClass("show");
                 $('.ajax--load').toggleClass('show');
-                $("#ajax--request--feedback").html("<img src='./img/Rolling-0.7s-204px.gif'>");
+                $(".ajax--request--feedback").html("<img src='./img/Rolling-0.7s-204px.gif'>");
               },
               //Dados para envio
               data: {
@@ -407,7 +407,7 @@ function editRoom() {
               //função que será executada quando a solicitação for finalizada.
               success: function (msg)
               {
-                 $("#ajax--request--feedback").html(msg);
+                 $(".ajax--request--feedback").html(msg);
                  roomList();
               }
           });
@@ -425,7 +425,7 @@ function deleteRoom() {
       beforeSend: function () {
         $('#modal--add--room').removeClass("show");
         $('.ajax--load').toggleClass('show');
-        $("#ajax--request--feedback").html("<img src='./img/Rolling-0.7s-204px.gif'>");
+        $(".ajax--request--feedback").html("<img src='./img/Rolling-0.7s-204px.gif'>");
       },
       //Dados para envio
       data: {
@@ -434,7 +434,7 @@ function deleteRoom() {
       //função que será executada quando a solicitação for finalizada.
       success: function (msg)
       {
-         $("#ajax--request--feedback").html(msg);
+         $(".ajax--request--feedback").html(msg);
          roomList();
       }
   });
@@ -464,7 +464,7 @@ function filterRoom() {
               beforeSend: function () {
                 $('#modal--add--room').removeClass("show");
                 $('.ajax--load').toggleClass('show');
-                $("#ajax--request--feedback").html("<img src='./img/Rolling-0.7s-204px.gif'>");
+                $(".ajax--request--feedback").html("<img src='./img/Rolling-0.7s-204px.gif'>");
               },
               //Dados para envio
               data: {
@@ -482,7 +482,7 @@ function filterRoom() {
               //função que será executada quando a solicitação for finalizada.
               success: function (msg)
               {
-                 $("#ajax--request--feedback").html(msg);
+                 $(".ajax--request--feedback").html(msg);
                  roomList();
               }
           });
@@ -537,8 +537,8 @@ function autenticate() {
                 if(msg=='valid') {
                   location.href = './index.html'
                 }
-                if(msg=='invalid') {
-                  location.href = './acess.html'
+                else {
+                  $(".ajax--request--feedback").html(msg);
                 }
               }
           });
@@ -559,7 +559,7 @@ function logout() {
               //função que será executada quando a solicitação for finalizada.
               success: function (msg)
               {
-                $("#ajax--request--feedback").html(msg);
+                $(".ajax--request--feedback").html(msg);
                 sessionValidate();
               }
           });

@@ -5,7 +5,21 @@ include_once('./conect.php');
 session_start();
 
 if (empty($_POST['mail']) || empty($_POST['password'])) { //SE NÃO FOR INFORMADO USUÁRIO E SENHA
-    header(('Location: ../index.html')); //VOLTA PRA PÁGINA INICIAL
+    echo "
+    <div class='request--feedback--info'>
+        <div class='modal--legend'>
+            <legend>Aviso!</legend>
+        </div>
+        <div class='box--line'>
+            <div class='box--col'>
+                <P>Digite o usuário e a senha!</P>
+            </div>
+        </div>
+        <div class='box--line'>
+            <button class='button--submit request--feedback--button' onclick='closeModal()'> OK </button>
+        </div>
+    </div>
+    "; //VOLTA PRA PÁGINA INICIAL
     exit();
 }
 
@@ -24,8 +38,21 @@ if ($row == 1) { //SE UMA LINHA FOI ENCONTRADA
     exit();
 } else {
     $_SESSION['not_autenticate'] = true; //SE NÃO FOR AUTENTICADO ATRIBUI UM VALOR BOOLEANO TRUE
-    echo "invalid";
-    die();
+    echo "
+    <div class='request--feedback--info'>
+        <div class='modal--legend'>
+            <legend>Aviso!</legend>
+        </div>
+        <div class='box--line'>
+            <div class='box--col'>
+                <P>Usuário e/ou senha incorretos!</P>
+            </div>
+        </div>
+        <div class='box--line'>
+            <button class='button--submit request--feedback--button' onclick='closeModal()'> OK </button>
+        </div>
+    </div>
+    ";
 }
 
 ?>

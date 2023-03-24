@@ -153,10 +153,10 @@ html{
 }
 @mixin modal {
     z-index: 1001;
-    position: fixed;
     display: none;
     flex-direction: column;
     overflow: hidden;
+    position: relative;
     -webkit-animation: scale-in-center 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     animation: scale-in-center 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -554,7 +554,7 @@ tr {
     bottom: 0;
     opacity: 0;
     pointer-events: none;
-    margin-top: 300px;
+    margin-top: -22rem;
     border-top: none;
     background-color: $white--color;
     z-index: 1;
@@ -562,11 +562,11 @@ tr {
     border-bottom: 5px solid $base--color;
 }
 .table--item--more.show {
-    position: relative;
-    margin-top: -3px;
+    margin-top: -0.3rem;
     opacity: 0.9;
     pointer-events: all;
-    transition: all 0.2s;
+    position: relative;
+    // transition: all 0.1s;
 }
 .table--item--more th {
     color: $dark--color;
@@ -681,8 +681,23 @@ tr {
     border-radius: 5px;
     background-color: $white--color
 }
-
-
+// ================================================== MODAL USER INFO =======================================================//
+#modal--user {
+    @include modalOverlay();
+}
+#modal--user.show {
+    @include modalOverlayShow();
+}
+.user--info--box {
+    width: 500px;
+    @include modal();
+    color: $dark--color;
+    font-size: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    background-color: $white--color
+}
 /* ===============================FOOTER================================ */
 footer {
     position: fixed;
@@ -707,7 +722,7 @@ footer div button{
 .ajax--load.show {
     @include modalOverlayShow();
 }
-.ajax--load--box {
+.request--feedback--info {
     @include modal();
     color: $dark--color;
     font-size: 1.4rem;
@@ -717,10 +732,7 @@ footer div button{
     background-color: $white--color;
     width: 350px;
 }
-.request--feedback--info, #ajax--request--feedback {
-    width: 100%;
-}
-#ajax--request--feedback img {
+.ajax--request--feedback img {
     max-width: 70px;
 }
 // ==================================== ACESS PAGE =====================================//
@@ -823,6 +835,9 @@ footer div button{
         left: 0;
         transform: translate(0);
     }
+    .user--info--box {
+        width: 100%;
+    }
 }
 @media (max-width:452px) {
     .box--col {
@@ -843,20 +858,3 @@ footer div button{
 // .sec--acess--content {
 //     @include modalOverlayShow();
 // }
-
-#modal--user {
-    @include modalOverlay();
-}
-#modal--user.show {
-    @include modalOverlayShow();
-}
-.user--info--box {
-    width: 500px;
-    @include modal();
-    color: $dark--color;
-    font-size: 1.4rem;
-    display: flex;
-    flex-direction: column;
-    border-radius: 5px;
-    background-color: $white--color
-}
