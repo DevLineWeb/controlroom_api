@@ -63,7 +63,7 @@ if($insertRoom) {
     <div class='request--feedback--info'>
         <div class='modal--legend'>
             <legend>Aviso!</legend>
-        </div
+        </div>
         <div class='box--line'>
             <div class='box--col'>
                 <P>Cadastro realizado!</P>
@@ -80,7 +80,7 @@ else {
     <div class='request--feedback--info'>
         <div class='modal--legend'>
             <legend>Aviso!</legend>
-        </div
+        </div>
         <div class='box--line'>
             <div class='box--col'>
                 <P>Erro ao cadastrar!</P>

@@ -47,7 +47,7 @@ if($updateRoom) {
     <div class='request--feedback--info'>
         <div class='modal--legend'>
             <legend>Aviso!</legend>
-        </div
+        </div>
         <div class='box--line'>
             <div class='box--col'>
                 <P>Updated!</P>
@@ -64,7 +64,7 @@ else {
     <div class='request--feedback--info'>
         <div class='modal--legend'>
             <legend>Aviso!</legend>
-        </div
+        </div>
         <div class='box--line'>
             <div class='box--col'>
                 <P>Error on update!</P>

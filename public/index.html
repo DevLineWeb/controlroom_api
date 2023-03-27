@@ -14,11 +14,11 @@
         <main>
             <div class="header--col--1">
                 <img src="./img/Control tech logo.png" alt="" class="menu--logo">
-                <img src="./img/Control tech ico.png" alt="" class="menu--ico">
-                <a href="#">Room's</a>
-                <a href="#">Dashboard</a>
-                <a href="#">Log</a>
-                <a href="#">Users</a>
+                <img src="./img/Control tech ico - white.png" alt="" class="menu--ico">
+                <a href="#" class="menu--item">Room's</a>
+                <a href="#" class="menu--item">Dashboard</a>
+                <a href="#" class="menu--item">Log</a>
+                <a href="#" class="menu--item">Users</a>
             </div>
             <div class="header--col--2">
                 <a href="#" class="menu--item" onclick="getUserInfo();"><i class="fa-solid fa-user"></i></a>
@@ -26,13 +26,22 @@
                 <a href="#" class="menu--item"><i class="fa-solid fa-star"></i></a>
                 <a href="#" class="menu--item"><i class="fa-solid fa-gear"></i></a>
                 <a href="#" class="menu--item" onclick="logout();"><i class="fa-solid fa-right-from-bracket"></i></a>
-                <a href="#" id="menu--toggle"><i class="fa-solid fa-bars"></i></a>
             </div>
             <div class="header--mobile">
-                <a href="#" class="menu--item--mobile"> <i class="fa-solid fa-user"></i> Conta</a>
-                <a href="#" class="menu--item--mobile"> <i class="fa-solid fa-envelope"></i> Notificações</a>
-                <a href="#" class="menu--item--mobile"> <i class="fa-solid fa-star"></i> Favoritos</a>
-                <a href="#" class="menu--item--mobile"> <i class="fa-solid fa-gear"></i> Configurações</a>
+                <div class="menu--mobile--grid">
+                    <a href="#" class="menu--item--mobile"> <i class="fa-solid fa-chart-line"></i> Dashboard</a>
+                    <a href="#" class="menu--item--mobile"> <i class="fa-solid fa-book"></i> Log</a>
+                    <a href="#" class="menu--item--mobile"> <i class="fa-solid fa-users"></i> Users</a>
+                    <a href="#" class="menu--item--mobile" onclick="getUserInfo();"> <i class="fa-solid fa-user"></i> Conta</a>
+                    <a href="#" class="menu--item--mobile"> <i class="fa-solid fa-envelope"></i> Notificações</a>
+                    <a href="#" class="menu--item--mobile"> <i class="fa-solid fa-star"></i> Favoritos</a>
+                    <a href="#" class="menu--item--mobile"> <i class="fa-solid fa-gear"></i> Configurações</a>
+                </div>
+                <div class="menu--mobile">
+                    <img src="./img/Control tech ico.png" alt="" class="menu--ico">
+                    <div>Control Room</div>
+                    <button class="button--default" id="menu--toggle"><i class="fa-solid fa-bars"></i></button>
+                </div>
             </div>
         </main>
     </header>
