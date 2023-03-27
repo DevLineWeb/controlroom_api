@@ -1,5 +1,9 @@
 <?php
 
+use app\library\Log;
+use app\library\LoggerDatabase;
+use app\library\LoggerFile;
+
 require '../vendor/autoload.php';
 
-// Log::create('logs', 'message', EnumLog::LoginError);
+Log::create(new LoggerDatabase());

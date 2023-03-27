@@ -5,5 +5,11 @@
             "app\\": "app/"
         }
     },
+    "authors": [
+        {
+            "name": "Indicattis",
+            "email": "joao.staehler@gmail.com"
+        }
+    ],
     "require": {}
 }
