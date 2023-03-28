@@ -1,5 +1,7 @@
 <?php
 include_once('../data/conect.php');
+include_once('../log/log.php');
+session_start();
 
 $id = $_POST['id'];
 $natureza = $_POST['natureza'];
@@ -58,6 +60,8 @@ if($updateRoom) {
         </div>
     </div>
     ";
+    logger($_SESSION['mail'].'- EDITED ROOM - ID: '.$id.'', $mode = 'alert');
+
 }
 else {
     echo "
@@ -75,4 +79,5 @@ else {
         </div>
     </div>
     ";
+    logger($_SESSION['mail'].'- TRY EDIT ROOM - ID: '.$id.'', $mode = 'error');
 }

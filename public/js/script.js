@@ -87,31 +87,8 @@ function infoShow(element){ // element é o index da linha clicada
     }
 getLineIndex();
 }
-function getGridIndex(){
-  for(x=0;x<clickedItemGrid.length;x++){
-      // arranjo os listeners com os index das linhas
-      (function(index){
-        clickedItemGrid[x].addEventListener("click", function(){
-          gridShow(index);
-      });
-      })(x);
-  }
-}
-function gridShow(element){ // element é o index da linha clicada
-    getEditInfos(element);
-    console.log(element);
-// removo os listeners
-    for(x=0;x<clickedItemGrid.length;x++){
-        objclone = clickedItemGrid[x].cloneNode(true);
-        clickedItemGrid[x].parentNode.replaceChild(objclone, clickedItemGrid[x]);
-    }
-    getGridIndex();
-}
 // ANIMAÇÕES DE INTERAÇÃO COM JQUERY
-$('#menu--toggle').click(function () {
-  $('.header--mobile').toggleClass("show")
-}
-)
+
 $('.search--ico').click(function () {
   $('.room--list--search').toggleClass("active")
 }
@@ -119,14 +96,10 @@ $('.search--ico').click(function () {
 $('#table--button--filter--list').click(function () {
   $('#table--button--filter--list').toggleClass('selected');
   $('#table--button--filter--grid').removeClass('selected');
-  $('.table--grid').removeClass('change');
-  $('.table--room').removeClass('change');
 })
 $('#table--button--filter--grid').click(function () {
   $('#table--button--filter--grid').toggleClass('selected');
   $('#table--button--filter--list').removeClass('selected');
-  $('.table--grid').toggleClass('change');
-  $('.table--room').toggleClass('change');
   $('.search--submit').style.display = 'flex';
 })
 
@@ -286,7 +259,7 @@ function closeModal() {
   $('.ajax--load').removeClass('show');
   $('#modal--user').removeClass('show');
 }
-
+ 
 const configButton = document.getElementsByClassName('table--room--config--button');
 $(configButton).on('click' , closeModal())
 function getEditInfos (lineIndex) {

@@ -319,58 +319,59 @@ header {
   cursor: pointer;
 }
 
-#menu--toggle {
-  position: absolute;
-  right: 10px;
+.sec--project--sidebar {
+  z-index: 9999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  height: 100vh;
+  font-size: 1.6rem;
+  overflow: hidden;
+  width: 50px;
 }
 
-.menu--mobile {
-  color: #DEEFE7;
+.sidebar--toggle {
+  width: 100%;
   display: flex;
-  width: 100%;
   align-items: center;
-  font-family: "Rubik", sans-serif;
+  cursor: pointer;
+}
+
+.sidebar--toggle i {
+  color: #FFFFFF;
+  font-size: 2.2rem;
+  padding: 10px;
+}
+
+.sidebar--options {
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 400px;
+}
+
+.sidebar--item {
   position: relative;
-}
-
-.header--mobile {
-  position: absolute;
-  width: 100vw;
-  display: none;
-  font-size: 1.2rem;
-  transform: translateY(-422px);
-  top: 50px;
-  background-image: url(../img/slider/7.jpg);
-  padding: 20px 20px 0px;
-  z-index: 1002;
-  box-shadow: 0 1px 5px 0 #DEEFE7;
-}
-
-.header--mobile.show {
-  transition: all 0.3s;
-  transform: translateY(-70px);
-}
-
-.menu--mobile--grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  grid-gap: 10px;
-  width: 100%;
-}
-
-.header--mobile a {
-  border: 1px solid #B4BEC9;
+  overflow: hidden;
+  border: 1px solid transparent;
   border-radius: 3px;
-  width: 100%;
-  color: #002333 !important;
-  background-color: #FFFFFF;
+  cursor: pointer;
+  padding: 10px;
 }
 
-.header--mobile a:hover {
-  border: 1px solid #FFFFFF;
-  color: #FFFFFF !important;
-  background-color: #159A9C;
-  transition: all 0.3s;
+.sidebar--item:hover {
+  background-color: #FFFFFF;
+  color: #159A9C;
+  border: 1px solid #159A9C;
+  transition: all 0.2s;
+}
+
+.sidebar--item span {
+  margin: 0px 15px;
+  position: absolute;
+  z-index: 9999;
 }
 
 /*================================================================== FILTROS DE PESQUISA DA LISTA ================================================================== */
@@ -613,22 +614,18 @@ tr {
   transition: all 0.4s;
 }
 
-.table--grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  grid-gap: 20px;
+.sec--project--mobile--options {
+  position: relative;
+  margin-top: 10px;
+}
+
+.mobile--buttons {
   display: none;
-  padding: 10px;
-  width: 95%;
-}
-
-.table--grid.change {
-  display: grid;
-}
-
-.table--grid button {
-  width: 100px;
-  line-height: 40px;
+  z-index: 10;
+  bottom: 0px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ================================================== MODAL ADD ROOM ====================================================*/
@@ -665,16 +662,6 @@ tr {
   flex-direction: column;
   border-radius: 5px;
   background-color: #FFFFFF;
-}
-
-.mobile--buttons {
-  display: none;
-  position: absolute;
-  z-index: 10;
-  bottom: 0px;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
 }
 
 /* ================================================== MODAL FILTROS ====================================================*/
@@ -886,52 +873,35 @@ footer div button {
   .table--col--1, .table--col--4 {
     display: none !important;
   }
-}
-@media (max-width: 768px) {
+  .user--info--box {
+    width: 100%;
+  }
   main {
     max-width: 100vw !important;
   }
-  .gradient {
-    --size: 500px;
+}
+@media (max-width: 768px) {
+  .header--col--1 {
+    width: 100%;
+    justify-content: center;
+  }
+  .menu--item {
+    display: none;
   }
 }
 @media (max-width: 576px) {
   .mobile--buttons {
     display: flex;
   }
-  .header--col--1, .header--col--2 {
-    display: none;
-  }
-  .menu--ico {
-    display: block;
-  }
-  .header--mobile {
-    display: flex;
-    flex-direction: column;
-  }
   .room--list--search, .room--list--search.active {
     width: 99%;
     color: #FFFFFF;
   }
-  .search--submit {
-    display: flex;
-  }
   .room--list--options {
     display: none;
   }
-  .table--grid {
-    display: grid;
-  }
-  .table--room {
-    display: none;
-  }
-  .modal--box {
-    top: 0;
-    left: 0;
-    transform: translate(0);
-  }
-  .user--info--box {
-    width: 100%;
+  .table--col--2, .table--col--6 {
+    display: none !important;
   }
 }
 @media (max-width: 452px) {
