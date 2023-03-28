@@ -5,7 +5,7 @@ function sessionValidate() {
               //Configurações
               type: 'POST',//Método que está sendo utilizado.
               dataType: 'html',//É o tipo de dado que a página vai retornar.
-              url: '../php/autentica.php',//Indica a página que está sendo solicitada.
+              url: '../app/data/autentica.php',//Indica a página que está sendo solicitada.
               //função que vai ser executada assim que a requisição for enviada
               beforeSend: function () {
                 $('.ajax--load').toggleClass('show');
@@ -31,7 +31,7 @@ function roomList() {
     ({
         type: 'POST',
         dataType: 'html',
-        url: '../php/listagem.php',
+        url: '../app/interface/listagem.php',
         data: "method=item--list",
         beforeSend: function () {
           
@@ -46,7 +46,7 @@ function roomList() {
     ({
         type: 'POST',
         dataType: 'html',
-        url: '../php/listagem.php',
+        url: '../app/interface/listagem.php',
         data: "method=item--grid",
         beforeSend: function () {
           
@@ -192,7 +192,7 @@ function addRoom() {
                 //Configurações
                 type: 'POST',//Método que está sendo utilizado.
                 dataType: 'html',//É o tipo de dado que a página vai retornar.
-                url: '../php/cadastro.php',//Indica a página que está sendo solicitada.
+                url: '../app/interface/cadastro.php',//Indica a página que está sendo solicitada.
                 //função que vai ser executada assim que a requisição for enviada
                 beforeSend: function () {
                   $('#modal--add--room').removeClass("show");
@@ -377,7 +377,7 @@ function editRoom() {
               //Configurações
               type: 'POST',//Método que está sendo utilizado.
               dataType: 'html',//É o tipo de dado que a página vai retornar.
-              url: '../php/editar.php',//Indica a página que está sendo solicitada.
+              url: '../app/interface/editar.php',//Indica a página que está sendo solicitada.
               //função que vai ser executada assim que a requisição for enviada
               beforeSend: function () {
                 $('#modal--add--room').removeClass("show");
@@ -420,7 +420,7 @@ function deleteRoom() {
       //Configurações
       type: 'POST',//Método que está sendo utilizado.
       dataType: 'html',//É o tipo de dado que a página vai retornar.
-      url: '../php/deletar.php',//Indica a página que está sendo solicitada.
+      url: '../app/interface/deletar.php',//Indica a página que está sendo solicitada.
       //função que vai ser executada assim que a requisição for enviada
       beforeSend: function () {
         $('#modal--add--room').removeClass("show");
@@ -459,7 +459,7 @@ function filterRoom() {
               //Configurações
               type: 'POST',//Método que está sendo utilizado.
               dataType: 'html',//É o tipo de dado que a página vai retornar.
-              url: '../php/filtro.php',//Indica a página que está sendo solicitada.
+              url: '../app/interface/filtro.php',//Indica a página que está sendo solicitada.
               //função que vai ser executada assim que a requisição for enviada
               beforeSend: function () {
                 $('#modal--add--room').removeClass("show");
@@ -520,7 +520,7 @@ function autenticate() {
               //Configurações
               type: 'POST',//Método que está sendo utilizado.
               dataType: 'html',//É o tipo de dado que a página vai retornar.
-              url: '../php/login.php',//Indica a página que está sendo solicitada.
+              url: '../app/data/login.php',//Indica a página que está sendo solicitada.
               //função que vai ser executada assim que a requisição for enviada
               beforeSend: function () {
                 $('.ajax--load').toggleClass('show');
@@ -550,7 +550,7 @@ function logout() {
               //Configurações
               type: 'POST',//Método que está sendo utilizado.
               dataType: 'html',//É o tipo de dado que a página vai retornar.
-              url: '../php/logout.php',//Indica a página que está sendo solicitada.
+              url: '../app/data/logout.php',//Indica a página que está sendo solicitada.
               //função que vai ser executada assim que a requisição for enviada
               beforeSend: function () {
                 $('.ajax--load').toggleClass('show');
@@ -571,7 +571,7 @@ function getUserInfo (){
               //Configurações
               type: 'POST',//Método que está sendo utilizado.
               dataType: 'html',//É o tipo de dado que a página vai retornar.
-              url: '../php/user.php',//Indica a página que está sendo solicitada.
+              url: '../app/data/user.php',//Indica a página que está sendo solicitada.
               //função que vai ser executada assim que a requisição for enviada
               beforeSend: function () {
                 $('.ajax--load').toggleClass('show');

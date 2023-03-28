@@ -1,6 +1,6 @@
 <?php
 
-include_once('./conect.php');
+include_once('../data/conect.php');
 
 session_start();
 $_SESSION['filterActive'] = "active";

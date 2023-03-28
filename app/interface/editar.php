@@ -1,5 +1,5 @@
 <?php
-include_once('./conect.php');
+include_once('../data/conect.php');
 
 $id = $_POST['id'];
 $natureza = $_POST['natureza'];

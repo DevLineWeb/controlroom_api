@@ -1,5 +1,7 @@
 <?php
-include_once('./conect.php');
+include_once('../data/conect.php');
+include_once('../log/log.php');
+session_start();
 
 $natureza = $_POST['natureza'];
 $local = $_POST['localidade'];
@@ -74,6 +76,7 @@ if($insertRoom) {
         </div>
     </div>
     ";
+    logger($_SESSION['mail'].'- ADDED A NEW ROOM -', $mode = 'alert');
 }
 else {
     echo "
@@ -91,6 +94,7 @@ else {
         </div>
     </div>
     ";
+    logger($_SESSION['mail']. ' - FATAL ERROR ON ADDED A NEW ROOM - ', $mode = 'error');
 }
 
 // natureza: cr_natureza,

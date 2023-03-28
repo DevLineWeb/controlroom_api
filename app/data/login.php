@@ -1,6 +1,7 @@
 <?php
 
 include_once('./conect.php');
+include_once('../log/log.php');
 
 session_start();
 
@@ -19,7 +20,9 @@ if (empty($_POST['mail']) || empty($_POST['password'])) { //SE NÃO FOR INFORMAD
             <button class='button--submit request--feedback--button' onclick='closeModal()'> OK </button>
         </div>
     </div>
-    "; //VOLTA PRA PÁGINA INICIAL
+    ";
+    logger('error when trying to login, user and password NULL', $mode = 'error');
+
     exit();
 }
 
@@ -35,6 +38,7 @@ $row = mysqli_num_rows($result); //ATRIBUI O RESULTADO A UMA LINHA DO BANCO
 if ($row == 1) { //SE UMA LINHA FOI ENCONTRADA
     $_SESSION['mail'] = $user; //CRIA A SESSÃO EMAIL E ATRIBUI A ELA UMA VARIÁVEL USER
     echo "valid";
+    logger($_SESSION["mail"].' '.'has logged in');
     exit();
 } else {
     $_SESSION['not_autenticate'] = true; //SE NÃO FOR AUTENTICADO ATRIBUI UM VALOR BOOLEANO TRUE
@@ -53,6 +57,8 @@ if ($row == 1) { //SE UMA LINHA FOI ENCONTRADA
         </div>
     </div>
     ";
+    logger($_POST["mail"].' '.'tried to login but wrong username or password', $mode = 'error');
+
 }
 
 ?>

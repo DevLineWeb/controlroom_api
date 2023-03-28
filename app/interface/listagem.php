@@ -1,5 +1,5 @@
 <?php
-include_once('./conect.php');
+include_once('../data/conect.php');
 
 $method = $_POST["method"];
 $methodGrid = $_POST["method"];
