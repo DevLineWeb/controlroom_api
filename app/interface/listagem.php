@@ -51,11 +51,11 @@ switch ($method) {
                             echo "
                             <tr class='table--item"." ".$i."'>
                                 <td class='item--info table--col--1'>".$room_natureza[$i]."</td>
-                                <td class='item--info'>".$room_localidade[$i]."</td>
-                                <td class='item--info'>".$room_nomenclatura[$i]."</td>
+                                <td class='item--info table--col--2'>".$room_localidade[$i]."</td>
+                                <td class='item--info table--col--3'>".$room_nomenclatura[$i]."</td>
                                 <td class='item--info table--col--4'>".$room_modelo[$i]."</td>
-                                <td class='item--info'>FSG-".$room_patrimonio[$i]."</td>
-                                <td class='item--info'>".$room_serie[$i]."</td>
+                                <td class='item--info table--col--5'>FSG-".$room_patrimonio[$i]."</td>
+                                <td class='item--info table--col--6'>".$room_serie[$i]."</td>
                                 <td class='table--item--action'>
                                     <button class='table--room--config--button button--default' 
                                     data-id='".$id[$i]."' 
@@ -91,7 +91,7 @@ switch ($method) {
                                         <i class='fa-solid fa-exclamation'></i>
                                     </button>
                                 </th>
-                                <th>
+                                <th class='table--col--2'>
                                     <div>
                                         <label>ID: </label>
                                         <p>".$id[$i]."</p>
@@ -101,7 +101,7 @@ switch ($method) {
                                         <p>".$room_dataver[$i]."</p>
                                     </div>
                                 </th>
-                                <th>
+                                <th class='table--col--3'>
                                     <div>
                                         <label>CPU: </label>
                                         <p>".$room_cpu[$i]."</p>
@@ -111,7 +111,7 @@ switch ($method) {
                                         <p>".$room_gpu[$i]."</p>
                                     </div>
                                 </th>
-                                <th>
+                                <th class='table--col--4'>
                                     <div>
                                         <label>RAM: </label>
                                         <p>".$room_ram[$i]."</p>
@@ -120,7 +120,7 @@ switch ($method) {
                                         <label>Disco: </label>
                                         <p>".$room_disco[$i]."</p>
                                     </div>
-                                <th class='table--col--4'>
+                                <th class='table--col--5'>
                                     <div>
                                         <label>Rede: </label>
                                         <p>".$room_rede[$i]."</p>
@@ -147,7 +147,7 @@ switch ($method) {
                                         <input type='hidden' value='".$room_monitor[$i]."'>
                                     </div>
                                 </th>
-                                <th>
+                                <th class='table--col--6'>
                                     <div>
                                         <label> Observações: </label>
                                         <p>".$room_obser[$i]."</p>
@@ -157,7 +157,7 @@ switch ($method) {
                                         <p>".$room_desempenho[$i]."</p>
                                     </div>
                                 </th>
-                                <th>
+                                <th class='table--col--7'>
                                     <div>
                                         <label></label>
                                         <button class='button--cancel'><i class='fa-solid fa-trash-can'></i></button>

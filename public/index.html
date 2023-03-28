@@ -27,27 +27,22 @@
                 <a href="#" class="menu--item"><i class="fa-solid fa-gear"></i></a>
                 <a href="#" class="menu--item" onclick="logout();"><i class="fa-solid fa-right-from-bracket"></i></a>
             </div>
-            <div class="header--mobile">
-                <div class="menu--mobile--grid">
-                    <a href="#" class="menu--item--mobile"> <i class="fa-solid fa-chart-line"></i> Dashboard</a>
-                    <a href="#" class="menu--item--mobile"> <i class="fa-solid fa-book"></i> Log</a>
-                    <a href="#" class="menu--item--mobile"> <i class="fa-solid fa-users"></i> Users</a>
-                    <a href="#" class="menu--item--mobile" onclick="getUserInfo();"> <i class="fa-solid fa-user"></i> Conta</a>
-                    <a href="#" class="menu--item--mobile"> <i class="fa-solid fa-envelope"></i> Notificações</a>
-                    <a href="#" class="menu--item--mobile"> <i class="fa-solid fa-star"></i> Favoritos</a>
-                    <a href="#" class="menu--item--mobile"> <i class="fa-solid fa-gear"></i> Configurações</a>
-                </div>
-                <div class="menu--mobile">
-                    <img src="./img/Control tech ico.png" alt="" class="menu--ico">
-                    <div>Control Room</div>
-                    <button class="button--default" id="menu--toggle"><i class="fa-solid fa-bars"></i></button>
-                </div>
-            </div>
         </main>
     </header>
-    <!-- <section id="sec--project--background">
-        <div class="gradient"></div>
-    </section> -->
+    <section class="sec--project--sidebar">
+        <div class="sidebar--toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <div class="sidebar--header">
+
+        </div>
+        <div class="sidebar--options">
+            <div class="sidebar--item"><i class="fa-solid fa-rectangle-list"></i><span>Room list</span> </div>
+            <div class="sidebar--item"><i class="fa-solid fa-chart-line"></i><span>Dashboard</span> </div>
+            <div class="sidebar--item"><i class="fa-solid fa-file-shield"></i></div>
+            <div class="sidebar--item"><i class="fa-solid fa-users"></i></div>
+        </div>
+    </section>
     <section class="sec--project--content">
         <main>
             <legend>Room List</legend>
@@ -55,7 +50,6 @@
                 <div class="room--list--search">
                     <div class="search--ico"><i class="fa-solid fa-magnifying-glass"></i></div>
                     <div class="search--input"><input type="text" placeholder="Pesquisar" onkeyup="search()" id="table--search--input"></div>
-                    <div class="search--submit" onclick="searchGrid()"><i class="fa-solid fa-play"></i></div>
                 </div>
                 <div class="room--list--options">
                     <button class="button--default table--button--add--room" id="table--button--add--room"><span class="table--button--add--room"> Add </span><i class="fa-solid fa-plus"></i></button>
@@ -65,33 +59,30 @@
                 </div>
             </section>
             <section class="sec--project--room--list">
-                    <table class="table--room" id="table--room">
-                        <thead>
-                            <tr class="table--header">
-                                <th class="table--col--1">Natureza</th>
-                                <th>Local</th>
-                                <th>Sala</th>
-                                <th class="table--col--4">Máquina</th>
-                                <th>Patrimônio</th>
-                                <th>Série</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="table--room--itens">
-                        </tbody>
-                    </table>
-                    <section class="table--grid" id="table--grid">
-                        
-                    </section>
-            </section>
-            <section class="sec--project--mobile--options">
-                    <!--  -->
-                    <div class="mobile--buttons">
-                        <button class="button--default table--button--add--room"><i class="fa-solid fa-plus"></i> Add Room</button>
-                        <button class="button--default"><i class="fa-solid fa-filter"></i> Filter</button>
-                    </div>
+                <table class="table--room" id="table--room">
+                    <thead>
+                        <tr class="table--header">
+                            <th class="table--col--1">Natureza</th>
+                            <th class="table--col--2">Local</th>
+                            <th class="table--col--3">Sala</th>
+                            <th class="table--col--4">Máquina</th>
+                            <th class="table--col--5">Patrimônio</th>
+                            <th class="table--col--6">Série</th>
+                            <th class="table--col--7">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table--room--itens">
+                    </tbody>
+                </table>
             </section>
         </main>
+    </section>
+    <section class="sec--project--mobile--options">
+            <!--  -->
+            <div class="mobile--buttons">
+                <button class="button--default table--button--add--room"><i class="fa-solid fa-plus"></i> Add Room</button>
+                <button class="button--default"><i class="fa-solid fa-filter"></i> Filter</button>
+            </div>
     </section>
     <section class="sec--project--modals">
         <section id="modal--add--room">
