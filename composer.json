@@ -1,5 +1,5 @@
 {
-    "name": "indicatti/log-php",
+    "name": "indicatti/control-room",
     "autoload": {
         "psr-4": {
             "app\\": "app/"
@@ -11,5 +11,8 @@
             "email": "joao.staehler@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "psr/log": "^3.0",
+        "monolog/monolog": "^3.3"
+    }
 }
