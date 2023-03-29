@@ -30,17 +30,31 @@
         </main>
     </header>
     <section class="sec--project--sidebar">
-        <div class="sidebar--toggle">
-            <i class="fa-solid fa-bars"></i>
+        <div class="sidebar--toggle" onclick="openSidebar();">
+            <h4>MENU</h4>
+            <i class="fa-solid fa-ellipsis-vertical"></i>
         </div>
         <div class="sidebar--header">
-
         </div>
         <div class="sidebar--options">
             <div class="sidebar--item"><i class="fa-solid fa-rectangle-list"></i><span>Room list</span> </div>
             <div class="sidebar--item"><i class="fa-solid fa-chart-line"></i><span>Dashboard</span> </div>
-            <div class="sidebar--item"><i class="fa-solid fa-file-shield"></i></div>
-            <div class="sidebar--item"><i class="fa-solid fa-users"></i></div>
+            <div class="sidebar--item"><i class="fa-solid fa-file-shield"></i><span>Log's</span> </div>
+            <div class="sidebar--item"><i class="fa-solid fa-users"></i><span>Users</span> </div>
+            <div class="sidebar--item"><i class="fa-solid fa-envelope"></i><span>Notifications</span></div>
+            <div class="sidebar--item"><i class="fa-solid fa-star"></i><span>Favorites</span></div>
+            <div class="sidebar--item"><i class="fa-solid fa-gear"></i><span>Config</span></div>
+        </div>
+        <div class="sidebar--footer">
+            <div class="sidebar--user" onclick="getUserInfo();">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="sidebar--footer--info">
+                <DIV id="sidebar--session">SESSION</DIV>
+            </div>
+            <div class="sidebar--logout" onclick="logout();">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </div>
         </div>
     </section>
     <section class="sec--project--content">

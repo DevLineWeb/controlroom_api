@@ -42,21 +42,6 @@ function roomList() {
             getLineIndex();
         }
     });
-    $.ajax
-    ({
-        type: 'POST',
-        dataType: 'html',
-        url: '../app/interface/listagem.php',
-        data: "method=item--grid",
-        beforeSend: function () {
-          
-        },
-        success: function (data)
-        {
-            $('#table--grid').html(data);
-            getGridIndex();
-        }
-    });
 }
 
 // EVENTO OPEN AO CLICAR EM UM ITEM DA LISTA
@@ -136,7 +121,9 @@ document.addEventListener('click', (e) => {
 })
 
 
-
+function openSidebar() {
+  $('.sec--project--sidebar').toggleClass('active');
+}
 function openModalEdit() {
   $('#modal--edit--room').toggleClass("show")
 

@@ -9,11 +9,11 @@
     box-sizing: border-box;
 }
 
-$base--color: #B4BEC9;
-$dark--color: #002333;
-$complementary--color: #159A9C;
-$optional--color: #DEEFE7;
-$white--color: #FFFFFF;
+$base--color: #025E73;
+$dark--color: #011826;
+$complementary--color: #66c4d9;
+$optional--color: #60a4bf81;
+$white--color: #fff;
 
 body {
     overflow: hidden;
@@ -87,7 +87,7 @@ html{
 @mixin cancelPointer {
     background-color: $base--color;
     border: 1px solid $white--color;
-    color: $dark--color;
+    color: $white--color;
     transition: all 0.2s;
     border-radius: 5px;
     line-height: 30px;
@@ -95,8 +95,9 @@ html{
     cursor: pointer;
 }
 @mixin hoverElementPoint {
+
     color: $white--color;
-    background-color: #159a9c3d;
+    background-color: $optional--color;
     border: 1px solid $complementary--color;
     transition: all 0.2s;
 }
@@ -307,7 +308,7 @@ input.error ~ .login--ico {
 /*============================================= NAVBAR=================================================== */
 
 header {
-    background-color: transparent;
+    background-color: #000;
     font-size: 1.4rem;
 }
 .header--menu--navbar div a {
@@ -359,64 +360,113 @@ header {
 }
 // ==================================MOBILE MENU ===========================================//
 .sec--project--sidebar {
-    z-index: 9999;
+    z-index: 100;
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #000;
+    background-color: transparent;
     height: 100vh;
     font-size: 1.6rem;
     overflow: hidden;
     width: 50px;
+    transition: all 0.2s;
+    display: none;
+}
+.sec--project--sidebar.active {
+    width: 70vw;
+    transition: all 0.2s;
+    background-color: $white--color;
 }
 .sidebar--toggle {
     width: 100%;
     display: flex;
     align-items: center;
     cursor: pointer;
+    color: $white--color;
+    background-color: transparent;
+    height: 50px;
 }
 .sidebar--toggle i {
-    color: $white--color;
     font-size: 2.2rem;
     padding: 10px;
+}
+.sidebar--toggle h4 {
+    padding: 10px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    display: none;
 }
 .sidebar--options {
     color: $white--color;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    height: 400px;
+    height: 600px;
+    padding: 5px;
 }
 .sidebar--item {
     position: relative;
     overflow: hidden;
-    border: 1px solid transparent;
-    border-radius: 3px;
+    border: 1px solid $white--color;
+    border-radius: 50px;
     cursor: pointer;
-    padding: 10px;
+    width: 100%;
+    text-align: left;
+    padding: 5px 10px;
+    background-color: $dark--color;
+    color: $white--color;
 }
 .sidebar--item:hover {
-    background-color: #FFFFFF;
-    color: $complementary--color;
-    border: 1px solid $complementary--color;
+    background-color: $optional--color;
+    color: $white--color;
+    border: 1px solid $optional--color;
     transition: all 0.2s;
 }
-.sidebar--item i {
-}
-.sidebar--item span {
+.sec--project--sidebar span {
     margin: 0px 15px;
-    position: absolute;
     z-index: 9999;
+    display: none;
+    position: absolute;
+}
+.sidebar--footer {
+    width: 100%;
+    color: $white--color;
+    display: flex;
+    flex-direction: row;
+    background-color: $dark--color;
+    position: absolute;
+    bottom: 0;
+    height: 50px;
+    align-items: center;
+    display: none;
+}
+.sidebar--footer div {
+    padding: 10px;
+}
+.sec--project--sidebar.active span {
+    display: inline-block;
+}
+.sec--project--sidebar.active .sidebar--toggle {
+    background-color: $base--color;
+}
+.sec--project--sidebar.active .sidebar--toggle i {
+    position: absolute;
+    right: 10px;
+}
+.sec--project--sidebar.active .sidebar--item {
+    color: $dark--color;
+    background-color: transparent;
+    border: 1px solid $optional--color;
+}
+.sec--project--sidebar.active .sidebar--footer {
+    display: flex;
+}
+.sec--project--sidebar.active .sidebar--toggle h4{
+    display: block;
 }
 /*================================================================== FILTROS DE PESQUISA DA LISTA ================================================================== */
-.sec--project--content legend {
-    display: flex;
-    justify-content: center;
-    font-size: 1.8rem;
-    color: white;
-    padding: 10px;
-    text-transform: uppercase;
-}
+
 .room--list--filters {
     margin-left: 10px;
     height: 35px;
@@ -508,9 +558,16 @@ header {
 
 // =================================================================SESSÃO DE LISTAGEM===================================================//
 .sec--project--content {
-    background-color: #00000075;
-    margin-top: 10px;
+    margin-top: 20px;
     border-bottom: 1px solid $white--color;
+}
+.sec--project--content legend {
+    display: flex;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: white;
+    padding: 10px;
+    text-transform: uppercase;
 }
 .sec--project--room--list {
     position: relative;
@@ -545,7 +602,7 @@ tr {
     cursor:crosshair;
 }
 // #table--room--itens {
-//     position: relative;
+//     background-color: $base--color;
 // }
 #table--room--itens td {
     padding: 10px;
@@ -561,8 +618,8 @@ tr {
     cursor: pointer;
 }
 .table--item:hover {
-    background-color: $dark--color;
-    color: $optional--color;
+    color: $white--color;
+    border: 1px solid $complementary--color;
     transition: all 0.2s;
 }
 .table--item--more {
@@ -605,22 +662,6 @@ tr {
 }
 .table--room--config--button {
     z-index: 1000;
-}
-.table--room--info--button {
-    border: none;
-    background-color: transparent;
-    font-size: 1.4rem;
-    color: $white--color;
-    position: absolute;
-    right: 10px;
-    padding: 10px;
-    cursor: pointer;
-    transform: rotate(-90deg);
-    transition: all .4s;
-}
-.table--room--info--button.drop {
-    transform: rotate(-180deg);
-    transition: all .4s;
 }
 .sec--project--mobile--options {
     position: relative;
@@ -800,14 +841,20 @@ footer div button{
     #filter--select--box {
         width: 100%;
     }
-    .table--col--1, .table--col--4 {
+    .table--col--1, .table--col--4, .table--col--5 {
         display: none !important;
     }
     .user--info--box {
         width: 100%;
     }
     main {
-        max-width: 100vw !important;
+        max-width: 70vw !important;
+    }
+    .menu--item {
+        display: none;
+    }
+    .sec--project--sidebar {
+        display: block;
     }
 }
 
@@ -815,9 +862,6 @@ footer div button{
     .header--col--1 {
         width: 100%;
         justify-content: center
-    }
-    .menu--item {
-        display: none;
     }
 }
 
