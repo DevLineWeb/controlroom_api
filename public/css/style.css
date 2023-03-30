@@ -12,9 +12,7 @@
 
 body {
   overflow: hidden;
-  background-image: url(../img/slider/6.jpg);
-  min-height: 100vh;
-  background-size: cover;
+  background-color: #011826;
 }
 
 li {
@@ -61,13 +59,12 @@ input[type=text], input[type=number], textarea, input[type=date], input[type=pas
 
 .button--default {
   background-color: transparent;
-  color: #fff;
-  border: 1px solid #fff;
+  color: rgba(96, 164, 191, 0.5058823529);
+  border: 1px solid #66c4d9;
   border-radius: 5px;
   line-height: 30px;
   padding: 0 10px;
   cursor: pointer;
-  z-index: 10;
 }
 
 .button--submit {
@@ -114,9 +111,9 @@ button {
 }
 
 button.selected {
-  color: #025E73;
-  background-color: rgba(184, 248, 243, 0.3647058824);
-  border: 1px solid #025E73;
+  color: #fff;
+  background-color: rgba(96, 164, 191, 0.5058823529);
+  border: 1px solid #66c4d9;
 }
 
 select {
@@ -257,6 +254,7 @@ input.error ~ .login--ico {
 header {
   background-color: #000;
   font-size: 1.4rem;
+  box-shadow: 0 1px 5px 0 #025E73;
 }
 
 .header--menu--navbar div a {
@@ -336,7 +334,7 @@ header {
 .sec--project--sidebar.active {
   width: 70vw;
   transition: all 0.2s;
-  background-color: #fff;
+  background-color: #011826;
 }
 
 .sidebar--toggle {
@@ -367,28 +365,29 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  height: 600px;
+  height: 565px;
   padding: 5px;
 }
 
 .sidebar--item {
   position: relative;
   overflow: hidden;
-  border: 1px solid #fff;
+  border: 1px solid #66c4d9;
   border-radius: 50px;
   cursor: pointer;
   width: 100%;
   text-align: left;
   padding: 5px 10px;
   background-color: #011826;
-  color: #fff;
+  color: rgba(96, 164, 191, 0.5058823529);
 }
 
 .sidebar--item:hover {
   background-color: rgba(96, 164, 191, 0.5058823529);
   color: #fff;
-  border: 1px solid rgba(96, 164, 191, 0.5058823529);
+  border: 1px solid #66c4d9;
   transition: all 0.2s;
+  box-shadow: 0 1px 5px 0 #025E73;
 }
 
 .sec--project--sidebar span {
@@ -403,16 +402,17 @@ header {
   color: #fff;
   display: flex;
   flex-direction: row;
-  background-color: #011826;
+  background-color: #025E73;
   position: absolute;
   bottom: 0;
-  height: 50px;
+  height: 65px;
   align-items: center;
   display: none;
 }
 
 .sidebar--footer div {
   padding: 10px;
+  cursor: pointer;
 }
 
 .sec--project--sidebar.active span {
@@ -429,7 +429,7 @@ header {
 }
 
 .sec--project--sidebar.active .sidebar--item {
-  color: #011826;
+  color: #fff;
   background-color: transparent;
   border: 1px solid rgba(96, 164, 191, 0.5058823529);
 }
@@ -444,9 +444,10 @@ header {
 
 /*================================================================== FILTROS DE PESQUISA DA LISTA ================================================================== */
 .room--list--filters {
-  margin-left: 10px;
-  height: 35px;
   margin-bottom: 10px;
+  background-color: #011826;
+  padding: 5px;
+  height: 45px;
 }
 
 .room--list--search {
@@ -454,7 +455,7 @@ header {
   width: 37px;
   float: left;
   transition: all 0.3s;
-  border: 1px solid #fff;
+  border: 1px solid rgba(96, 164, 191, 0.5058823529);
   border-radius: 50px;
   height: 35px;
   overflow: hidden;
@@ -467,10 +468,6 @@ header {
 }
 
 .room--list--search.active .search--ico {
-  color: #011826;
-}
-
-.room--list--search.active .search--submit {
   color: #011826;
 }
 
@@ -489,26 +486,11 @@ header {
   height: 100%;
 }
 
-.search--submit {
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-size: 1.6rem;
-  background-color: transparent;
-  color: #fff;
-  padding: 0 10px;
-  cursor: pointer;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
-
 #table--search--input {
   margin-left: 40px;
   border: none !important;
   font-size: 1.6rem;
-  color: #011826;
+  color: #000;
   background-color: transparent;
 }
 
@@ -545,8 +527,7 @@ header {
 }
 
 .sec--project--content {
-  margin-top: 20px;
-  border-bottom: 1px solid #fff;
+  padding-top: 40px;
 }
 
 .sec--project--content legend {
@@ -558,14 +539,28 @@ header {
   text-transform: uppercase;
 }
 
+.room--list--case {
+  padding: 5px;
+}
+
 .sec--project--room--list {
   position: relative;
   overflow-y: scroll !important;
-  height: 70vh;
+  max-height: 70vh;
 }
 
 .sec--project--room--list::-webkit-scrollbar {
-  display: none;
+  width: 3px;
+}
+
+.sec--project--room--list::-webkit-scrollbar-track {
+  background: rgba(96, 164, 191, 0.5058823529); /* color of the tracking area */
+}
+
+.sec--project--room--list::-webkit-scrollbar-thumb {
+  background-color: #66c4d9; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: 3px solid #66c4d9; /* creates padding around scroll thumb */
 }
 
 .table--room {
@@ -579,21 +574,18 @@ header {
   display: none;
 }
 
-tr {
-  display: flex;
-  border-radius: 3px;
-  border: 1px solid #fff;
-  margin-top: 10px;
-}
-
 .table--header {
   border: none;
   border-bottom: 1px solid #fff;
   border-radius: 0px;
   font-size: 1.4rem;
   background-color: transparent;
-  color: white;
+  color: #fff;
   cursor: crosshair;
+}
+
+tr {
+  display: flex;
 }
 
 #table--room--itens td {
@@ -607,14 +599,18 @@ tr {
 }
 
 .table--item {
-  background-color: transparent;
+  margin-top: 10px;
+  border-radius: 2px;
+  background-color: #fff;
+  border: 1px solid rgba(96, 164, 191, 0.5058823529);
+  border-left: 5px solid #66c4d9;
   cursor: pointer;
+  color: #025E73;
 }
 
 .table--item:hover {
-  color: #fff;
-  border: 1px solid #66c4d9;
   transition: all 0.2s;
+  border-left: 5px solid #011826;
 }
 
 .table--item--more {
@@ -633,10 +629,11 @@ tr {
 }
 
 .table--item--more.show {
-  margin-top: -0.3rem;
+  margin-top: 0rem;
   opacity: 0.9;
   pointer-events: all;
   position: relative;
+  transition: all 0.1s;
 }
 
 .table--item--more th {
@@ -659,10 +656,6 @@ tr {
   margin-top: 10px;
 }
 
-.table--room--config--button {
-  z-index: 1000;
-}
-
 .sec--project--mobile--options {
   position: relative;
   margin-top: 10px;
@@ -671,10 +664,8 @@ tr {
 .mobile--buttons {
   display: none;
   z-index: 10;
-  bottom: 0px;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  padding: 10px;
 }
 
 /* ================================================== MODAL ADD ROOM ====================================================*/
@@ -780,6 +771,7 @@ tr {
   flex-direction: column;
   border-radius: 5px;
   background-color: #fff;
+  max-height: 100vh;
 }
 
 #modal--user {
@@ -825,6 +817,8 @@ footer {
   display: flex;
   border-top: 1px solid #fff;
   color: #fff;
+  border-top: 5px solid #025E73;
+  box-shadow: 0 1px 5px 0 #025E73;
 }
 
 footer div {
@@ -926,7 +920,8 @@ footer div button {
     width: 100%;
   }
   main {
-    max-width: 70vw !important;
+    width: 100vw !important;
+    margin-left: 60px !important;
   }
   .menu--item {
     display: none;
@@ -940,6 +935,15 @@ footer div button {
     width: 100%;
     justify-content: center;
   }
+  .header--menu--navbar {
+    display: none;
+  }
+  .sec--project--room--list {
+    height: 75vh;
+  }
+  .sec--project--content {
+    padding-top: 3px;
+  }
 }
 @media (max-width: 576px) {
   .mobile--buttons {
@@ -949,11 +953,20 @@ footer div button {
     width: 99%;
     color: #fff;
   }
+  .room--list--search {
+    background-color: #fff;
+  }
+  .room--list--search .search--ico {
+    color: #011826;
+  }
   .room--list--options {
     display: none;
   }
   .table--col--2, .table--col--6 {
     display: none !important;
+  }
+  .table--item--more {
+    display: none;
   }
 }
 @media (max-width: 452px) {

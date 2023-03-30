@@ -17,9 +17,10 @@ $white--color: #fff;
 
 body {
     overflow: hidden;
-    background-image: url(../img/slider/6.jpg);
-    min-height: 100vh;
-    background-size: cover;
+    // background-image: url(../img/slider/6.jpg);
+    // min-height: 100vh;
+    // background-size: cover;
+    background-color: $dark--color;
 }
 li {
     list-style: none;
@@ -50,16 +51,16 @@ html{
       transform: scale(1);
     }
   }
-  @keyframes scale-in-center {
-    0% {
-      -webkit-transform: scale(0);
-      transform: scale(0);
-    }
-    100% {
-      -webkit-transform: scale(1);
-      transform: scale(1);
-    }
-  }
+@keyframes scale-in-center {
+0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+}
 // ======================================================= MIXIN ===============================================================//
 @mixin centralizeElement {
     top: 50%;
@@ -68,8 +69,8 @@ html{
 }
 @mixin pointerElement {
     background-color: transparent;
-    color: $white--color;
-    border: 1px solid $white--color;
+    color: $optional--color;
+    border: 1px solid $complementary--color;
     border-radius: 5px;
     line-height: 30px;
     padding: 0 10px;
@@ -107,9 +108,9 @@ html{
     transition: all 0.2s;
 }
 @mixin selectedElementPoint {
-    color: $base--color;
-    background-color: #b8f8f35d;
-    border: 1px solid $base--color;
+    color: $white--color;
+    background-color: $optional--color;
+    border: 1px solid $complementary--color;
 }
 @mixin inputElement {
     outline: none;
@@ -168,7 +169,6 @@ input[type='text'],input[type='number'],textarea, input[type='date'], input[type
 }
 .button--default {
     @include pointerElement();
-    z-index: 10;
 }
 .button--submit {
     @include submitPointer();
@@ -310,6 +310,7 @@ input.error ~ .login--ico {
 header {
     background-color: #000;
     font-size: 1.4rem;
+    box-shadow: 0 1px 5px 0 $base--color;
 }
 .header--menu--navbar div a {
     padding: 10px;
@@ -375,7 +376,7 @@ header {
 .sec--project--sidebar.active {
     width: 70vw;
     transition: all 0.2s;
-    background-color: $white--color;
+    background-color: $dark--color;
 }
 .sidebar--toggle {
     width: 100%;
@@ -402,26 +403,27 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    height: 600px;
+    height: 565px;
     padding: 5px;
 }
 .sidebar--item {
     position: relative;
     overflow: hidden;
-    border: 1px solid $white--color;
+    border: 1px solid $complementary--color;
     border-radius: 50px;
     cursor: pointer;
     width: 100%;
     text-align: left;
     padding: 5px 10px;
     background-color: $dark--color;
-    color: $white--color;
+    color: $optional--color;
 }
 .sidebar--item:hover {
     background-color: $optional--color;
     color: $white--color;
-    border: 1px solid $optional--color;
+    border: 1px solid $complementary--color;
     transition: all 0.2s;
+    box-shadow: 0 1px 5px 0 $base--color;
 }
 .sec--project--sidebar span {
     margin: 0px 15px;
@@ -434,15 +436,16 @@ header {
     color: $white--color;
     display: flex;
     flex-direction: row;
-    background-color: $dark--color;
+    background-color: $base--color;
     position: absolute;
     bottom: 0;
-    height: 50px;
+    height: 65px;
     align-items: center;
     display: none;
 }
 .sidebar--footer div {
     padding: 10px;
+    cursor: pointer;
 }
 .sec--project--sidebar.active span {
     display: inline-block;
@@ -455,7 +458,7 @@ header {
     right: 10px;
 }
 .sec--project--sidebar.active .sidebar--item {
-    color: $dark--color;
+    color: $white--color;
     background-color: transparent;
     border: 1px solid $optional--color;
 }
@@ -468,16 +471,17 @@ header {
 /*================================================================== FILTROS DE PESQUISA DA LISTA ================================================================== */
 
 .room--list--filters {
-    margin-left: 10px;
-    height: 35px;
     margin-bottom: 10px;
+    background-color: $dark--color;
+    padding: 5px;
+    height: 45px;
 }
 .room--list--search {
     position: relative;
     width: 37px;
     float: left;
     transition: all 0.3s;
-    border: 1px solid $white--color;
+    border: 1px solid $optional--color;
     border-radius: 50px;
     height: 35px;
     overflow: hidden;
@@ -488,9 +492,6 @@ header {
     background-color: $white--color;
 }
 .room--list--search.active .search--ico  {
-    color: $dark--color;
-}
-.room--list--search.active .search--submit {
     color: $dark--color;
 }
 .search--ico {
@@ -507,25 +508,11 @@ header {
     justify-content: center;
     height: 100%;
 }
-.search--submit {
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 1.6rem;
-    background-color: transparent;
-    color: $white--color;
-    padding: 0 10px;
-    cursor: pointer;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-}
 #table--search--input {
     margin-left: 40px;
     border: none !important;
     font-size: 1.6rem;
-    color: $dark--color;
+    color: #000;
     background-color: transparent;
 }
 .room--list--options {
@@ -558,8 +545,7 @@ header {
 
 // =================================================================SESSÃO DE LISTAGEM===================================================//
 .sec--project--content {
-    margin-top: 20px;
-    border-bottom: 1px solid $white--color;
+    padding-top: 40px;
 }
 .sec--project--content legend {
     display: flex;
@@ -569,14 +555,27 @@ header {
     padding: 10px;
     text-transform: uppercase;
 }
+.room--list--case {
+    padding: 5px;
+}
 .sec--project--room--list {
     position: relative;
     overflow-y: scroll !important;
-    height: 70vh;
+    max-height: 70vh;
 }
 .sec--project--room--list::-webkit-scrollbar {
-    display: none;
-}
+    width: 3px;
+  }
+  
+  .sec--project--room--list::-webkit-scrollbar-track {
+    background: $optional--color;        /* color of the tracking area */
+  }
+  
+  .sec--project--room--list::-webkit-scrollbar-thumb {
+    background-color: $complementary--color;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid $complementary--color;  /* creates padding around scroll thumb */
+  }
 .table--room {
     width: 100%;
     color: $white--color;
@@ -586,24 +585,22 @@ header {
 .table--room.change {
     display: none;
 }
-tr {
-    display: flex;
-    border-radius: 3px;
-    border: 1px solid $white--color;
-    margin-top: 10px;
-}
 .table--header {
     border: none;
     border-bottom: 1px solid $white--color;
     border-radius: 0px;
     font-size: 1.4rem;
     background-color: transparent;
-    color: white;
+    color: $white--color;
     cursor:crosshair;
 }
 // #table--room--itens {
 //     background-color: $base--color;
 // }
+
+tr {
+    display: flex;
+}
 #table--room--itens td {
     padding: 10px;
     display: flex;
@@ -614,13 +611,17 @@ tr {
     justify-content: center;
 }
 .table--item {
-    background-color: transparent;
+    margin-top: 10px;
+    border-radius: 2px;
+    background-color: $white--color;
+    border: 1px solid $optional--color;
+    border-left: 5px solid $complementary--color;
     cursor: pointer;
+    color: $base--color;
 }
 .table--item:hover {
-    color: $white--color;
-    border: 1px solid $complementary--color;
     transition: all 0.2s;
+    border-left: 5px solid $dark--color;
 }
 .table--item--more {
     width: 100%;
@@ -637,11 +638,11 @@ tr {
     border-bottom: 5px solid $base--color;
 }
 .table--item--more.show {
-    margin-top: -0.3rem;
+    margin-top: 0rem;
     opacity: 0.9;
     pointer-events: all;
     position: relative;
-    // transition: all 0.1s;
+    transition: all 0.1s;
 }
 .table--item--more th {
     color: $dark--color;
@@ -660,9 +661,6 @@ tr {
 .table--item--more th div button {
     margin-top: 10px;
 }
-.table--room--config--button {
-    z-index: 1000;
-}
 .sec--project--mobile--options {
     position: relative;
     margin-top: 10px;
@@ -670,10 +668,8 @@ tr {
 .mobile--buttons {
     display: none;
     z-index: 10;
-    bottom: 0px;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
+    padding: 10px
 }
 // =================================================TABLE GRID VER ==================================================//
 // .table--grid {
@@ -741,7 +737,8 @@ tr {
     display: flex;
     flex-direction: column;
     border-radius: 5px;
-    background-color: $white--color
+    background-color: $white--color;
+    max-height: 100vh;
 }
 // ================================================== MODAL USER INFO =======================================================//
 #modal--user {
@@ -769,6 +766,8 @@ footer {
     display: flex;
     border-top: 1px solid $white--color;
     color: $white--color;
+    border-top: 5px solid $base--color;
+    box-shadow: 0 1px 5px 0 $base--color;
 }
 footer div {
     display: flex;
@@ -848,7 +847,8 @@ footer div button{
         width: 100%;
     }
     main {
-        max-width: 70vw !important;
+        width: 100vw !important;
+        margin-left: 60px !important;
     }
     .menu--item {
         display: none;
@@ -863,6 +863,15 @@ footer div button{
         width: 100%;
         justify-content: center
     }
+    .header--menu--navbar {
+        display: none;
+    }
+    .sec--project--room--list {
+        height: 75vh;
+    }
+    .sec--project--content {
+        padding-top: 3px;
+    }
 }
 
 @media (max-width:576px) {
@@ -873,11 +882,20 @@ footer div button{
         width: 99%;
         color: $white--color;
     }
+    .room--list--search {
+        background-color: $white--color;
+    }
+    .room--list--search .search--ico  {
+        color: $dark--color;
+    }
     .room--list--options {
         display: none;
     }
     .table--col--2, .table--col--6 {
         display: none !important;
+    }
+    .table--item--more {
+        display: none;
     }
 }
 @media (max-width:452px) {

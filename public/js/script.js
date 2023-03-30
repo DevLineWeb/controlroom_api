@@ -213,28 +213,6 @@ function search() {
   }
 }
 
-function searchGrid() {
-  const searchbox = document.getElementById('table--search--input').value.toUpperCase();
-  // const storeitems = document.getElementById('table--room--itens');
-  const product = document.querySelectorAll('.grid--edit--button');
-  // const pname = storeitems.getElementsByTagName('td');
-
-  for (let i = 0; i < product.length; i++) {
-    const match = product[i]
-    // .getElementsByTagName('td')[0];
-
-    if (match) {
-      let textvalue = match.textContent || match.innerHTML;
-
-      if (textvalue.toUpperCase().indexOf(searchbox) > -1) {
-        product[i].style.display = "";
-      }
-      else {
-        product[i].style.display = "none";
-      }
-    }
-  }
-}
 
 function closeModal() {
   $('#modal--add--room').removeClass("show")
