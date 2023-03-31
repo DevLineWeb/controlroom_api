@@ -830,9 +830,6 @@ footer div button{
     .table--col--1, .table--col--4, .table--col--5 {
         display: none !important;
     }
-    .user--info--box {
-        width: 100%;
-    }
     main {
         max-width: 100vw !important;
     }
@@ -853,6 +850,9 @@ footer div button{
     
     .sec--project--sidebar {
         display: block;
+    }
+    .user--info--box {
+        width: 95%;
     }
 }
 
@@ -885,6 +885,9 @@ footer div button{
     }
     .sec--project--shortcuts {
         display: flex;
+    }
+    .table--room--show--info--button {
+        display: none;
     }
     footer {
         display: none;

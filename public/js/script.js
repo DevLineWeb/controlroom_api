@@ -46,7 +46,6 @@ function roomList() {
 
 // EVENTO OPEN AO CLICAR EM UM ITEM DA LISTA
 const clickedItem = document.getElementsByClassName('table--item');
-const clickedItemGrid = document.getElementsByClassName('grid--edit--button');
 
 function getLineIndex(){
     for(x=0;x<clickedItem.length;x++){

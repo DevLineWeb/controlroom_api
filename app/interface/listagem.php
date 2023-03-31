@@ -49,7 +49,7 @@ switch ($method) {
                             $room_dataver[$i] = $reg['room_dataver'];
 
                             echo "
-                            <tr class='table--item"." ".$i."'>
+                            <tr class='table--item"." ".$i."' ondblclick='openModalEdit();'>
                                 <td class='item--info table--col--1'>".$room_natureza[$i]."</td>
                                 <td class='item--info table--col--2'>".$room_localidade[$i]."</td>
                                 <td class='item--info table--col--3'>".$room_nomenclatura[$i]."</td>
@@ -81,6 +81,7 @@ switch ($method) {
                                     <i class='fa-solid fa-chart-simple'></i>
                                     </button>
                                     <button class='button--default'><i class='fa-solid fa-star'></i></button>
+                                    <button class='table--room--show--info--button button--default'><i class='fa-solid fa-chevron-down'></i></button>
                                 </td>
                             </tr>
                             <tr class='table--item--more"." ".$i."'>
