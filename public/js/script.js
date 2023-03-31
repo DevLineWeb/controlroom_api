@@ -90,21 +90,6 @@ $('#table--button--filter--grid').click(function () {
 
 // MODALS BUTTONS
 document.addEventListener('click', (e) => {
-  const isDropdownBtn = e.target.classList.contains('table--button--add--room')
-  if (!isDropdownBtn && e.target.closest('#add--room--box') != null) return;
-
-  if (isDropdownBtn) {
-
-    $('#modal--add--room').toggleClass("show")
-
-  }
-  else {
-
-    $('#modal--add--room').removeClass("show")
-
-  }
-})
-document.addEventListener('click', (e) => {
   const isDropdownBtn = e.target.classList.contains('table--button--filter')
   if (!isDropdownBtn && e.target.closest('#filter--select--box') != null) return;
 
@@ -122,11 +107,14 @@ document.addEventListener('click', (e) => {
 
 
 function openSidebar() {
-  $('.sec--project--sidebar').toggleClass('active');
+  $('.sidebar--options').toggleClass('down');
 }
 function openModalEdit() {
   $('#modal--edit--room').toggleClass("show")
 
+}
+function openModalAdd() {
+  $('#modal--add--room').toggleClass("show")
 }
 // ADIÇÃO DE SALA NO BD COM AJAX
 function addRoom() {

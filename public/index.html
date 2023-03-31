@@ -1,31 +1,32 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/a0544da68a.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style.css" />
     <title>Control Room</title>
 </head>
+
 <body>
-    
     <header class="header--menu--navbar">
         <main>
             <div class="header--col--1">
-                <img src="./img/Control tech logo.png" alt="" class="menu--logo">
-                <img src="./img/Control tech ico - white.png" alt="" class="menu--ico">
+                <img src="./img/Control tech logo.png" alt="" class="menu--logo" />
+                <img src="./img/Control tech ico - white.png" alt="" class="menu--ico" />
                 <a href="#" class="menu--item">Room's</a>
                 <a href="#" class="menu--item">Dashboard</a>
                 <a href="#" class="menu--item">Log</a>
                 <a href="#" class="menu--item">Users</a>
             </div>
             <div class="header--col--2">
-                <a href="#" class="menu--item" onclick="getUserInfo();"><i class="fa-solid fa-user"></i></a>
-                <a href="#" class="menu--item"><i class="fa-solid fa-envelope"></i></a>
-                <a href="#" class="menu--item"><i class="fa-solid fa-star"></i></a>
-                <a href="#" class="menu--item"><i class="fa-solid fa-gear"></i></a>
-                <a href="#" class="menu--item" onclick="logout();"><i class="fa-solid fa-right-from-bracket"></i></a>
+                <button class="button--default menu--item" onclick="getUserInfo();"><i class="fa-solid fa-user"></i></button>
+                <button class="button--default menu--item"><i class="fa-solid fa-envelope"></i></button>
+                <button class="button--default menu--item"><i class="fa-solid fa-star"></i></button>
+                <button class="button--default menu--item"><i class="fa-solid fa-gear"></i></button>
+                <button class="button--default menu--item" onclick="logout();"><i class="fa-solid fa-right-from-bracket"></i></button>
             </div>
         </main>
     </header>
@@ -34,18 +35,18 @@
             <h4>Control Room</h4>
             <i class="fa-solid fa-bars-staggered"></i>
         </div>
-        <div class="sidebar--header">
-        </div>
         <div class="sidebar--options">
-            <div class="sidebar--item"><i class="fa-solid fa-rectangle-list"></i><span>Room list</span> </div>
-            <div class="sidebar--item"><i class="fa-solid fa-chart-line"></i><span>Dashboard</span> </div>
-            <div class="sidebar--item"><i class="fa-solid fa-file-shield"></i><span>Log's</span> </div>
-            <div class="sidebar--item"><i class="fa-solid fa-users"></i><span>Users</span> </div>
-            <div class="sidebar--item"><i class="fa-solid fa-envelope"></i><span>Notifications</span></div>
-            <div class="sidebar--item"><i class="fa-solid fa-star"></i><span>Favorites</span></div>
-            <div class="sidebar--item"><i class="fa-solid fa-gear"></i><span>Config</span></div>
+            <div class="sidebar--item">
+                <i class="fa-solid fa-rectangle-list"></i>
+            </div>
+            <div class="sidebar--item"><i class="fa-solid fa-chart-line"></i></div>
+            <div class="sidebar--item"><i class="fa-solid fa-file-shield"></i></div>
+            <div class="sidebar--item"><i class="fa-solid fa-users"></i></div>
+            <div class="sidebar--item"><i class="fa-solid fa-envelope"></i></div>
+            <div class="sidebar--item"><i class="fa-solid fa-star"></i></div>
+            <div class="sidebar--item"><i class="fa-solid fa-gear"></i></div>
         </div>
-        <div class="sidebar--footer">
+        <!-- <div class="sidebar--footer">
             <div class="sidebar--user" onclick="getUserInfo();">
                 <i class="fa-solid fa-user"></i>
             </div>
@@ -55,30 +56,44 @@
             <div class="sidebar--logout" onclick="logout();">
                 <i class="fa-solid fa-right-from-bracket"></i>
             </div>
-        </div>
+        </div> -->
     </section>
     <section class="sec--project--content">
         <section class="room--list--filters">
             <main>
                 <div class="room--list--search">
-                    <div class="search--ico"><i class="fa-solid fa-magnifying-glass"></i></div>
-                    <div class="search--input"><input type="text" placeholder="Pesquisar" onkeyup="search()" id="table--search--input"></div>
+                    <div class="search--ico">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <div class="search--input">
+                        <input type="text" placeholder="Pesquisar" onkeyup="search()" id="table--search--input" />
+                    </div>
                 </div>
                 <div class="room--list--options">
-                    <button class="button--default table--button--add--room" id="table--button--add--room"><span class="table--button--add--room"> Add </span><i class="fa-solid fa-plus"></i></button>
-                    <button class="button--default" id="table--button--filter--list"><span> List </span><i class="fa-solid fa-list"></i></button>
-                    <button class="button--default" id="table--button--filter--grid"><span> Grid </span><i class="fa-solid fa-grip"></i></button>
-                    <button class="button--default table--button--filter"><span> Filtro </span><i class="fa-solid fa-filter"></i></button>
+                    <button class="button--default" id="table--button--add--room" onclick="openModalAdd();">
+                        <span> Add </span><i class="fa-solid fa-plus"></i>
+                    </button>
+                    <button class="button--default" id="table--button--filter--list">
+                        <span> List </span><i class="fa-solid fa-list"></i>
+                    </button>
+                    <button class="button--default" id="table--button--filter--grid">
+                        <span> Grid </span><i class="fa-solid fa-grip"></i>
+                    </button>
+                    <button class="button--default table--button--filter">
+                        <span> Filtro </span><i class="fa-solid fa-filter"></i>
+                    </button>
                 </div>
             </main>
         </section>
-        <main>
-            <section class="room--list--case">
+        <section class="room--list--case">
+            <main>
                 <section class="sec--project--mobile--options">
-                        <!--  -->
-                        <div class="mobile--buttons">
-                            <button class="button--default table--button--add--room" onclick="openModalEdit();"><i class="fa-solid fa-plus"></i></button>
-                        </div>
+                    <!--  -->
+                    <div class="mobile--buttons">
+                        <button class="button--default selected" onclick="openModalAdd();">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
                 </section>
                 <section class="sec--project--room--list">
                     <table class="table--room" id="table--room">
@@ -93,32 +108,44 @@
                                 <th class="table--col--7">Action</th>
                             </tr>
                         </thead>
-                        <tbody id="table--room--itens">
-                        </tbody>
+                        <tbody id="table--room--itens"></tbody>
                     </table>
                 </section>
-            </section>
-        </main>
+            </main>
+        </section>
+    </section>
+    <section class="sec--project--shortcuts">
+        <div class="shortcuts--box">
+            <button class="button--default"><i class="fa-solid fa-house-user"></i></button>
+            <button class="button--default" onclick="getUserInfo();"><i class="fa-solid fa-user"></i></button>
+            <button class="button--default"><i class="fa-solid fa-envelope"></i></button>
+            <button class="button--default"><i class="fa-solid fa-star"></i></button>
+            <button class="button--default"><i class="fa-solid fa-gear"></i></button>
+        </div>
     </section>
     <section class="sec--project--modals">
         <section id="modal--add--room">
             <form id="add--room--box">
                 <div class="modal--legend">
-                    <legend><i class="fa-solid fa-lines-leaning"></i> ° Room Information</legend>
-                    <div class="modal--close" onclick="closeModal()"><i class="fa-regular fa-circle-xmark"></i></div>
+                    <legend>
+                        <i class="fa-solid fa-lines-leaning"></i> ° Room Information
+                    </legend>
+                    <div class="modal--close" onclick="closeModal()">
+                        <i class="fa-regular fa-circle-xmark"></i>
+                    </div>
                 </div>
                 <div class="box--line">
                     <div class="box--col">
                         <label for="">ID</label>
-                        <input type="text" name="" disabled placeholder="Auto Incremented!">
+                        <input type="text" name="" disabled placeholder="Auto Incremented!" />
                     </div>
                     <div class="box--col">
                         <label for="room--date--edit">Last Mod</label>
-                        <input type="date" name="" disabled>
+                        <input type="date" name="" disabled />
                     </div>
                     <div class="box--col">
                         <label for="nomesala">Sala: </label>
-                        <input type="text" name="nomesala" id="nomesala" placeholder="Sala" required>
+                        <input type="text" name="nomesala" id="nomesala" placeholder="Sala" required />
                     </div>
                     <div class="box--col">
                         <label for="localidade">Local: </label>
@@ -160,11 +187,11 @@
                     </div>
                     <div class="box--col">
                         <label for="patrimonio">Patrimônio: </label>
-                        <input type="text" name="patrimonio" id="patrimonio" placeholder="Patrimônio">
+                        <input type="text" name="patrimonio" id="patrimonio" placeholder="Patrimônio" />
                     </div>
                     <div class="box--col">
                         <label for="serie">N°. Série</label>
-                        <input type="text" name="serie" id="serie" placeholder="N°. Série">
+                        <input type="text" name="serie" id="serie" placeholder="N°. Série" />
                     </div>
                 </div>
                 <div class="box--line">
@@ -206,19 +233,22 @@
                     </div>
                     <div class="box--col">
                         <label for="ram">RAM: </label>
-                        <input type="number" name="ram" id="ram" placeholder="RAM">
+                        <input type="number" name="ram" id="ram" placeholder="RAM" />
                     </div>
                 </div>
                 <div class="box--line">
-                    
                     <div class="box--col checkbox--area">
                         <div>
-                            <input type="radio" name="status--rede" id="rede--wireless" value="Wireless">
-                            <label for="rede--wireless"><h3><i class="fa-solid fa-wifi"></i></h3></label>
+                            <input type="radio" name="status--rede" id="rede--wireless" value="Wireless" />
+                            <label for="rede--wireless">
+                                <h3><i class="fa-solid fa-wifi"></i></h3>
+                            </label>
                         </div>
                         <div>
-                            <input type="radio" name="status--rede" id="rede--lan" value="LAN">
-                            <label for="rede--lan"><h3><i class="fa-solid fa-globe"></i></h3></label>
+                            <input type="radio" name="status--rede" id="rede--lan" value="LAN" />
+                            <label for="rede--lan">
+                                <h3><i class="fa-solid fa-globe"></i></h3>
+                            </label>
                         </div>
                         <!--  -->
                     </div>
@@ -233,31 +263,35 @@
                     </div>
                     <div class="box--col checkbox--area">
                         <div>
-                            <input type="checkbox" name="" id="cadeado">
+                            <input type="checkbox" name="" id="cadeado" />
                             <label for="cadeado"><i class="fa-solid fa-lock"></i></label>
                         </div>
-                        
+
                         <div>
-                            <input type="checkbox" name="" id="cabo">
+                            <input type="checkbox" name="" id="cabo" />
                             <label for="cabo"><i class="fa-solid fa-shield"></i></label>
                         </div>
-                        
+
                         <div>
-                            <input type="checkbox" name="" id="monitor">
+                            <input type="checkbox" name="" id="monitor" />
                             <label for="monitor"><i class="fa-sharp fa-solid fa-desktop"></i></label>
                         </div>
                     </div>
                     <div class="box--col">
                         <div>
                             <label for="obs">Observações: </label>
-                            <input name="" id="obs" type="text">
+                            <input name="" id="obs" type="text" />
                         </div>
                     </div>
                 </div>
                 <div class="box--line">
-                    <button type="button" class="button--cancel" onclick="closeModal()">Cancelar</button>
+                    <button type="button" class="button--cancel" onclick="closeModal()">
+                        Cancelar
+                    </button>
                     <!-- <p>Lembre-se de preencher todos os campos!</p> -->
-                    <button type="button" class="button--submit" onclick="addRoom()">Cadastrar <i class="fa-solid fa-plus"></i></button>
+                    <button type="button" class="button--submit" onclick="addRoom()">
+                        Cadastrar
+                    </button>
                 </div>
             </form>
         </section>
@@ -265,34 +299,40 @@
             <form action="" id="filter--select--box">
                 <div class="modal--legend">
                     <legend>Filters</legend>
-                    <div class="modal--close" onclick="closeModal()"><i class="fa-regular fa-circle-xmark"></i></div>
+                    <div class="modal--close" onclick="closeModal()">
+                        <i class="fa-regular fa-circle-xmark"></i>
+                    </div>
                 </div>
                 <!--  -->
                 <div class="box--line">
                     <div class="box--col checkbox--area">
                         <div>
-                            <input type="radio" name="filter--natureza" id="filter--acad" value="Academic">
-                            <label for="filter--acad"><h3>ACAD</h3></label>
+                            <input type="radio" name="filter--natureza" id="filter--acad" value="Academic" />
+                            <label for="filter--acad">
+                                <h3>ACAD</h3>
+                            </label>
                         </div>
                         <div>
-                            <input type="radio" name="filter--natureza" id="filter--adm" value="Administrative">
-                            <label for="filter--adm"><h3>ADM</h3></label>
+                            <input type="radio" name="filter--natureza" id="filter--adm" value="Administrative" />
+                            <label for="filter--adm">
+                                <h3>ADM</h3>
+                            </label>
                         </div>
                         <!--  -->
                     </div>
                     <div class="box--col checkbox--area">
                         <div>
-                            <input type="checkbox" name="" id="filter--cadeado">
+                            <input type="checkbox" name="" id="filter--cadeado" />
                             <label for="filter--cadeado"><i class="fa-solid fa-lock"></i></label>
                         </div>
-                        
+
                         <div>
-                            <input type="checkbox" name="" id="filter--cabo">
+                            <input type="checkbox" name="" id="filter--cabo" />
                             <label for="filter--cabo"><i class="fa-solid fa-shield"></i></label>
                         </div>
-                        
+
                         <div>
-                            <input type="checkbox" name="" id="filter--monitor">
+                            <input type="checkbox" name="" id="filter--monitor" />
                             <label for="filter--monitor"><i class="fa-sharp fa-solid fa-desktop"></i></label>
                         </div>
                     </div>
@@ -300,22 +340,30 @@
                 <div class="box--line">
                     <div class="box--col checkbox--area">
                         <div>
-                            <input type="radio" name="filter--gpu" id="filter--gpu--amd" value="AMD">
-                            <label for="filter--gpu--amd"><h3>AMD</h3></label>
+                            <input type="radio" name="filter--gpu" id="filter--gpu--amd" value="AMD" />
+                            <label for="filter--gpu--amd">
+                                <h3>AMD</h3>
+                            </label>
                         </div>
                         <div>
-                            <input type="radio" name="filter--gpu" id="filter--gpu--intel" value="Intel">
-                            <label for="filter--gpu--intel"><h3>Intel</h3></label>
+                            <input type="radio" name="filter--gpu" id="filter--gpu--intel" value="Intel" />
+                            <label for="filter--gpu--intel">
+                                <h3>Intel</h3>
+                            </label>
                         </div>
                     </div>
                     <div class="box--col checkbox--area">
                         <div>
-                            <input type="radio" name="filter--rede" id="filter--rede--lan" value="LAN">
-                            <label for="filter--rede--lan"><h3><i class="fa-solid fa-wifi"></i></h3></label>
+                            <input type="radio" name="filter--rede" id="filter--rede--lan" value="LAN" />
+                            <label for="filter--rede--lan">
+                                <h3><i class="fa-solid fa-wifi"></i></h3>
+                            </label>
                         </div>
                         <div>
-                            <input type="radio" name="filter--rede" id="filter--rede--wireless" value="Wireless">
-                            <label for="filter--rede--wireless"><h3><i class="fa-solid fa-globe"></i></h3></label>
+                            <input type="radio" name="filter--rede" id="filter--rede--wireless" value="Wireless" />
+                            <label for="filter--rede--wireless">
+                                <h3><i class="fa-solid fa-globe"></i></h3>
+                            </label>
                         </div>
                         <!--  -->
                     </div>
@@ -335,7 +383,7 @@
                     </div>
                     <div class="box--col">
                         <label for="filter--ram">RAM: </label>
-                        <input type="number" name="filter--ram" id="filter--ram" placeholder="RAM">
+                        <input type="number" name="filter--ram" id="filter--ram" placeholder="RAM" />
                     </div>
                 </div>
                 <div class="box--line">
@@ -367,28 +415,32 @@
                 </div>
                 <div class="box--line modal--footer">
                     <button class="button--cancel">Clean</button>
-                    <button class="button--submit" onclick="filterRoom();">Apply</button>
+                    <button class="button--submit" onclick="filterRoom();">
+                        Apply
+                    </button>
                 </div>
             </form>
         </section>
         <section id="modal--edit--room">
             <form class="edit--room--box">
                 <div class="modal--legend">
-                    <div class="modal--close" onclick="closeModal()"><i class="fa-regular fa-circle-xmark"></i></div>
+                    <div class="modal--close" onclick="closeModal()">
+                        <i class="fa-regular fa-circle-xmark"></i>
+                    </div>
                     <legend>Edit Room</legend>
                 </div>
                 <div class="box--line">
                     <div class="box--col">
                         <label for="edit--show--id">ID</label>
-                        <input type="text" id="edit--show--id" placeholder="Auto Incremented!" disabled>
+                        <input type="text" id="edit--show--id" placeholder="Auto Incremented!" disabled />
                     </div>
                     <div class="box--col">
                         <label for="room--date--edit">Last Mod</label>
-                        <input type="date" name="" id="edit--show--data" disabled>
+                        <input type="date" name="" id="edit--show--data" disabled />
                     </div>
                     <div class="box--col">
                         <label for="nomesala">Sala: </label>
-                        <input type="text" name="nomesala" id="edit--show--sala" placeholder="Sala" required>
+                        <input type="text" name="nomesala" id="edit--show--sala" placeholder="Sala" required />
                     </div>
                     <div class="box--col">
                         <label for="localidade">Local: </label>
@@ -430,11 +482,11 @@
                     </div>
                     <div class="box--col">
                         <label for="patrimonio">Patrimônio: </label>
-                        <input type="text" name="patrimonio" id="edit--show--patrimonio" placeholder="Patrimônio">
+                        <input type="text" name="patrimonio" id="edit--show--patrimonio" placeholder="Patrimônio" />
                     </div>
                     <div class="box--col">
                         <label for="serie">N°. Série</label>
-                        <input type="text" name="serie" id="edit--show--serie" placeholder="N°. Série">
+                        <input type="text" name="serie" id="edit--show--serie" placeholder="N°. Série" />
                     </div>
                 </div>
                 <div class="box--line">
@@ -476,7 +528,7 @@
                     </div>
                     <div class="box--col">
                         <label for="ram">RAM: </label>
-                        <input type="number" name="ram" id="edit--show--ram" placeholder="RAM">
+                        <input type="number" name="ram" id="edit--show--ram" placeholder="RAM" />
                     </div>
                 </div>
                 <div class="box--line">
@@ -499,64 +551,78 @@
                     </div>
                     <div class="box--col checkbox--area">
                         <div>
-                            <input type="checkbox" name="" id="edit--show--cadeado">
+                            <input type="checkbox" name="" id="edit--show--cadeado" />
                             <label for="edit--show--cadeado"><i class="fa-solid fa-lock"></i></label>
                         </div>
-                        
+
                         <div>
-                            <input type="checkbox" name="" id="edit--show--cabo">
+                            <input type="checkbox" name="" id="edit--show--cabo" />
                             <label for="edit--show--cabo"><i class="fa-solid fa-shield"></i></label>
                         </div>
-                        
+
                         <div>
-                            <input type="checkbox" name="" id="edit--show--monitor">
+                            <input type="checkbox" name="" id="edit--show--monitor" />
                             <label for="edit--show--monitor"><i class="fa-sharp fa-solid fa-desktop"></i></label>
                         </div>
                     </div>
                     <div class="box--col">
                         <div>
                             <label for="edit--show--obser">Observações: </label>
-                            <input name="" id="edit--show--obser" type="text">
+                            <input name="" id="edit--show--obser" type="text" />
                         </div>
                     </div>
                 </div>
                 <div class="box--line add--room--footer">
-                    <button type="button" class="button--cancel" onclick="deleteRoom()">Delete <i class="fa-solid fa-trash-can"></i></button>
-                    <button type="button" class="button--submit" onclick="editRoom()">Atualizar <i class="fa-solid fa-wrench"></i></button>
+                    <button type="button" class="button--cancel" onclick="deleteRoom()">
+                        Delete
+                    </button>
+                    <button type="button" class="button--submit" onclick="editRoom()">
+                        Atualizar
+                    </button>
                 </div>
             </form>
         </section>
         <section id="modal--user">
             <section class="user--info--box">
                 <div class="modal--legend">
-                    <div class="modal--close" onclick="closeModal()"><i class="fa-regular fa-circle-xmark"></i></div>
+                    <div class="modal--close" onclick="closeModal()">
+                        <i class="fa-regular fa-circle-xmark"></i>
+                    </div>
                     <legend>User Info</legend>
                 </div>
                 <div class="box--line">
                     <div class="box--col">
+                      <img src="./img/default-user-image.png" alt="" id="user--image">
                     </div>
-                    <div class="box--col" id="user--session--info">
-                    </div>
+                    <div class="box--col" id="user--session--info"></div>
                 </div>
                 <div class="box--line">
-                    <button class="button--cancel" onclick="closeModal()">Cancel</button>
+                    <button class="button--cancel" onclick="closeModal()">
+                        Cancel
+                    </button>
                     <button class="button--submit">Edit</button>
                 </div>
             </section>
         </section>
-        <section class="ajax--load">=
-            <div class="ajax--request--feedback">
-    
-            </div>
+        <section class="ajax--load">
+            <div class="ajax--request--feedback"></div>
         </section>
     </section>
     <footer>
         <section>
             <div>
-                <button class="button--default"><i class="fa-brands fa-youtube"></i></button>
-                <button class="button--default"><i class="fa-brands fa-instagram"></i></button>
-                <button class="button--default"><i class="fa-brands fa-github"></i></button>
-                <button class="button--default"><i class="fa-brands fa-discord"></i></button>
+                <button class="button--default">
+                    <i class="fa-brands fa-youtube"></i>
+                </button>
+                <button class="button--default">
+                    <i class="fa-brands fa-instagram"></i>
+                </button>
+                <button class="button--default">
+                    <i class="fa-brands fa-github"></i>
+                </button>
+                <button class="button--default">
+                    <i class="fa-brands fa-discord"></i>
+                </button>
             </div>
             <div>
                 <h5>© Copyright All rights reserved.</h5>
@@ -571,4 +637,5 @@
 <script>
     sessionValidate();
 </script>
+
 </html>

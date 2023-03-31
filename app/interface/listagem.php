@@ -78,8 +78,9 @@ switch ($method) {
                                     data-17='".$room_obser[$i]."'
                                     onclick='openModalEdit();'
                                     >
-                                        <i class='fa-solid fa-gear'></i>
+                                    <i class='fa-solid fa-chart-simple'></i>
                                     </button>
+                                    <button class='button--default'><i class='fa-solid fa-star'></i></button>
                                 </td>
                             </tr>
                             <tr class='table--item--more"." ".$i."'>
@@ -158,9 +159,6 @@ switch ($method) {
                                     <div>
                                         <label></label>
                                         <button class='button--cancel'><i class='fa-solid fa-trash-can'></i></button>
-                                    </div>
-                                    <div>
-                                        <button class='button--submit'><i class='fa-solid fa-star'></i></button>
                                     </div>
                                 </th>
                             </tr>
