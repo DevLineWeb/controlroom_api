@@ -44,6 +44,28 @@ html {
     transform: scale(1);
   }
 }
+@keyframes slide-to-left {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-500px);
+  }
+  100% {
+    transform: translateX(-2000px);
+  }
+}
+@keyframes slide-to-right {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(500px);
+  }
+  100% {
+    transform: translateX(2000px);
+  }
+}
 input[type=text], input[type=number], textarea, input[type=date], input[type=password] {
   outline: none;
   border: 1px solid #24272c !important;
@@ -78,13 +100,6 @@ input[type=text], input[type=number], textarea, input[type=date], input[type=pas
   width: 50%;
 }
 
-.button--submit:hover, .button--cancel:hover {
-  background-color: #060606;
-  border: 1px solid #fefaf1;
-  color: #fefaf1;
-  transition: all 0.2s;
-}
-
 .button--cancel {
   background-color: #24272c;
   border: 1px solid #fefaf1;
@@ -98,6 +113,13 @@ input[type=text], input[type=number], textarea, input[type=date], input[type=pas
   height: 35px;
 }
 
+.button--submit:hover, .button--cancel:hover {
+  background-color: #060606;
+  border: 1px solid #fefaf1;
+  color: #fefaf1;
+  transition: all 0.2s;
+}
+
 .button--default:hover {
   background-color: #51e5a1;
   color: #fefaf1;
@@ -108,7 +130,6 @@ input[type=text], input[type=number], textarea, input[type=date], input[type=pas
 
 button {
   display: flex;
-  line-height: 3rem;
   align-items: center;
   justify-content: center;
 }
@@ -341,9 +362,10 @@ header {
   display: flex;
   align-items: center;
   cursor: pointer;
+  justify-content: center;
   color: #fefaf1;
   background-color: transparent;
-  height: 50px;
+  height: 60px;
 }
 
 .sidebar--toggle i {
@@ -361,17 +383,18 @@ header {
 
 .sidebar--options {
   position: fixed;
-  transform: translateX(-1200px);
-  top: 10%;
+  transform: translateX(-300px);
+  top: 20%;
   z-index: 1000;
-  background-color: #000;
-  border-radius: 50px;
+  border-radius: 0px 50px 50px 0px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  height: 565px;
+  height: 465px;
   padding: 3px;
-  box-shadow: 0 1px 5px 0 #51e5a1;
+  box-shadow: 0 1px 5px 0 #060606;
+  background-color: #fefaf1;
+  transition: all 0.3s;
 }
 
 .sidebar--item {
@@ -382,6 +405,7 @@ header {
   padding: 5px 10px;
   background-color: transparent;
   color: #fefaf1;
+  color: #060606;
   display: flex;
   height: 35px;
   align-items: center;
@@ -417,6 +441,8 @@ header {
   height: 35px;
   overflow: hidden;
   background-color: #24272c;
+  line-height: 35px;
+  margin-top: 10px;
 }
 
 .room--list--search.active {
@@ -463,10 +489,6 @@ header {
   transition: all 0.1s;
   width: 35px;
   margin-left: 10px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
   height: 35px;
   border: 1px solid #24272c;
 }
@@ -492,7 +514,9 @@ header {
 
 .sec--project--room--list {
   position: relative;
+  overflow: hidden;
   margin: 5px;
+  min-height: 100vh;
 }
 
 .sec--project--room--list::-webkit-scrollbar {
@@ -519,10 +543,13 @@ header {
   color: #fefaf1;
   border-collapse: separate;
   border-spacing: 0px;
+  transform: translateX(0);
+  transition: all 0.3s;
 }
 
 .table--room.change {
-  display: none;
+  transform: translateX(-2000px);
+  transition: all 0.3s;
 }
 
 .table--header {
@@ -614,6 +641,151 @@ tr {
   border-bottom: 0.5px solid #32363a;
 }
 
+.mobile--sec--style--toggle {
+  position: relative;
+  height: 35px;
+  display: flex;
+  color: #fefaf1;
+  font-size: 2.2rem;
+  width: 80px;
+  background-color: #060606;
+  border: 2px solid #060606;
+  border-radius: 50px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.circle--display {
+  z-index: 1;
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  border-radius: 50px;
+  background-color: #24272c;
+  border: 1px solid #060606;
+  transition: all 0.3s;
+  left: 0%;
+}
+
+.style--option {
+  z-index: 2;
+}
+
+.circle--display.toggle {
+  left: 50%;
+  transition: left 0.3s;
+}
+
+#style--list {
+  color: #fefaf1;
+  transition: all 0.5s;
+}
+
+#style--grid {
+  color: #24272c;
+  transition: all 0.5s;
+}
+
+#style--list.toggle {
+  color: #24272c !important;
+  transition: all 0.5s;
+}
+
+#style--grid.toggle {
+  color: #fefaf1 !important;
+  transition: all 0.5s;
+}
+
+.table--grid {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  transform: translateX(2000px);
+  transition: all 0.3s;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.table--grid.change {
+  transform: translateX(0);
+  transition: all 0.3s;
+}
+
+.grid--block {
+  width: 100%;
+}
+
+.grid--col {
+  width: 100%;
+  font-size: 1.6rem;
+}
+
+.grid--header {
+  position: relative;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 2px;
+  background-color: #060606;
+  border-left: 5px solid #51e5a1;
+  cursor: pointer;
+  color: #fefaf1;
+}
+
+.grid--itens {
+  background-color: #1d2024;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  grid-gap: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  transform: rotateX(90deg);
+  height: 0px;
+  position: absolute;
+  z-index: -1;
+  transition: all 0.2s;
+}
+
+.grid--itens button {
+  border: 1px solid transparent;
+  border-radius: 50px;
+  cursor: pointer;
+  text-align: left;
+  padding: 5px 10px;
+  background-color: transparent;
+  color: #fefaf1;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #24272c;
+}
+
+.grid--itens button:hover {
+  background-color: #51e5a1;
+  color: #fefaf1;
+  border: 1px solid #51e5a1;
+  transition: all 0.2s;
+  box-shadow: 0 1px 5px 0 #68fe9a;
+}
+
+.grid--itens.show {
+  transform: rotateX(0deg);
+  position: initial;
+  height: auto;
+  transition: all 0.2s;
+}
+
+.arrow--down--element {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 10px;
+}
+
+.grid--itens img {
+  max-width: 50px;
+}
+
 /* ================================================== MODAL ADD ROOM ====================================================*/
 #modal--add--room {
   top: 0;
@@ -652,40 +824,6 @@ tr {
 }
 
 /* ================================================== MODAL FILTROS ====================================================*/
-#modal--filter--room {
-  top: 0;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4588235294);
-  z-index: 1000;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  overflow-y: auto;
-}
-
-#modal--filter--room.show {
-  display: flex;
-  transition: all 0.2s;
-}
-
-#filter--select--box {
-  max-height: 100vh;
-  z-index: 1001;
-  display: none;
-  flex-direction: column;
-  overflow: hidden;
-  position: relative;
-  animation: scale-in-center 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  display: flex;
-  flex-direction: column;
-  width: 400px;
-  background-color: #fefaf1;
-  border-radius: 5px;
-  font-size: 1.4rem;
-}
-
 /* ================================================== MODAL EDIT ROOM ====================================================*/
 #modal--edit--room {
   top: 0;
@@ -910,6 +1048,7 @@ footer div button {
   .header--col--1 {
     width: 100%;
     justify-content: center;
+    height: 60px;
   }
   .menu--item {
     display: none;

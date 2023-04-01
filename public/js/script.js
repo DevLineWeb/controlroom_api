@@ -1,4 +1,5 @@
 
+// VALIDA STATUS DA SESSÃO ATUAL
 function sessionValidate() {
   $.ajax
           ({
@@ -23,7 +24,6 @@ function sessionValidate() {
           });
 }
 // LISTAGEM DE SALAS COM AJAX
-
 $(document).ready(roomList());
 
 function roomList() {
@@ -39,75 +39,55 @@ function roomList() {
         success: function (data)
         {
             $('#table--room--itens').html(data);
+    }
+    });
+    $.ajax
+    ({
+        type: 'POST',
+        dataType: 'html',
+        url: '../app/interface/listagem.php',
+        data: "method=item--grid",
+        beforeSend: function () {
+          
+        },
+        success: function (data)
+        {
+            $('#table--grid').html(data);
             getLineIndex();
-        }
+            getIndexItemGrid();
+            getLineIndexGrid();
+    }
     });
 }
 
-// EVENTO OPEN AO CLICAR EM UM ITEM DA LISTA
-const clickedItem = document.getElementsByClassName('table--item');
+// EVENTO OPEN AO CLICAR EM UM ITEM DA LISTA + PEGA INDICE DO ITEM
 
+const ListClickedItem = document.getElementsByClassName('table--item');
 function getLineIndex(){
-    for(x=0;x<clickedItem.length;x++){
+for(x=0;x<ListClickedItem.length;x++){
         // arranjo os listeners com os index das linhas
         (function(index){
-        clickedItem[x].addEventListener("click", function(){
+        ListClickedItem[x].addEventListener("click", function(){
             infoShow(index);
         });
         })(x);
     }
 }
-function infoShow(element){ // element é o index da linha clicada
+function infoShow(element){
     getEditInfos(element);
 
     $('.table--item--more'+'.'+element).toggleClass('show');
-    $('.table--room--info--button'+'.'+element).toggleClass('drop');
   
 
 // removo os listeners
-    for(x=0;x<clickedItem.length;x++){
-        objclone = clickedItem[x].cloneNode(true);
-        clickedItem[x].parentNode.replaceChild(objclone, clickedItem[x]);
+    for(x=0;x<ListClickedItem.length;x++){
+        objclone = ListClickedItem[x].cloneNode(true);
+        ListClickedItem[x].parentNode.replaceChild(objclone, ListClickedItem[x]);
     }
 getLineIndex();
 }
-// ANIMAÇÕES DE INTERAÇÃO COM JQUERY
 
-$('.search--ico').click(function () {
-  $('.room--list--search').toggleClass("active")
-}
-)
-$('#table--button--filter--list').click(function () {
-  $('#table--button--filter--list').toggleClass('selected');
-  $('#table--button--filter--grid').removeClass('selected');
-})
-$('#table--button--filter--grid').click(function () {
-  $('#table--button--filter--grid').toggleClass('selected');
-  $('#table--button--filter--list').removeClass('selected');
-  $('.search--submit').style.display = 'flex';
-})
-
-// MODALS BUTTONS
-document.addEventListener('click', (e) => {
-  const isDropdownBtn = e.target.classList.contains('table--button--filter')
-  if (!isDropdownBtn && e.target.closest('#filter--select--box') != null) return;
-
-  if (isDropdownBtn) {
-
-    $('#modal--filter--room').toggleClass("show")
-
-  }
-  else {
-
-    $('#modal--filter--room').removeClass("show")
-
-  }
-})
-
-
-function openSidebar() {
-  $('.sidebar--options').toggleClass('down');
-}
+// OPEN MODALS
 function openModalEdit() {
   $('#modal--edit--room').toggleClass("show")
 
@@ -174,33 +154,58 @@ function addRoom() {
             });
 }
 
-
-
 // FILTRAGEM DOS DADOS DA TABELA
 function search() {
-  const searchbox = document.getElementById('table--search--input').value.toUpperCase();
-  // const storeitems = document.getElementById('table--room--itens');
-  const product = document.querySelectorAll('.table--item');
-  // const pname = storeitems.getElementsByTagName('td');
-
-  for (let i = 0; i < product.length; i++) {
-    const match = product[i]
-    // .getElementsByTagName('td')[0];
-
-    if (match) {
-      let textvalue = match.textContent || match.innerHTML;
-
-      if (textvalue.toUpperCase().indexOf(searchbox) > -1) {
-        product[i].style.display = "";
-      }
-      else {
-        product[i].style.display = "none";
+  function searchInList() {
+    const searchbox = document.getElementById('table--search--input').value.toUpperCase();
+    // const storeitems = document.getElementById('table--room--itens');
+    const product = document.querySelectorAll('.table--item');
+    // const pname = storeitems.getElementsByTagName('td');
+  
+    for (let i = 0; i < product.length; i++) {
+      const match = product[i]
+      // .getElementsByTagName('td')[0];
+  
+      if (match) {
+        let textvalue = match.textContent || match.innerHTML;
+  
+        if (textvalue.toUpperCase().indexOf(searchbox) > -1) {
+          product[i].style.display = "";
+        }
+        else {
+          product[i].style.display = "none";
+        }
       }
     }
   }
+  function searchInGrid() {
+    const searchbox = document.getElementById('table--search--input').value.toUpperCase();
+    // const storeitems = document.getElementById('table--room--itens');
+    const product = document.querySelectorAll('.grid--edit--button');
+    // const pname = storeitems.getElementsByTagName('td');
+  
+    for (let i = 0; i < product.length; i++) {
+      const match = product[i]
+      // .getElementsByTagName('td')[0];
+  
+      if (match) {
+        let textvalue = match.textContent || match.innerHTML;
+  
+        if (textvalue.toUpperCase().indexOf(searchbox) > -1) {
+          product[i].style.display = "";
+        }
+        else {
+          product[i].style.display = "none";
+        }
+      }
+    }
+  }
+  searchInList();
+  searchInGrid();
+  $('.grid--itens').toggleClass('show');
 }
 
-
+// FUNÇÃO PARA FECHAR TODOS OS MODAIS
 function closeModal() {
   $('#modal--add--room').removeClass("show")
   $('#modal--edit--room').removeClass("show")
@@ -211,9 +216,10 @@ function closeModal() {
   $('.ajax--load').removeClass('show');
   $('#modal--user').removeClass('show');
 }
- 
+
+// FUNÇÃO PARA QUE QUANDO CLICARMOS NA TR ELE IDENTIFIQUE E BUSQUE OS DADOS
 const configButton = document.getElementsByClassName('table--room--config--button');
-$(configButton).on('click' , closeModal())
+// $(configButton).on('click' , closeModal())
 function getEditInfos (lineIndex) {
   const id = configButton[lineIndex].getAttribute('data-id');
   const natureza = configButton[lineIndex].getAttribute('data-01');
@@ -277,7 +283,7 @@ function getEditInfos (lineIndex) {
   }
 } 
 
-
+// FUNÇÃO PARA EDITAR A SALA
 function editRoom() {
   id = document.getElementById('edit--show--id').value;
   nomesala = document.getElementById('edit--show--sala').value;
@@ -338,6 +344,7 @@ function editRoom() {
           });
 }
 
+// FUNÇÃO PARA DELETAR A SALA
 function deleteRoom() {
   id = document.getElementById('edit--show--id').value;
   $.ajax
@@ -365,8 +372,7 @@ function deleteRoom() {
   });
 }
 
-
-
+// ??????????????????????
 function filterRoom() {
   natureza = document.querySelector('input[name="filter--natureza"]:checked').value;
   gpu = document.querySelector('input[name="filter--gpu"]:checked').value;
@@ -413,7 +419,7 @@ function filterRoom() {
           });
 }
 
-
+// MÁSCARA E-MAIL ACESS PAGE
 function validMail(field) {
   usuario = field.value.substring(0, field.value.indexOf("@"));
   dominio = field.value.substring(field.value.indexOf("@")+ 1, field.value.length);
@@ -436,6 +442,7 @@ function validMail(field) {
   }
 }
 
+// AUTENTICAÇÃO DA SESSÃO
 function autenticate() {
   mail = document.getElementById('login--mail').value;
   password = document.getElementById('login--password').value;
@@ -469,6 +476,7 @@ function autenticate() {
           });
 }
 
+// LOGOUT DA SESSÃO
 function logout() {
   $.ajax
           ({
@@ -490,6 +498,7 @@ function logout() {
           });
 }
 
+// BUSCA INFORMAÇÕES DO USUÁRIO LOGADO
 function getUserInfo (){
   $.ajax
           ({
@@ -511,3 +520,186 @@ function getUserInfo (){
               }
           });
 }
+
+
+
+
+const GridClickedItem = document.getElementsByClassName('grid--col');
+function getLineIndexGrid(){
+for(x=0;x<GridClickedItem.length;x++){
+          // arranjo os listeners com os index das linhas
+          (function(index){
+          GridClickedItem[x].addEventListener("click", function(){
+            infoShowGrid(index);
+          });
+          })(x);
+      }
+  }
+function infoShowGrid(element){
+    console.log(element);
+    $('.grid--itens'+'.'+element).toggleClass('show');
+    item = document.getElementsByClassName('grid--itens');
+    const localidade = item[element].getAttribute('data-bloco');
+    console.log(localidade);
+
+    $.ajax
+          ({
+              type: 'POST',
+              dataType: 'html',
+              url: '../app/interface/blocos.php',
+              beforeSend: function () {
+                $('#modal--add--room').removeClass("show");
+                $(".grid--itens"+"."+element).html("<img src='./img/Rolling-0.7s-204px.gif'>");
+              },
+              data: {
+                localidade: localidade
+              },
+              success: function (msg)
+              {
+                $(".grid--itens"+"."+element).html(msg);
+                getLineIndexGrid();
+                getIndexItemGrid()
+              }
+          });
+
+
+// removo os listeners
+    for(x=0;x<GridClickedItem.length;x++){
+        objclone = GridClickedItem[x].cloneNode(true);
+        GridClickedItem[x].parentNode.replaceChild(objclone, GridClickedItem[x]);
+    }
+}
+
+const itemGridEdit = document.getElementsByClassName('grid--edit--button');
+function getIndexItemGrid(){
+for(x=0;x<itemGridEdit.length;x++){
+          // arranjo os listeners com os index das linhas
+          (function(index){
+          itemGridEdit[x].addEventListener("click", function(){
+            infoShowItemGrid(index);
+          });
+          })(x);
+      }
+  }
+function infoShowItemGrid(element){
+  getEditInfosGrid(element);
+    console.log(element);
+
+
+
+// removo os listeners
+    for(x=0;x<itemGridEdit.length;x++){
+        objclone = itemGridEdit[x].cloneNode(true);
+        itemGridEdit[x].parentNode.replaceChild(objclone, itemGridEdit[x]);
+    }
+    getIndexItemGrid();
+}
+
+function getEditInfosGrid (lineIndex) {
+  const id = itemGridEdit[lineIndex].getAttribute('data-id');
+  const natureza = itemGridEdit[lineIndex].getAttribute('data-01');
+  const localidade = itemGridEdit[lineIndex].getAttribute('data-02');
+  const nomenclatura = itemGridEdit[lineIndex].getAttribute('data-03');
+  const modelo = itemGridEdit[lineIndex].getAttribute('data-04');
+  const patrimonio = itemGridEdit[lineIndex].getAttribute('data-05');
+  const serie = itemGridEdit[lineIndex].getAttribute('data-06');
+  const rede = itemGridEdit[lineIndex].getAttribute('data-07');
+  const cpu = itemGridEdit[lineIndex].getAttribute('data-08');
+  const gpu = itemGridEdit[lineIndex].getAttribute('data-09');
+  const ram = itemGridEdit[lineIndex].getAttribute('data-10');
+  const disco = itemGridEdit[lineIndex].getAttribute('data-11');
+  const monitor = itemGridEdit[lineIndex].getAttribute('data-12');
+  const cadeado = itemGridEdit[lineIndex].getAttribute('data-13');
+  const cabo = itemGridEdit[lineIndex].getAttribute('data-14');
+  const dataver = itemGridEdit[lineIndex].getAttribute('data-15');
+  const desempenho = itemGridEdit[lineIndex].getAttribute('data-16');
+  const obser = itemGridEdit[lineIndex].getAttribute('data-17');
+
+  $('#edit--show--id').val(id);
+  $('#edit--show--sala').val(nomenclatura);
+  $('#edit--show--data').val(dataver);
+  $('#edit--show--localidade').val(localidade);
+  $('#edit--show--natureza').val(natureza);
+  $('#edit--show--modelo').val(modelo);
+  $('#edit--show--patrimonio').val(patrimonio);
+  $('#edit--show--serie').val(serie);
+  $('#edit--show--gpu').val(gpu);
+  $('#edit--show--disco').val(disco);
+  $('#edit--show--cpu').val(cpu);
+  $('#edit--show--ram').val(ram);
+  $('#edit--show--rede').val(rede);
+  $('#edit--show--desempenho').val(desempenho);
+  $('#edit--show--monitor').val(monitor);
+  $('#edit--show--cabo').val(cabo);
+  $('#edit--show--cadeado').val(cadeado);
+  $('#edit--show--monitor').val(monitor);
+  $('#edit--show--obser').val(obser);
+
+  if(cadeado=='true') {
+    $('#edit--show--cadeado').prop('checked', true);
+    $('.more--cadeado.'+lineIndex).prop('checked', true);
+  }
+  else {
+    $('#edit--show--cadeado').prop('checked', false);
+  }
+  if(monitor=='true') {
+    $('#edit--show--monitor').prop('checked', true);
+    $('.more--monitor.'+lineIndex).prop('checked', true);
+  }
+  else {
+    $('#edit--show--monitor').prop('checked', false);
+  }
+  if(cabo=='true') {
+    $('#edit--show--cabo').prop('checked', true);
+    $('.more--cabo.'+lineIndex).prop('checked', true);
+  }
+  else {
+    $('#edit--show--cabo').prop('checked', false);
+  }
+} 
+
+
+
+
+// ANIMAÇÕES DE INTERAÇÃO COM JQUERY --- FRONT END
+
+$('.search--ico').click(function () {
+  $('.room--list--search').toggleClass("active")
+}
+)
+$('#table--button--filter--list').click(function () {
+  $('#table--button--filter--list').toggleClass('selected');
+  $('#table--button--filter--grid').removeClass('selected');
+  $('.table--room').removeClass('change');
+  $('.table--grid').removeClass('change');
+})
+$('#table--button--filter--grid').click(function () {
+  $('#table--button--filter--grid').toggleClass('selected');
+  $('#table--button--filter--list').removeClass('selected');
+  $('.table--grid').toggleClass('change');
+  $('.table--room').toggleClass('change');
+})
+
+$('.mobile--sec--style--toggle').click(function () {
+  $('.circle--display').toggleClass('toggle');
+  $('.table--grid').toggleClass('change');
+  $('.table--room').toggleClass('change');
+  $('#style--list').toggleClass('toggle');
+  $('#style--grid').toggleClass('toggle');
+})
+
+document.addEventListener('click', (e) => {
+  const isDropdownBtn = e.target.classList.contains('sidebar--toggle')
+  if (!isDropdownBtn && e.target.closest('.sidebar--options') != null) return;
+
+  if (isDropdownBtn) {
+
+    $('.sidebar--options').toggleClass("down")
+
+  }
+  else {
+
+    $('.sidebar--options').removeClass("down")
+
+  }
+})

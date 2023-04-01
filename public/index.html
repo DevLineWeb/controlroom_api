@@ -22,23 +22,22 @@
                 <a href="#" class="menu--item">Users</a>
             </div>
             <div class="header--col--2">
-                <button class="button--default menu--item" onclick="getUserInfo();"><i class="fa-solid fa-user"></i></button>
+                <button class="button--default menu--item" onclick="getUserInfo();"><i
+                        class="fa-solid fa-user"></i></button>
                 <button class="button--default menu--item"><i class="fa-solid fa-envelope"></i></button>
                 <button class="button--default menu--item"><i class="fa-solid fa-star"></i></button>
                 <button class="button--default menu--item"><i class="fa-solid fa-gear"></i></button>
-                <button class="button--default menu--item" onclick="logout();"><i class="fa-solid fa-right-from-bracket"></i></button>
+                <button class="button--default menu--item" onclick="logout();"><i
+                        class="fa-solid fa-right-from-bracket"></i></button>
             </div>
         </main>
     </header>
     <section class="sec--project--sidebar">
-        <div class="sidebar--toggle" onclick="openSidebar();">
-            <h4>Control Room</h4>
-            <i class="fa-solid fa-bars-staggered"></i>
+        <div class="sidebar--toggle" id="sidebar--toggle">
+            <i class="fa-solid fa-bars-staggered sidebar--toggle"></i>
         </div>
         <div class="sidebar--options">
-            <div class="sidebar--item">
-                <i class="fa-solid fa-rectangle-list"></i>
-            </div>
+            <div class="sidebar--item"><i class="fa-solid fa-rectangle-list"></i> </div>
             <div class="sidebar--item"><i class="fa-solid fa-chart-line"></i></div>
             <div class="sidebar--item"><i class="fa-solid fa-file-shield"></i></div>
             <div class="sidebar--item"><i class="fa-solid fa-users"></i></div>
@@ -93,9 +92,11 @@
                         <button class="button--default selected" onclick="openModalAdd();">
                             <i class="fa-solid fa-plus"></i>
                         </button>
-                        <button class="button--default">
-                          <i class="fa-solid fa-grip"></i>
-                      </button>
+                        <div class="mobile--sec--style--toggle">
+                            <div class="circle--display"></div>
+                            <div class="style--option" id="style--list"><i class="fa-solid fa-list-ul"></i></div>
+                            <div class="style--option" id="style--grid"><i class="fa-solid fa-grip"></i></div>
+                        </div>
                     </div>
                 </section>
                 <section class="sec--project--room--list">
@@ -113,6 +114,8 @@
                         </thead>
                         <tbody id="table--room--itens"></tbody>
                     </table>
+                    <section class="table--grid" id="table--grid">
+                    </section>
                 </section>
             </main>
         </section>
@@ -298,132 +301,6 @@
                 </div>
             </form>
         </section>
-        <section id="modal--filter--room">
-            <form action="" id="filter--select--box">
-                <div class="modal--legend">
-                    <legend>Filters</legend>
-                    <div class="modal--close" onclick="closeModal()">
-                        <i class="fa-regular fa-circle-xmark"></i>
-                    </div>
-                </div>
-                <!--  -->
-                <div class="box--line">
-                    <div class="box--col checkbox--area">
-                        <div>
-                            <input type="radio" name="filter--natureza" id="filter--acad" value="Academic" />
-                            <label for="filter--acad">
-                                <h3>ACAD</h3>
-                            </label>
-                        </div>
-                        <div>
-                            <input type="radio" name="filter--natureza" id="filter--adm" value="Administrative" />
-                            <label for="filter--adm">
-                                <h3>ADM</h3>
-                            </label>
-                        </div>
-                        <!--  -->
-                    </div>
-                    <div class="box--col checkbox--area">
-                        <div>
-                            <input type="checkbox" name="" id="filter--cadeado" />
-                            <label for="filter--cadeado"><i class="fa-solid fa-lock"></i></label>
-                        </div>
-
-                        <div>
-                            <input type="checkbox" name="" id="filter--cabo" />
-                            <label for="filter--cabo"><i class="fa-solid fa-shield"></i></label>
-                        </div>
-
-                        <div>
-                            <input type="checkbox" name="" id="filter--monitor" />
-                            <label for="filter--monitor"><i class="fa-sharp fa-solid fa-desktop"></i></label>
-                        </div>
-                    </div>
-                </div>
-                <div class="box--line">
-                    <div class="box--col checkbox--area">
-                        <div>
-                            <input type="radio" name="filter--gpu" id="filter--gpu--amd" value="AMD" />
-                            <label for="filter--gpu--amd">
-                                <h3>AMD</h3>
-                            </label>
-                        </div>
-                        <div>
-                            <input type="radio" name="filter--gpu" id="filter--gpu--intel" value="Intel" />
-                            <label for="filter--gpu--intel">
-                                <h3>Intel</h3>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="box--col checkbox--area">
-                        <div>
-                            <input type="radio" name="filter--rede" id="filter--rede--lan" value="LAN" />
-                            <label for="filter--rede--lan">
-                                <h3><i class="fa-solid fa-wifi"></i></h3>
-                            </label>
-                        </div>
-                        <div>
-                            <input type="radio" name="filter--rede" id="filter--rede--wireless" value="Wireless" />
-                            <label for="filter--rede--wireless">
-                                <h3><i class="fa-solid fa-globe"></i></h3>
-                            </label>
-                        </div>
-                        <!--  -->
-                    </div>
-                </div>
-                <div class="box--line">
-                    <div class="box--col">
-                        <label for="filter--cpu">CPU: </label>
-                        <select name="filter--cpu" id="filter--cpu">
-                            <option value="">Processador</option>
-                            <option value="Pentium">Pentium</option>
-                            <option value="Core 2 Duo">Core 2 Duo</option>
-                            <option value="Intel core i3">Intel core i3</option>
-                            <option value="Intel core i5">Intel core i5</option>
-                            <option value="Intel core i7">Intel core i7</option>
-                            <option value="Intel core i9">Intel core i9</option>
-                        </select>
-                    </div>
-                    <div class="box--col">
-                        <label for="filter--ram">RAM: </label>
-                        <input type="number" name="filter--ram" id="filter--ram" placeholder="RAM" />
-                    </div>
-                </div>
-                <div class="box--line">
-                    <div class="box--col">
-                        <label for="filter--desempenho">Desempenho: </label>
-                        <select name="filter--desempenho" id="filter--desempenho">
-                            <option value="">Desempenho</option>
-                            <option value="Bom">Bom Desempenho</option>
-                            <option value="Acetável">Acetável Desempenho</option>
-                            <option value="Aviso">Aviso de Manutenção</option>
-                        </select>
-                    </div>
-                    <div class="box--col">
-                        <label for="filter--disco">Disco: </label>
-                        <select name="filter--disco" id="filter--disco">
-                            <option value="">Disco</option>
-                            <option value="80GB HD">80GB HD</option>
-                            <option value="120GB HD">120GB HD</option>
-                            <option value="250GB HD">250GB HD</option>
-                            <option value="500GB HD">500GB HD</option>
-                            <option value="1TB HD">1TB HD</option>
-                            <option value="80GB SSD">80GB SSD</option>
-                            <option value="120GB SSD">120GB SSD</option>
-                            <option value="250GB SSD">250GB SSD</option>
-                            <option value="500GB SSD">500GB SSD</option>
-                            <option value="1TB SSD">1TB SSD</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="box--line modal--footer">
-                    <button class="button--cancel">Clean</button>
-                    <button class="button--submit" onclick="filterRoom();">
-                        Apply
-                    </button>
-                </div>
-            </form>
-        </section>
         <section id="modal--edit--room">
             <form class="edit--room--box">
                 <div class="modal--legend">
@@ -595,7 +472,7 @@
                 </div>
                 <div class="box--line">
                     <div class="box--col">
-                      <img src="./img/default-user-image.png" alt="" id="user--image">
+                        <img src="./img/default-user-image.png" alt="" id="user--image">
                     </div>
                     <div class="box--col" id="user--session--info"></div>
                 </div>
