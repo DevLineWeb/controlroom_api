@@ -118,3 +118,4 @@
 [2023-04-02T00:50:23.587894+02:00] logs.ALERT: jindicatti- EDITED ROOM - ID: 25 [] []
 [2023-04-02T00:50:35.951561+02:00] logs.ALERT: jindicatti- EDITED ROOM - ID: 28 [] []
 [2023-04-02T00:50:41.172131+02:00] logs.ALERT: jindicatti- EDITED ROOM - ID: 28 [] []
+[2023-04-02T01:34:16.401919+02:00] logs.INFO: jindicatti has logged in [] []

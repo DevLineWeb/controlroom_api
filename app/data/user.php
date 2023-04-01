@@ -13,9 +13,9 @@ include_once('./conect.php');
 
         echo "
         <label for='session--user'>Usuário: </label>
-        <input type='text' name='' id='session--user' value='".$_SESSION["mail"]."'>
+        <input type='text' name='' id='session--user' value='".$_SESSION["mail"]."' disabled>
         <label for='session--password'>Senha: </label>
-        <input type='text' name='' id='session--password' value='".md5($password)."' type='password'>
+        <input type='password' name='' id='session--password' value='".md5($password)."' type='password'>
     ";
     }
     else{

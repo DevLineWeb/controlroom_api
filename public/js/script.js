@@ -703,3 +703,24 @@ document.addEventListener('click', (e) => {
 
   }
 })
+
+photoPreview = document.getElementById('ghost--img--input');
+document.getElementById('user--image').onclick = function() {
+  photoPreview.click();
+}
+let sendImage = document.getElementById('ghost--img--input');
+let preview = document.getElementById('user--image');
+sendImage.addEventListener('change', function(e) {
+  showThumbnail(this.files);
+});
+function showThumbnail(files) {
+  if (files && files[0]) {
+  var reader = new FileReader();
+
+  reader.onload = function (e) {
+    preview.src = e.target.result;
+  }
+
+      reader.readAsDataURL(files[0]);
+  }
+}

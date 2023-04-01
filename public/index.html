@@ -472,7 +472,11 @@
                 </div>
                 <div class="box--line">
                     <div class="box--col">
-                        <img src="./img/default-user-image.png" alt="" id="user--image">
+                        <div class="user--image--box">
+                            <img src="./img/default-user-image.png" alt="" id="user--image">
+                            <input type="file" name="" id="ghost--img--input">
+                            <div class="user--image--legend">Upload File</div>
+                        </div>
                     </div>
                     <div class="box--col" id="user--session--info"></div>
                 </div>
@@ -480,7 +484,7 @@
                     <button class="button--cancel" onclick="closeModal()">
                         Cancel
                     </button>
-                    <button class="button--submit">Edit</button>
+                    <button class="button--submit">Save</button>
                 </div>
             </section>
         </section>
