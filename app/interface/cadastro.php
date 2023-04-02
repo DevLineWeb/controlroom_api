@@ -76,7 +76,8 @@ if($insertRoom) {
         </div>
     </div>
     ";
-    logger($_SESSION['mail'].'- ADDED A NEW ROOM -', $mode = 'alert');
+    logger($_SESSION['mail'].' added a new room: '.$sala, $mode = 'NOTICE');
+    LogToDatabase('added a new room: '.$sala, $mode = 'NOTICE');
 }
 else {
     echo "
@@ -94,7 +95,8 @@ else {
         </div>
     </div>
     ";
-    logger($_SESSION['mail']. ' - FATAL ERROR ON ADDED A NEW ROOM - ', $mode = 'error');
+    logger($_SESSION['mail']. ' error on added a new room: '.$sala, $mode = 'ERROR');
+    LogToDatabase('error on added a new room: '.$sala, $mode = 'ERROR');
 }
 
 // natureza: cr_natureza,

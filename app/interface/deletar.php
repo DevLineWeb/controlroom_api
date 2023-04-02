@@ -1,6 +1,8 @@
 <?php
 include_once('../data/conect.php');
+include_once('../log/log.php');
 
+session_start();
 $id = $_POST['id'];
 $data_envio = date('Y-m-d');
 
@@ -24,6 +26,9 @@ if($deleteRoom) {
         </div>
     </div>
     ";
+    logger($_SESSION['mail'].'deleted the room: '.$id, $mode = 'NOTICE');
+    LogToDatabase('deleted the room: '.$id, $mode = 'NOTICE');
+
 }
 else {
     echo "
@@ -41,4 +46,7 @@ else {
         </div>
     </div>
     ";
+    logger($_SESSION['mail'].'error in deleted the room: '.$id, $mode = 'ERROR');
+    LogToDatabase('error in deleted the room: '.$id, $mode = 'ERROR');
+
 }

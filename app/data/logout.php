@@ -3,8 +3,7 @@ include_once('./conect.php');
 include_once('../log/log.php');
 
 session_start();
-logger($_SESSION["mail"].' '.'user logged out');
-
+logger($_SESSION["mail"].' '.'user logged out', $mode = 'alert');
 session_destroy();
 
 

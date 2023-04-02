@@ -1,15 +1,24 @@
 <?php
 
-include_once('../data/conect.php');
-
 require '../../vendor/autoload.php';
 
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 
+
+
+
 function logger($message, $mode = 'info'){
-    $logger = new Logger('logs');
+    $logger = new Logger('LOG');
     $logger->pushHandler(new StreamHandler(dirname(__FILE__).'/logs.txt'));
+    $logger->pushProcessor(function($record){
+        $record["extra"]["HTTP_HOST"] = $_SERVER["HTTP_HOST"];
+        $record["extra"]["REQUEST_URI"] = $_SERVER["REQUEST_URI"];
+        $record["extra"]["REQUEST_METHOD"] = $_SERVER["REQUEST_METHOD"];
+        $record["extra"]["HTTP_USER_AGENT"] = $_SERVER["HTTP_USER_AGENT"];
+        return $record;
+    });
+
 
     switch($mode){
         case 'info':
@@ -48,4 +57,49 @@ function logger($message, $mode = 'info'){
             $logger->info($message);
             break;
     }
+
+}
+// function LogToDatabase ($message, $mode) {
+//     $date = date('d/m/Y\\H:i:s');
+//     include_once('../../app/data/conect.php');
+//     $insertLog = mysqli_query($conect, "INSERT INTO events(
+//         events_protocol,
+//         events_user,
+//         events_message,
+//         events_date) 
+//             VALUES (
+//             '$mode',
+//             'jindicatti',
+//             '$message',
+//             '$date',
+//         )");
+//     return $insertLog;
+// }
+function LogToDatabase ($message, $mode) {
+    session_start();
+    $dbHost = 'LocalHost';
+    $dbUsername = 'root';
+    $dbPassword = '';
+    $dbName = 'control--room';
+    $sql = "mysql:host=$dbHost;dbname=$dbName;";
+    $dsn_Options = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
+    $date = date('Y-m-d H:i:s');
+    $session = $_SESSION["mail"];
+    try { 
+        $my_Db_Connection = new PDO($sql, $dbUsername, $dbPassword, $dsn_Options);
+        echo "Connected successfully";
+        } catch (PDOException $error) {
+        echo 'Connection error: ' . $error->getMessage();
+        }
+    
+    $my_Insert_Statement = $my_Db_Connection->prepare("INSERT INTO events (
+    events_protocol, events_user, events_message, events_date) 
+    VALUES ('$mode', '$session', '$message', '$date')");
+
+    if ($my_Insert_Statement->execute()) {
+        echo "New record created successfully";
+    } else {
+        echo "Unable to create record";
+    }
+    return $my_Insert_Statement;
 }
