@@ -59,24 +59,8 @@ function logger($message, $mode = 'info'){
     }
 
 }
-// function LogToDatabase ($message, $mode) {
-//     $date = date('d/m/Y\\H:i:s');
-//     include_once('../../app/data/conect.php');
-//     $insertLog = mysqli_query($conect, "INSERT INTO events(
-//         events_protocol,
-//         events_user,
-//         events_message,
-//         events_date) 
-//             VALUES (
-//             '$mode',
-//             'jindicatti',
-//             '$message',
-//             '$date',
-//         )");
-//     return $insertLog;
-// }
+
 function LogToDatabase ($message, $mode) {
-    session_start();
     $dbHost = 'LocalHost';
     $dbUsername = 'root';
     $dbPassword = '';

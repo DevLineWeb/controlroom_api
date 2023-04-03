@@ -1,5 +1,6 @@
 <?php 
 include_once('./conect.php');
+include_once('../log/log.php');
 
 
     session_start();
@@ -20,6 +21,7 @@ include_once('./conect.php');
     }
     else{
         echo "invalid";
+        LogToDatabase('load erro', $mode = 'ERRO');
     }
 
 ?>

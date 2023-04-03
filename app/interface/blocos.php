@@ -1,6 +1,7 @@
 <?php
 
 include_once('../data/conect.php');
+include_once('../log/log.php');
 
 $local = $_POST['localidade'];
 
@@ -74,4 +75,8 @@ if ($result = mysqli_query($conect, $getData))
 
 $i++;
     }
+}
+else {
+    echo "ERRO! Veja o log de eventos";
+    LogToDatabase('load erro', $mode = 'ERRO');
 }

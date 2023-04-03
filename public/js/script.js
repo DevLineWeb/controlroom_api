@@ -517,10 +517,25 @@ function getUserInfo (){
                 $('#modal--user').toggleClass('show');
                 $("#user--session--info").html(msg);
                 sessionValidate();
+                getRecently();
               }
           });
 }
-
+function getRecently (){
+  $.ajax
+          ({
+              type: 'POST',
+              dataType: 'html',
+              url: '../app/log/recently.php',
+              beforeSend: function () {
+                $("#user--session--logs").html("<img src='./img/Rolling-0.7s-204px.gif'>");
+              },
+              success: function (msg)
+              {
+                $("#user--session--logs").html(msg);
+              }
+          });
+}
 
 
 

@@ -25,7 +25,6 @@ include_once('../log/log.php');
     }
     else{
         echo "invalid";
-        logger('FINISHED SESSION', $mode = 'warning');
     }
 
 ?>

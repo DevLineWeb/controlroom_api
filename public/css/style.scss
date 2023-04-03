@@ -95,13 +95,16 @@ html{
     color: $white--color;
 }
 @mixin submitPointer {
-    background-color: $complementary--color;
+    border: none;
+    background-color: $optional--color;
     color: $white--color;
-    border: 1px solid $white--color;
-    border-radius: 5px;
+    border-left: 3px solid $complementary--color;
+    border-radius: 3px;
     line-height: 30px;
     padding: 0 10px;
     cursor: pointer;
+    width: 50%;
+    height: 35px;
 }
 @mixin cancelPointer {
     background-color: $optional--color;
@@ -120,27 +123,23 @@ html{
     transition: all 0.2s;
     box-shadow: 0 1px 5px 0 $base--color;
 }
-@mixin selectedElementPoint {
-    color: $white--color;
-    background-color: $complementary--color;
-    border: 1px solid $base--color;
-}
 @mixin inputElement {
+    border: none;
     outline: none;
-    border: 1px solid $optional--color !important;
-    background-color: $white--color;
+    background-color: $optional--color;
     color: $white--color;
     border-radius: 3px;
     width: 100%;
     height: 30px;
     padding: 0px 5px;
+    border-left: 3px solid $complementary--color ;
 }
 @mixin modalOverlay {   
     top: 0;
     position: fixed;
     width: 100%;
     height: 100%;
-    background-color: #00000075;
+    background-color: #000000a9;
     z-index: 1000;
     display: none;
     align-items: center;
@@ -152,9 +151,16 @@ html{
     transition: all 0.2s;
 }
 @mixin modal {
+    color: $white--color;
+    border-left: 3px solid $complementary--color;
+    font-size: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 3px;
+    background-color: $dark--color;
+    box-shadow: 0 1px 5px 0 $dark--color;
     max-height: 100vh;
     z-index: 1001;
-    display: none;
     flex-direction: column;
     overflow: hidden;
     position: relative;
@@ -163,46 +169,43 @@ html{
 }
 input[type='text'],input[type='number'],textarea, input[type='date'], input[type='password'] {
     @include inputElement();
-    color: #000
 }
 .button--default {
     @include pointerElement();
 }
+.button--default:hover {
+    @include hoverElementPoint();
+}
 .button--submit {
     @include submitPointer();
-    height: 35px;
-    width: 50%;
 }
 .button--cancel {
-    @include cancelPointer();
-    width: 50%;
-    height: 35px;
+    @include submitPointer();
+    border-left: 3px solid #ff0000;
 }
 .button--submit:hover, .button--cancel:hover {
     background-color: $dark--color;
-    border: 1px solid $white--color;
     color: $white--color;
     transition: all 0.2s;
 }
 
-.button--default:hover {
-    @include hoverElementPoint();
-}
 button {
     display: flex;
     align-items: center;
     justify-content: center
 }
 button.selected {
-    @include selectedElementPoint();
+    
+    color: $white--color;
+    background-color: $complementary--color;
+    border: 1px solid $base--color;
 }
 select {
     @include inputElement();
-    color: #000;
 }
 select option {
-    background-color: rgba(255, 255, 255, 0);
-    color: $dark--color;
+    background-color: $optional--color;
+    color: $white--color;
 }
 /* ESTILIZAÇÃO LABEL ~ CHECKBOX */
 input[type=checkbox], input[type=radio] {
@@ -224,7 +227,7 @@ label h3 {
     transition: all 0.3s;
 }
 input[type=radio]:checked ~ label h3 {
-    color: $dark--color;
+    color: $complementary--color;
     border: 1px solid $complementary--color;
     transition: all 0.2s;
 }
@@ -245,11 +248,12 @@ input.verified ~ .login--ico {
 input.error ~ .login--ico {
     color: #ff0000;
 }
-// input:focus {
-//     color: #000;
-//     border: 1px solid $complementary--color !important;
-//     transition: all 0.3s;
-// }
+input:focus {
+    color: #000;
+    background-color: $white--color;
+    border: 1px solid $complementary--color !important;
+    transition: all 0.3s;
+}
 // input:focus ~ .login--ico {
 //     color: $complementary--color;
 // }
@@ -559,14 +563,15 @@ border: 3px solid $complementary--color;  /* creates padding around scroll thumb
     background-color: transparent;
     color: $white--color;
     cursor:crosshair;
+    display: flex;
 }
 // #table--room--itens {
 //     background-color: $base--color;
 // }
 
-tr {
-    display: flex;
-}
+// tr {
+//     display: flex;
+// }
 #table--room--itens td {
     padding: 10px;
     display: flex;
@@ -583,6 +588,7 @@ tr {
     border-left: 5px solid $complementary--color;
     cursor: pointer;
     color: $white--color;
+    display: flex;
 }
 .table--item:hover {
     transition: all 0.2s;
@@ -763,12 +769,6 @@ tr {
 #add--room--box {
     width: 900px;
     @include modal();
-    color: $dark--color;
-    font-size: 1.4rem;
-    display: flex;
-    flex-direction: column;
-    border-radius: 5px;
-    background-color: $white--color
 }
 /* ================================================== MODAL FILTROS ====================================================*/
 
@@ -782,13 +782,6 @@ tr {
 .edit--room--box {
     width: 900px;
     @include modal();
-    color: $dark--color;
-    font-size: 1.4rem;
-    display: flex;
-    flex-direction: column;
-    border-radius: 5px;
-    background-color: $white--color;
-    max-height: 100vh;
 }
 // ================================================== MODAL USER INFO =======================================================//
 #modal--user {
@@ -800,12 +793,6 @@ tr {
 .user--info--box {
     width: 500px;
     @include modal();
-    color: $dark--color;
-    font-size: 1.4rem;
-    display: flex;
-    flex-direction: column;
-    border-radius: 5px;
-    background-color: $white--color
 }
 .user--image--box {
     position: relative;
@@ -840,6 +827,28 @@ tr {
     padding: 10px;
     transition: all 0.4s;
 }
+
+.user--logs--table {
+    width: 90%;
+    border-radius: 3px;
+    border-spacing: 5px;
+    border-color: $dark--color !important;
+    font-size: 1rem;
+}
+.user--logs--table tr{
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    border-bottom: 1px solid $optional--color;
+}
+.user--logs--table th, td {
+    text-align: left;
+    width: 33%;
+}
+#user--session--logs img {
+    max-width: 40px;
+    max-height: 40px;
+}
 /* ===============================FOOTER================================ */
 footer {
     position: fixed;
@@ -868,12 +877,6 @@ footer div button{
 }
 .request--feedback--info {
     @include modal();
-    color: $dark--color;
-    font-size: 1.4rem;
-    display: flex;
-    flex-direction: column;
-    border-radius: 5px;
-    background-color: $white--color;
     width: 350px;
 }
 .ajax--request--feedback img {
@@ -981,7 +984,7 @@ footer div button{
         font-size: 2.4rem;
     }
     html{
-        font-size: 55%;
+        font-size: 62.5%;
     }
     .mobile--buttons {
         display: flex;
@@ -1014,9 +1017,6 @@ footer div button{
     }
 }
 @media (max-width:452px) {
-    html{
-        font-size: 53%;
-    }
     .box--col {
         width: 150px;
     }
@@ -1028,9 +1028,6 @@ footer div button{
     }
 }
 @media (max-width:300px) {
-    html{
-        font-size: 50%;
-    }
     .header--mobile a {
         width: 85%;
     }
