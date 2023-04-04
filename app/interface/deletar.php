@@ -4,6 +4,7 @@ include_once('../log/log.php');
 
 session_start();
 $id = $_POST['id'];
+$nomenclatura = $_POST['nomenclatura'];
 $data_envio = date('Y-m-d');
 
 $deleteRoom = mysqli_query($conect,"DELETE FROM rooms WHERE id = '$id'");
@@ -26,8 +27,8 @@ if($deleteRoom) {
         </div>
     </div>
     ";
-    logger($_SESSION['mail'].'deleted the room: '.$id, $mode = 'NOTICE');
-    LogToDatabase('deleted the room: '.$id, $mode = 'NOTICE');
+    logger($_SESSION['mail'].'deleted the room: '.$nomenclatura, $mode = 'NOTICE');
+    LogToDatabase('deleted the room: '.$nomenclatura, $mode = 'NOTICE');
 
 }
 else {

@@ -24,7 +24,7 @@
             <div class="header--col--2">
                 <button class="button--default menu--item" onclick="getUserInfo();"><i
                         class="fa-solid fa-user"></i></button>
-                <button class="button--default menu--item"><i class="fa-solid fa-envelope"></i></button>
+                <button class="button--default menu--item" onclick="openModalNotify();"><i class="fa-solid fa-envelope"></i></button>
                 <button class="button--default menu--item"><i class="fa-solid fa-star"></i></button>
                 <button class="button--default menu--item"><i class="fa-solid fa-gear"></i></button>
                 <button class="button--default menu--item" onclick="logout();"><i
@@ -124,7 +124,7 @@
         <div class="shortcuts--box">
             <button class="button--default"><i class="fa-solid fa-house-user"></i></button>
             <button class="button--default" onclick="getUserInfo();"><i class="fa-solid fa-user"></i></button>
-            <button class="button--default"><i class="fa-solid fa-envelope"></i></button>
+            <button class="button--default" onclick="openModalNotify();"><i class="fa-solid fa-envelope"></i></button>
             <button class="button--default"><i class="fa-solid fa-star"></i></button>
             <button class="button--default"><i class="fa-solid fa-gear"></i></button>
         </div>
@@ -495,10 +495,26 @@
                     </table>
                 </div>
                 <div class="box--line">
-                    <button class="button--cancel" onclick="closeModal()">
-                        Cancel
+                    <button class="button--cancel" onclick="logout()">
+                        Sair
                     </button>
                     <button class="button--submit">Save</button>
+                </div>
+            </section>
+        </section>
+        <section id="modal--notify">
+            <section class="notify--box">
+                <div class="modal--legend">
+                    <legend>Notifiy</legend>
+                    <div class="modal--close" onclick="closeModal()">
+                        <i class="fa-regular fa-circle-xmark"></i>
+                    </div>
+                </div>
+                <div class="box--line">
+                    <div id="notify--case"></div>
+                </div>
+                <div class="box--line">
+                    <button class="button--submit" onclick="closeModal();">OK</button>
                 </div>
             </section>
         </section>

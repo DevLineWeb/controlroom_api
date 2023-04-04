@@ -96,7 +96,7 @@ html{
 }
 @mixin submitPointer {
     border: none;
-    background-color: $optional--color;
+    background-color: transparent;
     color: $white--color;
     border-left: 3px solid $complementary--color;
     border-radius: 3px;
@@ -105,6 +105,8 @@ html{
     cursor: pointer;
     width: 50%;
     height: 35px;
+    box-shadow: inset 0 0 0 0 $white--color;
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
 }
 @mixin cancelPointer {
     background-color: $optional--color;
@@ -183,12 +185,16 @@ input[type='text'],input[type='number'],textarea, input[type='date'], input[type
     @include submitPointer();
     border-left: 3px solid #ff0000;
 }
-.button--submit:hover, .button--cancel:hover {
-    background-color: $dark--color;
+.button--submit:hover  {
+    background-color: transparent;
     color: $white--color;
-    transition: all 0.2s;
+    box-shadow: inset 1000px 0 0 0 $complementary--color;
 }
-
+.button--cancel:hover {
+    background-color: transparent;
+    color: $white--color;
+    box-shadow: inset 500px 0 0 0 #ff0000;
+}
 button {
     display: flex;
     align-items: center;
@@ -849,6 +855,51 @@ border: 3px solid $complementary--color;  /* creates padding around scroll thumb
     max-width: 40px;
     max-height: 40px;
 }
+// ===============================MODAL NOTIFY==========================//
+#modal--notify {
+    @include modalOverlay();
+}
+#modal--notify.show {
+    @include modalOverlayShow();
+}
+.notify--box {
+    @include modal();
+    width: 600px;
+    max-height: 100vh;
+    font-size: 1.2rem;
+}
+#notify--case {
+    overflow-y: scroll !important;
+    width: 90%;
+}
+#notify--case::-webkit-scrollbar {
+    display: none;
+}
+.notify--item {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    border: 1px solid $optional--color;
+    border-radius: 3px;
+    margin: 10px 0px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+.notify--item.new {
+    border: 1px solid $complementary--color;
+    color: $complementary--color;
+    transition: all 0.5s;
+}
+.notify--item.new::before {
+    content: "NEW";
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(0%,-50%);
+    color: #fffd00;
+}
 /* ===============================FOOTER================================ */
 footer {
     position: fixed;
@@ -878,6 +929,7 @@ footer div button{
 .request--feedback--info {
     @include modal();
     width: 350px;
+    z-index: 1004;
 }
 .ajax--request--feedback img {
     max-width: 70px;
@@ -893,13 +945,15 @@ footer div button{
     font-size: 1.4rem;
     border-radius: 5px;
     background-color: $dark--color;
-    width: 400px;
+    width: 600px;
 }
 .login--form {
-    width: 100%;
-    background-color: $white--color;
-    border-radius: 5px;
-    border: 1px solid $base--color;
+    @include modal();
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 400px;
 }
 
 .login--form .login--ico {
@@ -1023,7 +1077,7 @@ footer div button{
     .box--line {
         grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
     }
-    .login--box {
+    .login--form {
         width: 100%;
     }
 }

@@ -95,6 +95,11 @@ function openModalEdit() {
 function openModalAdd() {
   $('#modal--add--room').toggleClass("show")
 }
+function openModalNotify() {
+  
+  $('#modal--notify').toggleClass('show');
+  getNotify();
+}
 // ADIÇÃO DE SALA NO BD COM AJAX
 function addRoom() {
     const natureza = document.getElementById('natureza').value;
@@ -215,6 +220,7 @@ function closeModal() {
   $('.table--room--info--button').removeClass('drop');
   $('.ajax--load').removeClass('show');
   $('#modal--user').removeClass('show');
+  $('#modal--notify').removeClass('show');
 }
 
 // FUNÇÃO PARA QUE QUANDO CLICARMOS NA TR ELE IDENTIFIQUE E BUSQUE OS DADOS
@@ -347,6 +353,7 @@ function editRoom() {
 // FUNÇÃO PARA DELETAR A SALA
 function deleteRoom() {
   id = document.getElementById('edit--show--id').value;
+  nomenclatura = document.getElementById('edit--show--sala').value;
   $.ajax
   ({
       //Configurações
@@ -361,7 +368,8 @@ function deleteRoom() {
       },
       //Dados para envio
       data: {
-          id: id
+          id: id,
+          nomenclatura: nomenclatura
       },
       //função que será executada quando a solicitação for finalizada.
       success: function (msg)
@@ -536,8 +544,27 @@ function getRecently (){
               }
           });
 }
+function getNotify (){
+  $.ajax
+          ({
+              type: 'POST',
+              dataType: 'html',
+              url: '../app/log/notifications.php',
+              beforeSend: function () {
+                $("#notify--case").html("<img src='./img/Rolling-0.7s-204px.gif'>");
+              },
+              success: function (msg)
+              {
+                $("#notify--case").html(msg);
+                getNotifyItemIndex();
+              }
+          });
+}
 
 
+
+
+//=========================FUNÇÃO PARA ABRIR GRUPO E CARREGAR SALAS PERTENCENTES======================================//
 
 const GridClickedItem = document.getElementsByClassName('grid--col');
 function getLineIndexGrid(){
@@ -584,6 +611,9 @@ function infoShowGrid(element){
         GridClickedItem[x].parentNode.replaceChild(objclone, GridClickedItem[x]);
     }
 }
+
+
+//=========================ABRIR EDIÇÃO DE SALA DENTRO DO GRID======================================//
 
 const itemGridEdit = document.getElementsByClassName('grid--edit--button');
 function getIndexItemGrid(){
@@ -719,6 +749,7 @@ document.addEventListener('click', (e) => {
   }
 })
 
+//=========================FUNÇÃO PARA PRÉ VISUALIZAR IMAGEM USUÁRIO======================================//
 photoPreview = document.getElementById('ghost--img--input');
 document.getElementById('user--image').onclick = function() {
   photoPreview.click();
@@ -738,4 +769,49 @@ function showThumbnail(files) {
 
       reader.readAsDataURL(files[0]);
   }
+}
+
+//=========================FUNÇÃO PARA ABRIR MENSAGEM DAS NOTIFICAÇÕES======================================//
+const itemNotify = document.getElementsByClassName('notify--item');
+function getNotifyItemIndex(){
+for(x=0;x<itemNotify.length;x++){
+          // arranjo os listeners com os index das linhas
+          (function(index){
+          itemNotify[x].addEventListener("click", function(){
+            infoShowNotifyItem(index);
+          });
+          })(x);
+      }
+  }
+function infoShowNotifyItem(element){
+    console.log(element);
+    id = itemNotify[element].getAttribute('data-id');
+    console.log(id);
+    $.ajax
+    ({
+        //Configurações
+        type: 'POST',//Método que está sendo utilizado.
+        dataType: 'html',//É o tipo de dado que a página vai retornar.
+        url: '../app/log/openMessage.php',//Indica a página que está sendo solicitada.
+        //função que vai ser executada assim que a requisição for enviada
+        beforeSend: function () {
+        },
+        //Dados para envio
+        data: {
+            id: id
+        },
+        //função que será executada quando a solicitação for finalizada.
+        success: function ()
+        {
+           $(".notify--item "+element).removeClass('new');
+           getNotify ();
+          }
+    });
+
+// removo os listeners
+    for(x=0;x<itemNotify.length;x++){
+        objclone = itemNotify[x].cloneNode(true);
+        itemNotify[x].parentNode.replaceChild(objclone, itemNotify[x]);
+    }
+    getNotifyItemIndex();
 }

@@ -98,7 +98,7 @@ input[type=text], input[type=number], textarea, input[type=date], input[type=pas
 
 .button--submit {
   border: none;
-  background-color: #24272c;
+  background-color: transparent;
   color: #fefaf1;
   border-left: 3px solid #51e5a1;
   border-radius: 3px;
@@ -107,11 +107,13 @@ input[type=text], input[type=number], textarea, input[type=date], input[type=pas
   cursor: pointer;
   width: 50%;
   height: 35px;
+  box-shadow: inset 0 0 0 0 #fefaf1;
+  transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .button--cancel {
   border: none;
-  background-color: #24272c;
+  background-color: transparent;
   color: #fefaf1;
   border-left: 3px solid #51e5a1;
   border-radius: 3px;
@@ -120,13 +122,21 @@ input[type=text], input[type=number], textarea, input[type=date], input[type=pas
   cursor: pointer;
   width: 50%;
   height: 35px;
+  box-shadow: inset 0 0 0 0 #fefaf1;
+  transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   border-left: 3px solid #ff0000;
 }
 
-.button--submit:hover, .button--cancel:hover {
-  background-color: #060606;
+.button--submit:hover {
+  background-color: transparent;
   color: #fefaf1;
-  transition: all 0.2s;
+  box-shadow: inset 1000px 0 0 0 #51e5a1;
+}
+
+.button--cancel:hover {
+  background-color: transparent;
+  color: #fefaf1;
+  box-shadow: inset 500px 0 0 0 #ff0000;
 }
 
 button {
@@ -966,6 +976,81 @@ header {
   max-height: 40px;
 }
 
+#modal--notify {
+  top: 0;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.662745098);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+#modal--notify.show {
+  display: flex;
+  transition: all 0.2s;
+}
+
+.notify--box {
+  color: #fefaf1;
+  border-left: 3px solid #51e5a1;
+  font-size: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 3px;
+  background-color: #060606;
+  box-shadow: 0 1px 5px 0 #060606;
+  max-height: 100vh;
+  z-index: 1001;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  animation: scale-in-center 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  width: 600px;
+  max-height: 100vh;
+  font-size: 1.2rem;
+}
+
+#notify--case {
+  overflow-y: scroll !important;
+  width: 90%;
+}
+
+#notify--case::-webkit-scrollbar {
+  display: none;
+}
+
+.notify--item {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  border: 1px solid #24272c;
+  border-radius: 3px;
+  margin: 10px 0px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.notify--item.new {
+  border: 1px solid #51e5a1;
+  color: #51e5a1;
+  transition: all 0.5s;
+}
+
+.notify--item.new::before {
+  content: "NEW";
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(0%, -50%);
+  color: #fffd00;
+}
+
 /* ===============================FOOTER================================ */
 footer {
   position: fixed;
@@ -1023,6 +1108,7 @@ footer div button {
   position: relative;
   animation: scale-in-center 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   width: 350px;
+  z-index: 1004;
 }
 
 .ajax--request--feedback img {
@@ -1039,14 +1125,29 @@ footer div button {
   font-size: 1.4rem;
   border-radius: 5px;
   background-color: #060606;
-  width: 400px;
+  width: 600px;
 }
 
 .login--form {
-  width: 100%;
-  background-color: #fefaf1;
-  border-radius: 5px;
-  border: 1px solid #68fe9a;
+  color: #fefaf1;
+  border-left: 3px solid #51e5a1;
+  font-size: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 3px;
+  background-color: #060606;
+  box-shadow: 0 1px 5px 0 #060606;
+  max-height: 100vh;
+  z-index: 1001;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  animation: scale-in-center 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
 }
 
 .login--form .login--ico {
@@ -1170,7 +1271,7 @@ footer div button {
   .box--line {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
-  .login--box {
+  .login--form {
     width: 100%;
   }
 }
