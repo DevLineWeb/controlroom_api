@@ -1,4 +1,8 @@
+$(document).ready(function() {
+  roomList();
+  getNotify();
 
+});
 // VALIDA STATUS DA SESSÃO ATUAL
 function sessionValidate() {
   $.ajax
@@ -24,8 +28,6 @@ function sessionValidate() {
           });
 }
 // LISTAGEM DE SALAS COM AJAX
-$(document).ready(roomList());
-
 function roomList() {
   $.ajax
     ({
@@ -62,7 +64,7 @@ function roomList() {
 
 // EVENTO OPEN AO CLICAR EM UM ITEM DA LISTA + PEGA INDICE DO ITEM
 
-const ListClickedItem = document.getElementsByClassName('table--item');
+const ListClickedItem = document.getElementsByClassName('table--room--config--button');
 function getLineIndex(){
 for(x=0;x<ListClickedItem.length;x++){
         // arranjo os listeners com os index das linhas
@@ -76,7 +78,7 @@ for(x=0;x<ListClickedItem.length;x++){
 function infoShow(element){
     getEditInfos(element);
 
-    $('.table--item--more'+'.'+element).toggleClass('show');
+    // $('.table--item--more'+'.'+element).toggleClass('show');
   
 
 // removo os listeners
@@ -98,7 +100,6 @@ function openModalAdd() {
 function openModalNotify() {
   
   $('#modal--notify').toggleClass('show');
-  getNotify();
 }
 // ADIÇÃO DE SALA NO BD COM AJAX
 function addRoom() {
@@ -153,8 +154,9 @@ function addRoom() {
                 //função que será executada quando a solicitação for finalizada.
                 success: function (msg)
                 {
-                   $(".ajax--request--feedback").html(msg);
-                   roomList();
+                  $(".ajax--request--feedback").html(msg);
+                  roomList();
+                  getNotify();
                 }
             });
 }
@@ -221,6 +223,7 @@ function closeModal() {
   $('.ajax--load').removeClass('show');
   $('#modal--user').removeClass('show');
   $('#modal--notify').removeClass('show');
+  getLineIndex();
 }
 
 // FUNÇÃO PARA QUE QUANDO CLICARMOS NA TR ELE IDENTIFIQUE E BUSQUE OS DADOS
@@ -346,6 +349,7 @@ function editRoom() {
               {
                  $(".ajax--request--feedback").html(msg);
                  roomList();
+                 getNotify();
               }
           });
 }
@@ -376,6 +380,7 @@ function deleteRoom() {
       {
          $(".ajax--request--feedback").html(msg);
          roomList();
+         getNotify();
       }
   });
 }
@@ -557,16 +562,19 @@ function getNotify (){
               {
                 $("#notify--case").html(msg);
                 getNotifyItemIndex();
+                if ($('.notify--item').hasClass('new')) {
+                    $('.notify--button').toggleClass('new');
+                }
+                else {
+                    $('.notify--button').removeClass('new');
+                  }
               }
           });
 }
 
-
-
-
 //=========================FUNÇÃO PARA ABRIR GRUPO E CARREGAR SALAS PERTENCENTES======================================//
 
-const GridClickedItem = document.getElementsByClassName('grid--col');
+const GridClickedItem = document.getElementsByClassName("grid--col");
 function getLineIndexGrid(){
 for(x=0;x<GridClickedItem.length;x++){
           // arranjo os listeners com os index das linhas
@@ -750,26 +758,26 @@ document.addEventListener('click', (e) => {
 })
 
 //=========================FUNÇÃO PARA PRÉ VISUALIZAR IMAGEM USUÁRIO======================================//
-photoPreview = document.getElementById('ghost--img--input');
-document.getElementById('user--image').onclick = function() {
-  photoPreview.click();
-}
-let sendImage = document.getElementById('ghost--img--input');
-let preview = document.getElementById('user--image');
-sendImage.addEventListener('change', function(e) {
-  showThumbnail(this.files);
-});
-function showThumbnail(files) {
-  if (files && files[0]) {
-  var reader = new FileReader();
+// photoPreview = document.getElementById('ghost--img--input');
+// document.getElementById('user--image').onclick = function() {
+//   photoPreview.click();
+// }
+// let sendImage = document.getElementById('ghost--img--input');
+// let preview = document.getElementById('user--image');
+// sendImage.addEventListener('change', function(e) {
+//   showThumbnail(this.files);
+// });
+// function showThumbnail(files) {
+//   if (files && files[0]) {
+//   var reader = new FileReader();
 
-  reader.onload = function (e) {
-    preview.src = e.target.result;
-  }
+//   reader.onload = function (e) {
+//     preview.src = e.target.result;
+//   }
 
-      reader.readAsDataURL(files[0]);
-  }
-}
+//       reader.readAsDataURL(files[0]);
+//   }
+// }
 
 //=========================FUNÇÃO PARA ABRIR MENSAGEM DAS NOTIFICAÇÕES======================================//
 const itemNotify = document.getElementsByClassName('notify--item');
@@ -804,7 +812,7 @@ function infoShowNotifyItem(element){
         success: function ()
         {
            $(".notify--item "+element).removeClass('new');
-           getNotify ();
+           getNotify();
           }
     });
 

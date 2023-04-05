@@ -67,6 +67,7 @@ function LogToDatabase ($message, $mode) {
     $dbName = 'control--room';
     $sql = "mysql:host=$dbHost;dbname=$dbName;";
     $dsn_Options = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
+    date_default_timezone_set('America/Sao_Paulo');
     $date = date('Y-m-d H:i:s');
     $session = $_SESSION["mail"];
     try { 

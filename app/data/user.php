@@ -11,17 +11,22 @@ include_once('../log/log.php');
         $result = mysqli_query($conect, $verify);
         $row= mysqli_fetch_array($result);
         $password = $row['user_password'];
-
+        $perm_level = $row['perm_level'];
+        if ($perm_level=1){
+            $perm_level='Admin';
+        }else{
+            $perm_level='User';
+        };
         echo "
         <label for='session--user'>Usuário: </label>
         <input type='text' name='' id='session--user' value='".$_SESSION["mail"]."' disabled>
-        <label for='session--password'>Senha: </label>
-        <input type='password' name='' id='session--password' value='".md5($password)."' type='password'>
+        <label for='session--password'>Permissão: </label>
+        <input type='text' name='' id='session--level' value='".$perm_level."' type='password' disabled>
     ";
     }
     else{
         echo "invalid";
-        LogToDatabase('load erro', $mode = 'ERRO');
+        LogToDatabase('load error', $mode = 'ERRO');
     }
 
 ?>
