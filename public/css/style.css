@@ -347,8 +347,8 @@ header {
 }
 
 .notify--button.new {
-  border: 1px solid #51e5a1 !important;
-  color: #51e5a1;
+  border: 3px solid #51e5a1 !important;
+  color: #fefaf1;
 }
 
 .menu--logo {
@@ -451,23 +451,28 @@ header {
 
 /*================================================================== FILTROS DE PESQUISA DA LISTA ================================================================== */
 .room--list--filters {
-  margin-bottom: 10px;
-  padding: 5px;
-  height: 45px;
+  height: 50px;
+}
+
+.filters--case {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  width: 100%;
+  padding-top: 5px;
 }
 
 .room--list--search {
   position: relative;
-  width: 37px;
-  float: left;
+  float: left !important;
+  width: 35px;
   transition: all 0.3s;
-  border: 1px solid #51e5a1;
+  border: 1px solid #24272c;
   border-radius: 50px;
   height: 35px;
   overflow: hidden;
-  background-color: #24272c;
+  background-color: transparent;
   line-height: 35px;
-  margin-top: 10px;
 }
 
 .room--list--search.active {
@@ -533,7 +538,7 @@ header {
 }
 
 .sec--project--content {
-  padding-top: 60px;
+  padding-top: 50px;
   background-color: #1d2024;
 }
 
@@ -585,6 +590,7 @@ header {
   color: #fefaf1;
   cursor: crosshair;
   display: flex;
+  padding: 10px 0px;
 }
 
 #table--room--itens td {
@@ -1025,8 +1031,8 @@ header {
 }
 
 .notify--item.new {
-  border: 1px solid #51e5a1;
-  color: #51e5a1;
+  border: 1px solid #fefaf1;
+  color: #fefaf1;
   transition: all 0.5s;
 }
 
@@ -1117,19 +1123,9 @@ footer div button {
 
 .login--form {
   color: #fefaf1;
-  border-left: 3px solid #51e5a1;
-  font-size: 1.4rem;
-  display: flex;
-  flex-direction: column;
-  border-radius: 3px;
+  font-size: 1.6rem;
   background-color: #060606;
-  box-shadow: 0 1px 5px 0 #060606;
-  max-height: 100vh;
-  z-index: 1001;
-  flex-direction: column;
-  overflow: hidden;
-  position: relative;
-  animation: scale-in-center 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 1px 15px 0 #000;
   position: absolute;
   top: 50%;
   left: 50%;

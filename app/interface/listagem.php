@@ -78,9 +78,9 @@ switch ($method) {
                                     data-17='".$room_obser[$i]."'
                                     onclick='openModalEdit();'
                                     >
-                                    <i class='fa-solid fa-chart-simple'></i>
+                                    <i class='fa-regular fa-circle-play'></i>
                                     </button>
-                                    <button class='button--default'><i class='fa-solid fa-star'></i></button>
+                                    <button class='button--default'><i class='fa-regular fa-bookmark'></i></button>
                                 </td>
                             </tr>
                             <tr class='table--item--more"." ".$i."'>
@@ -177,7 +177,7 @@ switch ($method) {
 
 switch ($methodGrid) {
     case 'item--grid':
-        $consult = "SELECT * FROM areas";
+        $consult = "SELECT * FROM groups";
                     if ($result = mysqli_query($conect, $consult)) {
                         $id = array();
                         $area_name = array();

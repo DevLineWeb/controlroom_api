@@ -16,15 +16,15 @@
             <div class="header--col--1">
                 <img src="./img/Control tech logo.png" alt="" class="menu--logo" />
                 <img src="./img/Control tech ico - white.png" alt="" class="menu--ico" />
-                <a href="./index.html" class="menu--item">Room's</a>
+                <a href="./index.html" class="menu--item">Salas</a>
                 <a href="#" class="menu--item">Dashboard</a>
-                <a href="#" class="menu--item">Log</a>
-                <a href="./users.html" class="menu--item">Users</a>
+                <a href="#" class="menu--item">Log's</a>
+                <a href="./users.html" class="menu--item">Usuários</a>
             </div>
             <div class="header--col--2">
                 <button class="button--default menu--item" onclick="getUserInfo();"><i class="fa-solid fa-user"></i></button>
                 <button class="button--default menu--item notify--button" onclick="openModalNotify();"><i class="fa-solid fa-envelope"></i></button>
-                <button class="button--default menu--item"><i class="fa-solid fa-star"></i></button>
+                <button class="button--default menu--item"><i class="fa-solid fa-bookmark"></i></button>
                 <button class="button--default menu--item"><i class="fa-solid fa-gear"></i></button>
             </div>
         </main>
@@ -57,27 +57,31 @@
     <section class="sec--project--content">
         <section class="room--list--filters">
             <main>
-                <div class="room--list--search">
-                    <div class="search--ico">
-                        <i class="fa-solid fa-magnifying-glass"></i>
+                <div class="filters--case">
+
+                    <div class="room--list--search">
+                        <div class="search--ico">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+                        <div class="search--input">
+                            <input type="text" placeholder="Pesquisar" onkeyup="search()" id="table--search--input" />
+                        </div>
                     </div>
-                    <div class="search--input">
-                        <input type="text" placeholder="Pesquisar" onkeyup="search()" id="table--search--input" />
+                    
+                    <div class="room--list--options">
+                        <button class="button--default" id="table--button--add--room" onclick="openModalAdd();">
+                            <span> Add </span><i class="fa-solid fa-plus"></i>
+                        </button>
+                        <button class="button--default" id="table--button--filter--list">
+                            <span> List </span><i class="fa-solid fa-list"></i>
+                        </button>
+                        <button class="button--default" id="table--button--filter--grid">
+                            <span> Grid </span><i class="fa-solid fa-grip"></i>
+                        </button>
+                        <button class="button--default" id="table--button--filter--user">
+                            <span> Users </span><i class="fa-solid fa-users"></i>
+                        </button>
                     </div>
-                </div>
-                <div class="room--list--options">
-                    <button class="button--default" id="table--button--add--room" onclick="openModalAdd();">
-                        <span> Add </span><i class="fa-solid fa-plus"></i>
-                    </button>
-                    <button class="button--default" id="table--button--filter--list">
-                        <span> List </span><i class="fa-solid fa-list"></i>
-                    </button>
-                    <button class="button--default" id="table--button--filter--grid">
-                        <span> Grid </span><i class="fa-solid fa-grip"></i>
-                    </button>
-                    <button class="button--default table--button--filter">
-                        <span> Filtro </span><i class="fa-solid fa-filter"></i>
-                    </button>
                 </div>
             </main>
         </section>
@@ -101,8 +105,8 @@
                         <thead>
                             <tr class="table--header">
                                 <th class="table--col--1">Natureza</th>
-                                <th class="table--col--2">Local</th>
-                                <th class="table--col--3">Sala</th>
+                                <th class="table--col--2">Grupo</th>
+                                <th class="table--col--3">Nome</th>
                                 <th class="table--col--4">Máquina</th>
                                 <th class="table--col--5">Patrimônio</th>
                                 <th class="table--col--6">Série</th>
@@ -113,6 +117,19 @@
                     </table>
                     <section class="table--grid" id="table--grid">
                     </section>
+                </section>
+                <section class="sec--project--user--list">
+                    <table class="table--user" id="table--user">
+                        <thead>
+                            <tr class="table--header">
+                                <th class="table--col--1">ID</th>
+                                <th class="table--col--2">E-mail</th>
+                                <th class="table--col--3">Senha</th>
+                                <th class="table--col--4">Level</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table--user"></tbody>
+                    </table>
                 </section>
             </main>
         </section>
@@ -131,7 +148,7 @@
             <form id="add--room--box">
                 <div class="modal--legend">
                     <legend>
-                        <i class="fa-solid fa-lines-leaning"></i> ° Room Information
+                        <i class="fa-solid fa-lines-leaning"></i> Adicionar
                     </legend>
                     <div class="modal--close" onclick="closeModal()">
                         <i class="fa-regular fa-circle-xmark"></i>
@@ -304,7 +321,7 @@
                     <div class="modal--close" onclick="closeModal()">
                         <i class="fa-regular fa-circle-xmark"></i>
                     </div>
-                    <legend>Edit Room</legend>
+                    <legend>Modificar</legend>
                 </div>
                 <div class="box--line">
                     <div class="box--col">
@@ -465,7 +482,7 @@
                     <div class="modal--close" onclick="closeModal()">
                         <i class="fa-regular fa-circle-xmark"></i>
                     </div>
-                    <legend>User Info</legend>
+                    <legend><div id="welcome--session"></div></legend>
                 </div>
                 <div class="box--line">
                     <div class="box--col">
@@ -500,7 +517,7 @@
         <section id="modal--notify">
             <section class="notify--box">
                 <div class="modal--legend">
-                    <legend>Notifiy</legend>
+                    <legend>Notificações</legend>
                     <div class="modal--close" onclick="closeModal()">
                         <i class="fa-regular fa-circle-xmark"></i>
                     </div>
