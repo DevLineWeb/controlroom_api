@@ -41,7 +41,9 @@ main{
 html{
     font-size: 62.5%;
 }
-
+b{
+    padding-right: 5px;
+}
 @-webkit-keyframes scale-in-center {
     0% {
       -webkit-transform: scale(0);
@@ -107,10 +109,10 @@ html{
     line-height: 30px;
     padding: 0 10px;
     cursor: pointer;
-    width: 50%;
     height: 35px;
     box-shadow: inset 0 0 0 0 $white--color;
     transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+    display: flex;
 }
 @mixin cancelPointer {
     background-color: $optional--color;
@@ -123,11 +125,9 @@ html{
     cursor: pointer;
 }
 @mixin hoverElementPoint {
-    background-color: $complementary--color;
-    color: $white--color;
-    border: 1px solid $complementary--color;
-    transition: all 0.2s;
-    box-shadow: 0 1px 5px 0 $base--color;
+    color: $complementary--color;
+    border: 1px solid $base--color;
+    box-shadow: 0 1px 2px 0 $complementary--color
 }
 @mixin inputElement {
     border: none;
@@ -207,9 +207,10 @@ button {
 }
 button.selected {
     
-    color: $white--color;
-    background-color: $complementary--color;
-    border: 1px solid $base--color;
+    color: $complementary--color;
+    background-color: $optional--color;
+    border: 2px solid $base--color !important;
+    box-shadow: 0 1px 2px 0 $complementary--color
 }
 select {
     @include inputElement();
@@ -335,9 +336,9 @@ input:focus {
 /*============================================= NAVBAR=================================================== */
 
 header {
-    width: 100vw;
-    position: fixed;
-    background-color: #000;
+    background-image: url(../img/slider/8.jpg);
+    object-fit: contain;
+    background-size: contain;
     font-size: 1.4rem;
     z-index: 1000;
 }
@@ -345,8 +346,11 @@ header {
     padding: 10px;
     color: white;
 }
+.menu--item {
+    color: $optional--color;
+}
 .header--col--1 {
-    width: 60%;
+    width: 10%;
     display: flex;
     align-items: center;
     height: 50px; 
@@ -373,25 +377,46 @@ header {
     height: 50px; 
 }
 .header--col--2 button{
-    border: 1px solid $optional--color;
+    color: $white--color;
+    border: 1px solid transparent;
     margin-left: 10px;
 }
 .notify--button.new {
-    border: 3px solid $complementary--color !important;
-    color: $white--color;
+    color: $complementary--color;
+    border: 1px solid $base--color;
+    box-shadow: 0 1px 2px 0 $complementary--color
 }
 .menu--logo {
-    max-width: 130px;
+    max-width: 60px;
     margin-left: 10px;
     margin: 0px 10px;
     cursor: pointer;
 }
-.menu--ico {
-    display: none;
-    padding: 10px;
+.header--content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: $white--color;
+    padding-bottom: 20px;
+}
+.header--content--col {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.header--content--col button {
+    width: 100%;
+    margin-top: 10px;
+    border: 1px solid $white--color;
+}
+.header--content img {
+    width: 100%;
+}
+.dl--logo {
     max-width: 50px;
-    margin: 0px 10px;
-    cursor: pointer;
 }
 // ==================================MOBILE MENU ===========================================//
 .sec--project--sidebar {
@@ -402,52 +427,65 @@ header {
     background-color: transparent;
     font-size: 1.6rem;
     overflow: hidden;
-    width: 50px;
+    width: 100vw;
     transition: all 0.2s;
     display: none;
 }
-.sidebar--toggle {
+.sidebar--menu {
     width: 100%;
-    display: flex;
     align-items: center;
+    display: flex;
     cursor: pointer;
     justify-content: center;
     color: $white--color;
-    background-color: transparent;
+    background-color: $dark--color;
     height: 60px;
+    padding: 10px;
+    flex-direction: column;
+    align-content: space-between;
+    flex-wrap: wrap;
 }
-.sidebar--toggle i {
+.sidebar--menu i {
     font-size: 2.2rem;
     padding: 10px;
 }
-.sidebar--toggle h4 {
+.sidebar--menu h4 {
     padding: 10px;
     position: absolute;
     text-align: center;
     width: 100%;
     display: none;
 }
+.sidebar--logo {
+    width: 70vw !important;
+}
 .sidebar--options {
     position: fixed;
-    transform: translateX(-300px);
-    top: 20%;
+    transform: translateX(-550px);
     z-index: 1000;
-    border-radius: 0px 50px 50px 0px;
+    width: 60px;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     justify-content: space-evenly;
-    height: 465px;
-    padding: 3px;
+    border-radius: 0px 50px 50px 0px;
+    top: 15%;
+    height: 450px;
+    padding: 5px;
     box-shadow: 0 1px 5px 0 $dark--color;
-    background-color: $white--color;
-    transition: all 0.3s
+    background-color: #fefaf121;
+    transition: all 0.3s;
 }
 .sidebar--item {
     @include pointerElement();
-    color: $dark--color;
+    color: $white--color;
+    border: 1px solid $white--color;
     display: flex;
-    height: 35px;
-    align-items: center
+    height: 40px;
+    align-items: center;
+    width: 40px;
+    margin-top: 10px;
+    padding: 6px;
 }
 .sidebar--item:hover {
     @include hoverElementPoint();
@@ -456,17 +494,19 @@ header {
     transform: translateX(0px);
     transition: all 0.3s;
 }
+.sidebar--options.down .sec--project--sidebar {
+    width: 100vw !important;
+}
 /*================================================================== FILTROS DE PESQUISA DA LISTA ================================================================== */
 
 .room--list--filters {
     height: 50px;
 }
 .filters--case {
-    display: flex;
     height: 50px;
     align-items: center;
     width: 100%;
-    padding-top: 5px;
+    padding: 10px;
 }
 .room--list--search {
     position: relative;
@@ -526,7 +566,9 @@ header {
     display: none;
 }
 .room--list--options button:hover {
-    width: 80px;
+    background-color: $optional--color;
+    color: $complementary--color;
+    width: 100px;
     transition: all 0.2s;
 }
 .room--list--options button:hover span {
@@ -536,7 +578,6 @@ header {
 
 // =================================================================SESSÃO DE LISTAGEM===================================================//
 .sec--project--content {
-    padding-top: 50px;
     background-color: #1d2024;
 }
 .sec--project--room--list {
@@ -558,7 +599,7 @@ background-color: $complementary--color;    /* color of the scroll thumb */
 border-radius: 20px;       /* roundness of the scroll thumb */
 border: 3px solid $complementary--color;  /* creates padding around scroll thumb */
 }
-.room--list--case {
+.list--case {
     background-color: $optional--color;
 }
 .table--room {
@@ -568,6 +609,7 @@ border: 3px solid $complementary--color;  /* creates padding around scroll thumb
     border-spacing: 0px;
     transform: translateX(0);
     transition: all 0.3s;
+    padding-top: 10px;
 }
 .table--room.change {
     transform: translateX(-2000px);
@@ -709,18 +751,32 @@ border: 3px solid $complementary--color;  /* creates padding around scroll thumb
 }
 // =================================================TABLE GRID VER ==================================================//
 .table--grid {
+    font-size: 1.6rem;
     width: 100%;
     position: absolute;
-    top: 0;
+    top: 10px;
     transform: translateX(2000px);
     transition: all 0.3s;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
 }
 .table--grid.change {
     transform: translateX(0);
     transition: all 0.3s;
+}
+#table--grid {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+.table--grid .add--group {
+    padding: 10px;
+    margin: 10px 0px;
+    border-radius: 2px;
+    background-color: $dark--color;
+    border-left: 5px solid $complementary--color;
+    cursor: pointer;
+    color: $white--color;
 }
 .grid--block {
     width: 100%;
@@ -895,8 +951,6 @@ border: 3px solid $complementary--color;  /* creates padding around scroll thumb
 }
 /* ===============================FOOTER================================ */
 footer {
-    position: fixed;
-    bottom: 0;
     background-color: #000;
     width: 100%;
     display: flex;
@@ -1016,7 +1070,6 @@ footer div button{
         justify-content: center;
         height: 60px;
     }
-    
     .menu--item {
         display: none;
     }
@@ -1027,13 +1080,8 @@ footer div button{
     .user--info--box {
         width: 95%;
     }
-}
-@media (max-width:576px) {
-    i {
-        font-size: 2rem;
-    }
-    html{
-        font-size: 62.5%;
+    .room--list--options {
+        display: none;
     }
     .mobile--buttons {
         display: flex;
@@ -1046,8 +1094,16 @@ footer div button{
     .room--list--search .search--ico  {
         color: $complementary--color;
     }
-    .room--list--options {
+    .header--content {
         display: none;
+    }
+}
+@media (max-width:576px) {
+    i {
+        font-size: 2rem;
+    }
+    html{
+        font-size: 62.5%;
     }
     .table--col--2, .table--col--6 {
         display: none !important;
