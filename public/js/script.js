@@ -1,7 +1,7 @@
 $(document).ready(function() {
   roomList();
-  getNotify();
 
+  getLineIndex();
 });
 // VALIDA STATUS DA SESSÃO ATUAL
 function sessionValidate() {
@@ -19,7 +19,8 @@ function sessionValidate() {
               //função que será executada quando a solicitação for finalizada.
               success: function (msg)
               {
-                $(".ajax--request--feedback").html(msg);
+                $('.ajax--load').removeClass('show');
+                $("#welcome--session").html(msg);
                 $("#user--session--name").html(msg);
                 if(msg=='invalid') {
                   location.href = './acess.html';
@@ -58,6 +59,7 @@ function roomList() {
             getLineIndex();
             getIndexItemGrid();
             getLineIndexGrid();
+            getNotify();
     }
     });
 }
@@ -385,53 +387,6 @@ function deleteRoom() {
   });
 }
 
-// ??????????????????????
-function filterRoom() {
-  natureza = document.querySelector('input[name="filter--natureza"]:checked').value;
-  gpu = document.querySelector('input[name="filter--gpu"]:checked').value;
-  disco = document.getElementById('filter--disco').value;
-  cpu = document.getElementById('filter--cpu').value;
-  ram = document.getElementById('filter--ram').value;
-  rede = document.querySelector('input[name="filter--rede"]:checked').value;
-  desempenho = document.getElementById('filter--desempenho').value;
-  monitor = document.getElementById('filter--monitor').checked;
-  cabo = document.getElementById('filter--cabo').checked;
-  cadeado = document.getElementById('filter--cadeado').checked;
-
-  $.ajax
-          ({
-              //Configurações
-              type: 'POST',//Método que está sendo utilizado.
-              dataType: 'html',//É o tipo de dado que a página vai retornar.
-              url: '../app/interface/filtro.php',//Indica a página que está sendo solicitada.
-              //função que vai ser executada assim que a requisição for enviada
-              beforeSend: function () {
-                $('#modal--add--room').removeClass("show");
-                $('.ajax--load').toggleClass('show');
-                $(".ajax--request--feedback").html("<img src='./img/Rolling-0.7s-204px.gif'>");
-              },
-              //Dados para envio
-              data: {
-                  natureza: natureza,
-                  rede: rede,
-                  monitor: monitor,
-                  gpu: gpu,
-                  cpu: cpu,
-                  ram: ram,
-                  disco: disco,
-                  cadeado: cadeado,
-                  caboAco: cabo,
-                  desempenho: desempenho
-              },
-              //função que será executada quando a solicitação for finalizada.
-              success: function (msg)
-              {
-                 $(".ajax--request--feedback").html(msg);
-                 roomList();
-              }
-          });
-}
-
 // MÁSCARA E-MAIL ACESS PAGE
 function validMail(field) {
   usuario = field.value.substring(0, field.value.indexOf("@"));
@@ -732,7 +687,9 @@ $('#table--button--filter--grid').click(function () {
   $('.table--grid').toggleClass('change');
   $('.table--room').toggleClass('change');
 })
-
+$('#table--button--filter--user').click(function () {
+  userList();
+})
 $('.mobile--sec--style--toggle').click(function () {
   $('.circle--display').toggleClass('toggle');
   $('.table--grid').toggleClass('change');
@@ -822,4 +779,36 @@ function infoShowNotifyItem(element){
         itemNotify[x].parentNode.replaceChild(objclone, itemNotify[x]);
     }
     getNotifyItemIndex();
+}
+
+
+
+
+
+
+
+
+
+// _____________________________________________________________________
+// ____________________________PÁGINA_DE_USUÁRIOS_______________________
+// _____________________________________________________________________
+
+function userList() {
+  $.ajax
+    ({
+        type: 'POST',
+        dataType: 'html',
+        url: '../app/interface/listagem-users.php',
+        data: "method=user--list",
+        beforeSend: function () {
+          $('#modal--add--room').removeClass("show");
+                $('.ajax--load').toggleClass('show');
+                $(".ajax--request--feedback").html("<img src='./img/Rolling-0.7s-204px.gif'>");
+        },
+        success: function (data)
+        {
+            $('#table--user').html(data);
+            $('.ajax--load').removeClass('show');
+    }
+    });
 }
