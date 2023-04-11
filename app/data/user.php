@@ -12,7 +12,7 @@ include_once('../log/log.php');
         $row= mysqli_fetch_array($result);
         $password = $row['user_password'];
         $perm_level = $row['perm_level'];
-        if ($perm_level=1){
+        if ($perm_level==1){
             $perm_level='Admin';
         }else{
             $perm_level='User';

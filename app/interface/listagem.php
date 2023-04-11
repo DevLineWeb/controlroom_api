@@ -262,7 +262,6 @@ switch ($method) {
                         $id = array();
                         $group_name = array();
                         $i = 0;
-
                         while ($reg = mysqli_fetch_assoc($result)) {
                             $id[$i] = $reg['id'];
                             $group_name[$i] = $reg['group_name'];
@@ -291,6 +290,7 @@ switch ($method) {
     default:
         # code...
         break;
+    
 }
 
 

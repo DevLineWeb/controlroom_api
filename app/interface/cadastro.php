@@ -99,25 +99,5 @@ else {
     LogToDatabase('error on added a new room: '.$sala, $mode = 'ERROR');
 }
 
-// natureza: cr_natureza,
-// local: cr_localidade,
-// sala: cr_nomeSala,
-// modelo: cr_modelo,
-// patrimonio: cr_patrimonio,
-// numSerie: cr_serie,
-// rede: cr_rede,
-// monitor: cr_monitor,
-// gpu: cr_gpu,
-// disco: cr_disco,
-// cpu: cr_cpu,
-// ram: cr_ram,
-// cadeado: cr_cadeado,
-// caboAco: cr_caboaco,
-// desempenho: cr_desempenho,
-// dataVer: cr_dataVer,
-// obs: cr_obs
-
-
-
 
 ?>

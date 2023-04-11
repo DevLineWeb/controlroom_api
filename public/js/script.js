@@ -258,7 +258,36 @@ function deleteRoom() {
       }
   });
 }
+// ADD GROUP
+function addGroup() {
+  const groupName = document.getElementById('add--group--name').value;
+  const groupUnit = document.getElementById('add--group--unit').value;
 
+  $.ajax
+          ({
+              //Configurações
+              type: 'POST',//Método que está sendo utilizado.
+              dataType: 'html',//É o tipo de dado que a página vai retornar.
+              url: '../app/interface/cadastro_group.php',//Indica a página que está sendo solicitada.
+              //função que vai ser executada assim que a requisição for enviada
+              beforeSend: function () {
+                $('.add--group').removeClass("show");
+                $('.ajax--load').toggleClass('show');
+                $(".ajax--request--feedback").html("<img src='./img/Rolling-0.7s-204px.gif'>");
+              },
+              //Dados para envio
+              data: {
+                groupName: groupName,
+                groupUnit: groupUnit
+              },
+              //função que será executada quando a solicitação for finalizada.
+              success: function (msg)
+              {
+                $(".ajax--request--feedback").html(msg);
+                groupList();
+              }
+          });
+}
 // _________________________________________________________________________________
 // __________________________________JAVASCRIPT_____________________________________
 // _________________________________________________________________________________
@@ -347,16 +376,19 @@ function closeModal() {
   $('#modal--notify').removeClass('show');
 }
 function openModalEdit() {
-  $('#modal--edit--room').toggleClass("show")
+  $('#modal--edit--room').toggleClass("show");
 
 }
 function openModalAdd() {
-  $('#modal--add--room').toggleClass("show")
+  $('#modal--add--room').toggleClass("show");
+  addVerGroups();
 }
 function openModalNotify() {
   $('#modal--notify').toggleClass('show');
 }
-
+function openGroupAdd() {
+  $('.add--group').toggleClass('show');
+}
 $('.search--ico').click(function () {
   $('.room--list--search').toggleClass("active")
 }
@@ -665,7 +697,7 @@ function infoShowGrid(element){
           ({
               type: 'POST',
               dataType: 'html',
-              url: '../app/interface/blocos.php',
+              url: '../app/interface/grupos.php',
               beforeSend: function () {
                 $('#modal--add--room').removeClass("show");
                 $(".grid--itens"+"."+element).html("<img src='./img/Rolling-0.7s-204px.gif'>");
@@ -800,3 +832,38 @@ function getEditInfosGrid (lineIndex) {
 //       reader.readAsDataURL(files[0]);
 //   }
 // }
+
+
+
+function addVerGroups (){
+  $.ajax
+    ({
+        type: 'POST',
+        dataType: 'html',
+        url: '../app/data/valid_cadastro.php',
+        data: "method=select--group",
+        beforeSend: function () {
+        },
+        success: function (data)
+        {
+            $('#localidade').html(data);
+    }
+    });
+}
+
+function addVerUnit (){
+  const groupChange = $('#localidade').find(":selected");
+  const unitRel = groupChange[0].getAttribute('data-01')
+  
+  if (unitRel == 1) {
+    $('#add--unit').val('FSG')
+  }
+  if (unitRel == 2) {
+    $('#add--unit').val('FSGBG')
+  }
+
+}
+
+function addVerObjectName(){
+
+}

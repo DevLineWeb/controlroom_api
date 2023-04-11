@@ -142,7 +142,7 @@ input[type=text], input[type=number], textarea, input[type=date], input[type=pas
 .button--cancel:hover {
   background-color: transparent;
   color: #fefaf1;
-  box-shadow: inset 500px 0 0 0 #ff0000;
+  box-shadow: inset 1000px 0 0 0 #ff0000;
 }
 
 button {
@@ -223,13 +223,6 @@ input.error ~ .login--ico {
   color: #ff0000;
 }
 
-input:focus {
-  color: #000;
-  background-color: #fefaf1;
-  border: 1px solid #51e5a1 !important;
-  transition: all 0.3s;
-}
-
 .modal--legend {
   display: flex;
   align-items: center;
@@ -262,10 +255,11 @@ input:focus {
 
 .box--col {
   text-align: left;
-  width: 200px;
+  width: 100%;
   display: inline-table;
   padding: 10px;
   position: relative;
+  line-height: 30px;
 }
 
 .box--line button {
@@ -297,6 +291,12 @@ input:focus {
 
 .box--col.checkbox--area i {
   width: 50px;
+}
+
+.box--col img {
+  max-width: 150px;
+  border: 3px dashed #24272c;
+  padding: 5px;
 }
 
 /*============================================= NAVBAR=================================================== */
@@ -825,6 +825,11 @@ header {
   color: #fefaf1;
 }
 
+.grid--header button {
+  width: 100%;
+  margin-top: 10px;
+}
+
 .grid--itens {
   background-color: #1d2024;
   overflow: hidden;
@@ -880,6 +885,14 @@ header {
   max-width: 50px;
 }
 
+.add--group {
+  display: none;
+}
+
+.add--group.show {
+  display: block;
+}
+
 /* ================================================== MODAL ADD ROOM ====================================================*/
 #modal--add--room {
   top: 0;
@@ -901,15 +914,14 @@ header {
 }
 
 #add--room--box {
-  width: 900px;
+  width: 90vw;
   color: #fefaf1;
-  border-left: 3px solid #51e5a1;
   font-size: 1.4rem;
   display: flex;
   flex-direction: column;
   border-radius: 3px;
-  background-color: #060606;
-  box-shadow: 0 1px 5px 0 #060606;
+  background-color: #1d2024;
+  box-shadow: 0 1px 10px 0 #060606;
   max-height: 100vh;
   z-index: 1001;
   flex-direction: column;
@@ -941,13 +953,12 @@ header {
 .edit--room--box {
   width: 900px;
   color: #fefaf1;
-  border-left: 3px solid #51e5a1;
   font-size: 1.4rem;
   display: flex;
   flex-direction: column;
   border-radius: 3px;
-  background-color: #060606;
-  box-shadow: 0 1px 5px 0 #060606;
+  background-color: #1d2024;
+  box-shadow: 0 1px 10px 0 #060606;
   max-height: 100vh;
   z-index: 1001;
   flex-direction: column;
@@ -977,13 +988,12 @@ header {
 .user--info--box {
   width: 500px;
   color: #fefaf1;
-  border-left: 3px solid #51e5a1;
   font-size: 1.4rem;
   display: flex;
   flex-direction: column;
   border-radius: 3px;
-  background-color: #060606;
-  box-shadow: 0 1px 5px 0 #060606;
+  background-color: #1d2024;
+  box-shadow: 0 1px 10px 0 #060606;
   max-height: 100vh;
   z-index: 1001;
   flex-direction: column;
@@ -1006,6 +1016,8 @@ header {
      object-fit: contain;
   width: 100px;
   height: 100px;
+  padding: 0;
+  border: none;
 }
 
 .user--logs--table {
@@ -1053,13 +1065,12 @@ header {
 
 .notify--box {
   color: #fefaf1;
-  border-left: 3px solid #51e5a1;
   font-size: 1.4rem;
   display: flex;
   flex-direction: column;
   border-radius: 3px;
-  background-color: #060606;
-  box-shadow: 0 1px 5px 0 #060606;
+  background-color: #1d2024;
+  box-shadow: 0 1px 10px 0 #060606;
   max-height: 100vh;
   z-index: 1001;
   flex-direction: column;
@@ -1148,13 +1159,12 @@ footer div button {
 
 .request--feedback--info {
   color: #fefaf1;
-  border-left: 3px solid #51e5a1;
   font-size: 1.4rem;
   display: flex;
   flex-direction: column;
   border-radius: 3px;
-  background-color: #060606;
-  box-shadow: 0 1px 5px 0 #060606;
+  background-color: #1d2024;
+  box-shadow: 0 1px 10px 0 #060606;
   max-height: 100vh;
   z-index: 1001;
   flex-direction: column;
@@ -1192,6 +1202,10 @@ footer div button {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 400px;
+}
+
+.sec--acess--content {
+  height: 100vh;
 }
 
 .login--form .login--ico {
