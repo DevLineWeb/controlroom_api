@@ -14,32 +14,43 @@
     <header class="header--menu--navbar">
         <main>
             <div class="header--col--1">
-                <img src="./img/Control tech logo.png" alt="" class="menu--logo" />
-                <img src="./img/Control tech ico - white.png" alt="" class="menu--ico" />
-                <a href="./index.html" class="menu--item">Salas</a>
-                <a href="#" class="menu--item">Dashboard</a>
-                <a href="#" class="menu--item">Log's</a>
-                <a href="./users.html" class="menu--item">Usuários</a>
+                <img src="./img/DevLine Logo PNG.png" alt="" class="menu--logo" />
             </div>
             <div class="header--col--2">
-                <button class="button--default menu--item" onclick="getUserInfo();"><i class="fa-solid fa-user"></i></button>
-                <button class="button--default menu--item notify--button" onclick="openModalNotify();"><i class="fa-solid fa-envelope"></i></button>
+                <button class="button--default menu--item" onclick="getUserInfo();"><i
+                        class="fa-solid fa-user"></i></button>
+                <button class="button--default menu--item notify--button" onclick="openModalNotify();"><i
+                        class="fa-solid fa-envelope"></i></button>
                 <button class="button--default menu--item"><i class="fa-solid fa-bookmark"></i></button>
                 <button class="button--default menu--item"><i class="fa-solid fa-gear"></i></button>
+            </div>
+            <div class="header--content">
+                <div class="header--content--col">
+                    <img src="./img/Control Room Logo.png" alt="" draggable="false">
+                    <button class="button--default">Central de Contole</button>
+                    <button class="button--default">Dashboard</button>
+                    <button class="button--default">Eventos</button>
+                    <button class="button--default">Unidades</button>
+                </div>
             </div>
         </main>
     </header>
     <section class="sec--project--sidebar">
-        <div class="sidebar--toggle" id="sidebar--toggle">
-            <i class="fa-solid fa-bars-staggered sidebar--toggle"></i>
+        <div class="sidebar--menu">
+            <div class="sidebar--toggle">
+                <i class="fa-solid fa-bars-staggered sidebar--toggle"></i>
+            </div>
+            <div id="sidebar--logo">
+                <img class="dl--logo" src="./img/DevLine Logo PNG.png" alt="">
+            </div>
+            <div id="sidebar--user">
+                <button class="button--default"><i class="fa-solid fa-user"></i></button>
+            </div>
         </div>
         <div class="sidebar--options">
-            <div class="sidebar--item"><i class="fa-solid fa-rectangle-list"></i> </div>
+            <div class="sidebar--item"><i class="fa-brands fa-buromobelexperte"></i></div>
             <div class="sidebar--item"><i class="fa-solid fa-chart-line"></i></div>
             <div class="sidebar--item"><i class="fa-solid fa-file-shield"></i></div>
-            <div class="sidebar--item"><i class="fa-solid fa-users"></i></div>
-            <div class="sidebar--item"><i class="fa-solid fa-envelope"></i></div>
-            <div class="sidebar--item"><i class="fa-solid fa-star"></i></div>
             <div class="sidebar--item"><i class="fa-solid fa-gear"></i></div>
         </div>
         <!-- <div class="sidebar--footer">
@@ -67,69 +78,74 @@
                             <input type="text" placeholder="Pesquisar" onkeyup="search()" id="table--search--input" />
                         </div>
                     </div>
-                    
+
                     <div class="room--list--options">
-                        <button class="button--default" id="table--button--add--room" onclick="openModalAdd();">
-                            <span> Add </span><i class="fa-solid fa-plus"></i>
+                        <button class="button--default" id="table--button--filter--list" onclick="objectList();">
+                            <span> Objects </span><i class="fa-solid fa-list"></i>
                         </button>
-                        <button class="button--default" id="table--button--filter--list">
-                            <span> List </span><i class="fa-solid fa-list"></i>
+                        <button class="button--default" id="table--button--filter--grid" onclick="groupList();">
+                            <span> Groups </span><i class="fa-solid fa-grip"></i>
                         </button>
-                        <button class="button--default" id="table--button--filter--grid">
-                            <span> Grid </span><i class="fa-solid fa-grip"></i>
-                        </button>
-                        <button class="button--default" id="table--button--filter--user">
+                        <button class="button--default" id="table--button--filter--user" onclick="userList();">
                             <span> Users </span><i class="fa-solid fa-users"></i>
                         </button>
                     </div>
                 </div>
             </main>
         </section>
-        <section class="room--list--case">
+        <section class="list--case">
             <main>
                 <section class="sec--project--mobile--options">
                     <!--  -->
                     <div class="mobile--buttons">
-                        <button class="button--default selected" onclick="openModalAdd();">
-                            <i class="fa-solid fa-plus"></i>
+                        <button class="button--default" onclick="objectList();">
+                            <i class="fa-solid fa-list"></i>
                         </button>
                         <div class="mobile--sec--style--toggle">
                             <div class="circle--display"></div>
                             <div class="style--option" id="style--list"><i class="fa-solid fa-list-ul"></i></div>
                             <div class="style--option" id="style--grid"><i class="fa-solid fa-grip"></i></div>
                         </div>
+
+                        <button class="button--default" onclick="userList();">
+                            <i class="fa-solid fa-users"></i>
+                        </button>
                     </div>
                 </section>
                 <section class="sec--project--room--list">
                     <table class="table--room" id="table--room">
-                        <thead>
-                            <tr class="table--header">
-                                <th class="table--col--1">Natureza</th>
-                                <th class="table--col--2">Grupo</th>
-                                <th class="table--col--3">Nome</th>
-                                <th class="table--col--4">Máquina</th>
-                                <th class="table--col--5">Patrimônio</th>
-                                <th class="table--col--6">Série</th>
-                                <th class="table--col--7">Action</th>
-                            </tr>
-                        </thead>
+
                         <tbody id="table--room--itens"></tbody>
                     </table>
-                    <section class="table--grid" id="table--grid">
+                    <section class="table--grid">
+                        <button class='button--default selected' onclick="openGroupAdd()">
+                            <i class='fa-solid fa-plus'> </i>
+                        </button>
+                        <div class="grid--header box--line add--group">
+                            <div class="box--col"><label for="add--group--name">Nome do grupo: *</label>
+                                <input type="text" placeholder="Group Name" id="add--group--name">
+                            </div>
+                            <div class="box--col">
+                                <label for="add--group--unit">Unidade do grupo: *</label>
+                                <select name="" id="add--group--unit">
+                                    <option value="FSG">FSG</option>
+                                    <option value="FSGBG">FSGBG</option>
+                                </select>
+                            </div>
+                            <div class="box--col">
+                                <button class="button--submit" onclick="addGroup();">Cadastrar</button>
+                            </div>
+                        </div>
+                        <div id="table--grid">
+
+                        </div>
                     </section>
-                </section>
-                <section class="sec--project--user--list">
-                    <table class="table--user" id="table--user">
-                        <thead>
-                            <tr class="table--header">
-                                <th class="table--col--1">ID</th>
-                                <th class="table--col--2">E-mail</th>
-                                <th class="table--col--3">Senha</th>
-                                <th class="table--col--4">Level</th>
-                            </tr>
-                        </thead>
-                        <tbody id="table--user"></tbody>
-                    </table>
+
+                    <section class="user--list--case">
+                        <table class="table--user" id="table--user">
+                            <tbody id="table--user"></tbody>
+                        </table>
+                    </section>
                 </section>
             </main>
         </section>
@@ -138,9 +154,10 @@
         <div class="shortcuts--box">
             <button class="button--default"><i class="fa-solid fa-house-user"></i></button>
             <button class="button--default" onclick="getUserInfo();"><i class="fa-solid fa-user"></i></button>
-            <button class="button--default notify--button" onclick="openModalNotify();"><i class="fa-solid fa-envelope"></i></button>
-            <button class="button--default"><i class="fa-solid fa-star"></i></button>
-            <button class="button--default"><i class="fa-solid fa-gear"></i></button>
+            <button class="button--default notify--button" onclick="openModalNotify();"><i
+                    class="fa-solid fa-envelope"></i></button>
+            <button class="button--default"><i class="fa-solid fa-bookmark"></i></button>
+            <button class="button--default"><i class="fa-solid fa-gears"></i></button>
         </div>
     </section>
     <section class="sec--project--modals">
@@ -151,33 +168,26 @@
                         <i class="fa-solid fa-lines-leaning"></i> Adicionar
                     </legend>
                     <div class="modal--close" onclick="closeModal()">
-                        <i class="fa-regular fa-circle-xmark"></i>
+                        <i class="fa-solid fa-xmark"></i>
                     </div>
                 </div>
                 <div class="box--line">
                     <div class="box--col">
-                        <label for="">ID</label>
-                        <input type="text" name="" disabled placeholder="Auto Incremented!" />
+                        <img src="./img/default-user-image.png" alt="Object Image">
                     </div>
                     <div class="box--col">
-                        <label for="room--date--edit">Last Mod</label>
-                        <input type="date" name="" disabled />
+                        <label for="nomesala">Nomeação: * </label>
+                        <input type="text" name="nomesala" id="nomesala" placeholder="Nomeação" required />
                     </div>
                     <div class="box--col">
-                        <label for="nomesala">Sala: </label>
-                        <input type="text" name="nomesala" id="nomesala" placeholder="Sala" required />
-                    </div>
-                    <div class="box--col">
-                        <label for="localidade">Local: </label>
-                        <select name="localidade" id="localidade" required>
-                            <option value="" selected>Localidade</option>
-                            <option value="Bloco A">Bloco A</option>
-                            <option value="Bloco B">Bloco B</option>
-                            <option value="Bloco C">Bloco C</option>
-                            <option value="Bloco H">Bloco H</option>
-                            <option value="Veterinária">Veterinária</option>
-                            <option value="CIS">CIS</option>
+                        <label for="localidade">Grupo: *</label>
+                        <select name="localidade" id="localidade" onchange="addVerUnit();">
+
                         </select>
+                    </div>
+                    <div class="box--col">
+                        <label for="add--unit">Unidade: *</label>
+                        <input type="text" id="add--unit" placeholder="Unidade" disabled>
                     </div>
                 </div>
                 <div class="box--line">
@@ -319,7 +329,7 @@
             <form class="edit--room--box">
                 <div class="modal--legend">
                     <div class="modal--close" onclick="closeModal()">
-                        <i class="fa-regular fa-circle-xmark"></i>
+                        <i class="fa-solid fa-xmark"></i>
                     </div>
                     <legend>Modificar</legend>
                 </div>
@@ -480,9 +490,11 @@
             <section class="user--info--box">
                 <div class="modal--legend">
                     <div class="modal--close" onclick="closeModal()">
-                        <i class="fa-regular fa-circle-xmark"></i>
+                        <i class="fa-solid fa-xmark"></i>
                     </div>
-                    <legend><div id="welcome--session"></div></legend>
+                    <legend>
+                        <div id="welcome--session"></div>
+                    </legend>
                 </div>
                 <div class="box--line">
                     <div class="box--col">
@@ -519,7 +531,7 @@
                 <div class="modal--legend">
                     <legend>Notificações</legend>
                     <div class="modal--close" onclick="closeModal()">
-                        <i class="fa-regular fa-circle-xmark"></i>
+                        <i class="fa-solid fa-xmark"></i>
                     </div>
                 </div>
                 <div class="box--line">

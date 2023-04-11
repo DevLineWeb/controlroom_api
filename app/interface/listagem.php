@@ -2,10 +2,9 @@
 include_once('../data/conect.php');
 
 $method = $_POST["method"];
-$methodGrid = $_POST["method"];
 
 switch ($method) {
-    case 'item--list':
+    case 'object--list':
         $consult = "SELECT * FROM rooms";
                     if ($result = mysqli_query($conect, $consult)) {
                         $id = array();
@@ -28,6 +27,24 @@ switch ($method) {
                         $room_dataver = array();
                         $i = 0;
 
+                        // echo "
+                        // <thead>
+                        //     <tr class='table--header'>
+                        //         <th class='table--col--1'>Natureza</th>
+                        //         <th class='table--col--2'>Grupo</th>
+                        //         <th class='table--col--3'>Nome</th>
+                        //         <th class='table--col--4'>Máquina</th>
+                        //         <th class='table--col--5'>Patrimônio</th>
+                        //         <th class='table--col--6'>Série</th>
+                        //         <th class='table--col--7'>Action</th>
+                        //     </tr>
+                        // </thead>
+                        // ";
+                        echo "
+                            <button class='button--default selected' onclick='openModalAdd();'>
+                                <i class='fa-solid fa-plus'> </i>
+                            </button>
+                        ";
                         while ($reg = mysqli_fetch_assoc($result)) {
                             $id[$i] = $reg['id'];
                             $room_natureza[$i] = $reg['room_natureza'];
@@ -49,10 +66,10 @@ switch ($method) {
                             $room_dataver[$i] = $reg['room_dataver'];
 
                             echo "
-                            <tr class='table--item"." ".$i."' ondblclick='getLineIndex();'>
-                                <td class='item--info table--col--1'>".$room_natureza[$i]."</td>
-                                <td class='item--info table--col--2'>".$room_localidade[$i]."</td>
+                            <tr class='table--item"." ".$i."'>
                                 <td class='item--info table--col--3'>".$room_nomenclatura[$i]."</td>
+                                <td class='item--info table--col--2'>".$room_localidade[$i]."</td>
+                                <td class='item--info table--col--1'>".$room_natureza[$i]."</td>
                                 <td class='item--info table--col--4'>".$room_modelo[$i]."</td>
                                 <td class='item--info table--col--5'>FSG-".$room_patrimonio[$i]."</td>
                                 <td class='item--info table--col--6'>".$room_serie[$i]."</td>
@@ -78,7 +95,7 @@ switch ($method) {
                                     data-17='".$room_obser[$i]."'
                                     onclick='openModalEdit();'
                                     >
-                                    <i class='fa-regular fa-circle-play'></i>
+                                    <i class='fa-solid fa-play'></i>
                                     </button>
                                     <button class='button--default'><i class='fa-regular fa-bookmark'></i></button>
                                 </td>
@@ -169,53 +186,112 @@ switch ($method) {
                         }
                     }
         break;
-    
-    default:
-        # code...
-        break;
-}
+    case 'user--list':
+        $consult = "SELECT * FROM users";
+                    if ($result = mysqli_query($conect, $consult)) {
+                        $id = array();
+                        $user_mail = array();
+                        $user_password = array();
+                        $user_img = array();
+                        $perm_level = array();
+                        $unit_id = array();
+                        $i = 0;
+                    //     echo "
+                        
+                    //     <thead>
+                    //         <tr class='table--header'>
+                    //             <th class='table--col--1'>ID</th>
+                    //             <th class='table--col--2'>E-mail</th>
+                    //             <th class='table--col--3'>Senha</th>
+                    //             <th class='table--col--4'>Level</th>
+                    //         </tr>
+                    //     </thead>
+                    // ";
+                        echo "
+                        <button class='button--default selected'>
+                            <i class='fa-solid fa-plus'> </i>
+                        </button>
+                        ";
+                        while ($reg = mysqli_fetch_assoc($result)) {
+                            $id[$i] = $reg['id'];
+                            $user_mail[$i] = $reg['user_mail'];
+                            $user_password[$i] = $reg['user_password'];
+                            $user_img[$i] = $reg['user_img'];
+                            $perm_level[$i] = $reg['perm_level'];
+                            $unit_id[$i] = $reg['unit_id'];
 
-switch ($methodGrid) {
-    case 'item--grid':
+                            if ($perm_level[$i]==1){
+                                $perm_level[$i]='Admin';
+                            }else{
+                                $perm_level[$i]='User';
+                            };
+                            if ($unit_id[$i]==1){
+                                $unit_id[$i]='FSG';
+                            }if( $unit_id[$i]==2){
+                                $unit_id[$i]='FSGBG';
+                            };
+                            echo "
+                            <tr class='table--item"." ".$i."'>
+                                <td class='item--info table--col--1'>".$id[$i]."</td>
+                                <td class='item--info table--col--3'>".$user_mail[$i]."</td>
+                                <td class='item--info table--col--2'>".$unit_id[$i]."</td>
+                                <td class='item--info table--col--4'>".$perm_level[$i]."</td>
+                                <td class='table--item--action'>
+                                    <button class='table--user--config--button button--default' 
+                                    data-id='".$id[$i]."' 
+                                    data-01='".$user_mail[$i]."'
+                                    data-02='".$user_password[$i]."'
+                                    data-03='".$perm_level[$i]."'
+                                    >
+                                    <i class='fa-regular fa-circle-play'></i>
+                                    </button>
+                                    <button class='button--default'><i class='fa-regular fa-bookmark'></i></button>
+                                </td>
+                            </tr>
+                            
+                            ";
+
+
+                            $i++;
+                        }
+                    }
+        break;
+    case 'group--list':
         $consult = "SELECT * FROM groups";
                     if ($result = mysqli_query($conect, $consult)) {
                         $id = array();
-                        $area_name = array();
+                        $group_name = array();
                         $i = 0;
-
                         while ($reg = mysqli_fetch_assoc($result)) {
                             $id[$i] = $reg['id'];
-                            $area_name[$i] = $reg['area_name'];
+                            $group_name[$i] = $reg['group_name'];
 
                             echo "
                             <section class='grid--block'>
                                 <section class='grid--col'>
                                     <div class='grid--header'>
-                                        <p>".$area_name[$i]."</p>  
+                                        <p>".$group_name[$i]."</p>  
                                         <div class='arrow--down--element'>
                                         <i class='fa-solid fa-ellipsis-vertical'></i>
                                         </div>
                                     </div>
                                     
                                 </section>
-                                <div class='grid--itens ".$i."' data-bloco='".$area_name[$i]."'>
+                                <div class='grid--itens ".$i."' data-bloco='".$group_name[$i]."'>
                                         
                                 </div>
                             </section>
                             ";
                             $i++;
                         }
+                        
                     }
         break;
-    
     default:
         # code...
         break;
+    
 }
-
-
-
-
 
 
 ?>

@@ -4,7 +4,6 @@ include_once('../data/conect.php');
 include_once('../log/log.php');
 
 $local = $_POST['localidade'];
-
 $getData = "SELECT * FROM rooms WHERE room_localidade = '$local' ORDER BY room_localidade ASC";
             
 

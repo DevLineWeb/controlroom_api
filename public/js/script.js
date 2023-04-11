@@ -1,7 +1,6 @@
 $(document).ready(function() {
-  roomList();
-
-  getLineIndex();
+  objectList();
+  getNotify();
 });
 // VALIDA STATUS DA SESSÃO ATUAL
 function sessionValidate() {
@@ -28,82 +27,91 @@ function sessionValidate() {
               }
           });
 }
-// LISTAGEM DE SALAS COM AJAX
-function roomList() {
+
+// _________________________________________________________________________________
+// ___________________________________LISTAGEM______________________________________
+// _________________________________________________________________________________
+function objectList() {
   $.ajax
     ({
         type: 'POST',
         dataType: 'html',
         url: '../app/interface/listagem.php',
-        data: "method=item--list",
+        data: "method=object--list",
         beforeSend: function () {
           
         },
         success: function (data)
         {
             $('#table--room--itens').html(data);
-    }
+            getLineIndex();
+        }
     });
-    $.ajax
+  $('#table--button--filter--list').toggleClass('selected');
+  $('#table--button--filter--grid').removeClass('selected');
+  $('#table--button--filter--user').removeClass('selected');
+  $('.table--room').removeClass('change');
+  $('.table--grid').removeClass('change');
+  $('.circle--display').removeClass('toggle');
+  $('#style--list').removeClass('toggle');
+  $('#style--grid').removeClass('toggle');
+}
+function groupList() {
+  $.ajax
+  ({
+      type: 'POST',
+      dataType: 'html',
+      url: '../app/interface/listagem.php',
+      data: "method=group--list",
+      beforeSend: function () {
+        
+      },
+      success: function (data)
+      {
+          $('#table--grid').html(data);
+          getIndexItemGrid();
+          getLineIndexGrid();
+  }
+  });
+  $('#table--button--filter--grid').toggleClass('selected');
+  $('#table--button--filter--list').removeClass('selected');
+  $('#table--button--filter--user').removeClass('selected');
+  $('.table--grid').toggleClass('change');
+  $('.table--room').toggleClass('change');
+}
+function userList() {
+  $.ajax
     ({
         type: 'POST',
         dataType: 'html',
         url: '../app/interface/listagem.php',
-        data: "method=item--grid",
+        data: "method=user--list",
         beforeSend: function () {
-          
+          $('#modal--add--room').removeClass("show");
+                $('.ajax--load').toggleClass('show');
+                $(".ajax--request--feedback").html("<img src='./img/Rolling-0.7s-204px.gif'>");
         },
         success: function (data)
         {
-            $('#table--grid').html(data);
-            getLineIndex();
-            getIndexItemGrid();
-            getLineIndexGrid();
-            getNotify();
+            $('#table--room--itens').html(data);
+            $('.ajax--load').removeClass('show');
     }
     });
+    $('#table--button--filter--user').toggleClass('selected');
+    $('#table--button--filter--list').removeClass('selected');
+    $('#table--button--filter--grid').removeClass('selected');
+    $('.table--room').removeClass('change');
+    $('.table--grid').removeClass('change');
+    $('.circle--display').removeClass('toggle');
+    $('#style--list').removeClass('toggle');
+    $('#style--grid').removeClass('toggle');
 }
 
-// EVENTO OPEN AO CLICAR EM UM ITEM DA LISTA + PEGA INDICE DO ITEM
+// _________________________________________________________________________________
+// ____________________________MANIPULAÇÃO DE OBJETOS_______________________________
+// _________________________________________________________________________________
 
-const ListClickedItem = document.getElementsByClassName('table--room--config--button');
-function getLineIndex(){
-for(x=0;x<ListClickedItem.length;x++){
-        // arranjo os listeners com os index das linhas
-        (function(index){
-        ListClickedItem[x].addEventListener("click", function(){
-            infoShow(index);
-        });
-        })(x);
-    }
-}
-function infoShow(element){
-    getEditInfos(element);
-
-    // $('.table--item--more'+'.'+element).toggleClass('show');
-  
-
-// removo os listeners
-    for(x=0;x<ListClickedItem.length;x++){
-        objclone = ListClickedItem[x].cloneNode(true);
-        ListClickedItem[x].parentNode.replaceChild(objclone, ListClickedItem[x]);
-    }
-getLineIndex();
-}
-
-// OPEN MODALS
-function openModalEdit() {
-  $('#modal--edit--room').toggleClass("show")
-
-}
-function openModalAdd() {
-  $('#modal--add--room').toggleClass("show")
-}
-function openModalNotify() {
-  
-  $('#modal--notify').toggleClass('show');
-}
-// ADIÇÃO DE SALA NO BD COM AJAX
+// ADD
 function addRoom() {
     const natureza = document.getElementById('natureza').value;
     const localidade = document.getElementById('localidade').value;
@@ -157,144 +165,11 @@ function addRoom() {
                 success: function (msg)
                 {
                   $(".ajax--request--feedback").html(msg);
-                  roomList();
-                  getNotify();
+                  objectList();
                 }
             });
 }
-
-// FILTRAGEM DOS DADOS DA TABELA
-function search() {
-  function searchInList() {
-    const searchbox = document.getElementById('table--search--input').value.toUpperCase();
-    // const storeitems = document.getElementById('table--room--itens');
-    const product = document.querySelectorAll('.table--item');
-    // const pname = storeitems.getElementsByTagName('td');
-  
-    for (let i = 0; i < product.length; i++) {
-      const match = product[i]
-      // .getElementsByTagName('td')[0];
-  
-      if (match) {
-        let textvalue = match.textContent || match.innerHTML;
-  
-        if (textvalue.toUpperCase().indexOf(searchbox) > -1) {
-          product[i].style.display = "";
-        }
-        else {
-          product[i].style.display = "none";
-        }
-      }
-    }
-  }
-  function searchInGrid() {
-    const searchbox = document.getElementById('table--search--input').value.toUpperCase();
-    // const storeitems = document.getElementById('table--room--itens');
-    const product = document.querySelectorAll('.grid--edit--button');
-    // const pname = storeitems.getElementsByTagName('td');
-  
-    for (let i = 0; i < product.length; i++) {
-      const match = product[i]
-      // .getElementsByTagName('td')[0];
-  
-      if (match) {
-        let textvalue = match.textContent || match.innerHTML;
-  
-        if (textvalue.toUpperCase().indexOf(searchbox) > -1) {
-          product[i].style.display = "";
-        }
-        else {
-          product[i].style.display = "none";
-        }
-      }
-    }
-  }
-  searchInList();
-  searchInGrid();
-  $('.grid--itens').toggleClass('show');
-}
-
-// FUNÇÃO PARA FECHAR TODOS OS MODAIS
-function closeModal() {
-  $('#modal--add--room').removeClass("show")
-  $('#modal--edit--room').removeClass("show")
-  $('#modal--filter--room').removeClass("show")
-  $('.table--item--more').removeClass('show');
-  $('.table--item').removeClass('append');
-  $('.table--room--info--button').removeClass('drop');
-  $('.ajax--load').removeClass('show');
-  $('#modal--user').removeClass('show');
-  $('#modal--notify').removeClass('show');
-  getLineIndex();
-}
-
-// FUNÇÃO PARA QUE QUANDO CLICARMOS NA TR ELE IDENTIFIQUE E BUSQUE OS DADOS
-const configButton = document.getElementsByClassName('table--room--config--button');
-// $(configButton).on('click' , closeModal())
-function getEditInfos (lineIndex) {
-  const id = configButton[lineIndex].getAttribute('data-id');
-  const natureza = configButton[lineIndex].getAttribute('data-01');
-  const localidade = configButton[lineIndex].getAttribute('data-02');
-  const nomenclatura = configButton[lineIndex].getAttribute('data-03');
-  const modelo = configButton[lineIndex].getAttribute('data-04');
-  const patrimonio = configButton[lineIndex].getAttribute('data-05');
-  const serie = configButton[lineIndex].getAttribute('data-06');
-  const rede = configButton[lineIndex].getAttribute('data-07');
-  const cpu = configButton[lineIndex].getAttribute('data-08');
-  const gpu = configButton[lineIndex].getAttribute('data-09');
-  const ram = configButton[lineIndex].getAttribute('data-10');
-  const disco = configButton[lineIndex].getAttribute('data-11');
-  const monitor = configButton[lineIndex].getAttribute('data-12');
-  const cadeado = configButton[lineIndex].getAttribute('data-13');
-  const cabo = configButton[lineIndex].getAttribute('data-14');
-  const dataver = configButton[lineIndex].getAttribute('data-15');
-  const desempenho = configButton[lineIndex].getAttribute('data-16');
-  const obser = configButton[lineIndex].getAttribute('data-17');
-
-  $('#edit--show--id').val(id);
-  $('#edit--show--sala').val(nomenclatura);
-  $('#edit--show--data').val(dataver);
-  $('#edit--show--localidade').val(localidade);
-  $('#edit--show--natureza').val(natureza);
-  $('#edit--show--modelo').val(modelo);
-  $('#edit--show--patrimonio').val(patrimonio);
-  $('#edit--show--serie').val(serie);
-  $('#edit--show--gpu').val(gpu);
-  $('#edit--show--disco').val(disco);
-  $('#edit--show--cpu').val(cpu);
-  $('#edit--show--ram').val(ram);
-  $('#edit--show--rede').val(rede);
-  $('#edit--show--desempenho').val(desempenho);
-  $('#edit--show--monitor').val(monitor);
-  $('#edit--show--cabo').val(cabo);
-  $('#edit--show--cadeado').val(cadeado);
-  $('#edit--show--monitor').val(monitor);
-  $('#edit--show--obser').val(obser);
-
-  if(cadeado=='true') {
-    $('#edit--show--cadeado').prop('checked', true);
-    $('.more--cadeado.'+lineIndex).prop('checked', true);
-  }
-  else {
-    $('#edit--show--cadeado').prop('checked', false);
-  }
-  if(monitor=='true') {
-    $('#edit--show--monitor').prop('checked', true);
-    $('.more--monitor.'+lineIndex).prop('checked', true);
-  }
-  else {
-    $('#edit--show--monitor').prop('checked', false);
-  }
-  if(cabo=='true') {
-    $('#edit--show--cabo').prop('checked', true);
-    $('.more--cabo.'+lineIndex).prop('checked', true);
-  }
-  else {
-    $('#edit--show--cabo').prop('checked', false);
-  }
-} 
-
-// FUNÇÃO PARA EDITAR A SALA
+// EDIT
 function editRoom() {
   id = document.getElementById('edit--show--id').value;
   nomesala = document.getElementById('edit--show--sala').value;
@@ -350,13 +225,11 @@ function editRoom() {
               success: function (msg)
               {
                  $(".ajax--request--feedback").html(msg);
-                 roomList();
-                 getNotify();
+                 objectList();
               }
           });
 }
-
-// FUNÇÃO PARA DELETAR A SALA
+// DELETE
 function deleteRoom() {
   id = document.getElementById('edit--show--id').value;
   nomenclatura = document.getElementById('edit--show--sala').value;
@@ -381,12 +254,43 @@ function deleteRoom() {
       success: function (msg)
       {
          $(".ajax--request--feedback").html(msg);
-         roomList();
-         getNotify();
+         objectList();
       }
   });
 }
+// ADD GROUP
+function addGroup() {
+  const groupName = document.getElementById('add--group--name').value;
+  const groupUnit = document.getElementById('add--group--unit').value;
 
+  $.ajax
+          ({
+              //Configurações
+              type: 'POST',//Método que está sendo utilizado.
+              dataType: 'html',//É o tipo de dado que a página vai retornar.
+              url: '../app/interface/cadastro_group.php',//Indica a página que está sendo solicitada.
+              //função que vai ser executada assim que a requisição for enviada
+              beforeSend: function () {
+                $('.add--group').removeClass("show");
+                $('.ajax--load').toggleClass('show');
+                $(".ajax--request--feedback").html("<img src='./img/Rolling-0.7s-204px.gif'>");
+              },
+              //Dados para envio
+              data: {
+                groupName: groupName,
+                groupUnit: groupUnit
+              },
+              //função que será executada quando a solicitação for finalizada.
+              success: function (msg)
+              {
+                $(".ajax--request--feedback").html(msg);
+                groupList();
+              }
+          });
+}
+// _________________________________________________________________________________
+// __________________________________JAVASCRIPT_____________________________________
+// _________________________________________________________________________________
 // MÁSCARA E-MAIL ACESS PAGE
 function validMail(field) {
   usuario = field.value.substring(0, field.value.indexOf("@"));
@@ -409,8 +313,176 @@ function validMail(field) {
   $('#login--mail').toggleClass('error');
   }
 }
+// FUNÇÃO DE PESQUISA
+function search() {
+  function searchInList() {
+    const searchbox = document.getElementById('table--search--input').value.toUpperCase();
+    // const storeitems = document.getElementById('table--room--itens');
+    const product = document.querySelectorAll('.table--item');
+    // const pname = storeitems.getElementsByTagName('td');
+  
+    for (let i = 0; i < product.length; i++) {
+      const match = product[i]
+      // .getElementsByTagName('td')[0];
+  
+      if (match) {
+        let textvalue = match.textContent || match.innerHTML;
+  
+        if (textvalue.toUpperCase().indexOf(searchbox) > -1) {
+          product[i].style.display = "";
+        }
+        else {
+          product[i].style.display = "none";
+        }
+      }
+    }
+  }
+  function searchInGrid() {
+    const searchbox = document.getElementById('table--search--input').value.toUpperCase();
+    // const storeitems = document.getElementById('table--room--itens');
+    const product = document.querySelectorAll('.grid--edit--button');
+    // const pname = storeitems.getElementsByTagName('td');
+  
+    for (let i = 0; i < product.length; i++) {
+      const match = product[i]
+      // .getElementsByTagName('td')[0];
+  
+      if (match) {
+        let textvalue = match.textContent || match.innerHTML;
+  
+        if (textvalue.toUpperCase().indexOf(searchbox) > -1) {
+          product[i].style.display = "";
+        }
+        else {
+          product[i].style.display = "none";
+        }
+      }
+    }
+  }
+  searchInList();
+  searchInGrid();
+  $('.grid--itens').toggleClass('show');
+}
+// FUNÇÃO PARA FECHAR TODOS OS MODAIS
+function closeModal() {
+  $('#modal--add--room').removeClass("show")
+  $('#modal--edit--room').removeClass("show")
+  $('#modal--filter--room').removeClass("show")
+  $('.table--item--more').removeClass('show');
+  $('.table--item').removeClass('append');
+  $('.table--room--info--button').removeClass('drop');
+  $('.ajax--load').removeClass('show');
+  $('#modal--user').removeClass('show');
+  $('#modal--notify').removeClass('show');
+}
+function openModalEdit() {
+  $('#modal--edit--room').toggleClass("show");
 
-// AUTENTICAÇÃO DA SESSÃO
+}
+function openModalAdd() {
+  $('#modal--add--room').toggleClass("show");
+  addVerGroups();
+}
+function openModalNotify() {
+  $('#modal--notify').toggleClass('show');
+}
+function openGroupAdd() {
+  $('.add--group').toggleClass('show');
+}
+$('.search--ico').click(function () {
+  $('.room--list--search').toggleClass("active")
+}
+)
+$('.mobile--sec--style--toggle').click(function () {
+  $('.circle--display').toggleClass('toggle');
+  $('#style--list').toggleClass('toggle');
+  $('#style--grid').toggleClass('toggle');
+  groupList();
+})
+// _________________________________________________________________________________
+// ____________________________INFORMAÇÕES DE USUARIO_______________________________
+// _________________________________________________________________________________
+function getUserInfo (){
+  $.ajax
+          ({
+              //Configurações
+              type: 'POST',//Método que está sendo utilizado.
+              dataType: 'html',//É o tipo de dado que a página vai retornar.
+              url: '../app/data/user.php',//Indica a página que está sendo solicitada.
+              //função que vai ser executada assim que a requisição for enviada
+              beforeSend: function () {
+                $('.ajax--load').toggleClass('show');
+                $(".ajax--request--feedback").html("<img src='./img/Rolling-0.7s-204px.gif'>");
+              },
+              //função que será executada quando a solicitação for finalizada.
+              success: function (msg)
+              {
+                $('#modal--user').toggleClass('show');
+                $("#user--session--info").html(msg);
+                sessionValidate();
+                getRecently();
+              }
+          });
+}
+function getRecently (){
+  $.ajax
+          ({
+              type: 'POST',
+              dataType: 'html',
+              url: '../app/log/notifications.php',
+              data: "method=getRecently",
+              beforeSend: function () {
+                $("#user--session--logs").html("<img src='./img/Rolling-0.7s-204px.gif'>");
+              },
+              success: function (msg)
+              {
+                $("#user--session--logs").html(msg);
+              }
+          });
+}
+function getNotify (){
+  $.ajax
+          ({
+              type: 'POST',
+              dataType: 'html',
+              url: '../app/log/notifications.php',
+              data: "method=getNotify",
+              beforeSend: function () {
+                $("#notify--case").html("<img src='./img/Rolling-0.7s-204px.gif'>");
+              },
+              success: function (msg)
+              {
+                $("#notify--case").html(msg);
+                getNotifyItemIndex();
+                if ($('.notify--item').hasClass('new')) {
+                    $('.notify--button').toggleClass('new');
+                }
+                else {
+                    $('.notify--button').removeClass('new');
+                  }
+              }
+          });
+}
+function logout() {
+  $.ajax
+          ({
+              //Configurações
+              type: 'POST',//Método que está sendo utilizado.
+              dataType: 'html',//É o tipo de dado que a página vai retornar.
+              url: '../app/data/logout.php',//Indica a página que está sendo solicitada.
+              //função que vai ser executada assim que a requisição for enviada
+              beforeSend: function () {
+                $('.ajax--load').toggleClass('show');
+                $(".ajax--request--feedback").html("<img src='./img/Rolling-0.7s-204px.gif'>");
+              },
+              //função que será executada quando a solicitação for finalizada.
+              success: function (msg)
+              {
+                $(".ajax--request--feedback").html(msg);
+                sessionValidate();
+              }
+          });
+}
 function autenticate() {
   mail = document.getElementById('login--mail').value;
   password = document.getElementById('login--password').value;
@@ -444,91 +516,165 @@ function autenticate() {
           });
 }
 
-// LOGOUT DA SESSÃO
-function logout() {
-  $.ajax
-          ({
-              //Configurações
-              type: 'POST',//Método que está sendo utilizado.
-              dataType: 'html',//É o tipo de dado que a página vai retornar.
-              url: '../app/data/logout.php',//Indica a página que está sendo solicitada.
-              //função que vai ser executada assim que a requisição for enviada
-              beforeSend: function () {
-                $('.ajax--load').toggleClass('show');
-                $(".ajax--request--feedback").html("<img src='./img/Rolling-0.7s-204px.gif'>");
-              },
-              //função que será executada quando a solicitação for finalizada.
-              success: function (msg)
-              {
-                $(".ajax--request--feedback").html(msg);
-                sessionValidate();
-              }
+// _________________________________________________________________________________
+// _______________________________MENU--MOBILE______________________________________
+// _________________________________________________________________________________
+document.addEventListener('click', (e) => {
+  const isDropdownBtn = e.target.classList.contains('sidebar--toggle')
+  if (!isDropdownBtn && e.target.closest('.sidebar--options') != null) return;
+
+  if (isDropdownBtn) {
+
+    $('.sidebar--options').toggleClass("down")
+
+  }
+  else {
+
+    $('.sidebar--options').removeClass("down")
+
+  }
+})
+
+
+
+// _________________________________________________________________________________
+// _______________________________GET__INDEX________________________________________
+// _________________________________________________________________________________
+const itemNotify = document.getElementsByClassName('notify--item');
+function getNotifyItemIndex(){
+for(x=0;x<itemNotify.length;x++){
+          // arranjo os listeners com os index das linhas
+          (function(index){
+          itemNotify[x].addEventListener("click", function(){
+            infoShowNotifyItem(index);
           });
+          })(x);
+      }
+  }
+function infoShowNotifyItem(element){
+    console.log(element);
+    id = itemNotify[element].getAttribute('data-id');
+    console.log(id);
+    $.ajax
+    ({
+        //Configurações
+        type: 'POST',//Método que está sendo utilizado.
+        dataType: 'html',//É o tipo de dado que a página vai retornar.
+        url: '../app/log/openMessage.php',//Indica a página que está sendo solicitada.
+        //função que vai ser executada assim que a requisição for enviada
+        beforeSend: function () {
+        },
+        //Dados para envio
+        data: {
+            id: id
+        },
+        //função que será executada quando a solicitação for finalizada.
+        success: function ()
+        {
+           $(".notify--item "+element).removeClass('new');
+           getNotify();
+          }
+    });
+
+// removo os listeners
+    for(x=0;x<itemNotify.length;x++){
+        objclone = itemNotify[x].cloneNode(true);
+        itemNotify[x].parentNode.replaceChild(objclone, itemNotify[x]);
+    }
+    getNotifyItemIndex();
 }
 
-// BUSCA INFORMAÇÕES DO USUÁRIO LOGADO
-function getUserInfo (){
-  $.ajax
-          ({
-              //Configurações
-              type: 'POST',//Método que está sendo utilizado.
-              dataType: 'html',//É o tipo de dado que a página vai retornar.
-              url: '../app/data/user.php',//Indica a página que está sendo solicitada.
-              //função que vai ser executada assim que a requisição for enviada
-              beforeSend: function () {
-                $('.ajax--load').toggleClass('show');
-                $(".ajax--request--feedback").html("<img src='./img/Rolling-0.7s-204px.gif'>");
-              },
-              //função que será executada quando a solicitação for finalizada.
-              success: function (msg)
-              {
-                $('#modal--user').toggleClass('show');
-                $("#user--session--info").html(msg);
-                sessionValidate();
-                getRecently();
-              }
-          });
+// PEGA INDEX REFERENTE A LISTAGEM DE OBJETOS
+const ListClickedItem = document.getElementsByClassName('table--room--config--button');
+function getLineIndex(){
+for(x=0;x<ListClickedItem.length;x++){
+        // arranjo os listeners com os index das linhas
+        (function(index){
+        ListClickedItem[x].addEventListener("click", function(){
+            infoShow(index);
+        });
+        })(x);
+    }
 }
-function getRecently (){
-  $.ajax
-          ({
-              type: 'POST',
-              dataType: 'html',
-              url: '../app/log/recently.php',
-              beforeSend: function () {
-                $("#user--session--logs").html("<img src='./img/Rolling-0.7s-204px.gif'>");
-              },
-              success: function (msg)
-              {
-                $("#user--session--logs").html(msg);
-              }
-          });
-}
-function getNotify (){
-  $.ajax
-          ({
-              type: 'POST',
-              dataType: 'html',
-              url: '../app/log/notifications.php',
-              beforeSend: function () {
-                $("#notify--case").html("<img src='./img/Rolling-0.7s-204px.gif'>");
-              },
-              success: function (msg)
-              {
-                $("#notify--case").html(msg);
-                getNotifyItemIndex();
-                if ($('.notify--item').hasClass('new')) {
-                    $('.notify--button').toggleClass('new');
-                }
-                else {
-                    $('.notify--button').removeClass('new');
-                  }
-              }
-          });
-}
+function infoShow(element){
+    getEditInfos(element);
 
-//=========================FUNÇÃO PARA ABRIR GRUPO E CARREGAR SALAS PERTENCENTES======================================//
+    // $('.table--item--more'+'.'+element).toggleClass('show');
+  
 
+// removo os listeners
+    for(x=0;x<ListClickedItem.length;x++){
+        objclone = ListClickedItem[x].cloneNode(true);
+        ListClickedItem[x].parentNode.replaceChild(objclone, ListClickedItem[x]);
+    }
+getLineIndex();
+}
+// AO CLICAR LEVA OS DADOS PARA O MODAL DE EDIÇÃO
+function getEditInfos (lineIndex) {
+  const id = ListClickedItem[lineIndex].getAttribute('data-id');
+  const natureza = ListClickedItem[lineIndex].getAttribute('data-01');
+  const localidade = ListClickedItem[lineIndex].getAttribute('data-02');
+  const nomenclatura = ListClickedItem[lineIndex].getAttribute('data-03');
+  const modelo = ListClickedItem[lineIndex].getAttribute('data-04');
+  const patrimonio = ListClickedItem[lineIndex].getAttribute('data-05');
+  const serie = ListClickedItem[lineIndex].getAttribute('data-06');
+  const rede = ListClickedItem[lineIndex].getAttribute('data-07');
+  const cpu = ListClickedItem[lineIndex].getAttribute('data-08');
+  const gpu = ListClickedItem[lineIndex].getAttribute('data-09');
+  const ram = ListClickedItem[lineIndex].getAttribute('data-10');
+  const disco = ListClickedItem[lineIndex].getAttribute('data-11');
+  const monitor = ListClickedItem[lineIndex].getAttribute('data-12');
+  const cadeado = ListClickedItem[lineIndex].getAttribute('data-13');
+  const cabo = ListClickedItem[lineIndex].getAttribute('data-14');
+  const dataver = ListClickedItem[lineIndex].getAttribute('data-15');
+  const desempenho = ListClickedItem[lineIndex].getAttribute('data-16');
+  const obser = ListClickedItem[lineIndex].getAttribute('data-17');
+
+  $('#edit--show--id').val(id);
+  $('#edit--show--sala').val(nomenclatura);
+  $('#edit--show--data').val(dataver);
+  $('#edit--show--localidade').val(localidade);
+  $('#edit--show--natureza').val(natureza);
+  $('#edit--show--modelo').val(modelo);
+  $('#edit--show--patrimonio').val(patrimonio);
+  $('#edit--show--serie').val(serie);
+  $('#edit--show--gpu').val(gpu);
+  $('#edit--show--disco').val(disco);
+  $('#edit--show--cpu').val(cpu);
+  $('#edit--show--ram').val(ram);
+  $('#edit--show--rede').val(rede);
+  $('#edit--show--desempenho').val(desempenho);
+  $('#edit--show--monitor').val(monitor);
+  $('#edit--show--cabo').val(cabo);
+  $('#edit--show--cadeado').val(cadeado);
+  $('#edit--show--monitor').val(monitor);
+  $('#edit--show--obser').val(obser);
+
+  if(cadeado=='true') {
+    $('#edit--show--cadeado').prop('checked', true);
+    $('.more--cadeado.'+lineIndex).prop('checked', true);
+  }
+  else {
+    $('#edit--show--cadeado').prop('checked', false);
+  }
+  if(monitor=='true') {
+    $('#edit--show--monitor').prop('checked', true);
+    $('.more--monitor.'+lineIndex).prop('checked', true);
+  }
+  else {
+    $('#edit--show--monitor').prop('checked', false);
+  }
+  if(cabo=='true') {
+    $('#edit--show--cabo').prop('checked', true);
+    $('.more--cabo.'+lineIndex).prop('checked', true);
+  }
+  else {
+    $('#edit--show--cabo').prop('checked', false);
+  }
+} 
+
+
+// PEGA INDEX REFERENTE AOS GRUPOS
 const GridClickedItem = document.getElementsByClassName("grid--col");
 function getLineIndexGrid(){
 for(x=0;x<GridClickedItem.length;x++){
@@ -551,7 +697,7 @@ function infoShowGrid(element){
           ({
               type: 'POST',
               dataType: 'html',
-              url: '../app/interface/blocos.php',
+              url: '../app/interface/grupos.php',
               beforeSend: function () {
                 $('#modal--add--room').removeClass("show");
                 $(".grid--itens"+"."+element).html("<img src='./img/Rolling-0.7s-204px.gif'>");
@@ -576,8 +722,7 @@ function infoShowGrid(element){
 }
 
 
-//=========================ABRIR EDIÇÃO DE SALA DENTRO DO GRID======================================//
-
+// PEGA INDEX REFERENTE AOS OBJETOS DO GRUPO
 const itemGridEdit = document.getElementsByClassName('grid--edit--button');
 function getIndexItemGrid(){
 for(x=0;x<itemGridEdit.length;x++){
@@ -591,9 +736,6 @@ for(x=0;x<itemGridEdit.length;x++){
   }
 function infoShowItemGrid(element){
   getEditInfosGrid(element);
-    console.log(element);
-
-
 
 // removo os listeners
     for(x=0;x<itemGridEdit.length;x++){
@@ -602,7 +744,7 @@ function infoShowItemGrid(element){
     }
     getIndexItemGrid();
 }
-
+// LEVA DADOS PARA MODAL DE EDIÇÃO
 function getEditInfosGrid (lineIndex) {
   const id = itemGridEdit[lineIndex].getAttribute('data-id');
   const natureza = itemGridEdit[lineIndex].getAttribute('data-01');
@@ -669,51 +811,6 @@ function getEditInfosGrid (lineIndex) {
 
 
 
-// ANIMAÇÕES DE INTERAÇÃO COM JQUERY --- FRONT END
-
-$('.search--ico').click(function () {
-  $('.room--list--search').toggleClass("active")
-}
-)
-$('#table--button--filter--list').click(function () {
-  $('#table--button--filter--list').toggleClass('selected');
-  $('#table--button--filter--grid').removeClass('selected');
-  $('.table--room').removeClass('change');
-  $('.table--grid').removeClass('change');
-})
-$('#table--button--filter--grid').click(function () {
-  $('#table--button--filter--grid').toggleClass('selected');
-  $('#table--button--filter--list').removeClass('selected');
-  $('.table--grid').toggleClass('change');
-  $('.table--room').toggleClass('change');
-})
-$('#table--button--filter--user').click(function () {
-  userList();
-})
-$('.mobile--sec--style--toggle').click(function () {
-  $('.circle--display').toggleClass('toggle');
-  $('.table--grid').toggleClass('change');
-  $('.table--room').toggleClass('change');
-  $('#style--list').toggleClass('toggle');
-  $('#style--grid').toggleClass('toggle');
-})
-
-document.addEventListener('click', (e) => {
-  const isDropdownBtn = e.target.classList.contains('sidebar--toggle')
-  if (!isDropdownBtn && e.target.closest('.sidebar--options') != null) return;
-
-  if (isDropdownBtn) {
-
-    $('.sidebar--options').toggleClass("down")
-
-  }
-  else {
-
-    $('.sidebar--options').removeClass("down")
-
-  }
-})
-
 //=========================FUNÇÃO PARA PRÉ VISUALIZAR IMAGEM USUÁRIO======================================//
 // photoPreview = document.getElementById('ghost--img--input');
 // document.getElementById('user--image').onclick = function() {
@@ -736,79 +833,37 @@ document.addEventListener('click', (e) => {
 //   }
 // }
 
-//=========================FUNÇÃO PARA ABRIR MENSAGEM DAS NOTIFICAÇÕES======================================//
-const itemNotify = document.getElementsByClassName('notify--item');
-function getNotifyItemIndex(){
-for(x=0;x<itemNotify.length;x++){
-          // arranjo os listeners com os index das linhas
-          (function(index){
-          itemNotify[x].addEventListener("click", function(){
-            infoShowNotifyItem(index);
-          });
-          })(x);
-      }
-  }
-function infoShowNotifyItem(element){
-    console.log(element);
-    id = itemNotify[element].getAttribute('data-id');
-    console.log(id);
-    $.ajax
-    ({
-        //Configurações
-        type: 'POST',//Método que está sendo utilizado.
-        dataType: 'html',//É o tipo de dado que a página vai retornar.
-        url: '../app/log/openMessage.php',//Indica a página que está sendo solicitada.
-        //função que vai ser executada assim que a requisição for enviada
-        beforeSend: function () {
-        },
-        //Dados para envio
-        data: {
-            id: id
-        },
-        //função que será executada quando a solicitação for finalizada.
-        success: function ()
-        {
-           $(".notify--item "+element).removeClass('new');
-           getNotify();
-          }
-    });
-
-// removo os listeners
-    for(x=0;x<itemNotify.length;x++){
-        objclone = itemNotify[x].cloneNode(true);
-        itemNotify[x].parentNode.replaceChild(objclone, itemNotify[x]);
-    }
-    getNotifyItemIndex();
-}
 
 
-
-
-
-
-
-
-
-// _____________________________________________________________________
-// ____________________________PÁGINA_DE_USUÁRIOS_______________________
-// _____________________________________________________________________
-
-function userList() {
+function addVerGroups (){
   $.ajax
     ({
         type: 'POST',
         dataType: 'html',
-        url: '../app/interface/listagem-users.php',
-        data: "method=user--list",
+        url: '../app/data/valid_cadastro.php',
+        data: "method=select--group",
         beforeSend: function () {
-          $('#modal--add--room').removeClass("show");
-                $('.ajax--load').toggleClass('show');
-                $(".ajax--request--feedback").html("<img src='./img/Rolling-0.7s-204px.gif'>");
         },
         success: function (data)
         {
-            $('#table--user').html(data);
-            $('.ajax--load').removeClass('show');
+            $('#localidade').html(data);
     }
     });
+}
+
+function addVerUnit (){
+  const groupChange = $('#localidade').find(":selected");
+  const unitRel = groupChange[0].getAttribute('data-01')
+  
+  if (unitRel == 1) {
+    $('#add--unit').val('FSG')
+  }
+  if (unitRel == 2) {
+    $('#add--unit').val('FSGBG')
+  }
+
+}
+
+function addVerObjectName(){
+
 }
