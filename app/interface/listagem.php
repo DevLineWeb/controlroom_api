@@ -214,25 +214,16 @@ switch ($method) {
                         ";
                         while ($reg = mysqli_fetch_assoc($result)) {
                             $id[$i] = $reg['id'];
+                            $user_name[$i] = $reg['user_name'];
                             $user_mail[$i] = $reg['user_mail'];
                             $user_password[$i] = $reg['user_password'];
                             $user_img[$i] = $reg['user_img'];
                             $perm_level[$i] = $reg['perm_level'];
                             $unit_id[$i] = $reg['unit_id'];
-
-                            if ($perm_level[$i]==1){
-                                $perm_level[$i]='Admin';
-                            }else{
-                                $perm_level[$i]='User';
-                            };
-                            if ($unit_id[$i]==1){
-                                $unit_id[$i]='FSG';
-                            }if( $unit_id[$i]==2){
-                                $unit_id[$i]='FSGBG';
-                            };
                             echo "
                             <tr class='table--item"." ".$i."'>
-                                <td class='item--info table--col--1'>".$id[$i]."</td>
+                                <td class='item--info table--col--5'><img src='../app/data/users_images/".$user_img[$i]."'></td>
+                                <td class='item--info table--col--1'>".$user_name[$i]."</td>
                                 <td class='item--info table--col--3'>".$user_mail[$i]."</td>
                                 <td class='item--info table--col--2'>".$unit_id[$i]."</td>
                                 <td class='item--info table--col--4'>".$perm_level[$i]."</td>
@@ -242,8 +233,11 @@ switch ($method) {
                                     data-01='".$user_mail[$i]."'
                                     data-02='".$user_password[$i]."'
                                     data-03='".$perm_level[$i]."'
+                                    data-04='".$user_name[$i]."'
+                                    data-05='".$unit_id[$i]."'
+                                    data-06='".$user_img[$i]."'
                                     >
-                                    <i class='fa-regular fa-circle-play'></i>
+                                    <i class='fa-solid fa-play'></i>
                                     </button>
                                     <button class='button--default'><i class='fa-regular fa-bookmark'></i></button>
                                 </td>

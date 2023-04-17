@@ -1,6 +1,9 @@
 $(document).ready(function() {
   objectList();
   getNotify();
+  addVerGroups ();
+  getUserImage();
+  
 });
 // VALIDA STATUS DA SESSÃO ATUAL
 function sessionValidate() {
@@ -95,6 +98,7 @@ function userList() {
         {
             $('#table--room--itens').html(data);
             $('.ajax--load').removeClass('show');
+            getLineUserIndex();
     }
     });
     $('#table--button--filter--user').toggleClass('selected');
@@ -374,6 +378,8 @@ function closeModal() {
   $('.ajax--load').removeClass('show');
   $('#modal--user').removeClass('show');
   $('#modal--notify').removeClass('show');
+  $('#modal--edit--user').removeClass('show');
+  $('#modal--upload--image').removeClass('show');
 }
 function openModalEdit() {
   $('#modal--edit--room').toggleClass("show");
@@ -515,7 +521,26 @@ function autenticate() {
               }
           });
 }
-
+function getUserImage() {
+  $.ajax
+          ({
+              //Configurações
+              type: 'POST',//Método que está sendo utilizado.
+              dataType: 'html',//É o tipo de dado que a página vai retornar.
+              url: '../app/interface/user_image.php',//Indica a página que está sendo solicitada.
+              //função que vai ser executada assim que a requisição for enviada
+              beforeSend: function () {
+                $('.ajax--load').toggleClass('show');
+                $(".ajax--request--feedback").html("<img src='./img/Rolling-0.7s-204px.gif'>");
+              },
+              //função que será executada quando a solicitação for finalizada.
+              success: function (msg)
+              {
+                $('.ajax--load').removeClass('show');
+                $("#mobile--user--image").attr('src', msg);
+              }
+          });
+}
 // _________________________________________________________________________________
 // _______________________________MENU--MOBILE______________________________________
 // _________________________________________________________________________________
@@ -583,8 +608,6 @@ function infoShowNotifyItem(element){
     }
     getNotifyItemIndex();
 }
-
-// PEGA INDEX REFERENTE A LISTAGEM DE OBJETOS
 const ListClickedItem = document.getElementsByClassName('table--room--config--button');
 function getLineIndex(){
 for(x=0;x<ListClickedItem.length;x++){
@@ -609,7 +632,6 @@ function infoShow(element){
     }
 getLineIndex();
 }
-// AO CLICAR LEVA OS DADOS PARA O MODAL DE EDIÇÃO
 function getEditInfos (lineIndex) {
   const id = ListClickedItem[lineIndex].getAttribute('data-id');
   const natureza = ListClickedItem[lineIndex].getAttribute('data-01');
@@ -672,9 +694,6 @@ function getEditInfos (lineIndex) {
     $('#edit--show--cabo').prop('checked', false);
   }
 } 
-
-
-// PEGA INDEX REFERENTE AOS GRUPOS
 const GridClickedItem = document.getElementsByClassName("grid--col");
 function getLineIndexGrid(){
 for(x=0;x<GridClickedItem.length;x++){
@@ -720,9 +739,6 @@ function infoShowGrid(element){
         GridClickedItem[x].parentNode.replaceChild(objclone, GridClickedItem[x]);
     }
 }
-
-
-// PEGA INDEX REFERENTE AOS OBJETOS DO GRUPO
 const itemGridEdit = document.getElementsByClassName('grid--edit--button');
 function getIndexItemGrid(){
 for(x=0;x<itemGridEdit.length;x++){
@@ -744,7 +760,6 @@ function infoShowItemGrid(element){
     }
     getIndexItemGrid();
 }
-// LEVA DADOS PARA MODAL DE EDIÇÃO
 function getEditInfosGrid (lineIndex) {
   const id = itemGridEdit[lineIndex].getAttribute('data-id');
   const natureza = itemGridEdit[lineIndex].getAttribute('data-01');
@@ -807,10 +822,46 @@ function getEditInfosGrid (lineIndex) {
     $('#edit--show--cabo').prop('checked', false);
   }
 } 
+const userClickedInfos = document.getElementsByClassName('table--user--config--button');
+function getLineUserIndex(){
+for(x=0;x<userClickedInfos.length;x++){
+        // arranjo os listeners com os index das linhas
+        (function(index){
+        userClickedInfos[x].addEventListener("click", function(){
+            userInfoShow(index);
+        });
+        })(x);
+    }
+}
+function userInfoShow(element){
+  getUserEditInfos(element);
+  console.log(element);
+  $('#modal--edit--user').toggleClass('show');
 
-
-
-
+// removo os listeners
+    for(x=0;x<userClickedInfos.length;x++){
+        objclone = userClickedInfos[x].cloneNode(true);
+        userClickedInfos[x].parentNode.replaceChild(objclone, userClickedInfos[x]);
+    }
+    getLineUserIndex();
+}
+// AO CLICAR LEVA OS DADOS PARA O MODAL DE EDIÇÃO
+function getUserEditInfos (userIndex) {
+  const id = userClickedInfos[userIndex].getAttribute('data-id');
+  const user = userClickedInfos[userIndex].getAttribute('data-01');
+  const user_name = userClickedInfos[userIndex].getAttribute('data-04');
+  const user_perm = userClickedInfos[userIndex].getAttribute('data-03');
+  const user_password = userClickedInfos[userIndex].getAttribute('data-02');
+  const user_unit = userClickedInfos[userIndex].getAttribute('data-05');
+  const user_img = userClickedInfos[userIndex].getAttribute('data-06');
+  $('#user--edit--id').val(id);
+  $('#user--edit--name').val(user_name);
+  $('#user--edit--mail').val(user);
+  $('#user--edit--password').val(user_password);
+  $('#user--edit--perm').val(user_perm);
+  $('#user--edit--unit').val(user_unit);
+  $('#user--edit--img').attr('src', '../app/data/users_images/'+user_img);
+}
 //=========================FUNÇÃO PARA PRÉ VISUALIZAR IMAGEM USUÁRIO======================================//
 // photoPreview = document.getElementById('ghost--img--input');
 // document.getElementById('user--image').onclick = function() {
@@ -834,7 +885,7 @@ function getEditInfosGrid (lineIndex) {
 // }
 
 
-
+// ====================================================FUNÇÕES DE VERIFICAÇÃO PARA CADASTRO=======================================//
 function addVerGroups (){
   $.ajax
     ({
@@ -847,6 +898,7 @@ function addVerGroups (){
         success: function (data)
         {
             $('#localidade').html(data);
+            $('#edit--show--localidade').html(data);
     }
     });
 }
@@ -866,4 +918,94 @@ function addVerUnit (){
 
 function addVerObjectName(){
 
+}
+// =========================================================================================================//
+// ======================================================EDIÇÃO DE USUÁRIO=====================================//
+// =========================================================================================================//
+
+// =================================================PRÉ VISUALIZAÇÃO DE IMAGEM=================================//
+function imageUpdateCase() {
+  $('#modal--upload--image').toggleClass('show');
+}
+function imagePreview() {
+  photoPreview = document.getElementById('ghost--img--input');
+  photoPreview.click();
+  let sendImage = document.getElementById('ghost--img--input');
+  let preview = document.getElementById('session--img');
+  sendImage.addEventListener('change', function(e) {
+    showThumbnail(this.files);
+  });
+  function showThumbnail(files) {
+    if (files && files[0]) {
+    var reader = new FileReader();
+  
+    reader.onload = function (e) {
+      preview.src = e.target.result;
+    }
+  
+        reader.readAsDataURL(files[0]);
+    }
+  }
+}
+$("#user--image--form").submit(function(event) {
+  event.preventDefault();
+  const formData = new FormData($(this)[0]);
+
+    $.ajax({
+      url: '../app/interface/upload_img.php',
+      type: 'POST',
+      data: formData,
+      beforeSend: function () {
+        $('.ajax--load').toggleClass('show');
+        $(".ajax--request--feedback").html("<img src='./img/Rolling-0.7s-204px.gif'>");
+      },
+      async: false,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function (msg)
+      {
+        $(".ajax--request--feedback").html(msg);
+      }
+    });
+});
+
+// =====================================================EDIÇÃO DE USUÁRIO NA LISTAGEM====================================//
+function editUser() {
+  id = document.getElementById('user--edit--id').value;
+  user_name = document.getElementById('user--edit--name').value;
+  user_mail = document.getElementById('user--edit--mail').value;
+  user_password = document.getElementById('user--edit--password').value;
+  user_perm = document.getElementById('user--edit--perm').value;
+  user_unit = document.getElementById('user--edit--unit').value;
+
+  $.ajax
+          ({
+              //Configurações
+              type: 'POST',//Método que está sendo utilizado.
+              dataType: 'html',//É o tipo de dado que a página vai retornar.
+              url: '../app/interface/editar_users.php',//Indica a página que está sendo solicitada.
+              //função que vai ser executada assim que a requisição for enviada
+              beforeSend: function () {
+                $('#modal--add--room').removeClass("show");
+                $('.ajax--load').toggleClass('show');
+                $(".ajax--request--feedback").html("<img src='./img/Rolling-0.7s-204px.gif'>");
+              },
+              //Dados para envio
+              data: {
+                  id: id,
+                  user_name: user_name,
+                  user_mail: user_mail,
+                  user_password: user_password,
+                  user_perm: user_perm,
+                  user_unit: user_unit
+              },
+              //função que será executada quando a solicitação for finalizada.
+              success: function (msg)
+              {
+                 $(".ajax--request--feedback").html(msg);
+                //  userList();
+  objectList();
+              }
+          });
 }

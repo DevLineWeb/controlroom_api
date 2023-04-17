@@ -114,16 +114,7 @@ b{
     box-shadow: inset 0 0 0 0 $white--color;
     transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
     display: flex;
-}
-@mixin cancelPointer {
-    background-color: $optional--color;
-    border: 1px solid $white--color;
-    color: $white--color;
-    transition: all 0.2s;
-    border-radius: 5px;
-    line-height: 30px;
-    padding: 0 10px;
-    cursor: pointer;
+    margin: 5px;
 }
 @mixin hoverElementPoint {
     color: $complementary--color;
@@ -190,6 +181,10 @@ input[type='text'],input[type='number'],textarea, input[type='date'], input[type
     @include submitPointer();
     border-left: 3px solid #ff0000;
 }
+.button--edit {
+    @include submitPointer();
+    border-left: 3px solid #0051ff;
+}
 .button--submit:hover  {
     background-color: transparent;
     color: $white--color;
@@ -199,6 +194,11 @@ input[type='text'],input[type='number'],textarea, input[type='date'], input[type
     background-color: transparent;
     color: $white--color;
     box-shadow: inset 1000px 0 0 0 #ff0000;
+}
+.button--edit:hover {
+    background-color: transparent;
+    color: $white--color;
+    box-shadow: inset 1000px 0 0 0 #0051ff;
 }
 button {
     display: flex;
@@ -275,19 +275,19 @@ input.error ~ .login--ico {
 .modal--legend {
     display: flex;
     align-items: center;
-    height: 50px;
-    background-color: $dark--color;
+    height: 30px;
+    background-color: $background--color;
     width: 100%;
     color: $white--color;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     padding: 0.5rem;
     font-size: 2rem;
 }
 .modal--close {
     position: absolute;
     top: 0;
-    right: 0;
-    padding: 10px;
+    right: 5px;
+    padding: 2px;
     font-size: 2rem;
     cursor: pointer;
 }
@@ -298,7 +298,7 @@ input.error ~ .login--ico {
     grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
     grid-gap: 0px;
     width: 100%;
-    margin-top: 1rem;
+    align-items: center;
 }
 .box--col {
     text-align: left;
@@ -307,9 +307,7 @@ input.error ~ .login--ico {
     padding: 10px;
     position: relative;
     line-height: 30px;
-}
-.box--line button{
-    width: 95%;
+    min-width: 150px
 }
 .box--line.checkbox--area {
     display: flex;
@@ -335,9 +333,9 @@ input.error ~ .login--ico {
     width: 50px;
 }
 .box--col img {
-    max-width: 150px;
     border: 3px dashed $optional--color;
     padding: 5px;
+    width: 100%;
 }
 /*============================================= NAVBAR=================================================== */
 
@@ -502,6 +500,10 @@ header {
 }
 .sidebar--options.down .sec--project--sidebar {
     width: 100vw !important;
+}
+#mobile--user--image {
+    max-width: 35px;
+    border-radius: 50px;
 }
 /*================================================================== FILTROS DE PESQUISA DA LISTA ================================================================== */
 
@@ -698,7 +700,12 @@ border: 3px solid $complementary--color;  /* creates padding around scroll thumb
 .table--item--more th div button {
     margin-top: 10px;
 }
-
+.item--info img {
+    max-width: 50px;
+    border-radius: 50%;
+    max-height: 50px;
+    object-fit: cover;
+}
 .mobile--buttons {
     display: none;
     z-index: 3;
@@ -781,7 +788,6 @@ border: 3px solid $complementary--color;  /* creates padding around scroll thumb
     border-radius: 2px;
     background-color: $dark--color;
     border-left: 5px solid $complementary--color;
-    cursor: pointer;
     color: $white--color;
 }
 .grid--block {
@@ -871,7 +877,7 @@ border: 3px solid $complementary--color;  /* creates padding around scroll thumb
     @include modalOverlayShow();
 }
 .edit--room--box {
-    width: 900px;
+    width: 90vw;
     @include modal();
 }
 // ================================================== MODAL USER INFO =======================================================//
@@ -882,23 +888,24 @@ border: 3px solid $complementary--color;  /* creates padding around scroll thumb
     @include modalOverlayShow();
 }
 .user--info--box {
-    width: 500px;
+    width: 90vw;
     @include modal();
 }
 .user--image--box {
+    display: flex;
+    flex-direction: column;
     position: relative;
-    overflow: hidden !important;
-    width: 100px;
-    height: 100px;
     border-radius: 50%;
     cursor: pointer;
 }
 .user--image--box img{
+    cursor: pointer;
+    border-radius: 50%;
+    max-width: 270px;
+    max-height: 270px;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
-    width: 100px;
-    height: 100px;
-    padding: 0;
-    border: none;
 }
 
 .user--logs--table {
@@ -921,6 +928,40 @@ border: 3px solid $complementary--color;  /* creates padding around scroll thumb
 #user--session--logs img {
     max-width: 40px;
     max-height: 40px;
+}
+
+
+
+
+#modal--upload--image {
+    @include modalOverlay();
+}
+#modal--upload--image.show {
+    @include modalOverlayShow();
+}
+.upload--image--case {
+    @include modal();
+}
+// ================================================= MODAL USER EDIT =========================================================//
+#modal--edit--user {
+    @include modalOverlay();
+}
+#modal--edit--user.show {
+    @include modalOverlayShow();
+}
+.user--info--box {
+    @include modal();
+    width: 90VW;
+}
+#user--edit--img {
+    border-radius: 50%;
+    max-width: 270px;
+    max-height: 270px;
+    width: 100%;
+    object-fit: contain;
+}
+#ghost--img--input {
+    display: none
 }
 // ===============================MODAL NOTIFY==========================//
 #modal--notify {
@@ -1058,7 +1099,11 @@ footer div button{
     align-items: center;
     justify-content: center;
 }
-
+// ================================== USERPAGE ========================================//
+// .user--info--case {
+//     color: $white--color;
+//     font-size: 1.6rem;
+// }
 /* ==================================== MEDIA QUERIES ==================================== */
 @media (max-width:992px) {
     html{
@@ -1145,11 +1190,8 @@ footer div button{
     }
 }
 @media (max-width:452px) {
-    .box--col {
-        width: 150px;
-    }
     .box--line {
-        grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
+        grid-template-columns: repeat(auto-fit,minmax(170px,1fr));
     }
     .login--form {
         width: 100%;

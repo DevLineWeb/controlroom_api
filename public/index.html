@@ -44,7 +44,7 @@
                 <img class="dl--logo" src="./img/DevLine Logo PNG.png" alt="">
             </div>
             <div id="sidebar--user">
-                <button class="button--default"><i class="fa-solid fa-user"></i></button>
+                <img src="../app/data/users_images/default-user-image.png" alt="" id="mobile--user--image" onclick="getUserInfo();">
             </div>
         </div>
         <div class="sidebar--options">
@@ -173,7 +173,7 @@
                 </div>
                 <div class="box--line">
                     <div class="box--col">
-                        <img src="./img/default-user-image.png" alt="Object Image">
+                        <img src="" alt="Object Image">
                     </div>
                     <div class="box--col">
                         <label for="nomesala">Nomeação: * </label>
@@ -349,13 +349,7 @@
                     <div class="box--col">
                         <label for="localidade">Local: </label>
                         <select name="localidade" id="edit--show--localidade" required>
-                            <option value="" selected>Localidade</option>
-                            <option value="Bloco A">Bloco A</option>
-                            <option value="Bloco B">Bloco B</option>
-                            <option value="Bloco C">Bloco C</option>
-                            <option value="Bloco H">Bloco H</option>
-                            <option value="Veterinária">Veterinária</option>
-                            <option value="CIS">CIS</option>
+                            
                         </select>
                     </div>
                 </div>
@@ -496,13 +490,8 @@
                         <div id="welcome--session"></div>
                     </legend>
                 </div>
-                <div class="box--line">
-                    <div class="box--col">
-                        <div class="user--image--box">
-                            <img src="./img/default-user-image.png" alt="" id="user--image">
-                        </div>
-                    </div>
-                    <div class="box--col" id="user--session--info"></div>
+                <div class="box--line" id="user--session--info">
+
                 </div>
                 <div class="box--line">
                     <table class="user--logs--table">
@@ -519,12 +508,56 @@
                     </table>
                 </div>
                 <div class="box--line">
-                    <button class="button--cancel" onclick="logout()">
-                        Sair
-                    </button>
-                    <button class="button--submit" onclick="closeModal();">Ok</button>
+                    <button class="button--cancel" onclick="logout()">Logout</button>
+                    <button class="button--submit" onclick="closeModal();">Fechar</button>
                 </div>
             </section>
+        </section>  
+        <section id="modal--edit--user">
+            <div class="user--info--box">
+                <div class="modal--legend">
+                    <div class="modal--close" onclick="closeModal()">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+                    <legend>
+                        Editar Usuário
+                    </legend>
+                </div>
+                <div class="box--line">
+                    <div class="box--col">
+                        <img src="../app/data/users_images/default-user-image.png" alt="" id="user--edit--img">
+                    </div>
+                    <div class="box--col">
+                        <label for="user--edit--id">ID: *</label>
+                        <input type="text" name="user--edit--id" id="user--edit--id" placeholder="ID" disabled>
+                        <label for="">Nome: * </label>
+                        <input type="text" name="user--edit--name" id="user--edit--name" placeholder="Nome"/>
+                    </div>
+                    <div class="box--col">
+                        <label for="">E-mail: * </label>
+                        <input type="text" name="user--edit--mail" id="user--edit--mail" placeholder="E-mail" disabled/>
+                        <label for="">Senha: *</label>
+                        <input type="text" name="user--edit--password" id="user--edit--password" placeholder="Senha">
+                    </div>
+                    <div class="box--col">
+                        <label for="">Permissão: *</label>
+                        <select name="user--edit--perm" id="user--edit--perm">
+                            <option value="0">User</option>
+                            <option value="1">Admin</option>
+                        </select>
+                        <label for="">Unidade: *</label>
+                        <select name="user--edit--unit" id="user--edit--unit">
+                            <option value="1">FSG</option>
+                            <option value="2">FSGBG</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="box--line">
+                    <button class="button--cancel" onclick="closeModal()">Cancelar
+                    </button>
+                    <button class="button--edit" id="edit--user--button" onclick="editUser();">Editar</button>
+                </div>
+            </div>
         </section>
         <section id="modal--notify">
             <section class="notify--box">
@@ -539,6 +572,26 @@
                 </div>
                 <div class="box--line">
                     <button class="button--submit" onclick="closeModal();">OK</button>
+                </div>
+            </section>
+        </section>
+        <section id="modal--upload--image">
+            <section class="upload--image--case">
+                <div class="modal--legend">
+                    <legend>Upload new image</legend>
+                    <div class="modal--close" onclick="closeModal()">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+                </div>
+                <div class="box--line">
+                    <div class="box--col user--image--box">
+                        <form id='user--image--form' method="POST" enctype='multipart/form-data'>
+                            
+                            <input type='file' id='ghost--img--input' name="ghost--img--input">
+                            <img src='../app/data/users_images/default-user-image.png' alt=''  id='session--img' onclick='imagePreview();'>
+                            <button class='button--default selected' type='submit'><i class='fa-solid fa-cloud-arrow-up'></i></button>
+                        </form>
+                    </div>
                 </div>
             </section>
         </section>

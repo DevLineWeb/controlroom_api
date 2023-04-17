@@ -115,6 +115,7 @@ input[type=text], input[type=number], textarea, input[type=date], input[type=pas
   box-shadow: inset 0 0 0 0 #fefaf1;
   transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   display: flex;
+  margin: 5px;
 }
 
 .button--cancel {
@@ -130,7 +131,25 @@ input[type=text], input[type=number], textarea, input[type=date], input[type=pas
   box-shadow: inset 0 0 0 0 #fefaf1;
   transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   display: flex;
+  margin: 5px;
   border-left: 3px solid #ff0000;
+}
+
+.button--edit {
+  border: none;
+  background-color: #24272c;
+  color: #fefaf1;
+  border-left: 3px solid #51e5a1;
+  border-radius: 3px;
+  line-height: 30px;
+  padding: 0 10px;
+  cursor: pointer;
+  height: 35px;
+  box-shadow: inset 0 0 0 0 #fefaf1;
+  transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  display: flex;
+  margin: 5px;
+  border-left: 3px solid #0051ff;
 }
 
 .button--submit:hover {
@@ -143,6 +162,12 @@ input[type=text], input[type=number], textarea, input[type=date], input[type=pas
   background-color: transparent;
   color: #fefaf1;
   box-shadow: inset 1000px 0 0 0 #ff0000;
+}
+
+.button--edit:hover {
+  background-color: transparent;
+  color: #fefaf1;
+  box-shadow: inset 1000px 0 0 0 #0051ff;
 }
 
 button {
@@ -226,11 +251,11 @@ input.error ~ .login--ico {
 .modal--legend {
   display: flex;
   align-items: center;
-  height: 50px;
-  background-color: #060606;
+  height: 30px;
+  background-color: #1d2024;
   width: 100%;
   color: #fefaf1;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   padding: 0.5rem;
   font-size: 2rem;
 }
@@ -238,8 +263,8 @@ input.error ~ .login--ico {
 .modal--close {
   position: absolute;
   top: 0;
-  right: 0;
-  padding: 10px;
+  right: 5px;
+  padding: 2px;
   font-size: 2rem;
   cursor: pointer;
 }
@@ -250,7 +275,7 @@ input.error ~ .login--ico {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-gap: 0px;
   width: 100%;
-  margin-top: 1rem;
+  align-items: center;
 }
 
 .box--col {
@@ -260,10 +285,7 @@ input.error ~ .login--ico {
   padding: 10px;
   position: relative;
   line-height: 30px;
-}
-
-.box--line button {
-  width: 95%;
+  min-width: 150px;
 }
 
 .box--line.checkbox--area {
@@ -294,9 +316,9 @@ input.error ~ .login--ico {
 }
 
 .box--col img {
-  max-width: 150px;
   border: 3px dashed #24272c;
   padding: 5px;
+  width: 100%;
 }
 
 /*============================================= NAVBAR=================================================== */
@@ -496,6 +518,11 @@ header {
 
 .sidebar--options.down .sec--project--sidebar {
   width: 100vw !important;
+}
+
+#mobile--user--image {
+  max-width: 35px;
+  border-radius: 50px;
 }
 
 /*================================================================== FILTROS DE PESQUISA DA LISTA ================================================================== */
@@ -710,6 +737,14 @@ header {
   margin-top: 10px;
 }
 
+.item--info img {
+  max-width: 50px;
+  border-radius: 50%;
+  max-height: 50px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .mobile--buttons {
   display: none;
   z-index: 3;
@@ -801,7 +836,6 @@ header {
   border-radius: 2px;
   background-color: #060606;
   border-left: 5px solid #51e5a1;
-  cursor: pointer;
   color: #fefaf1;
 }
 
@@ -951,7 +985,7 @@ header {
 }
 
 .edit--room--box {
-  width: 900px;
+  width: 90vw;
   color: #fefaf1;
   font-size: 1.4rem;
   display: flex;
@@ -986,7 +1020,7 @@ header {
 }
 
 .user--info--box {
-  width: 500px;
+  width: 90vw;
   color: #fefaf1;
   font-size: 1.4rem;
   display: flex;
@@ -1003,21 +1037,22 @@ header {
 }
 
 .user--image--box {
+  display: flex;
+  flex-direction: column;
   position: relative;
-  overflow: hidden !important;
-  width: 100px;
-  height: 100px;
   border-radius: 50%;
   cursor: pointer;
 }
 
 .user--image--box img {
+  cursor: pointer;
+  border-radius: 50%;
+  max-width: 270px;
+  max-height: 270px;
+  width: 100%;
+  height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
-  width: 100px;
-  height: 100px;
-  padding: 0;
-  border: none;
 }
 
 .user--logs--table {
@@ -1043,6 +1078,88 @@ header {
 #user--session--logs img {
   max-width: 40px;
   max-height: 40px;
+}
+
+#modal--upload--image {
+  top: 0;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.662745098);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+#modal--upload--image.show {
+  display: flex;
+  transition: all 0.2s;
+}
+
+.upload--image--case {
+  color: #fefaf1;
+  font-size: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 3px;
+  background-color: #1d2024;
+  box-shadow: 0 1px 10px 0 #060606;
+  max-height: 100vh;
+  z-index: 1001;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  animation: scale-in-center 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+#modal--edit--user {
+  top: 0;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.662745098);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+#modal--edit--user.show {
+  display: flex;
+  transition: all 0.2s;
+}
+
+.user--info--box {
+  color: #fefaf1;
+  font-size: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 3px;
+  background-color: #1d2024;
+  box-shadow: 0 1px 10px 0 #060606;
+  max-height: 100vh;
+  z-index: 1001;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  animation: scale-in-center 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  width: 90VW;
+}
+
+#user--edit--img {
+  border-radius: 50%;
+  max-width: 270px;
+  max-height: 270px;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+#ghost--img--input {
+  display: none;
 }
 
 #modal--notify {
@@ -1329,11 +1446,8 @@ footer div button {
   }
 }
 @media (max-width: 452px) {
-  .box--col {
-    width: 150px;
-  }
   .box--line {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   }
   .login--form {
     width: 100%;
