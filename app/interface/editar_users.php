@@ -5,7 +5,7 @@
 
     $id = $_POST['id'];
     $user_name = $_POST['user_name'];
-    $user_password = md5($_POST['user_password']);
+    $user_password = $_POST['user_password'];
     $user_perm = $_POST['user_perm'];
     $user_unit = $_POST['user_unit'];
 

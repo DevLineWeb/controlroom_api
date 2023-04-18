@@ -15,7 +15,9 @@ $complementary--color: #51e5a1;
 $optional--color: #24272c;
 $white--color: #fefaf1;
 $background--color: #1d2024;
-
+$red--color: #ff0000;
+$yel--color: #ffd900;
+$blu--color: #0051ff;
 
 body {
     // background-image: url(../img/slider/6.jpg);
@@ -212,6 +214,24 @@ button.selected {
     border: 2px solid $base--color !important;
     box-shadow: 0 1px 2px 0 $complementary--color
 }
+button.cancel {
+    color: $red--color;
+    background-color: $optional--color;
+    border: 2px solid $red--color !important;
+    box-shadow: 0 1px 2px 0 $red--color
+}
+button.alert {
+    color: $yel--color;
+    background-color: $optional--color;
+    border: 2px solid $yel--color !important;
+    box-shadow: 0 1px 2px 0 $yel--color
+}
+button.submited {
+    color: $blu--color;
+    background-color: $optional--color;
+    border: 2px solid $blu--color !important;
+    box-shadow: 0 1px 2px 0 $blu--color
+}
 select {
     @include inputElement();
     border: 1px solid $optional--color
@@ -337,6 +357,17 @@ input.error ~ .login--ico {
     padding: 5px;
     width: 100%;
 }
+.box--col--buttons {
+    width: 300px;
+    display: flex;
+    align-content: space-between;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
 /*============================================= NAVBAR=================================================== */
 
 header {
@@ -502,8 +533,14 @@ header {
     width: 100vw !important;
 }
 #mobile--user--image {
-    max-width: 35px;
-    border-radius: 50px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: contain;
+}
+#mobile--user--image img {
+    width: 100%;
+    height: 100%;
 }
 /*================================================================== FILTROS DE PESQUISA DA LISTA ================================================================== */
 
@@ -701,10 +738,10 @@ border: 3px solid $complementary--color;  /* creates padding around scroll thumb
     margin-top: 10px;
 }
 .item--info img {
-    max-width: 50px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    max-height: 50px;
-    object-fit: cover;
+    object-fit: contain;
 }
 .mobile--buttons {
     display: none;
@@ -888,8 +925,8 @@ border: 3px solid $complementary--color;  /* creates padding around scroll thumb
     @include modalOverlayShow();
 }
 .user--info--box {
-    width: 90vw;
     @include modal();
+    width: auto !important;
 }
 .user--image--box {
     display: flex;
@@ -901,10 +938,8 @@ border: 3px solid $complementary--color;  /* creates padding around scroll thumb
 .user--image--box img{
     cursor: pointer;
     border-radius: 50%;
-    max-width: 270px;
-    max-height: 270px;
-    width: 100%;
-    height: 100%;
+    width: 170px;
+    height: 170px;
     object-fit: contain;
 }
 
@@ -941,6 +976,8 @@ border: 3px solid $complementary--color;  /* creates padding around scroll thumb
 }
 .upload--image--case {
     @include modal();
+    background-color: transparent;
+    box-shadow: none;
 }
 // ================================================= MODAL USER EDIT =========================================================//
 #modal--edit--user {
@@ -955,9 +992,8 @@ border: 3px solid $complementary--color;  /* creates padding around scroll thumb
 }
 #user--edit--img {
     border-radius: 50%;
-    max-width: 270px;
-    max-height: 270px;
-    width: 100%;
+    width: 170px;
+    height: 170px;
     object-fit: contain;
 }
 #ghost--img--input {

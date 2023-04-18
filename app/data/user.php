@@ -25,17 +25,13 @@ include_once('../log/log.php');
         }
         echo "
         <div class='box--col user--image--box'>
-                <img src='../app/data/users_images/".$user_img."' alt='' onclick='imageUpdateCase();'>
+            <img src='../app/data/users_images/".$user_img."' alt='' onclick='imageUpdateCase();'>
         </div>
         <div class='box--col'>
             <label for='session--user'>Usuário: </label>
             <input type='text' name='' id='session--user' value='".$_SESSION["mail"]."' disabled>
             <label for='session--name'>Nome: </label>
             <input type='text' name='' id='session--name' value='".$name."' type='password' disabled>
-        </div>
-        <div class='box--col'>
-            <label for='session--unit'>Unidade: </label>
-            <input type='text' name='' id='session--unit' value='".$unit_id."' disabled>
             <label for='session--password'>Permissão: </label>
             <input type='text' name='' id='session--level' value='".$perm_level."' type='password' disabled>
         </div>

@@ -494,7 +494,7 @@
 
                 </div>
                 <div class="box--line">
-                    <table class="user--logs--table">
+                    <!-- <table class="user--logs--table">
                         <thead>
                             <tr>
                                 <th>Protocolo</th>
@@ -505,7 +505,13 @@
                         <tbody id="user--session--logs">
 
                         </tbody>
-                    </table>
+                    </table> -->
+                    <div class="box--col--buttons">
+                        <button class="button--default cancel"><i class="fa-solid fa-right-from-bracket"></i></button>
+                        <button class="button--default alert"><i class="fa-solid fa-envelope"></i></button>
+                        <button class="button--default submited"><i class="fa-solid fa-bookmark"></i></button>
+                        <button class="button--default selected"><i class="fa-solid fa-check"></i></button>
+                    </div>
                 </div>
                 <div class="box--line">
                     <button class="button--cancel" onclick="logout()">Logout</button>
@@ -577,19 +583,18 @@
         </section>
         <section id="modal--upload--image">
             <section class="upload--image--case">
-                <div class="modal--legend">
-                    <legend>Upload new image</legend>
-                    <div class="modal--close" onclick="closeModal()">
-                        <i class="fa-solid fa-xmark"></i>
-                    </div>
-                </div>
                 <div class="box--line">
-                    <div class="box--col user--image--box">
+                    <div class="box--col">
                         <form id='user--image--form' method="POST" enctype='multipart/form-data'>
                             
                             <input type='file' id='ghost--img--input' name="ghost--img--input">
-                            <img src='../app/data/users_images/default-user-image.png' alt=''  id='session--img' onclick='imagePreview();'>
-                            <button class='button--default selected' type='submit'><i class='fa-solid fa-cloud-arrow-up'></i></button>
+                            <div class="user--image--box">
+                                <img src='../app/data/users_images/default-user-image-change.png' alt=''  id='session--img' onclick='imagePreview();'>
+                            </div>
+                            <div class="box--col--buttons">
+                                <button class='button--default cancel' onclick="closeModal();" type="button"><i class="fa-solid fa-ban"></i></button>
+                                <button class='button--default selected' type='submit'><i class='fa-solid fa-cloud-arrow-up'></i></button>
+                            </div>
                         </form>
                     </div>
                 </div>

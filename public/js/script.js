@@ -426,26 +426,26 @@ function getUserInfo (){
                 $('#modal--user').toggleClass('show');
                 $("#user--session--info").html(msg);
                 sessionValidate();
-                getRecently();
+                // getRecently();
               }
           });
 }
-function getRecently (){
-  $.ajax
-          ({
-              type: 'POST',
-              dataType: 'html',
-              url: '../app/log/notifications.php',
-              data: "method=getRecently",
-              beforeSend: function () {
-                $("#user--session--logs").html("<img src='./img/Rolling-0.7s-204px.gif'>");
-              },
-              success: function (msg)
-              {
-                $("#user--session--logs").html(msg);
-              }
-          });
-}
+// function getRecently (){
+//   $.ajax
+//           ({
+//               type: 'POST',
+//               dataType: 'html',
+//               url: '../app/log/notifications.php',
+//               data: "method=getRecently",
+//               beforeSend: function () {
+//                 $("#user--session--logs").html("<img src='./img/Rolling-0.7s-204px.gif'>");
+//               },
+//               success: function (msg)
+//               {
+//                 $("#user--session--logs").html(msg);
+//               }
+//           });
+// }
 function getNotify (){
   $.ajax
           ({
