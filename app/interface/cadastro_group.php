@@ -31,7 +31,7 @@ if($insertGroup) {
     </div>
     ";
     logger($_SESSION['mail'].' added a new group: '.$group_name, $mode = 'NOTICE');
-    LogToDatabase('added a new group: '.$group_name, $mode = 'NOTICE');
+    LogToDatabase('added a new group: '.$group_name, $mode = 'NOTICE', $object = $group_name);
 }
 else {
     echo "
@@ -49,6 +49,6 @@ else {
         </div>
     </div>
     ";
-    logger($_SESSION['mail']. ' error on added a new group: '.$group_name, $mode = 'ERROR');
-    LogToDatabase('error on added a new group: '.$group_name, $mode = 'ERROR');
+    logger('error on added a new group: '.$group_name, $mode = 'ERROR');
+    LogToDatabase('error on added a new group: '.$group_name, $mode = 'ERROR', $object = $group_name);
 }

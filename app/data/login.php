@@ -29,7 +29,7 @@ if (empty($_POST['mail']) || empty($_POST['password'])) { //SE NÃO FOR INFORMAD
 $user = mysqli_real_escape_string($conect, $_POST['mail']); //ATRIBUI O USUÁRIO PARA UMA VARIÁVEL STRING
 $pass = mysqli_real_escape_string($conect, $_POST['password']); //ATRIBUI A SENHA PARA UMA VARIÁVEL STRING
 
-$verify = "SELECT * FROM users WHERE user_mail = '{$user}' AND user_password = md5('{$pass}')"; //VERIFICA SE O USUÁRIO E SENHA SÃO AUTENTICADOS NO BANCO
+$verify = "SELECT * FROM users WHERE user_mail = '{$user}' AND user_password = '{$pass}'"; //VERIFICA SE O USUÁRIO E SENHA SÃO AUTENTICADOS NO BANCO
 
 $result = mysqli_query($conect, $verify); //ATRIBUI O RESULTADO A UMA VARIÁVEL
 

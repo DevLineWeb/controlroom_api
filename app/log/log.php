@@ -60,7 +60,7 @@ function logger($message, $mode = 'info'){
 
 }
 
-function LogToDatabase ($message, $mode) {
+function LogToDatabase ($message, $mode, $object) {
     $dbHost = 'LocalHost';
     $dbUsername = 'root';
     $dbPassword = '';
@@ -78,8 +78,8 @@ function LogToDatabase ($message, $mode) {
         }
     
     $my_Insert_Statement = $my_Db_Connection->prepare("INSERT INTO events (
-    events_protocol, events_user, events_message, events_date) 
-    VALUES ('$mode', '$session', '$message', '$date')");
+    events_protocol, events_user, events_object, events_message, events_date) 
+    VALUES ('$mode', '$session', '$object', '$message', '$date')");
 
     if ($my_Insert_Statement->execute()) {
         echo "New record created successfully";

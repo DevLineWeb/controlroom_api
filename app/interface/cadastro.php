@@ -77,7 +77,7 @@ if($insertRoom) {
     </div>
     ";
     logger($_SESSION['mail'].' added a new room: '.$sala, $mode = 'NOTICE');
-    LogToDatabase('added a new room: '.$sala, $mode = 'NOTICE');
+    LogToDatabase('added a new room: '.$sala, $mode = 'NOTICE', $object = $sala);
 }
 else {
     echo "
@@ -96,7 +96,7 @@ else {
     </div>
     ";
     logger($_SESSION['mail']. ' error on added a new room: '.$sala, $mode = 'ERROR');
-    LogToDatabase('error on added a new room: '.$sala, $mode = 'ERROR');
+    LogToDatabase('error on added a new room: '.$sala, $mode = 'ERROR', $object = $sala);
 }
 
 

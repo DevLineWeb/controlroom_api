@@ -61,7 +61,7 @@ if($updateRoom) {
     </div>
     ";
     logger($_SESSION['mail'].'edited room: '.$sala.'', $mode = 'NOTICE');
-    LogToDatabase('edited room: '.$sala, $mode = 'NOTICE');
+    LogToDatabase('edited room: '.$sala, $mode = 'NOTICE', $object = $sala);
 
 }
 else {
@@ -81,5 +81,5 @@ else {
     </div>
     ";
     logger($_SESSION['mail'].' failed to edited room: '.$sala.'', $mode = 'NOTICE');
-    LogToDatabase('failed to edited room: '.$sala, $mode = 'NOTICE');
+    LogToDatabase('failed to edited room: '.$sala, $mode = 'NOTICE', $object = $sala);
 }

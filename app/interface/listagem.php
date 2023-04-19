@@ -208,7 +208,7 @@ switch ($method) {
                     //     </thead>
                     // ";
                         echo "
-                        <button class='button--default selected'>
+                        <button class='button--default selected' onclick='openModalAddUser()'>
                             <i class='fa-solid fa-plus'> </i>
                         </button>
                         ";
@@ -237,9 +237,8 @@ switch ($method) {
                                     data-05='".$unit_id[$i]."'
                                     data-06='".$user_img[$i]."'
                                     >
-                                    <i class='fa-solid fa-play'></i>
+                                    <i class='fa-solid fa-user-pen'></i>
                                     </button>
-                                    <button class='button--default'><i class='fa-regular fa-bookmark'></i></button>
                                 </td>
                             </tr>
                             
@@ -280,6 +279,70 @@ switch ($method) {
                         }
                         
                     }
+        break;
+    case 'log--list':
+        $consult = "SELECT * FROM events";
+        if ($result = mysqli_query($conect, $consult)) {
+            $id = array();
+            $events_protocol = array();
+            $events_user = array();
+            $events_message = array();
+            $events_date = array();
+            $i = 0;
+
+            // echo "
+            // <thead>
+            //     <tr class='table--header'>
+            //         <th class='table--col--1'>Natureza</th>
+            //         <th class='table--col--2'>Grupo</th>
+            //         <th class='table--col--3'>Nome</th>
+            //         <th class='table--col--4'>Máquina</th>
+            //         <th class='table--col--5'>Patrimônio</th>
+            //         <th class='table--col--6'>Série</th>
+            //         <th class='table--col--7'>Action</th>
+            //     </tr>
+            // </thead>
+            // ";
+            echo "
+                <button class='button--submit' onclick=''>
+                   Eventos
+                </button>
+            ";
+            while ($reg = mysqli_fetch_assoc($result)) {
+                $id[$i] = $reg['id'];
+                $events_protocol[$i] = $reg['events_protocol'];
+                $events_user[$i] = $reg['events_user'];
+                $events_object[$i] = $reg['events_object'];
+                $events_message[$i] = $reg['events_message'];
+                $events_date[$i] = $reg['events_date'];
+
+                echo "
+                <tr class='table--item"." ".$i."'>
+                    <td class='item--info table--col--3'>".$events_user[$i]."</td>
+                    <td class='item--info table--col--1'>".$events_protocol[$i]."</td>
+                    <td class='item--info table--col--5'>".$id[$i]."</td>
+                    <td class='item--info table--col--4'>".$events_message[$i]."</td>
+                    <td class='item--info table--col--2'>".$events_object[$i]."</td>
+                    <td class='item--info table--col--6'>".$events_date[$i]."</td>
+                    <td class='table--item--action'>
+                        <button class='table--room--config--button button--default' 
+                        data-id='".$id[$i]."' 
+                        data-01='".$events_protocol[$i]."'
+                        data-02='".$events_user[$i]."'
+                        data-03='".$events_message[$i]."'
+                        data-04='".$events_date[$i]."'
+                        onclick=''
+                        >
+                        <i class='fa-solid fa-file-lines'></i>
+                        </button>
+                    </td>
+                </tr>
+                ";
+
+
+                $i++;
+            }
+        }
         break;
     default:
         # code...

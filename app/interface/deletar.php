@@ -28,7 +28,7 @@ if($deleteRoom) {
     </div>
     ";
     logger($_SESSION['mail'].'deleted the room: '.$nomenclatura, $mode = 'NOTICE');
-    LogToDatabase('deleted the room: '.$nomenclatura, $mode = 'NOTICE');
+    LogToDatabase('deleted the room: '.$nomenclatura, $mode = 'NOTICE', $object = $sala);
 
 }
 else {
@@ -48,6 +48,6 @@ else {
     </div>
     ";
     logger($_SESSION['mail'].'error in deleted the room: '.$id, $mode = 'ERROR');
-    LogToDatabase('error in deleted the room: '.$id, $mode = 'ERROR');
+    LogToDatabase('error in deleted the room: '.$id, $mode = 'ERROR', $object = $sala);
 
 }

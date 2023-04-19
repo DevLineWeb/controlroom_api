@@ -311,14 +311,19 @@ input.error ~ .login--ico {
     font-size: 2rem;
     cursor: pointer;
 }
-
-.box--line {
-    min-height: 60px;
+.modal--content  {
+    overflow-y: scroll !important;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.box--line{
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
     grid-gap: 0px;
     width: 100%;
     align-items: center;
+    height: auto;
 }
 .box--col {
     text-align: left;
@@ -327,7 +332,7 @@ input.error ~ .login--ico {
     padding: 10px;
     position: relative;
     line-height: 30px;
-    min-width: 150px
+    min-width: 150px;
 }
 .box--line.checkbox--area {
     display: flex;
@@ -358,6 +363,7 @@ input.error ~ .login--ico {
     width: 100%;
 }
 .box--col--buttons {
+    border-top: 1px solid $optional--color;
     width: 300px;
     display: flex;
     align-content: space-between;
@@ -367,7 +373,9 @@ input.error ~ .login--ico {
     flex-wrap: wrap;
     flex-direction: column;
 }
-
+.box--col--buttons button {
+    border:1px solid $optional--color;
+}
 /*============================================= NAVBAR=================================================== */
 
 header {
@@ -926,7 +934,7 @@ border: 3px solid $complementary--color;  /* creates padding around scroll thumb
 }
 .user--info--box {
     @include modal();
-    width: auto !important;
+    width: 400px !important;
 }
 .user--image--box {
     display: flex;
@@ -986,7 +994,7 @@ border: 3px solid $complementary--color;  /* creates padding around scroll thumb
 #modal--edit--user.show {
     @include modalOverlayShow();
 }
-.user--info--box {
+.user--edit--box {
     @include modal();
     width: 90VW;
 }
@@ -998,6 +1006,16 @@ border: 3px solid $complementary--color;  /* creates padding around scroll thumb
 }
 #ghost--img--input {
     display: none
+}
+// ===================================== MODAL ADD USER =========================================
+#modal--add--user {
+    @include modalOverlay();
+}
+#modal--add--user.show {
+    @include modalOverlayShow();
+}
+.add--user--box {
+    @include modal();
 }
 // ===============================MODAL NOTIFY==========================//
 #modal--notify {
@@ -1206,7 +1224,7 @@ footer div button{
     html{
         font-size: 62.5%;
     }
-    .table--col--2, .table--col--6 {
+    .table--col--6 {
         display: none !important;
     }
     .table--item--more {
@@ -1227,7 +1245,7 @@ footer div button{
 }
 @media (max-width:452px) {
     .box--line {
-        grid-template-columns: repeat(auto-fit,minmax(170px,1fr));
+        grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
     }
     .login--form {
         width: 100%;

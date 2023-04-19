@@ -111,6 +111,35 @@ function userList() {
     $('#style--grid').removeClass('toggle');
 }
 
+function eventList() {
+  $.ajax
+    ({
+        type: 'POST',
+        dataType: 'html',
+        url: '../app/interface/listagem.php',
+        data: "method=log--list",
+        beforeSend: function () {
+          $('#modal--add--room').removeClass("show");
+                $('.ajax--load').toggleClass('show');
+                $(".ajax--request--feedback").html("<img src='./img/Rolling-0.7s-204px.gif'>");
+        },
+        success: function (data)
+        {
+            $('#table--room--itens').html(data);
+            $('.ajax--load').removeClass('show');
+            // pegar indice de linha listada
+    }
+    });
+    $('#table--button--filter--user').toggleClass('selected');
+    $('#table--button--filter--list').removeClass('selected');
+    $('#table--button--filter--grid').removeClass('selected');
+    $('.table--room').removeClass('change');
+    $('.table--grid').removeClass('change');
+    $('.circle--display').removeClass('toggle');
+    $('#style--list').removeClass('toggle');
+    $('#style--grid').removeClass('toggle');
+}
+
 // _________________________________________________________________________________
 // ____________________________MANIPULAÇÃO DE OBJETOS_______________________________
 // _________________________________________________________________________________
@@ -170,8 +199,36 @@ function addRoom() {
                 {
                   $(".ajax--request--feedback").html(msg);
                   objectList();
+                  getNotify();
                 }
             });
+}
+function addUser() {
+
+  $.ajax
+          ({
+              //Configurações
+              type: 'POST',//Método que está sendo utilizado.
+              dataType: 'html',//É o tipo de dado que a página vai retornar.
+              url: '../app/interface/cadastro_user.php',//Indica a página que está sendo solicitada.
+              //função que vai ser executada assim que a requisição for enviada
+              beforeSend: function () {
+                $('#modal--add--room').removeClass("show");
+                $('.ajax--load').toggleClass('show');
+                $(".ajax--request--feedback").html("<img src='./img/Rolling-0.7s-204px.gif'>");
+              },
+              //Dados para envio
+              data: {
+                
+              },
+              //função que será executada quando a solicitação for finalizada.
+              success: function (msg)
+              {
+                $(".ajax--request--feedback").html(msg);
+                userList();
+                getNotify();
+              }
+          });
 }
 // EDIT
 function editRoom() {
@@ -230,6 +287,7 @@ function editRoom() {
               {
                  $(".ajax--request--feedback").html(msg);
                  objectList();
+                 getNotify();
               }
           });
 }
@@ -259,6 +317,7 @@ function deleteRoom() {
       {
          $(".ajax--request--feedback").html(msg);
          objectList();
+         getNotify();
       }
   });
 }
@@ -388,6 +447,10 @@ function openModalEdit() {
 function openModalAdd() {
   $('#modal--add--room').toggleClass("show");
   addVerGroups();
+}
+
+function openModalAddUser() {
+  $('#modal--add--user').toggleClass("show");
 }
 function openModalNotify() {
   $('#modal--notify').toggleClass('show');
@@ -903,7 +966,7 @@ function addVerGroups (){
     });
 }
 
-function addVerUnit (){
+function addVerUnit(){
   const groupChange = $('#localidade').find(":selected");
   const unitRel = groupChange[0].getAttribute('data-01')
   

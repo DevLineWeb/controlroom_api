@@ -77,5 +77,4 @@ $i++;
 }
 else {
     echo "ERRO! Veja o log de eventos";
-    LogToDatabase('load erro', $mode = 'ERRO');
 }
