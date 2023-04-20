@@ -660,6 +660,38 @@
                 </div>
             </section>
         </section>
+        <section id="modal--event--info">
+            <div class="event--info--box">
+                <div class="modal--legend">
+                    <legend id="event--info--title"></legend>
+                </div>
+                <div class="modal--close" onclick="closeModal()">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+                <div class="modal--content">
+                    <div class="box--line">
+                        <div class="box--col">
+                            <label for="event--info--object">Objeto alterado: </label>
+                            <input type="text" id="event--info--object" disabled>
+                        </div>
+                        
+                        <div class="box--col">
+                            <label for="event--info--user">Operador: </label>
+                            <input type="text" id="event--info--user" disabled>
+                        </div>
+                    </div>
+                    <div class="box--line">
+                        <div class="box--col">
+                            <label for="event--info--message">Descrição: </label>
+                            <input type='text' id="event--info--message" disabled/>
+                        </div>
+                    </div>
+                </div>
+                <div class="box--line">
+                    <button class="button--submit" onclick="closeModal();">Fechar</button>
+                </div>
+            </div>
+        </section>
         <section class="ajax--load">
             <div class="ajax--request--feedback"></div>
         </section>

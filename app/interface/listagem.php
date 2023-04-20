@@ -281,7 +281,7 @@ switch ($method) {
                     }
         break;
     case 'log--list':
-        $consult = "SELECT * FROM events";
+        $consult = "SELECT * FROM events ORDER BY id DESC";
         if ($result = mysqli_query($conect, $consult)) {
             $id = array();
             $events_protocol = array();
@@ -325,12 +325,13 @@ switch ($method) {
                     <td class='item--info table--col--2'>".$events_object[$i]."</td>
                     <td class='item--info table--col--6'>".$events_date[$i]."</td>
                     <td class='table--item--action'>
-                        <button class='table--room--config--button button--default' 
+                        <button class='event--info--button button--default' 
                         data-id='".$id[$i]."' 
                         data-01='".$events_protocol[$i]."'
                         data-02='".$events_user[$i]."'
                         data-03='".$events_message[$i]."'
                         data-04='".$events_date[$i]."'
+                        data-05='".$events_object[$i]."'
                         onclick=''
                         >
                         <i class='fa-solid fa-file-lines'></i>

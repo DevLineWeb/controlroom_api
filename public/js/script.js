@@ -128,6 +128,7 @@ function eventList() {
             $('#table--room--itens').html(data);
             $('.ajax--load').removeClass('show');
             // pegar indice de linha listada
+            getEventIndex();
     }
     });
     $('#table--button--filter--user').toggleClass('selected');
@@ -446,6 +447,7 @@ function closeModal() {
   $('#modal--edit--user').removeClass('show');
   $('#modal--upload--image').removeClass('show');
   $('#modal--add--user').removeClass('show');
+  $('#modal--event--info').removeClass('show');
 }
 function openModalEdit() {
   $('#modal--edit--room').toggleClass("show");
@@ -931,6 +933,43 @@ function getUserEditInfos (userIndex) {
   $('#user--edit--perm').val(user_perm);
   $('#user--edit--unit').val(user_unit);
   $('#user--edit--img').attr('src', '../app/data/users_images/'+user_img);
+}
+
+const logInfoButton = document.getElementsByClassName('event--info--button');
+function getEventIndex(){
+for(x=0;x<logInfoButton.length;x++){
+          // arranjo os listeners com os index das linhas
+          (function(index){
+          logInfoButton[x].addEventListener("click", function(){
+            infoShowEvent(index);
+          });
+          })(x);
+      }
+  }
+function infoShowEvent(element){
+    console.log(element);
+    id = logInfoButton[element].getAttribute('data-id');
+    event_protocol = logInfoButton[element].getAttribute('data-01');
+    event_user = logInfoButton[element].getAttribute('data-02');
+    event_message = logInfoButton[element].getAttribute('data-03');
+    event_date = logInfoButton[element].getAttribute('data-04');
+    event_object = logInfoButton[element].getAttribute('data-05');
+    console.log(event_object);
+
+    $('#modal--event--info').toggleClass('show');
+
+    $('#event--info--title').text(id);
+    $('#event--info--object').val(event_object);
+    $('#event--info--user').val(event_user);
+    $('#event--info--message').val(event_message);
+
+
+// removo os listeners
+    for(x=0;x<logInfoButton.length;x++){
+        objclone = logInfoButton[x].cloneNode(true);
+        logInfoButton[x].parentNode.replaceChild(objclone, logInfoButton[x]);
+    }
+    getEventIndex();
 }
 //=========================FUNÇÃO PARA PRÉ VISUALIZAR IMAGEM USUÁRIO======================================//
 // photoPreview = document.getElementById('ghost--img--input');

@@ -1063,6 +1063,17 @@ border: 3px solid $complementary--color;  /* creates padding around scroll thumb
     transform: translate(0%,-50%);
     color: #fffd00;
 }
+// =============================== EVENT INFO MODAL =========================//
+#modal--event--info {
+    @include modalOverlay();
+}
+#modal--event--info.show {
+    @include modalOverlayShow();
+}
+.event--info--box {
+    @include modal();
+    width: 60vw;
+}
 /* ===============================FOOTER================================ */
 footer {
     background-color: #000;
@@ -1201,6 +1212,9 @@ footer div button{
         width: 95%;
     }
     .add--user--box {
+        width: 95%;
+    }
+    .event--info--box {
         width: 95%;
     }
     .room--list--options {
