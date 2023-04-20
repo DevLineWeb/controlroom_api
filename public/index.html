@@ -577,7 +577,51 @@
                     </div>
                 </div>
                 <div class="modal--content">
-                    
+                    <div class="box--line">
+                        <div class="box--col">
+                            <label for="add--user--name">Nome: *</label>
+                            <input type="text" placeholder="Nome" id="add--user--name">
+                        </div>
+                        <div class="box--col">
+                            <label for="add--user--mail">E-mail: *</label>
+                            <input type="text" placeholder="E-mail" id="add--user--mail">
+                        </div>
+                    </div>
+                    <div class="box--line">
+                        <div class="box--col">
+                            <label for="add--user--unit">Unidade: *</label>
+                            <select name="" id="add--user--unit">
+                                <option value="1">FSG</option>
+                                <option value="2">FSGBG</option>
+                            </select>
+                        </div>
+                        <div class="box--col">
+                            <label for="add--user--perm">Permissão: *</label>
+                            <select name="" id="add--user--perm">
+                                <option value="0">User</option>
+                                <option value="1">Admin</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="box--line">
+                        <div class="box--col">
+                            <label for="">Senha: </label>
+                            <input type="text" placeholder="Senha" id="">
+                        </div>
+                        <div class="box--col">
+                            <label for="add--user--pass">Confirmação de  senha: </label>
+                            <input type="text" placeholder="Senha" id="add--user--pass">
+                        </div>
+                    </div>
+                </div>
+                <div class="box--line">
+                    <button type="button" class="button--cancel" onclick="closeModal()">
+                        Cancelar
+                    </button>
+                    <!-- <p>Lembre-se de preencher todos os campos!</p> -->
+                    <button type="button" class="button--submit" onclick="addUser()">
+                        Cadastrar
+                    </button>
                 </div>
             </div>
         </section>

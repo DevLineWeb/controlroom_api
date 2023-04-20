@@ -204,7 +204,11 @@ function addRoom() {
             });
 }
 function addUser() {
-
+const user_name = document.getElementById('add--user--name').value;
+const user_mail = document.getElementById('add--user--mail').value;
+const user_unit = document.getElementById('add--user--unit').value;
+const user_perm = document.getElementById('add--user--perm').value;
+const user_pass = document.getElementById('add--user--pass').value;
   $.ajax
           ({
               //Configurações
@@ -219,14 +223,16 @@ function addUser() {
               },
               //Dados para envio
               data: {
-                
+                user_name: user_name,
+                user_mail: user_mail,
+                user_unit: user_unit,
+                user_perm: user_perm,
+                user_pass: user_pass
               },
               //função que será executada quando a solicitação for finalizada.
               success: function (msg)
               {
                 $(".ajax--request--feedback").html(msg);
-                userList();
-                getNotify();
               }
           });
 }
@@ -439,6 +445,7 @@ function closeModal() {
   $('#modal--notify').removeClass('show');
   $('#modal--edit--user').removeClass('show');
   $('#modal--upload--image').removeClass('show');
+  $('#modal--add--user').removeClass('show');
 }
 function openModalEdit() {
   $('#modal--edit--room').toggleClass("show");

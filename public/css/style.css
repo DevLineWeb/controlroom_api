@@ -1099,8 +1099,8 @@ header {
 .user--image--box img {
   cursor: pointer;
   border-radius: 50%;
-  width: 170px;
-  height: 170px;
+  width: 280px;
+  height: 280px;
   -o-object-fit: contain;
      object-fit: contain;
 }
@@ -1245,6 +1245,7 @@ header {
   overflow: hidden;
   position: relative;
   animation: scale-in-center 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  width: 60vw;
 }
 
 #modal--notify {
@@ -1484,6 +1485,9 @@ footer div button {
     display: block;
   }
   .user--info--box {
+    width: 95%;
+  }
+  .add--user--box {
     width: 95%;
   }
   .room--list--options {
