@@ -861,6 +861,46 @@ header {
   transition: all 0.5s;
 }
 
+#list--user {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 30px;
+  color: #fefaf1;
+  font-size: 1.6rem;
+}
+
+.user--item {
+  position: relative;
+  background-color: #1d2024;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 10px 0px;
+  border-radius: 3px;
+}
+
+.user--info img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  margin-top: -20px;
+}
+
+.user--config--button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.user--config--button:hover {
+  color: #51e5a1;
+}
+
 .table--grid {
   font-size: 1.6rem;
   width: 100%;
@@ -1016,7 +1056,6 @@ header {
   animation: scale-in-center 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* ================================================== MODAL FILTROS ====================================================*/
 /* ================================================== MODAL EDIT ROOM ====================================================*/
 #modal--edit--room {
   top: 0;
@@ -1198,7 +1237,7 @@ header {
   overflow: hidden;
   position: relative;
   animation: scale-in-center 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  width: 90VW;
+  width: 30VW;
 }
 
 #user--edit--img {

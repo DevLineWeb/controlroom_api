@@ -207,11 +207,6 @@ switch ($method) {
                     //         </tr>
                     //     </thead>
                     // ";
-                        echo "
-                        <button class='button--default selected' onclick='openModalAddUser()'>
-                            <i class='fa-solid fa-plus'> </i>
-                        </button>
-                        ";
                         while ($reg = mysqli_fetch_assoc($result)) {
                             $id[$i] = $reg['id'];
                             $user_name[$i] = $reg['user_name'];
@@ -221,14 +216,13 @@ switch ($method) {
                             $perm_level[$i] = $reg['perm_level'];
                             $unit_id[$i] = $reg['unit_id'];
                             echo "
-                            <tr class='table--item"." ".$i."'>
-                                <td class='item--info table--col--5'><img src='../app/data/users_images/".$user_img[$i]."'></td>
-                                <td class='item--info table--col--1'>".$user_name[$i]."</td>
-                                <td class='item--info table--col--3'>".$user_mail[$i]."</td>
-                                <td class='item--info table--col--2'>".$unit_id[$i]."</td>
-                                <td class='item--info table--col--4'>".$perm_level[$i]."</td>
-                                <td class='table--item--action'>
-                                    <button class='table--user--config--button button--default' 
+                            <div class='user--item"." ".$i."'>
+                                <div class='user--info'><img src='../app/data/users_images/".$user_img[$i]."'></div>
+                                <div class='user--info'><b>".$user_name[$i]."</b></div>
+                                <div class='user--info'>".$user_mail[$i]."</div>
+                                <div class='user--info'>".$perm_level[$i]."</div>
+                                <div class='user--info--action'>
+                                    <div class='user--config--button' 
                                     data-id='".$id[$i]."' 
                                     data-01='".$user_mail[$i]."'
                                     data-02='".$user_password[$i]."'
@@ -238,9 +232,9 @@ switch ($method) {
                                     data-06='".$user_img[$i]."'
                                     >
                                     <i class='fa-solid fa-user-pen'></i>
-                                    </button>
-                                </td>
-                            </tr>
+                                    </div>
+                                </div>
+                            </div>
                             
                             ";
 
@@ -251,99 +245,99 @@ switch ($method) {
         break;
     case 'group--list':
         $consult = "SELECT * FROM groups";
-                    if ($result = mysqli_query($conect, $consult)) {
-                        $id = array();
-                        $group_name = array();
-                        $i = 0;
-                        while ($reg = mysqli_fetch_assoc($result)) {
-                            $id[$i] = $reg['id'];
-                            $group_name[$i] = $reg['group_name'];
+            if ($result = mysqli_query($conect, $consult)) {
+                $id = array();
+                $group_name = array();
+                $i = 0;
+                while ($reg = mysqli_fetch_assoc($result)) {
+                    $id[$i] = $reg['id'];
+                    $group_name[$i] = $reg['group_name'];
 
-                            echo "
-                            <section class='grid--block'>
-                                <section class='grid--col'>
-                                    <div class='grid--header'>
-                                        <p>".$group_name[$i]."</p>  
-                                        <div class='arrow--down--element'>
-                                        <i class='fa-solid fa-ellipsis-vertical'></i>
-                                        </div>
-                                    </div>
-                                    
-                                </section>
-                                <div class='grid--itens ".$i."' data-bloco='".$group_name[$i]."'>
-                                        
+                    echo "
+                    <section class='grid--block'>
+                        <section class='grid--col'>
+                            <div class='grid--header'>
+                                <p>".$group_name[$i]."</p>  
+                                <div class='arrow--down--element'>
+                                <i class='fa-solid fa-ellipsis-vertical'></i>
                                 </div>
-                            </section>
-                            ";
-                            $i++;
-                        }
-                        
-                    }
+                            </div>
+                            
+                        </section>
+                        <div class='grid--itens ".$i."' data-bloco='".$group_name[$i]."'>
+                                
+                        </div>
+                    </section>
+                    ";
+                    $i++;
+                }
+                
+            }
         break;
     case 'log--list':
         $consult = "SELECT * FROM events ORDER BY id DESC";
-        if ($result = mysqli_query($conect, $consult)) {
-            $id = array();
-            $events_protocol = array();
-            $events_user = array();
-            $events_message = array();
-            $events_date = array();
-            $i = 0;
+            if ($result = mysqli_query($conect, $consult)) {
+                $id = array();
+                $events_protocol = array();
+                $events_user = array();
+                $events_message = array();
+                $events_date = array();
+                $i = 0;
 
-            // echo "
-            // <thead>
-            //     <tr class='table--header'>
-            //         <th class='table--col--1'>Natureza</th>
-            //         <th class='table--col--2'>Grupo</th>
-            //         <th class='table--col--3'>Nome</th>
-            //         <th class='table--col--4'>Máquina</th>
-            //         <th class='table--col--5'>Patrimônio</th>
-            //         <th class='table--col--6'>Série</th>
-            //         <th class='table--col--7'>Action</th>
-            //     </tr>
-            // </thead>
-            // ";
-            echo "
-                <button class='button--submit' onclick=''>
-                   Eventos
-                </button>
-            ";
-            while ($reg = mysqli_fetch_assoc($result)) {
-                $id[$i] = $reg['id'];
-                $events_protocol[$i] = $reg['events_protocol'];
-                $events_user[$i] = $reg['events_user'];
-                $events_object[$i] = $reg['events_object'];
-                $events_message[$i] = $reg['events_message'];
-                $events_date[$i] = $reg['events_date'];
-
+                // echo "
+                // <thead>
+                //     <tr class='table--header'>
+                //         <th class='table--col--1'>Natureza</th>
+                //         <th class='table--col--2'>Grupo</th>
+                //         <th class='table--col--3'>Nome</th>
+                //         <th class='table--col--4'>Máquina</th>
+                //         <th class='table--col--5'>Patrimônio</th>
+                //         <th class='table--col--6'>Série</th>
+                //         <th class='table--col--7'>Action</th>
+                //     </tr>
+                // </thead>
+                // ";
                 echo "
-                <tr class='table--item"." ".$i."'>
-                    <td class='item--info table--col--3'>".$events_user[$i]."</td>
-                    <td class='item--info table--col--1'>".$events_protocol[$i]."</td>
-                    <td class='item--info table--col--5'>".$id[$i]."</td>
-                    <td class='item--info table--col--4'>".$events_message[$i]."</td>
-                    <td class='item--info table--col--2'>".$events_object[$i]."</td>
-                    <td class='item--info table--col--6'>".$events_date[$i]."</td>
-                    <td class='table--item--action'>
-                        <button class='event--info--button button--default' 
-                        data-id='".$id[$i]."' 
-                        data-01='".$events_protocol[$i]."'
-                        data-02='".$events_user[$i]."'
-                        data-03='".$events_message[$i]."'
-                        data-04='".$events_date[$i]."'
-                        data-05='".$events_object[$i]."'
-                        onclick=''
-                        >
-                        <i class='fa-solid fa-file-lines'></i>
-                        </button>
-                    </td>
-                </tr>
+                    <button class='button--submit' onclick=''>
+                    Eventos
+                    </button>
                 ";
+                while ($reg = mysqli_fetch_assoc($result)) {
+                    $id[$i] = $reg['id'];
+                    $events_protocol[$i] = $reg['events_protocol'];
+                    $events_user[$i] = $reg['events_user'];
+                    $events_object[$i] = $reg['events_object'];
+                    $events_message[$i] = $reg['events_message'];
+                    $events_date[$i] = $reg['events_date'];
+
+                    echo "
+                    <tr class='table--item"." ".$i."'>
+                        <td class='item--info table--col--3'>".$events_user[$i]."</td>
+                        <td class='item--info table--col--1'>".$events_protocol[$i]."</td>
+                        <td class='item--info table--col--5'>".$id[$i]."</td>
+                        <td class='item--info table--col--4'>".$events_message[$i]."</td>
+                        <td class='item--info table--col--2'>".$events_object[$i]."</td>
+                        <td class='item--info table--col--6'>".$events_date[$i]."</td>
+                        <td class='table--item--action'>
+                            <button class='event--info--button button--default' 
+                            data-id='".$id[$i]."' 
+                            data-01='".$events_protocol[$i]."'
+                            data-02='".$events_user[$i]."'
+                            data-03='".$events_message[$i]."'
+                            data-04='".$events_date[$i]."'
+                            data-05='".$events_object[$i]."'
+                            onclick=''
+                            >
+                            <i class='fa-solid fa-file-lines'></i>
+                            </button>
+                        </td>
+                    </tr>
+                    ";
 
 
-                $i++;
+                    $i++;
+                }
             }
-        }
         break;
     default:
         # code...

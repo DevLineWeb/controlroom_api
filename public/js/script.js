@@ -96,7 +96,7 @@ function userList() {
         },
         success: function (data)
         {
-            $('#table--room--itens').html(data);
+            $('#list--user').html(data);
             $('.ajax--load').removeClass('show');
             getLineUserIndex();
     }
@@ -894,7 +894,7 @@ function getEditInfosGrid (lineIndex) {
     $('#edit--show--cabo').prop('checked', false);
   }
 } 
-const userClickedInfos = document.getElementsByClassName('table--user--config--button');
+const userClickedInfos = document.getElementsByClassName('user--config--button');
 function getLineUserIndex(){
 for(x=0;x<userClickedInfos.length;x++){
         // arranjo os listeners com os index das linhas
@@ -971,28 +971,6 @@ function infoShowEvent(element){
     }
     getEventIndex();
 }
-//=========================FUNÇÃO PARA PRÉ VISUALIZAR IMAGEM USUÁRIO======================================//
-// photoPreview = document.getElementById('ghost--img--input');
-// document.getElementById('user--image').onclick = function() {
-//   photoPreview.click();
-// }
-// let sendImage = document.getElementById('ghost--img--input');
-// let preview = document.getElementById('user--image');
-// sendImage.addEventListener('change', function(e) {
-//   showThumbnail(this.files);
-// });
-// function showThumbnail(files) {
-//   if (files && files[0]) {
-//   var reader = new FileReader();
-
-//   reader.onload = function (e) {
-//     preview.src = e.target.result;
-//   }
-
-//       reader.readAsDataURL(files[0]);
-//   }
-// }
-
 
 // ====================================================FUNÇÕES DE VERIFICAÇÃO PARA CADASTRO=======================================//
 function addVerGroups (){
