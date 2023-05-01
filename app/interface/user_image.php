@@ -14,7 +14,6 @@ session_start();
     }
     else{
         echo "invalid";
-        LogToDatabase('load error', $mode = 'ERRO');
     }
 
 ?>

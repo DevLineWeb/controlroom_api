@@ -302,11 +302,15 @@ switch ($method) {
                     $events_message[$i] = $reg['events_message'];
                     $events_date[$i] = strtotime($reg['events_date']);
 
+                    $verify = "SELECT * FROM users WHERE user_mail = '$events_user[$i]'";
+                    $result2 = mysqli_query($conect, $verify);
+                    $row= mysqli_fetch_array($result2);
+                    $user_img = $row['user_img'];
+
 
                     echo "
                     <section class='event--item"." ".$i."'>
-                        <div class='event--info table--col--5'>".$id[$i]."</div>
-                        <div class='event--info table--col--3'>".$events_user[$i]."</div>
+                        <div class='event--info table--col--3'><img src='../app/data/users_images/".$user_img."'/></div>
                         <div class='event--info table--col--1'>".$events_protocol[$i]."</div>
                         <div class='event--info table--col--2'>".$events_object[$i]."</div>
                         <div class='event--info table--col--6'>".date("d/m/Y h:i:s",$events_date[$i])."</div>

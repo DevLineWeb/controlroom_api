@@ -1003,9 +1003,11 @@ header {
 .user--info img {
   width: 100px;
   height: 100px;
-  border-radius: 50%;
+  border-radius: 100%;
   -o-object-fit: contain;
      object-fit: contain;
+  background-color: #1d2024;
+  border: 1px solid #1d2024;
   margin-top: -20px;
 }
 
@@ -1030,8 +1032,9 @@ header {
 
 .events--list--case .event--item {
   width: 100%;
-  height: 35px;
+  height: 40px;
   display: flex;
+  justify-content: center;
   color: #fefaf1;
   align-items: center;
   border: 1px solid #1d2024;
@@ -1040,9 +1043,18 @@ header {
   border-radius: 20px;
 }
 
+.events--list--case .event--item img {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border: 1px solid #fefaf1;
+  margin-top: 5px;
+}
+
 .events--list--case .event--item .event--info {
   width: 100%;
-  padding: 10px;
 }
 
 /* ================================================== MODAL ADD ROOM ====================================================*/
