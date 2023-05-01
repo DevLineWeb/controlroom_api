@@ -365,6 +365,32 @@ input.error ~ .login--ico {
   border: 1px solid #24272c;
 }
 
+.modal--footer {
+  display: flex;
+  flex-direction: column;
+  height: 45px;
+  background-color: #1d2024;
+  width: 100%;
+  color: #fefaf1;
+  font-size: 1.6rem;
+  padding: 0.5rem;
+  font-size: 2rem;
+  flex-wrap: wrap;
+  align-content: space-between;
+  justify-content: center;
+}
+
+.modal--footer div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.modal--footer button {
+  font-size: 1.6rem;
+  padding: 10px;
+}
+
 /*============================================= NAVBAR=================================================== */
 header {
   background-image: url(../img/slider/8.jpg);

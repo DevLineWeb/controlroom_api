@@ -376,6 +376,29 @@ input.error ~ .login--ico {
 .box--col--buttons button {
     border:1px solid $optional--color;
 }
+.modal--footer {
+    display: flex;
+    flex-direction: column;
+    height: 45px;
+    background-color: #1d2024;
+    width: 100%;
+    color: #fefaf1;
+    font-size: 1.6rem;
+    padding: 0.5rem;
+    font-size: 2rem;
+    flex-wrap: wrap;
+    align-content: space-between;
+    justify-content: center;
+}
+.modal--footer div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.modal--footer button {
+    font-size: 1.6rem;
+    padding: 10px;
+}
 /*============================================= NAVBAR=================================================== */
 
 header {
@@ -939,7 +962,7 @@ border: 3px solid $complementary--color;  /* creates padding around scroll thumb
 .user--config--button:hover {
     color: $complementary--color;
 }
-
+// ================================================= EVENT LIST ==================================================//
 .events--list--case {
     position: absolute;
     left: 6000px;
