@@ -107,20 +107,18 @@ function eventList() {
         },
         success: function (data)
         {
-            $('#table--room--itens').html(data);
+            $('#events--list').html(data);
             $('.ajax--load').removeClass('show');
             // pegar indice de linha listada
             getEventIndex();
     }
     });
-    $('#table--button--filter--user').toggleClass('selected');
-    $('#table--button--filter--list').removeClass('selected');
-    $('#table--button--filter--grid').removeClass('selected');
     $('.table--room').removeClass('change');
     $('.table--grid').removeClass('change');
     $('.circle--display').removeClass('toggle');
     $('#style--list').removeClass('toggle');
     $('#style--grid').removeClass('toggle');
+    listChangeState(4);
 }
 
 
@@ -129,38 +127,66 @@ function listChangeState(state) {
   const objectBlock = document.querySelector('.table--room');
   const groupBlock = document.querySelector('.table--grid');
   const usersBlock = document.querySelector('.user--list--case');
+  const eventsBlock = document.querySelector('.events--list--case');
+
+  const objectBtn = document.querySelector('#table--button--filter--list');
+  const groupBtn = document.querySelector('#table--button--filter--grid');
+  const usersBtn = document.querySelector('#table--button--filter--user');
+
+
   if (state == 1) {
-    $('#table--button--filter--list').toggleClass('selected');
-    $('#table--button--filter--grid').removeClass('selected');
-    $('#table--button--filter--user').removeClass('selected');
 
     objectBlock.style.left = "0px"
     groupBlock.style.left = "2000px"
     usersBlock.style.left = "4000px"
+    eventsBlock.style.left = "6000px"
     $('.circle--display').removeClass('toggle');
     $('#style--list').removeClass('toggle');
     $('#style--grid').removeClass('toggle');
+
+    blockColor(objectBtn);
   }
   if (state == 2) {
-    $('#table--button--filter--list').removeClass('selected');
-    $('#table--button--filter--grid').toggleClass('selected');
-    $('#table--button--filter--user').removeClass('selected');
 
     objectBlock.style.left = "-2000px"
     groupBlock.style.left = "0px"
     usersBlock.style.left = "2000px"
+    eventsBlock.style.left = "4000px"
+
+    blockColor(groupBtn);
   }
   if (state == 3) {
-    $('#table--button--filter--list').removeClass('selected');
-    $('#table--button--filter--grid').removeClass('selected');
-    $('#table--button--filter--user').toggleClass('selected');
 
     objectBlock.style.left = "-4000px"
     groupBlock.style.left = "-2000px"
     usersBlock.style.left = "0px"
+    eventsBlock.style.left = "2000px"
+
     $('.circle--display').removeClass('toggle');
     $('#style--list').removeClass('toggle');
     $('#style--grid').removeClass('toggle');
+
+    blockColor(usersBtn);
+  }
+  if (state == 4) {
+    objectBlock.style.left = "-6000px"
+    groupBlock.style.left = "-4000px"
+    usersBlock.style.left = "-2000px"
+    eventsBlock.style.left = "0px"
+
+    blockColor(usersBtn)
+  }
+  function blockColor(blockRef) {
+    objectBtn.style.color = "#ffffff";
+    groupBtn.style.color = "#ffffff";
+    usersBtn.style.color = "#ffffff";
+
+    objectBtn.style.borderColor = "#24272c";
+    groupBtn.style.borderColor = "#24272c";
+    usersBtn.style.borderColor = "#24272c";
+
+    blockRef.style.color = "#51e5a1";
+    blockRef.style.borderColor = "#51e5a1";
   }
 
 }
@@ -498,6 +524,7 @@ $('.mobile--sec--style--toggle').click(function () {
   $('.circle--display').toggleClass('toggle');
   $('#style--list').toggleClass('toggle');
   $('#style--grid').toggleClass('toggle');
+  listChangeState(2);
   groupList();
 })
 // _________________________________________________________________________________

@@ -157,9 +157,6 @@ switch ($method) {
                                                 <label for='more--monitor'><i class='fa-sharp fa-solid fa-desktop'></i></label>
                                             </div>
                                         </div>
-                                        <input type='hidden' value='".$room_cadeado[$i]."'>
-                                        <input type='hidden' value='".$room_cabo[$i]."'>
-                                        <input type='hidden' value='".$room_monitor[$i]."'>
                                     </div>
                                 </th>
                                 <th class='table--col--6'>
@@ -297,28 +294,23 @@ switch ($method) {
                 //     </tr>
                 // </thead>
                 // ";
-                echo "
-                    <button class='button--submit' onclick=''>
-                    Eventos
-                    </button>
-                ";
                 while ($reg = mysqli_fetch_assoc($result)) {
                     $id[$i] = $reg['id'];
                     $events_protocol[$i] = $reg['events_protocol'];
                     $events_user[$i] = $reg['events_user'];
                     $events_object[$i] = $reg['events_object'];
                     $events_message[$i] = $reg['events_message'];
-                    $events_date[$i] = $reg['events_date'];
+                    $events_date[$i] = strtotime($reg['events_date']);
+
 
                     echo "
-                    <tr class='table--item"." ".$i."'>
-                        <td class='item--info table--col--3'>".$events_user[$i]."</td>
-                        <td class='item--info table--col--1'>".$events_protocol[$i]."</td>
-                        <td class='item--info table--col--5'>".$id[$i]."</td>
-                        <td class='item--info table--col--4'>".$events_message[$i]."</td>
-                        <td class='item--info table--col--2'>".$events_object[$i]."</td>
-                        <td class='item--info table--col--6'>".$events_date[$i]."</td>
-                        <td class='table--item--action'>
+                    <section class='event--item"." ".$i."'>
+                        <div class='event--info table--col--5'>".$id[$i]."</div>
+                        <div class='event--info table--col--3'>".$events_user[$i]."</div>
+                        <div class='event--info table--col--1'>".$events_protocol[$i]."</div>
+                        <div class='event--info table--col--2'>".$events_object[$i]."</div>
+                        <div class='event--info table--col--6'>".date("d/m/Y h:i:s",$events_date[$i])."</div>
+                        <div class='event--action'>
                             <button class='event--info--button button--default' 
                             data-id='".$id[$i]."' 
                             data-01='".$events_protocol[$i]."'
@@ -330,8 +322,8 @@ switch ($method) {
                             >
                             <i class='fa-solid fa-file-lines'></i>
                             </button>
-                        </td>
-                    </tr>
+                        </div>
+                    </section>
                     ";
 
 
