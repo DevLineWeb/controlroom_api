@@ -327,12 +327,10 @@
                     </div>
                 </div>
                 <div class="modal--footer">
-                    <button type="button" class="button--cancel" onclick="closeModal()">
-                        Cancelar
-                    </button>
+                    <button class="button--modal" onclick="closeModal()"><i class="fa-solid fa-arrow-left"></i></button>
                     <!-- <p>Lembre-se de preencher todos os campos!</p> -->
-                    <button type="button" class="button--submit" onclick="addRoom()">
-                        Cadastrar
+                    <button type="button" class="button--modal" onclick="addRoom()">
+                        <i class="fa-solid fa-square-plus"></i>
                     </button>
                 </div>
             </form>
@@ -491,17 +489,17 @@
                 </div>
                 <div class="modal--footer">
                     <div>
-                        <button class="button--default" onclick="closeModal()"><i class="fa-solid fa-arrow-left"></i></button>
-                        <button type="button" class="button--default" onclick="deleteRoom()">
+                        <button class="button--modal" onclick="closeModal()"><i class="fa-solid fa-arrow-left"></i></button>
+                        <button type="button" class="button--modal" onclick="deleteRoom()">
                             <i class="fa-regular fa-trash-can"></i>
                         </button>
-                        <button type="button" class="button--default">
+                        <button type="button" class="button--modal">
                             <i class="fa-solid fa-file-shield"></i>
                         </button>
                     </div>
                     <div>
-                        <button type="button" class="button--submit" onclick="editRoom()">
-                            Atualizar
+                        <button type="button" class="button--modal" onclick="editRoom()">
+                            <i class="fa-solid fa-check"></i>
                         </button>
                     </div>
                 </div>
@@ -520,7 +518,7 @@
                 <div class="box--line" id="user--session--info">
 
                 </div>
-                <div class="box--line">
+                <div class="modal--footer">
                     <!-- <table class="user--logs--table">
                         <thead>
                             <tr>
@@ -533,12 +531,11 @@
 
                         </tbody>
                     </table> -->
-                    <div class="box--col--buttons">
-                        <button class="button--default" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i></button>
-                        <button class="button--default"><i class="fa-solid fa-envelope"></i></button>
-                        <button class="button--default"><i class="fa-solid fa-bookmark"></i></button>
-                        <button class="button--default" onclick="closeModal();"><i class="fa-solid fa-check"></i></button>
-                    </div>
+                    <button class="button--modal" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i></button>
+                    <button class="button--modal"><i class="fa-solid fa-envelope"></i></button>
+                    <button class="button--modal"><i class="fa-solid fa-bookmark"></i></button>
+                    <button class="button--modal" onclick="closeModal();"><i class="fa-solid fa-check"></i></button>
+                    
                 </div>
             </section>
         </section>  
@@ -581,10 +578,10 @@
                         </select>
                     </div>
                 </div>
-                <div class="box--line">
-                    <button class="button--cancel" onclick="closeModal()">Cancelar
+                <div class="modal--footer">
+                    <button class="button--modal" onclick="closeModal()"><i class="fa-solid fa-arrow-left"></i>
                     </button>
-                    <button class="button--edit" id="edit--user--button" onclick="editUser();">Editar</button>
+                    <button class="button--modal" id="edit--user--button" onclick="editUser();"><i class="fa-solid fa-check"></i></button>
                 </div>
             </div>
         </section>
@@ -634,13 +631,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="box--line">
-                    <button type="button" class="button--cancel" onclick="closeModal()">
-                        Cancelar
+                <div class="modal--footer">
+                    <button type="button" class="button--modal" onclick="closeModal()">
+                        <i class="fa-solid fa-arrow-left"></i>
                     </button>
                     <!-- <p>Lembre-se de preencher todos os campos!</p> -->
-                    <button type="button" class="button--submit" onclick="addUser()">
-                        Cadastrar
+                    <button type="button" class="button--modal" onclick="addUser()">
+                        <i class="fa-solid fa-user-plus"></i>
                     </button>
                 </div>
             </div>
@@ -656,8 +653,8 @@
                 <div class="box--line">
                     <div id="notify--case"></div>
                 </div>
-                <div class="box--line">
-                    <button class="button--submit" onclick="closeModal();">OK</button>
+                <div class="modal--footer">
+                    <button class="button--submit" onclick="closeModal();"><i class="fa-solid fa-check"></i></button>
                 </div>
             </section>
         </section>
@@ -671,7 +668,7 @@
                             <div class="user--image--box">
                                 <img src='../app/data/users_images/default-user-image-change.png' alt=''  id='session--img' onclick='imagePreview();'>
                             </div>
-                            <div class="box--col--buttons">
+                            <div class="modal--footer">
                                 <button class='button--default cancel' onclick="closeModal();" type="button"><i class="fa-solid fa-ban"></i></button>
                                 <button class='button--default selected' type='submit'><i class='fa-solid fa-cloud-arrow-up'></i></button>
                             </div>
@@ -707,8 +704,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="box--line">
-                    <button class="button--submit" onclick="closeModal();">Fechar</button>
+                <div class="modal--footer">
+                    <button class="button--submit" onclick="closeModal();"><i class="fa-solid fa-arrow-left"></i></button>
                 </div>
             </div>
         </section>
