@@ -696,18 +696,14 @@ header {
 }
 
 .table--room {
+  position: absolute;
+  left: 0px;
   width: 100%;
   color: #fefaf1;
   border-collapse: separate;
   border-spacing: 0px;
-  transform: translateX(0);
   transition: all 0.3s;
   padding-top: 10px;
-}
-
-.table--room.change {
-  transform: translateX(-2000px);
-  transition: all 0.3s;
 }
 
 .table--header {
@@ -861,57 +857,12 @@ header {
   transition: all 0.5s;
 }
 
-#list--user {
-  margin-top: 50px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 30px;
-  color: #fefaf1;
-  font-size: 1.6rem;
-}
-
-.user--item {
-  position: relative;
-  background-color: #1d2024;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin: 10px 0px;
-  border-radius: 3px;
-}
-
-.user--info img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  -o-object-fit: contain;
-     object-fit: contain;
-  margin-top: -20px;
-}
-
-.user--config--button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 10px;
-  cursor: pointer;
-}
-
-.user--config--button:hover {
-  color: #51e5a1;
-}
-
 .table--grid {
   font-size: 1.6rem;
   width: 100%;
   position: absolute;
   top: 10px;
-  transform: translateX(2000px);
-  transition: all 0.3s;
-}
-
-.table--grid.change {
-  transform: translateX(0);
+  left: 2000px;
   transition: all 0.3s;
 }
 
@@ -1017,6 +968,53 @@ header {
 
 .add--group.show {
   display: block;
+}
+
+.user--list--case {
+  position: absolute;
+  left: 4000px;
+  width: 100%;
+  transition: all 0.3s;
+}
+
+#list--user {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 30px;
+  color: #fefaf1;
+  font-size: 1.6rem;
+}
+
+.user--item {
+  position: relative;
+  background-color: #1d2024;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 10px 0px;
+  border-radius: 3px;
+}
+
+.user--info img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  margin-top: -20px;
+}
+
+.user--config--button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.user--config--button:hover {
+  color: #51e5a1;
 }
 
 /* ================================================== MODAL ADD ROOM ====================================================*/
@@ -1472,7 +1470,7 @@ footer div button {
 .login--form {
   color: #fefaf1;
   font-size: 1.6rem;
-  background-color: #060606;
+  background-color: #1d2024;
   box-shadow: 0 1px 15px 0 #000;
   position: absolute;
   top: 50%;

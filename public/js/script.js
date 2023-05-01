@@ -50,14 +50,7 @@ function objectList() {
             getLineIndex();
         }
     });
-  $('#table--button--filter--list').toggleClass('selected');
-  $('#table--button--filter--grid').removeClass('selected');
-  $('#table--button--filter--user').removeClass('selected');
-  $('.table--room').removeClass('change');
-  $('.table--grid').removeClass('change');
-  $('.circle--display').removeClass('toggle');
-  $('#style--list').removeClass('toggle');
-  $('#style--grid').removeClass('toggle');
+    listChangeState(1);
 }
 function groupList() {
   $.ajax
@@ -76,11 +69,7 @@ function groupList() {
           getLineIndexGrid();
   }
   });
-  $('#table--button--filter--grid').toggleClass('selected');
-  $('#table--button--filter--list').removeClass('selected');
-  $('#table--button--filter--user').removeClass('selected');
-  $('.table--grid').toggleClass('change');
-  $('.table--room').toggleClass('change');
+  listChangeState(2);
 }
 function userList() {
   $.ajax
@@ -101,14 +90,7 @@ function userList() {
             getLineUserIndex();
     }
     });
-    $('#table--button--filter--user').toggleClass('selected');
-    $('#table--button--filter--list').removeClass('selected');
-    $('#table--button--filter--grid').removeClass('selected');
-    $('.table--room').removeClass('change');
-    $('.table--grid').removeClass('change');
-    $('.circle--display').removeClass('toggle');
-    $('#style--list').removeClass('toggle');
-    $('#style--grid').removeClass('toggle');
+    listChangeState(3);
 }
 
 function eventList() {
@@ -141,6 +123,47 @@ function eventList() {
     $('#style--grid').removeClass('toggle');
 }
 
+
+
+function listChangeState(state) {
+  const objectBlock = document.querySelector('.table--room');
+  const groupBlock = document.querySelector('.table--grid');
+  const usersBlock = document.querySelector('.user--list--case');
+  if (state == 1) {
+    $('#table--button--filter--list').toggleClass('selected');
+    $('#table--button--filter--grid').removeClass('selected');
+    $('#table--button--filter--user').removeClass('selected');
+
+    objectBlock.style.left = "0px"
+    groupBlock.style.left = "2000px"
+    usersBlock.style.left = "4000px"
+    $('.circle--display').removeClass('toggle');
+    $('#style--list').removeClass('toggle');
+    $('#style--grid').removeClass('toggle');
+  }
+  if (state == 2) {
+    $('#table--button--filter--list').removeClass('selected');
+    $('#table--button--filter--grid').toggleClass('selected');
+    $('#table--button--filter--user').removeClass('selected');
+
+    objectBlock.style.left = "-2000px"
+    groupBlock.style.left = "0px"
+    usersBlock.style.left = "2000px"
+  }
+  if (state == 3) {
+    $('#table--button--filter--list').removeClass('selected');
+    $('#table--button--filter--grid').removeClass('selected');
+    $('#table--button--filter--user').toggleClass('selected');
+
+    objectBlock.style.left = "-4000px"
+    groupBlock.style.left = "-2000px"
+    usersBlock.style.left = "0px"
+    $('.circle--display').removeClass('toggle');
+    $('#style--list').removeClass('toggle');
+    $('#style--grid').removeClass('toggle');
+  }
+
+}
 // _________________________________________________________________________________
 // ____________________________MANIPULAÇÃO DE OBJETOS_______________________________
 // _________________________________________________________________________________
