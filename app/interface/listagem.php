@@ -5,7 +5,7 @@ $method = $_POST["method"];
 
 switch ($method) {
     case 'object--list':
-        $consult = "SELECT * FROM rooms";
+        $consult = "SELECT * FROM rooms ORDER BY id ASC";
                     if ($result = mysqli_query($conect, $consult)) {
                         $id = array();
                         $room_natureza = array();
@@ -97,7 +97,7 @@ switch ($method) {
                                     >
                                     <i class='fa-solid fa-play'></i>
                                     </button>
-                                    <button class='button--default'><i class='fa-regular fa-bookmark'></i></button>
+                                    
                                 </td>
                             </tr>
                             <tr class='table--item--more"." ".$i."'>

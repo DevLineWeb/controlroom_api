@@ -39,7 +39,6 @@ include_once('../log/log.php');
     }
     else{
         echo "invalid";
-        LogToDatabase('load error', $mode = 'ERRO');
     }
 
 ?>

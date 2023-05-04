@@ -1094,6 +1094,20 @@ header {
 }
 
 /* ================================================== MODAL ADD ROOM ====================================================*/
+.modal--content::-webkit-scrollbar {
+  width: 3px;
+}
+
+.modal--content::-webkit-scrollbar-track {
+  background: #24272c; /* color of the tracking area */
+}
+
+.modal--content::-webkit-scrollbar-thumb {
+  background-color: #51e5a1; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: 3px solid #51e5a1; /* creates padding around scroll thumb */
+}
+
 #modal--add--room {
   top: 0;
   position: fixed;
@@ -1114,7 +1128,7 @@ header {
 }
 
 #add--room--box {
-  width: 90vw;
+  width: 55vw;
   color: #fefaf1;
   font-size: 1.4rem;
   display: flex;
@@ -1150,7 +1164,7 @@ header {
 }
 
 .edit--room--box {
-  width: 90vw;
+  width: 55vw;
   color: #fefaf1;
   font-size: 1.4rem;
   display: flex;

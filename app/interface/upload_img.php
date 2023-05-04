@@ -31,8 +31,8 @@ session_start();
                     <P>Imagem muito grande!</P>
                 </div>
             </div>
-            <div class='box--line'>
-                <button class='button--submit request--feedback--button' onclick='closeModal()'> OK </button>
+            <div class='modal--footer'>
+                <button class='button--modal request--feedback--button' onclick='closeModal()'>  <i class='fa-solid fa-check'></i> </button>
             </div>
         </div>";
          $uploadOk = 0;
@@ -57,8 +57,8 @@ session_start();
                      <P>Sorry, your file was not uploaded.</P>
                  </div>
              </div>
-             <div class='box--line'>
-                 <button class='button--submit request--feedback--button' onclick='closeModal()'> OK </button>
+             <div class='modal--footer'>
+                 <button class='button--modal request--feedback--button' onclick='closeModal()'>  <i class='fa-solid fa-check'></i> </button>
              </div>
          </div>";
       // if everything is ok, try to upload file
@@ -78,8 +78,8 @@ session_start();
                         <P>Imagem Atualizada!</P>
                     </div>
                 </div>
-                <div class='box--line'>
-                    <button class='button--submit request--feedback--button' onclick='closeModal()'> OK </button>
+                <div class='modal--footer'>
+                    <button class='button--modal request--feedback--button' onclick='closeModal()'>  <i class='fa-solid fa-check'></i> </button>
                 </div>
             </div>";
          } else {
@@ -93,8 +93,8 @@ session_start();
                         <P>Error on Upload!</P>
                     </div>
                 </div>
-                <div class='box--line'>
-                    <button class='button--submit request--feedback--button' onclick='closeModal()'> OK </button>
+                <div class='modal--footer'>
+                    <button class='button--modal request--feedback--button' onclick='closeModal()'>  <i class='fa-solid fa-check'></i> </button>
                 </div>
             </div>";
             exit;

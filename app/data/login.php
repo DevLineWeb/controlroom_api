@@ -16,8 +16,8 @@ if (empty($_POST['mail']) || empty($_POST['password'])) { //SE NÃO FOR INFORMAD
                 <P>Digite o usuário e a senha!</P>
             </div>
         </div>
-        <div class='box--line'>
-            <button class='button--submit request--feedback--button' onclick='closeModal()'> OK </button>
+        <div class='modal--footer'>
+            <button class='button--modal request--feedback--button' onclick='closeModal()'>  <i class='fa-solid fa-check'></i> </button>
         </div>
     </div>
     ";
@@ -52,8 +52,8 @@ if ($row == 1) { //SE UMA LINHA FOI ENCONTRADA
                 <P>Usuário e/ou senha incorretos!</P>
             </div>
         </div>
-        <div class='box--line'>
-            <button class='button--submit request--feedback--button' onclick='closeModal()'> OK </button>
+        <div class='modal--footer'>
+            <button class='button--modal request--feedback--button' onclick='closeModal()'>  <i class='fa-solid fa-check'></i> </button>
         </div>
     </div>
     ";

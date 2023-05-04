@@ -27,8 +27,8 @@
                 <P>Dados atualizados!</P>
             </div>
         </div>
-        <div class='box--line'>
-            <button class='button--submit request--feedback--button' onclick='closeModal()'> OK </button>
+        <div class='modal--footer'>
+            <button class='button--modal request--feedback--button' onclick='closeModal()'>  <i class='fa-solid fa-check'></i> </button>
         </div>
     </div>
         ";
@@ -44,8 +44,8 @@
                 <P>Erro ao editar usuário!</P>
             </div>
         </div>
-        <div class='box--line'>
-            <button class='button--submit request--feedback--button' onclick='closeModal()'> OK </button>
+        <div class='modal--footer'>
+            <button class='button--modal request--feedback--button' onclick='closeModal()'>  <i class='fa-solid fa-check'></i> </button>
         </div>
     </div>
         ";

@@ -1001,6 +1001,19 @@ border: 3px solid $complementary--color;  /* creates padding around scroll thumb
     width: 100%;
 }
 /* ================================================== MODAL ADD ROOM ====================================================*/
+.modal--content::-webkit-scrollbar {
+    width: 3px;
+  }
+  
+.modal--content::-webkit-scrollbar-track {
+background: $optional--color;        /* color of the tracking area */
+}
+
+.modal--content::-webkit-scrollbar-thumb {
+background-color: $complementary--color;    /* color of the scroll thumb */
+border-radius: 20px;       /* roundness of the scroll thumb */
+border: 3px solid $complementary--color;  /* creates padding around scroll thumb */
+}
 #modal--add--room {
     @include modalOverlay();
     background-color: #00000070
@@ -1009,7 +1022,7 @@ border: 3px solid $complementary--color;  /* creates padding around scroll thumb
     @include modalOverlayShow();
 }
 #add--room--box {
-    width: 90vw;
+    width: 55vw;
     @include modal();
 }
 /* ================================================== MODAL EDIT ROOM ====================================================*/
@@ -1020,7 +1033,7 @@ border: 3px solid $complementary--color;  /* creates padding around scroll thumb
     @include modalOverlayShow();
 }
 .edit--room--box {
-    width: 90vw;
+    width: 55vw;
     @include modal();
 }
 // ================================================== MODAL USER INFO =======================================================//

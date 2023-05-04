@@ -21,16 +21,12 @@
                         class="fa-solid fa-user"></i></button>
                 <button class="button--default menu--item notify--button" onclick="openModalNotify();"><i
                         class="fa-solid fa-envelope"></i></button>
-                <button class="button--default menu--item"><i class="fa-solid fa-bookmark"></i></button>
-                <button class="button--default menu--item"><i class="fa-solid fa-gear"></i></button>
             </div>
             <div class="header--content">
                 <div class="header--content--col">
                     <img src="./img/Control Room Logo.png" alt="" draggable="false">
-                    <button class="button--default">Central de Contole</button>
                     <button class="button--default">Dashboard</button>
                     <button class="button--default" onclick="eventList();">Eventos</button>
-                    <button class="button--default">Unidades</button>
                 </div>
             </div>
         </main>
@@ -196,10 +192,6 @@
     
                             </select>
                         </div>
-                        <div class="box--col">
-                            <label for="add--unit">Unidade: *</label>
-                            <input type="text" id="add--unit" placeholder="Unidade" disabled>
-                        </div>
                     </div>
                     <div class="box--line">
                         <div class="box--col">
@@ -363,10 +355,6 @@
                             <select name="localidade" id="edit--show--localidade" required>
                                 
                             </select>
-                        </div>
-                        <div class="box--col">
-                            <label for="add--unit">Unidade: *</label>
-                            <input type="text" id="add--unit" placeholder="Unidade" disabled>
                         </div>
                     </div>
                     <div class="box--line">
@@ -654,7 +642,7 @@
                     <div id="notify--case"></div>
                 </div>
                 <div class="modal--footer">
-                    <button class="button--submit" onclick="closeModal();"><i class="fa-solid fa-check"></i></button>
+                    <button class="button--modal" onclick="closeModal();"><i class="fa-solid fa-check"></i></button>
                 </div>
             </section>
         </section>
