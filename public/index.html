@@ -117,19 +117,15 @@
                         <button class='button--default selected' onclick="openGroupAdd()">
                             <i class='fa-solid fa-plus'> </i>
                         </button>
-                        <div class="grid--header box--line add--group">
-                            <div class="box--col"><label for="add--group--name">Nome do grupo: *</label>
-                                <input type="text" placeholder="Group Name" id="add--group--name">
+                        <div class="add--group">
+                            <div class="modal--content">
+                                <div class="box--col">
+                                    <label for="add--group--name">Nome do grupo: *</label>
+                                    <input type="text" placeholder="Group Name" id="add--group--name">
+                                </div>
                             </div>
-                            <div class="box--col">
-                                <label for="add--group--unit">Unidade do grupo: *</label>
-                                <select name="" id="add--group--unit">
-                                    <option value="FSG">FSG</option>
-                                    <option value="FSGBG">FSGBG</option>
-                                </select>
-                            </div>
-                            <div class="box--col">
-                                <button class="button--submit" onclick="addGroup();">Cadastrar</button>
+                            <div class="modal--footer">
+                                <button class="button--modal" onclick="addGroup();"><i class="fa-solid fa-square-plus"></i></button>
                             </div>
                         </div>
                         <div id="table--grid">
@@ -585,11 +581,12 @@
                     <div class="box--line">
                         <div class="box--col">
                             <label for="add--user--name">Nome: *</label>
-                            <input type="text" placeholder="Nome" id="add--user--name">
+                            <input type="text" placeholder="Nome" id="add--user--name" onkeyup="addVerUserMail()">
+                            
                         </div>
                         <div class="box--col">
-                            <label for="add--user--mail">E-mail: *</label>
-                            <input type="text" placeholder="E-mail" id="add--user--mail">
+                            <label for="add--user--second--name">Sobrenome: *</label>
+                            <input type="text" placeholder="Nome" id="add--user--second--name" onkeyup="addVerUserMail()">
                         </div>
                     </div>
                     <div class="box--line">
@@ -610,12 +607,13 @@
                     </div>
                     <div class="box--line">
                         <div class="box--col">
-                            <label for="">Senha: </label>
-                            <input type="text" placeholder="Senha" id="">
+                            <label for="add--user--mail">E-mail: *</label>
+                            <input type="text" placeholder="E-mail" id="add--user--mail" disabled>
                         </div>
                         <div class="box--col">
-                            <label for="add--user--pass">Confirmação de  senha: </label>
-                            <input type="text" placeholder="Senha" id="add--user--pass">
+                            <label for="add--user--pass">Senha: </label>
+                            <input type="password" placeholder="Senha" id="add--user--pass">
+                            <div class="password--eye"><i class="fa-solid fa-eye"></i></div>
                         </div>
                     </div>
                 </div>

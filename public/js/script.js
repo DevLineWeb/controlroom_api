@@ -380,7 +380,6 @@ function deleteRoom() {
 // ADD GROUP
 function addGroup() {
   const groupName = document.getElementById('add--group--name').value;
-  const groupUnit = document.getElementById('add--group--unit').value;
 
   $.ajax
           ({
@@ -396,8 +395,7 @@ function addGroup() {
               },
               //Dados para envio
               data: {
-                groupName: groupName,
-                groupUnit: groupUnit
+                groupName: groupName
               },
               //função que será executada quando a solicitação for finalizada.
               success: function (msg)
@@ -1041,21 +1039,38 @@ function addVerGroups (){
 }
 
 function addVerUnit(){
-  const groupChange = $('#localidade').find(":selected");
-  const unitRel = groupChange[0].getAttribute('data-01')
+  // const groupChange = $('#localidade').find(":selected");
+  // const unitRel = groupChange[0].getAttribute('data-01')
   
-  if (unitRel == 1) {
-    $('#add--unit').val('FSG')
-  }
-  if (unitRel == 2) {
-    $('#add--unit').val('FSGBG')
-  }
+  // if (unitRel == 1) {
+  //   $('#add--unit').val('FSG')
+  // }
+  // if (unitRel == 2) {
+  //   $('#add--unit').val('FSGBG')
+  // }
 
 }
 
 function addVerObjectName(){
 
 }
+
+function addVerUserMail() {
+  const userName = document.getElementById('add--user--name').value
+  const secondName = document.getElementById('add--user--second--name').value
+  const fistIndex = userName.substr(0, 1);
+  const userMail = fistIndex.toLowerCase() + secondName.toLowerCase().split(' ').slice(0, 1);
+  $('#add--user--mail').val(userMail+'@control.com');
+  
+}
+
+$( ".password--eye" ).mousedown(function() {
+  $("#add--user--pass").attr("type", "text");
+});
+
+$( ".password--eye" ).mouseup(function() {
+  $("#add--user--pass").attr("type", "password");
+});
 // =========================================================================================================//
 // ======================================================EDIÇÃO DE USUÁRIO=====================================//
 // =========================================================================================================//

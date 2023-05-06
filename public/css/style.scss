@@ -23,7 +23,9 @@ body {
     // background-image: url(../img/slider/6.jpg);
     // min-height: 100vh;
     // background-size: cover;
-    background-color: $dark--color;
+    background-color: $optional--color;
+    overflow-x: hidden;
+    max-width: 100vw;
 }
 li {
     list-style: none;
@@ -43,6 +45,7 @@ main{
 }
 html{
     font-size: 62.5%;
+    overflow-x: hidden;
 }
 b{
     padding-right: 5px;
@@ -137,8 +140,8 @@ b{
 @mixin modalOverlay {   
     top: 0;
     position: fixed;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background-color: #000000a9;
     z-index: 1000;
     display: none;
@@ -290,6 +293,16 @@ input.verified ~ .login--ico {
 }
 input.error ~ .login--ico {
     color: #ff0000;
+}
+input[type='password'] {
+    position: relative;
+}
+.password--eye{
+    position: absolute;
+    cursor: pointer;
+    right: 5px;
+    top: 0;
+    padding: 10px;
 }
 // input:focus {
 //     color: #000;
@@ -666,9 +679,10 @@ header {
 }
 .sec--project--room--list {
     position: relative;
-    overflow: hidden;
+    // overflow-x: hidden;
     margin: 5px;
-    min-height: 100vh;
+    // min-height: 100vh;
+    // margin-bottom: 15vh;
 }
 .sec--project--room--list::-webkit-scrollbar {
     width: 3px;
@@ -685,6 +699,7 @@ border: 3px solid $complementary--color;  /* creates padding around scroll thumb
 }
 .list--case {
     background-color: $optional--color;
+    height: 2200px;
 }
 .table--room {
     position: absolute;
@@ -852,11 +867,9 @@ border: 3px solid $complementary--color;  /* creates padding around scroll thumb
     gap: 20px;
 }
 .table--grid .add--group {
-    padding: 10px;
     margin: 10px 0px;
     border-radius: 2px;
-    background-color: $dark--color;
-    border-left: 5px solid $complementary--color;
+    background-color: $background--color;
     color: $white--color;
 }
 .grid--block {
@@ -1256,7 +1269,7 @@ footer div button{
 // ================================== SHORTCUTS =======================================//
 .sec--project--shortcuts {
     height: 100px;
-    width: 100%;
+    width: 100vw;
     background: linear-gradient(to bottom, transparent 0%, $dark--color 100%);
     position: fixed;
     bottom: 0;
@@ -1269,7 +1282,7 @@ footer div button{
     border-radius: 50px;
     padding: 10px;
     font-size: 2.8rem;
-    background-color: #000;
+    background-color: $dark--color;
     width: 80%;
     display: flex;
     flex-direction: row;

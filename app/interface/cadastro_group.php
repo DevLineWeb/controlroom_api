@@ -4,15 +4,9 @@ include_once('../log/log.php');
 session_start();
 
 $group_name = $_POST['groupName'];
-$unit_name = $_POST['groupUnit'];
 
-$insertGroup = mysqli_query($conect,"INSERT INTO groups(
-    
-    group_name, 
-    unit_name)
-    VALUES ( 
-        '$group_name',
-        '$unit_name')");
+$insertGroup = mysqli_query($conect,"INSERT INTO groups(group_name)
+    VALUES ('$group_name')");
 
 if($insertGroup) {
     echo "
@@ -30,7 +24,6 @@ if($insertGroup) {
         </div>
     </div>
     ";
-    logger($_SESSION['mail'].' added a new group: '.$group_name, $mode = 'NOTICE');
     LogToDatabase('added a new group: '.$group_name, $mode = 'NOTICE', $object = $group_name);
 }
 else {
@@ -49,6 +42,5 @@ else {
         </div>
     </div>
     ";
-    logger('error on added a new group: '.$group_name, $mode = 'ERROR');
     LogToDatabase('error on added a new group: '.$group_name, $mode = 'ERROR', $object = $group_name);
 }
